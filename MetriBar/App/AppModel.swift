@@ -31,6 +31,9 @@ final class AppModel {
     var editingServerID: UUID?
     var isAddingServer = false
 
+    /// Section shown in the dashboard window.
+    var dashboardSection: DashboardSection = .overview
+
     @ObservationIgnored private let configStore: ConfigStore
     @ObservationIgnored private let credentials: any CredentialStore
     @ObservationIgnored private let defaults: UserDefaults

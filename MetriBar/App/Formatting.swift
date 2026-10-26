@@ -1,7 +1,8 @@
 import Foundation
 
 /// Locale-aware formatting of Glances values. `nil` becomes an en dash.
-enum Format {
+/// Pure functions, usable from any isolation.
+nonisolated enum Format {
     static let placeholder = "–"
 
     /// Glances percentages (0…100) as "37 %".
@@ -36,6 +37,26 @@ enum Format {
         guard let duration, duration > .zero else { return placeholder }
         return duration.formatted(
             .units(allowed: [.days, .hours, .minutes], width: .narrow, maximumUnitCount: 2))
+    }
+
+    static func temperature(_ value: Double?, unit: String?) -> String {
+        guard let value, value.isFinite else { return placeholder }
+        let number = value.formatted(.number.precision(.fractionLength(0...1)))
+        switch unit?.uppercased() {
+        case "C", nil: return "\(number) °C"
+        case "F": return "\(number) °F"
+        default: return "\(number) \(unit ?? "")"
+        }
+    }
+
+    static func number(_ value: Double?, fractionDigits: Int = 0) -> String {
+        guard let value, value.isFinite else { return placeholder }
+        return value.formatted(.number.precision(.fractionLength(fractionDigits)))
+    }
+
+    static func time(_ date: Date?) -> String {
+        guard let date else { return placeholder }
+        return date.formatted(date: Calendar.current.isDateInToday(date) ? .omitted : .abbreviated, time: .standard)
     }
 
     static func relative(_ date: Date?, now: Date = .now) -> String {

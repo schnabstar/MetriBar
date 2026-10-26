@@ -2,6 +2,15 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-10-26 – Dashboard window
+
+- **Layout:** `NavigationSplitView` with the servers in the sidebar (sharing the selection with the popover) and seven sections switched by a segmented control in the toolbar or ⌘1–⌘7: overview, history, storage, network & sensors, processes, containers, alerts.
+- **Each section declares its feeds** (`DashboardSection.feeds`) and keeps them active with `keepActive` while visible, so only the visible data is fetched at the live interval.
+- **Tables** (`Table` with `KeyPathComparator`) sort locally; MetriBar never changes the server's sort order. Row types are `nonisolated` structs: with `MainActor` default isolation, key paths to actor-isolated properties are not `Sendable`, which `KeyPathComparator` requires in Swift 6. `Format` is `nonisolated` for the same reason.
+- **Process command lines** appear only after clicking "Show Command Line" in the inspector and are hidden again when the selection changes, because arguments can contain secrets.
+- **History charts** (Swift Charts) show the history Glances keeps; collection plugins (network) are charted per interface. Percent charts use a fixed 0–100 % scale, others start at zero.
+- **Snapshots:** `ScrollView` is AppKit-backed and renders empty with `ImageRenderer`, so overview and history are split into a scroll wrapper and a content view (`OverviewContent`, `HistoryContent`) that the snapshot tool renders.
+
 ## 2026-10-26 – Menu bar, popover and settings
 
 - **`AppModel`** (app target) owns the server list (`ConfigStore`, UserDefaults, no secrets), preferences, the `MonitorCenter` and the system event observer. Passwords go to `AppKeychain.store`; a changed password without other config changes reconnects the monitor.

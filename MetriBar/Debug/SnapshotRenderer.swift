@@ -43,6 +43,17 @@
                         name: name, to: directory)
                 }
             }
+            if let monitor = demo.selectedMonitor {
+                let feeds = Task { await monitor.keepActive(Set(Feed.allCases)) }
+                for _ in 0..<100 where monitor.snapshot.updated.count < Feed.allCases.count {
+                    try? await Task.sleep(for: .milliseconds(50))
+                }
+                write(
+                    OverviewContent(monitor: monitor).environment(demo).frame(width: 760), name: "dashboard-overview",
+                    to: directory)
+                write(HistoryContent(monitor: monitor).frame(width: 760), name: "dashboard-history", to: directory)
+                feeds.cancel()
+            }
             logger.notice("snapshots written to \(directory.path, privacy: .public)")
             NSApplication.shared.terminate(nil)
         }

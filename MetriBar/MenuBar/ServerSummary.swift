@@ -85,6 +85,8 @@ struct MetricsSection: View {
 }
 
 struct ContainersSection: View {
+    @Environment(AppModel.self) private var model
+    @Environment(\.openWindow) private var openWindow
     let snapshot: ServerSnapshot
     private let limit = 6
 
@@ -103,9 +105,13 @@ struct ContainersSection: View {
                         ContainerRow(container: container)
                     }
                     if containers.count > limit {
-                        Text("and \(containers.count - limit) more in the dashboard")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                        Button("and \(containers.count - limit) more in the dashboard") {
+                            model.dashboardSection = .containers
+                            openWindow(id: SceneID.dashboard)
+                            NSApplication.shared.activate()
+                        }
+                        .buttonStyle(.link)
+                        .font(.caption)
                     }
                 }
             }
