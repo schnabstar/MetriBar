@@ -49,9 +49,14 @@
                     try? await Task.sleep(for: .milliseconds(50))
                 }
                 write(
-                    OverviewContent(monitor: monitor).environment(demo).frame(width: 760), name: "dashboard-overview",
+                    OverviewContent(monitor: monitor).environment(demo).frame(width: 860), name: "dashboard-overview",
                     to: directory)
                 write(HistoryContent(monitor: monitor).frame(width: 760), name: "dashboard-history", to: directory)
+                for (name, width) in [("tabs-wide", 900.0), ("tabs-narrow", 560.0)] {
+                    write(
+                        SectionTabs(selection: .constant(.overview)).padding().frame(width: width), name: name,
+                        to: directory)
+                }
                 feeds.cancel()
             }
             logger.notice("snapshots written to \(directory.path, privacy: .public)")

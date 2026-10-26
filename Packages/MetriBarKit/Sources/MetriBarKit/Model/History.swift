@@ -61,6 +61,11 @@ public struct History: Decodable, Sendable, Equatable {
     public struct Point: Sendable, Equatable {
         public var date: Date
         public var value: Double
+
+        public init(date: Date, value: Double) {
+            self.date = date
+            self.value = value
+        }
     }
 
     /// Points of one field, or of one field of one item, without gaps.

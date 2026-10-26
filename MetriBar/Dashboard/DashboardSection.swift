@@ -32,7 +32,7 @@ enum DashboardSection: String, CaseIterable, Identifiable {
     /// Feeds the section needs while it is visible.
     var feeds: Set<Feed> {
         switch self {
-        case .overview: [.core, .overview, .containers, .alerts]
+        case .overview: [.core, .overview, .containers, .alerts, .sensors, .storage, .network, .history]
         case .history: [.core, .history]
         case .storage: [.core, .storage]
         case .network: [.core, .network, .sensors]

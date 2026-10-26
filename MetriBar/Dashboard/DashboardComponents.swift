@@ -1,45 +1,6 @@
 import MetriBarKit
 import SwiftUI
 
-/// A metric tile of the overview: title, large value, optional bar and details.
-struct StatTile: View {
-    let title: String
-    let systemImage: String
-    let value: String
-    var percent: Double?
-    var level: Level = .unknown
-    var details: [String] = []
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Label(title, systemImage: systemImage)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-            Text(value)
-                .font(.title2.weight(.semibold))
-                .monospacedDigit()
-                .foregroundStyle(level >= .warning ? level.color : .primary)
-            if let percent {
-                ProgressView(value: min(max(percent / 100, 0), 1))
-                    .tint(level.color)
-                    .accessibilityHidden(true)
-            }
-            ForEach(details, id: \.self) { detail in
-                Text(detail)
-                    .font(.caption)
-                    .monospacedDigit()
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .frame(maxWidth: .infinity, minHeight: 112, alignment: .topLeading)
-        .padding(12)
-        .background(.background.secondary, in: RoundedRectangle(cornerRadius: 10))
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel(title)
-        .accessibilityValue(([value] + details).joined(separator: ", "))
-    }
-}
-
 /// A titled group in a dashboard section.
 struct DashboardGroup<Content: View>: View {
     let title: String
@@ -93,8 +54,7 @@ struct PercentCell: View {
 
     var body: some View {
         HStack(spacing: 6) {
-            ProgressView(value: min(max((percent ?? 0) / 100, 0), 1))
-                .tint(level.color)
+            UsageBar(fraction: (percent ?? 0) / 100, color: level.color)
                 .frame(minWidth: 40)
             Text(Format.percent(percent))
                 .monospacedDigit()

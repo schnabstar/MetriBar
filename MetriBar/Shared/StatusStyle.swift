@@ -72,10 +72,7 @@ struct MeterRow: View {
             HStack(spacing: 8) {
                 Text(title)
                     .frame(width: 64, alignment: .leading)
-                ProgressView(value: min(max((percent ?? 0) / 100, 0), 1))
-                    .progressViewStyle(.linear)
-                    .tint(level.color)
-                    .accessibilityHidden(true)
+                UsageBar(fraction: (percent ?? 0) / 100, color: level.color)
                 Text(Format.percent(percent))
                     .monospacedDigit()
                     .frame(width: 44, alignment: .trailing)

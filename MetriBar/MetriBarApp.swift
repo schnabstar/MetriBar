@@ -24,7 +24,8 @@ struct MetriBarApp: App {
             DashboardWindow()
                 .environment(model)
         }
-        .defaultSize(width: 980, height: 640)
+        .defaultSize(width: 1080, height: 760)
+        .windowResizability(.contentMinSize)
         .defaultLaunchBehavior(.suppressed)
 
         Settings {

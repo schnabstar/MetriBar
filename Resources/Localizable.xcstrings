@@ -1,6 +1,22 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "%@ (⌘%@)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (⌘%@)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ (⌘%2$@)"
+          }
+        }
+      }
+    },
     "%@ GHz": {
       "localizations": {
         "de": {
@@ -37,6 +53,22 @@
         }
       }
     },
+    "%@ of %@ · %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ von %@ · %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ of %2$@ · %3$@"
+          }
+        }
+      }
+    },
     "%@ rpm": {
       "localizations": {
         "de": {
@@ -69,6 +101,22 @@
           "stringUnit": {
             "state": "new",
             "value": "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "%lld %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$lld %2$@"
           }
         }
       }
@@ -129,18 +177,18 @@
         }
       }
     },
-    "%lld running · %lld sleeping · %lld threads": {
+    "%lld · %lld running · %lld threads": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld aktiv · %lld schlafend · %lld Threads"
+            "value": "%lld · %lld aktiv · %lld Threads"
           }
         },
         "en": {
           "stringUnit": {
             "state": "new",
-            "value": "%1$lld running · %2$lld sleeping · %3$lld threads"
+            "value": "%1$lld · %2$lld running · %3$lld threads"
           }
         }
       }
@@ -277,26 +325,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Anmeldung"
-          }
-        }
-      }
-    },
-    "Available %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verfügbar %@"
-          }
-        }
-      }
-    },
-    "Busiest Containers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Container mit der höchsten Last"
           }
         }
       }
@@ -533,26 +561,6 @@
         }
       }
     },
-    "Core %lld": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kern %lld"
-          }
-        }
-      }
-    },
-    "Cores": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kerne"
-          }
-        }
-      }
-    },
     "Could Not Save": {
       "localizations": {
         "de": {
@@ -699,6 +707,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Allgemein"
+          }
+        }
+      }
+    },
+    "Glances": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances"
           }
         }
       }
@@ -1229,6 +1247,16 @@
         }
       }
     },
+    "No file systems reported.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Dateisysteme gemeldet."
+          }
+        }
+      }
+    },
     "No incidents.": {
       "localizations": {
         "de": {
@@ -1379,6 +1407,16 @@
         }
       }
     },
+    "Operating system": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Betriebssystem"
+          }
+        }
+      }
+    },
     "Overview": {
       "localizations": {
         "de": {
@@ -1425,6 +1463,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Prozesse"
+          }
+        }
+      }
+    },
+    "Processor": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prozessor"
           }
         }
       }
@@ -1619,16 +1667,6 @@
         }
       }
     },
-    "Section": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bereich"
-          }
-        }
-      }
-    },
     "Secure connection failed": {
       "localizations": {
         "de": {
@@ -1789,22 +1827,12 @@
         }
       }
     },
-    "Show All Alerts": {
+    "Show All": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alle Alerts anzeigen"
-          }
-        }
-      }
-    },
-    "Show All Containers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle Container anzeigen"
+            "value": "Alle anzeigen"
           }
         }
       }
@@ -2245,6 +2273,22 @@
         }
       }
     },
+    "Total %@ received · %@ sent": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesamt %@ empfangen · %@ gesendet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Total %1$@ received · %2$@ sent"
+          }
+        }
+      }
+    },
     "Total Received": {
       "localizations": {
         "de": {
@@ -2261,6 +2305,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gesendet gesamt"
+          }
+        }
+      }
+    },
+    "Trend": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verlauf"
           }
         }
       }
@@ -2455,18 +2509,18 @@
         }
       }
     },
-    "User %@ · System %@ · I/O %@": {
+    "User %@ · System %@": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Benutzer %@ · System %@ · I/O %@"
+            "value": "Benutzer %@ · System %@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "new",
-            "value": "User %1$@ · System %2$@ · I/O %3$@"
+            "value": "User %1$@ · System %2$@"
           }
         }
       }
@@ -2477,6 +2531,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Benutzername"
+          }
+        }
+      }
+    },
+    "Utilization": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auslastung"
+          }
+        }
+      }
+    },
+    "Value": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wert"
           }
         }
       }
@@ -2631,6 +2705,16 @@
         }
       }
     },
+    "last %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "letzte %@"
+          }
+        }
+      }
+    },
     "macOS blocked the unencrypted connection. Use HTTPS if the server supports it.": {
       "localizations": {
         "de": {
@@ -2657,6 +2741,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "ok"
+          }
+        }
+      }
+    },
+    "running": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "laufen"
+          }
+        }
+      }
+    },
+    "stopped": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gestoppt"
+          }
+        }
+      }
+    },
+    "unhealthy": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "unhealthy"
           }
         }
       }

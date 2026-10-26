@@ -13,7 +13,7 @@ struct DashboardWindow: View {
                     SidebarRow(monitor: monitor).tag(monitor.id)
                 }
             }
-            .navigationSplitViewColumnWidth(min: 180, ideal: 210)
+            .navigationSplitViewColumnWidth(min: 180, ideal: 210, max: 280)
             .safeAreaInset(edge: .bottom) {
                 Button("Add Server…", systemImage: "plus", action: addServer)
                     .buttonStyle(.borderless)
@@ -35,6 +35,7 @@ struct DashboardWindow: View {
                 }
             }
         }
+        .frame(minWidth: 820, minHeight: 560)
         .onAppear(perform: DockPresence.show)
         .onDisappear(perform: DockPresence.hide)
     }
@@ -67,7 +68,7 @@ private struct SidebarRow: View {
     }
 }
 
-/// Header, section picker and the selected section of one server.
+/// Header with server name and section tabs, followed by the selected section.
 private struct ServerDetail: View {
     @Environment(AppModel.self) private var model
     @Environment(\.openSettings) private var openSettings
@@ -76,6 +77,8 @@ private struct ServerDetail: View {
     var body: some View {
         @Bindable var model = model
         VStack(spacing: 0) {
+            header
+            Divider()
             if let problem {
                 ProblemBanner(problem: problem, monitor: monitor, onShowSettings: showSettings)
                     .padding([.horizontal, .top])
@@ -85,23 +88,6 @@ private struct ServerDetail: View {
                 .opacity(monitor.isStale ? 0.5 : 1)
         }
         .navigationTitle(monitor.displayName)
-        .navigationSubtitle(subtitle)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Picker("Section", selection: $model.dashboardSection) {
-                    ForEach(DashboardSection.allCases) { section in
-                        Text(section.title).tag(section)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .labelsHidden()
-            }
-            ToolbarItem(placement: .primaryAction) {
-                Button("Refresh", systemImage: "arrow.clockwise") { monitor.refresh() }
-                    .keyboardShortcut("r")
-                    .help("Refresh now")
-            }
-        }
         .background {
             // ⌘1 … ⌘7 switch sections.
             ForEach(DashboardSection.allCases) { section in
@@ -113,6 +99,33 @@ private struct ServerDetail: View {
         .task(id: model.dashboardSection) {
             await monitor.keepActive(model.dashboardSection.feeds)
         }
+    }
+
+    private var header: some View {
+        @Bindable var model = model
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                HealthBadge(health: monitor.health)
+                Text(monitor.displayName)
+                    .font(.title2.weight(.semibold))
+                    .lineLimit(1)
+                Text(subtitle)
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                Spacer(minLength: 8)
+                Button("Refresh", systemImage: "arrow.clockwise") { monitor.refresh() }
+                    .labelStyle(.iconOnly)
+                    .buttonStyle(.borderless)
+                    .keyboardShortcut("r")
+                    .help("Refresh now")
+            }
+            SectionTabs(selection: $model.dashboardSection)
+        }
+        .padding(.horizontal)
+        .padding(.top, 12)
+        .padding(.bottom, 10)
     }
 
     @ViewBuilder
@@ -137,7 +150,7 @@ private struct ServerDetail: View {
     }
 
     private var subtitle: String {
-        let system = monitor.snapshot.system?.hrName
+        let system = monitor.snapshot.system.flatMap { $0.linuxDistro ?? $0.osName }
         let glances = monitor.snapshot.status?.glancesVersion.map { "Glances \($0)" }
         let uptime = monitor.snapshot.uptime.map { String(localized: "up \(Format.duration($0.duration))") }
         return [system, glances, uptime].compactMap { $0 }.joined(separator: " · ")
@@ -148,6 +161,50 @@ private struct ServerDetail: View {
         model.editingServerID = monitor.id
         NSApplication.shared.activate()
         openSettings()
+    }
+}
+
+/// Section switcher inside the window content, so it never disappears into
+/// the toolbar overflow. Shows icons only when the labels do not fit.
+struct SectionTabs: View {
+    @Binding var selection: DashboardSection
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            tabs(showTitles: true)
+            tabs(showTitles: false)
+        }
+    }
+
+    private func tabs(showTitles: Bool) -> some View {
+        HStack(spacing: 2) {
+            ForEach(DashboardSection.allCases) { section in
+                let isSelected = section == selection
+                Button {
+                    selection = section
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: section.systemImage)
+                        if showTitles {
+                            Text(section.title)
+                        }
+                    }
+                    .font(.callout.weight(isSelected ? .semibold : .regular))
+                    .padding(.horizontal, showTitles ? 10 : 9)
+                    .padding(.vertical, 5)
+                    .foregroundStyle(isSelected ? Color.accentColor : .primary)
+                    .background(isSelected ? Color.accentColor.opacity(0.15) : .clear, in: Capsule())
+                    .contentShape(Capsule())
+                }
+                .buttonStyle(.plain)
+                .fixedSize()
+                .help("\(section.title) (⌘\(String(section.shortcut)))")
+                .accessibilityLabel(section.title)
+                .accessibilityAddTraits(isSelected ? .isSelected : [])
+            }
+        }
+        .padding(3)
+        .background(.quaternary.opacity(0.6), in: Capsule())
     }
 }
 
