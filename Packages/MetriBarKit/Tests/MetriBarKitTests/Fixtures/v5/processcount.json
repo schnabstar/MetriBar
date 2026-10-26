@@ -1,0 +1,11 @@
+{
+  "_levels": {},
+  "auto_sort": true,
+  "pid_max": 4194304,
+  "running": 0,
+  "sleeping": 333,
+  "sort_key": "cpu_percent",
+  "thread": 1427,
+  "time_since_update": 5.369269423012156,
+  "total": 405
+}

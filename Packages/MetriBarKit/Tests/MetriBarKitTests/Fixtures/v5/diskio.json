@@ -1,0 +1,138 @@
+{
+  "_key": "disk_name",
+  "_levels": {
+    "nvme0n1": {
+      "read_latency": {
+        "level": "ok",
+        "prominent": false
+      },
+      "write_latency": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "nvme0n1p1": {
+      "read_latency": {
+        "level": "ok",
+        "prominent": false
+      },
+      "write_latency": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "nvme0n1p2": {
+      "read_latency": {
+        "level": "ok",
+        "prominent": false
+      },
+      "write_latency": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "sda": {
+      "read_latency": {
+        "level": "ok",
+        "prominent": false
+      },
+      "write_latency": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "sda1": {
+      "read_latency": {
+        "level": "ok",
+        "prominent": false
+      },
+      "write_latency": {
+        "level": "ok",
+        "prominent": false
+      }
+    }
+  },
+  "data": [
+    {
+      "disk_name": "nvme0n1",
+      "hidden": false,
+      "read_bytes": 6543.621922774172,
+      "read_bytes_cumul": 47453878784,
+      "read_count": 0.39939098649744703,
+      "read_count_cumul": 2090179,
+      "read_latency": 1,
+      "read_time": 0.39939098649744703,
+      "write_bytes": 777055.103329433,
+      "write_bytes_cumul": 56867502080,
+      "write_count": 45.92996344720641,
+      "write_count_cumul": 2434866,
+      "write_latency": 0,
+      "write_time": 27.358282575075123
+    },
+    {
+      "disk_name": "nvme0n1p1",
+      "hidden": false,
+      "read_bytes": 0.0,
+      "read_bytes_cumul": 151318016,
+      "read_count": 0.0,
+      "read_count_cumul": 3236,
+      "read_latency": 0,
+      "read_time": 0.0,
+      "write_bytes": 0.0,
+      "write_bytes_cumul": 1024,
+      "write_count": 0.0,
+      "write_count_cumul": 2,
+      "write_latency": 0,
+      "write_time": 0.0
+    },
+    {
+      "disk_name": "nvme0n1p2",
+      "hidden": false,
+      "read_bytes": 6543.621922774172,
+      "read_bytes_cumul": 47300758528,
+      "read_count": 0.39939098649744703,
+      "read_count_cumul": 2086875,
+      "read_latency": 0,
+      "read_time": 0.19969549324872352,
+      "write_bytes": 777055.103329433,
+      "write_bytes_cumul": 56867501056,
+      "write_count": 45.92996344720641,
+      "write_count_cumul": 2434862,
+      "write_latency": 0,
+      "write_time": 27.1585870818264
+    },
+    {
+      "disk_name": "sda",
+      "hidden": false,
+      "read_bytes": 0.0,
+      "read_bytes_cumul": 9531917312,
+      "read_count": 0.0,
+      "read_count_cumul": 541225,
+      "read_latency": 0,
+      "read_time": 0.0,
+      "write_bytes": 4907.716442080629,
+      "write_bytes_cumul": 6259795456,
+      "write_count": 0.39939098649744703,
+      "write_count_cumul": 329341,
+      "write_latency": 1,
+      "write_time": 0.5990864797461706
+    },
+    {
+      "disk_name": "sda1",
+      "hidden": false,
+      "read_bytes": 0.0,
+      "read_bytes_cumul": 9530131456,
+      "read_count": 0.0,
+      "read_count_cumul": 541160,
+      "read_latency": 0,
+      "read_time": 0.0,
+      "write_bytes": 4907.716442080629,
+      "write_bytes_cumul": 6259795456,
+      "write_count": 0.39939098649744703,
+      "write_count_cumul": 329341,
+      "write_latency": 1,
+      "write_time": 0.5990864797461706
+    }
+  ],
+  "time_since_update": 5.007624277001014
+}

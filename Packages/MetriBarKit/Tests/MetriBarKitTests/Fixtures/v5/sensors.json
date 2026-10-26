@@ -1,0 +1,58 @@
+{
+  "_key": "label",
+  "_levels": {
+    "Composite": {
+      "value": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "cpu_thermal 0": {
+      "value": {
+        "level": "careful",
+        "prominent": false
+      }
+    },
+    "rp1_adc 0": {
+      "value": {
+        "level": "ok",
+        "prominent": false
+      }
+    }
+  },
+  "data": [
+    {
+      "critical": 84,
+      "label": "Composite",
+      "type": "temperature_core",
+      "unit": "C",
+      "value": 36,
+      "warning": 82
+    },
+    {
+      "critical": null,
+      "label": "cpu_thermal 0",
+      "type": "temperature_core",
+      "unit": "C",
+      "value": 52,
+      "warning": null
+    },
+    {
+      "critical": null,
+      "label": "pwmfan 0",
+      "type": "fan_speed",
+      "unit": "R",
+      "value": 1123,
+      "warning": null
+    },
+    {
+      "critical": null,
+      "label": "rp1_adc 0",
+      "type": "temperature_core",
+      "unit": "C",
+      "value": 40,
+      "warning": null
+    }
+  ],
+  "time_since_update": 30.008280034002382
+}

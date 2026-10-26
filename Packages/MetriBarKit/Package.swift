@@ -9,6 +9,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "MetriBarKit"),
-        .testTarget(name: "MetriBarKitTests", dependencies: ["MetriBarKit"]),
+        .testTarget(
+            name: "MetriBarKitTests",
+            dependencies: ["MetriBarKit"],
+            resources: [.copy("Fixtures")]
+        ),
     ]
 )

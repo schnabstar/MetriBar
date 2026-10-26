@@ -1,0 +1,37 @@
+{
+  "ctx_switches": {
+    "careful": 25000.0,
+    "critical": 50000.0,
+    "warning": 37500.0
+  },
+  "dpc": {
+    "careful": 50.0,
+    "critical": 90.0,
+    "warning": 70.0
+  },
+  "iowait": {
+    "careful": 50.0,
+    "critical": 90.0,
+    "warning": 70.0
+  },
+  "steal": {
+    "careful": 50.0,
+    "critical": 90.0,
+    "warning": 70.0
+  },
+  "system": {
+    "careful": 50.0,
+    "critical": 90.0,
+    "warning": 70.0
+  },
+  "total": {
+    "careful": 65.0,
+    "critical": 85.0,
+    "warning": 75.0
+  },
+  "user": {
+    "careful": 50.0,
+    "critical": 90.0,
+    "warning": 70.0
+  }
+}

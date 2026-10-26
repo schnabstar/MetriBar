@@ -1,0 +1,15 @@
+{
+  "_levels": {
+    "percent": {
+      "level": "ok",
+      "prominent": true
+    }
+  },
+  "free": 1827913728,
+  "percent": 57.4,
+  "sin": 7357.453203150502,
+  "sout": 0.0,
+  "time_since_update": 5.01042942199274,
+  "total": 4294950912,
+  "used": 2467037184
+}

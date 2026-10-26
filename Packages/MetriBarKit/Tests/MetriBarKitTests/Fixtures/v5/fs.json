@@ -1,0 +1,108 @@
+{
+  "_key": "mnt_point",
+  "_levels": {},
+  "data": [
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-01",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/sda1",
+      "free": 880410931200,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-02",
+      "options": "ro,noatime,stripe=8191",
+      "percent": 5.7,
+      "size": 983350083584,
+      "used": 52912185344
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-03",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-04",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-05",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-06",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-07",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-08",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-09",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    },
+    {
+      "device_name": "/dev/nvme0n1p2",
+      "free": 187103313920,
+      "fs_type": "ext4",
+      "mnt_point": "/mnt/volume-10",
+      "options": "ro,noatime,discard,commit=60",
+      "percent": 20.4,
+      "size": 245641318400,
+      "used": 47907459072
+    }
+  ],
+  "free_space": false,
+  "time_since_update": 30.00339815299958
+}

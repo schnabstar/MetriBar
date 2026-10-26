@@ -1,0 +1,43 @@
+{
+  "_levels": {
+    "ctx_switches": {
+      "level": "ok",
+      "prominent": false
+    },
+    "iowait": {
+      "level": "ok",
+      "prominent": false
+    },
+    "steal": {
+      "level": "ok",
+      "prominent": false
+    },
+    "system": {
+      "level": "ok",
+      "prominent": false
+    },
+    "total": {
+      "level": "ok",
+      "prominent": true
+    },
+    "user": {
+      "level": "ok",
+      "prominent": false
+    }
+  },
+  "cpucore": 4,
+  "ctx_switches": 10800.059205684614,
+  "guest": 0.0,
+  "idle": 87.5,
+  "interrupts": 6278.746815545193,
+  "iowait": 0.5,
+  "irq": 0.0,
+  "nice": 0.0,
+  "soft_interrupts": 1248.9239875300154,
+  "steal": 0.0,
+  "syscalls": 0.0,
+  "system": 2.7,
+  "time_since_update": 5.010713271971326,
+  "total": 12.5,
+  "user": 9.2
+}
