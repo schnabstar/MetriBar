@@ -1,0 +1,57 @@
+# Source of truth for MetriBar.xcodeproj. Regenerate with `xcodegen generate`
+# after changing targets or build settings. Source files are synchronized
+# folders, so adding or removing files does not require regeneration.
+name: MetriBar
+options:
+  bundleIdPrefix: it.schnabel
+  deploymentTarget:
+    macOS: "26.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    DEVELOPMENT_TEAM: MTV73SM3Y8
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: 0.1.0
+    CURRENT_PROJECT_VERSION: 1
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    DEAD_CODE_STRIPPING: YES
+packages:
+  MetriBarKit:
+    path: Packages/MetriBarKit
+targets:
+  MetriBar:
+    type: application
+    platform: macOS
+    sources:
+      - path: MetriBar
+        type: syncedFolder
+    dependencies:
+      - package: MetriBarKit
+    info:
+      path: Config/Info.plist
+      properties:
+        CFBundleDisplayName: MetriBar
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSApplicationCategoryType: public.app-category.utilities
+        LSUIElement: true
+        NSHumanReadableCopyright: Copyright © 2026 Thomas Schnabel. Licensed under the Apache License 2.0.
+        NSLocalNetworkUsageDescription: MetriBar connects to the Glances servers you configure on your local network.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+    entitlements:
+      path: Config/MetriBar.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: it.schnabel.MetriBar
+        ENABLE_HARDENED_RUNTIME: YES
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        COMBINE_HIDPI_IMAGES: YES
