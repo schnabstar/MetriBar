@@ -22,8 +22,8 @@
             try? FileManager.default.removeItem(at: directory)
             try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
 
-            let empty = makeModel()
-            let demo = makeModel()
+            let empty = makeModel(suite: "MetriBarSnapshots.empty")
+            let demo = makeModel(suite: "MetriBarSnapshots.demo")
             demo.addDemoServer()
             for _ in 0..<100 where demo.selectedMonitor?.snapshot.containers == nil {
                 try? await Task.sleep(for: .milliseconds(50))
@@ -51,21 +51,20 @@
                 write(
                     OverviewContent(monitor: monitor).environment(demo).frame(width: 860), name: "dashboard-overview",
                     to: directory)
-                write(HistoryContent(monitor: monitor).frame(width: 760), name: "dashboard-history", to: directory)
-                for (name, width) in [("tabs-wide", 900.0), ("tabs-narrow", 560.0)] {
-                    write(
-                        SectionTabs(selection: .constant(.overview)).padding().frame(width: width), name: name,
-                        to: directory)
-                }
+                write(
+                    HistoryContent(monitor: monitor).environment(demo).frame(width: 760), name: "dashboard-history",
+                    to: directory)
                 feeds.cancel()
             }
             logger.notice("snapshots written to \(directory.path, privacy: .public)")
             NSApplication.shared.terminate(nil)
         }
 
-        private static func makeModel() -> AppModel {
-            let suite = "MetriBarSnapshots.\(UUID().uuidString)"
+        /// A model with its own defaults, emptied first, so runs start alike
+        /// and leave one preferences file per suite behind.
+        static func makeModel(suite: String) -> AppModel {
             let defaults = UserDefaults(suiteName: suite)!
+            defaults.removePersistentDomain(forName: suite)
             return AppModel(
                 configStore: ConfigStore(defaults: defaults), credentials: InMemoryCredentialStore(),
                 defaults: defaults, observeSystemEvents: false)

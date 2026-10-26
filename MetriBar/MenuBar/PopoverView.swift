@@ -1,6 +1,8 @@
 import MetriBarKit
 import SwiftUI
 
+/// The menu bar window. It gets its Liquid Glass background from the system;
+/// the controls inside use standard styles instead of more glass.
 struct PopoverView: View {
     @Environment(AppModel.self) private var model
     @Environment(\.openWindow) private var openWindow
@@ -10,7 +12,7 @@ struct PopoverView: View {
     var body: some View {
         VStack(spacing: 0) {
             if let monitor = model.selectedMonitor {
-                ServerHeader(monitor: monitor, onSettings: { showSettings(editing: monitor.id) })
+                ServerHeader(monitor: monitor)
                 Divider()
                 ServerSummary(monitor: monitor, onShowSettings: { showSettings(editing: monitor.id) })
                     .task(id: monitor.id) { await monitor.keepActive([.core, .containers]) }
@@ -26,26 +28,26 @@ struct PopoverView: View {
         .frame(width: 360)
     }
 
+    /// Menu-like rows, as at the bottom of Control Center modules.
     private var footer: some View {
-        HStack {
+        VStack(spacing: 0) {
             Button("Open Dashboard", action: showDashboard)
                 .keyboardShortcut("d")
                 .disabled(model.servers.isEmpty)
             if let monitor = model.selectedMonitor, monitor.config.url != DemoServer.url {
-                Button("Web UI") { openURL(monitor.config.url) }
-                    .help("Open the Glances web interface in the browser")
+                Button("Open Glances Web UI") { openURL(monitor.config.url) }
             }
-            Spacer()
-            Button("Quit", systemImage: "power") {
-                NSApplication.shared.terminate(nil)
-            }
-            .labelStyle(.iconOnly)
-            .keyboardShortcut("q")
-            .help("Quit MetriBar")
+            Divider()
+                .padding(.horizontal, 8)
+                .padding(.vertical, 5)
+            Button("Settings…") { showSettings(editing: model.selectedMonitor?.id) }
+                .keyboardShortcut(",")
+            Button("About MetriBar", action: AboutPanel.show)
+            Button("Quit MetriBar") { NSApplication.shared.terminate(nil) }
+                .keyboardShortcut("q")
         }
-        .buttonStyle(.borderless)
-        .padding(.horizontal, 14)
-        .padding(.vertical, 10)
+        .buttonStyle(.menuRow)
+        .padding(6)
     }
 
     private func showDashboard() {
@@ -62,11 +64,10 @@ struct PopoverView: View {
     }
 }
 
-/// Server name, picker for other servers, status line and actions.
+/// Server name, picker for other servers, status line and refresh.
 struct ServerHeader: View {
     @Environment(AppModel.self) private var model
     let monitor: ServerMonitor
-    let onSettings: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -75,14 +76,11 @@ struct ServerHeader: View {
                 serverPicker
                 Spacer()
                 Button("Refresh", systemImage: "arrow.clockwise") { monitor.refresh() }
+                    .labelStyle(.iconOnly)
+                    .buttonStyle(.borderless)
                     .keyboardShortcut("r")
                     .help("Refresh now")
-                Button("Server Settings…", systemImage: "gearshape", action: onSettings)
-                    .keyboardShortcut(",")
-                    .help("Server settings")
             }
-            .labelStyle(.iconOnly)
-            .buttonStyle(.borderless)
 
             TimelineView(.periodic(from: .now, by: 5)) { context in
                 Text(statusLine(now: context.date))
@@ -95,28 +93,34 @@ struct ServerHeader: View {
         .padding(.vertical, 10)
     }
 
+    /// A pull-down with a native check mark; the health symbols stay visible.
     @ViewBuilder
     private var serverPicker: some View {
         if model.center.monitors.count > 1 {
             Menu {
-                ForEach(model.center.monitors) { other in
-                    Button {
-                        model.selectedServerID = other.id
-                    } label: {
-                        Label(
-                            other.displayName,
-                            systemImage: other.id == monitor.id ? "checkmark" : other.health.symbolName)
+                Picker("Server", selection: selection) {
+                    ForEach(model.center.monitors) { other in
+                        Label(other.displayName, systemImage: other.health.symbolName)
+                            .tag(other.id)
                     }
                 }
+                .pickerStyle(.inline)
+                .labelsHidden()
             } label: {
                 Text(monitor.displayName).font(.headline)
             }
-            .menuStyle(.borderlessButton)
+            .menuStyle(.button)
+            .buttonStyle(.borderless)
+            .menuIndicator(.visible)
             .fixedSize()
             .help("Switch server")
         } else {
             Text(monitor.displayName).font(.headline)
         }
+    }
+
+    private var selection: Binding<UUID> {
+        Binding(get: { monitor.id }, set: { model.selectedServerID = $0 })
     }
 
     private func statusLine(now: Date) -> String {

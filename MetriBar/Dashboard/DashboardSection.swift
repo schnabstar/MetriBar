@@ -1,7 +1,7 @@
 import MetriBarKit
 
 enum DashboardSection: String, CaseIterable, Identifiable {
-    case overview, history, storage, network, processes, containers, alerts
+    case overview, history, storage, network, sensors, processes, containers, alerts
 
     var id: Self { self }
 
@@ -10,7 +10,8 @@ enum DashboardSection: String, CaseIterable, Identifiable {
         case .overview: String(localized: "Overview")
         case .history: String(localized: "History")
         case .storage: String(localized: "Storage")
-        case .network: String(localized: "Network & Sensors")
+        case .network: String(localized: "Network")
+        case .sensors: String(localized: "Sensors")
         case .processes: String(localized: "Processes")
         case .containers: String(localized: "Containers")
         case .alerts: String(localized: "Alerts")
@@ -23,6 +24,7 @@ enum DashboardSection: String, CaseIterable, Identifiable {
         case .history: "chart.xyaxis.line"
         case .storage: "internaldrive"
         case .network: "network"
+        case .sensors: "thermometer.medium"
         case .processes: "list.bullet.rectangle"
         case .containers: "shippingbox"
         case .alerts: "bell"
@@ -35,14 +37,15 @@ enum DashboardSection: String, CaseIterable, Identifiable {
         case .overview: [.core, .overview, .containers, .alerts, .sensors, .storage, .network, .history]
         case .history: [.core, .history]
         case .storage: [.core, .storage]
-        case .network: [.core, .network, .sensors]
+        case .network: [.core, .network]
+        case .sensors: [.core, .sensors]
         case .processes: [.core, .processes]
         case .containers: [.core, .containers]
         case .alerts: [.core, .alerts]
         }
     }
 
-    /// ⌘1 … ⌘7
+    /// ⌘1 … ⌘8
     var shortcut: Character {
         Character(String((Self.allCases.firstIndex(of: self) ?? 0) + 1))
     }

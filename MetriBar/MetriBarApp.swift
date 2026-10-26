@@ -2,11 +2,14 @@ import SwiftUI
 
 @main
 struct MetriBarApp: App {
-    @State private var model = AppModel()
+    @State private var model: AppModel
 
     init() {
         #if DEBUG
             SnapshotRenderer.runIfRequested()
+            _model = State(initialValue: DebugLaunch.makeModel() ?? AppModel())
+        #else
+            _model = State(initialValue: AppModel())
         #endif
     }
 
@@ -16,6 +19,9 @@ struct MetriBarApp: App {
                 .environment(model)
         } label: {
             MenuBarLabel()
+                #if DEBUG
+                    .modifier(DebugWindowOpener())
+                #endif
                 .environment(model)
         }
         .menuBarExtraStyle(.window)
@@ -27,6 +33,9 @@ struct MetriBarApp: App {
         .defaultSize(width: 1080, height: 760)
         .windowResizability(.contentMinSize)
         .defaultLaunchBehavior(.suppressed)
+        .commands {
+            AppCommands(model: model)
+        }
 
         Settings {
             SettingsView()

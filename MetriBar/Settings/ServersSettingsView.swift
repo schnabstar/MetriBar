@@ -13,19 +13,32 @@ struct ServersSettingsView: View {
                     ForEach(model.servers) { config in
                         ServerRow(config: config, health: model.center.monitor(for: config.id)?.health ?? .unknown)
                             .tag(config.id)
+                            .contextMenu {
+                                Button("Remove Server…", role: .destructive) {
+                                    model.editingServerID = config.id
+                                    confirmRemoval = true
+                                }
+                            }
                     }
                     .onMove { model.move(fromOffsets: $0, toOffset: $1) }
                 }
+                .onDeleteCommand {
+                    if model.editingServerID != nil { confirmRemoval = true }
+                }
                 Divider()
-                HStack(spacing: 0) {
+                HStack(spacing: 2) {
                     Button("Add Server", systemImage: "plus") { model.isAddingServer = true }
+                        .frame(width: 24, height: 22)
+                        .help("Add Server")
                     Button("Remove Server", systemImage: "minus") { confirmRemoval = true }
+                        .frame(width: 24, height: 22)
+                        .help("Remove Server")
                         .disabled(model.editingServerID == nil)
                     Spacer()
                 }
                 .labelStyle(.iconOnly)
                 .buttonStyle(.borderless)
-                .padding(6)
+                .padding(4)
             }
             .frame(width: 220)
 
@@ -44,7 +57,8 @@ struct ServersSettingsView: View {
         }
         .sheet(isPresented: $model.isAddingServer) {
             ServerEditorView(mode: .add) { model.isAddingServer = false }
-                .frame(width: 500, height: 600)
+                // Standard form sheet, as tall as the form needs.
+                .presentationSizing(.form.fitted(horizontal: false, vertical: true))
         }
         .confirmationDialog(removalTitle, isPresented: $confirmRemoval) {
             Button("Remove", role: .destructive) {

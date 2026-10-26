@@ -1,22 +1,6 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "%@ (⌘%@)": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ (⌘%@)"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ (⌘%2$@)"
-          }
-        }
-      }
-    },
     "%@ GHz": {
       "localizations": {
         "de": {
@@ -239,12 +223,12 @@
         }
       }
     },
-    "About": {
+    "About MetriBar": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Über"
+            "value": "Über MetriBar"
           }
         }
       }
@@ -329,6 +313,16 @@
         }
       }
     },
+    "Batteries": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batterien"
+          }
+        }
+      }
+    },
     "CPU": {
       "localizations": {
         "de": {
@@ -345,22 +339,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "CPU %@"
-          }
-        }
-      }
-    },
-    "CPU %@ · RAM %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CPU %@ · RAM %@"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "CPU %1$@ · RAM %2$@"
           }
         }
       }
@@ -551,6 +529,26 @@
         }
       }
     },
+    "Copy Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namen kopieren"
+          }
+        }
+      }
+    },
+    "Copy PID": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PID kopieren"
+          }
+        }
+      }
+    },
     "Copy diagnostic details without passwords or host name": {
       "localizations": {
         "de": {
@@ -631,6 +629,16 @@
         }
       }
     },
+    "End": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ende"
+          }
+        }
+      }
+    },
     "Enter user name and password below, not in the URL.": {
       "localizations": {
         "de": {
@@ -641,12 +649,12 @@
         }
       }
     },
-    "Events": {
+    "Event": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ereignisse"
+            "value": "Ereignis"
           }
         }
       }
@@ -671,12 +679,12 @@
         }
       }
     },
-    "File Systems": {
+    "Fans": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dateisysteme"
+            "value": "Lüfter"
           }
         }
       }
@@ -687,16 +695,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vergleiche bei einem selbstsignierten Zertifikat den Fingerabdruck mit dem auf dem Server, bevor du ihm vertraust, zum Beispiel: openssl x509 -in cert.pem -noout -fingerprint -sha256"
-          }
-        }
-      }
-    },
-    "GPU": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "GPU"
           }
         }
       }
@@ -797,6 +795,16 @@
         }
       }
     },
+    "Glances on this server does not publish sensor data.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances liefert auf diesem Server keine Sensordaten."
+          }
+        }
+      }
+    },
     "Glances only accepts the host names listed in webui_allowed_hosts. Add the name or address you use in MetriBar to that setting.": {
       "localizations": {
         "de": {
@@ -813,6 +821,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Glances meldet keine Container. Hat es Zugriff auf den Docker- oder Podman-Socket?"
+          }
+        }
+      }
+    },
+    "Glances reports no sensors on this server.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances meldet auf diesem Server keine Sensoren."
           }
         }
       }
@@ -877,12 +895,12 @@
         }
       }
     },
-    "Incidents": {
+    "Incident": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vorfälle"
+            "value": "Vorfall"
           }
         }
       }
@@ -917,12 +935,12 @@
         }
       }
     },
-    "Licensed under the Apache License 2.0. MetriBar is not affiliated with the Glances project.": {
+    "Level": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lizenziert unter der Apache License 2.0. MetriBar steht in keiner Verbindung zum Glances-Projekt."
+            "value": "Stufe"
           }
         }
       }
@@ -1027,6 +1045,16 @@
         }
       }
     },
+    "MetriBar Source Code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar-Quellcode"
+          }
+        }
+      }
+    },
     "MetriBar collects no data and has no telemetry.": {
       "localizations": {
         "de": {
@@ -1043,6 +1071,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "MetriBar vergisst den Server und löscht sein gespeichertes Passwort."
+          }
+        }
+      }
+    },
+    "MetriBar is not affiliated with the Glances project.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar steht in keiner Verbindung zum Glances-Projekt."
           }
         }
       }
@@ -1147,26 +1185,6 @@
         }
       }
     },
-    "Network & Sensors": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Netzwerk & Sensoren"
-          }
-        }
-      }
-    },
-    "Network Interfaces": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Netzwerkschnittstellen"
-          }
-        }
-      }
-    },
     "New Server": {
       "localizations": {
         "de": {
@@ -1203,6 +1221,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Keine Container"
+          }
+        }
+      }
+    },
+    "No Process Selected": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Prozess ausgewählt"
+          }
+        }
+      }
+    },
+    "No Sensors": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Sensoren"
           }
         }
       }
@@ -1277,16 +1315,6 @@
         }
       }
     },
-    "No process selected": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kein Prozess ausgewählt"
-          }
-        }
-      }
-    },
     "No response": {
       "localizations": {
         "de": {
@@ -1323,6 +1351,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kein Glances-Server"
+          }
+        }
+      }
+    },
+    "Not monitored": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht überwacht"
           }
         }
       }
@@ -1377,6 +1415,16 @@
         }
       }
     },
+    "Open Glances Web UI": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances-Weboberfläche öffnen"
+          }
+        }
+      }
+    },
     "Open MetriBar at login": {
       "localizations": {
         "de": {
@@ -1397,12 +1445,12 @@
         }
       }
     },
-    "Open the Glances web interface in the browser": {
+    "Open System Settings…": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Glances-Weboberfläche im Browser öffnen"
+            "value": "Systemeinstellungen öffnen …"
           }
         }
       }
@@ -1413,6 +1461,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Betriebssystem"
+          }
+        }
+      }
+    },
+    "Other Sensors": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weitere Sensoren"
           }
         }
       }
@@ -1457,6 +1515,26 @@
         }
       }
     },
+    "Previous Level": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorherige Stufe"
+          }
+        }
+      }
+    },
+    "Process Details": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prozessdetails"
+          }
+        }
+      }
+    },
     "Processes": {
       "localizations": {
         "de": {
@@ -1473,16 +1551,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Prozessor"
-          }
-        }
-      }
-    },
-    "Quit": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beenden"
           }
         }
       }
@@ -1567,6 +1635,16 @@
         }
       }
     },
+    "Remove Server…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server entfernen …"
+          }
+        }
+      }
+    },
     "Remove “%@”?": {
       "localizations": {
         "de": {
@@ -1627,7 +1705,7 @@
         }
       }
     },
-    "Running only": {
+    "Running Only": {
       "localizations": {
         "de": {
           "stringUnit": {
@@ -1677,6 +1755,16 @@
         }
       }
     },
+    "Select a process to see its details.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle einen Prozess aus, um seine Details zu sehen."
+          }
+        }
+      }
+    },
     "Select a server or add one with +.": {
       "localizations": {
         "de": {
@@ -1693,6 +1781,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sensoren"
+          }
+        }
+      }
+    },
+    "Sensors Plugin Not Active": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sensoren-Plugin nicht aktiv"
           }
         }
       }
@@ -1807,16 +1905,6 @@
         }
       }
     },
-    "Server settings": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Servereinstellungen"
-          }
-        }
-      }
-    },
     "Servers": {
       "localizations": {
         "de": {
@@ -1827,12 +1915,32 @@
         }
       }
     },
-    "Show All": {
+    "Settings…": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alle anzeigen"
+            "value": "Einstellungen …"
+          }
+        }
+      }
+    },
+    "Show %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ anzeigen"
+          }
+        }
+      }
+    },
+    "Show All %lld Containers": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle %lld Container anzeigen"
           }
         }
       }
@@ -1843,6 +1951,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Befehlszeile anzeigen"
+          }
+        }
+      }
+    },
+    "Show Details": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details anzeigen"
+          }
+        }
+      }
+    },
+    "Show only running containers": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur laufende Container anzeigen"
+          }
+        }
+      }
+    },
+    "Show or hide the details of the selected process": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details des ausgewählten Prozesses ein- oder ausblenden"
           }
         }
       }
@@ -1893,6 +2031,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Quellcode"
+          }
+        }
+      }
+    },
+    "Start": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beginn"
           }
         }
       }
@@ -1983,6 +2131,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "System"
+          }
+        }
+      }
+    },
+    "Temperature": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperatur"
+          }
+        }
+      }
+    },
+    "Temperatures": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperaturen"
           }
         }
       }
@@ -2113,16 +2281,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Das gespeicherte Passwort konnte nicht gelesen werden."
-          }
-        }
-      }
-    },
-    "The sensors plugin is not active on this server.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Sensoren-Plugin ist auf diesem Server nicht aktiv."
           }
         }
       }
@@ -2259,6 +2417,16 @@
           "stringUnit": {
             "state": "new",
             "value": "Top %1$lld of %2$lld processes, as sorted by the server. %3$lld threads."
+          }
+        }
+      }
+    },
+    "Top Processes": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top-Prozesse"
           }
         }
       }
@@ -2575,16 +2743,6 @@
         }
       }
     },
-    "Version %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Version %@"
-          }
-        }
-      }
-    },
     "Virtual": {
       "localizations": {
         "de": {
@@ -2601,16 +2759,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Warnung"
-          }
-        }
-      }
-    },
-    "Web UI": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weboberfläche"
           }
         }
       }
@@ -2651,16 +2799,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Schreib-IOPS"
-          }
-        }
-      }
-    },
-    "and %lld more in the dashboard": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "und %lld weitere im Dashboard"
           }
         }
       }
@@ -2741,6 +2879,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "ok"
+          }
+        }
+      }
+    },
+    "ongoing": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "andauernd"
           }
         }
       }

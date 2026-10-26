@@ -66,27 +66,55 @@ struct ServerEditorView: View {
     @State private var saveError: String?
 
     var body: some View {
-        VStack(spacing: 0) {
-            Form {
-                serverSection
-                authenticationSection
-                if case .success(let url) = draft.url, url.scheme == "https" {
-                    CertificateSection(url: url, pinned: $draft.pinnedCertificate)
+        Group {
+            if mode == .add {
+                // In a sheet, macOS places these at the bottom trailing edge
+                // in the standard order, with Return and Escape.
+                form.toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") { onFinish?() }
+                    }
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Add Server", action: save)
+                            .disabled(!isValid)
+                    }
                 }
-                ConnectionTestSection(draft: draft, hasStoredPassword: hasStoredPassword)
+            } else {
+                form.safeAreaBar(edge: .bottom) {
+                    HStack {
+                        Spacer()
+                        Button("Revert") { draft = original }
+                            .disabled(draft == original)
+                        Button("Save", action: save)
+                            .keyboardShortcut(.defaultAction)
+                            .disabled(draft == original || !isValid)
+                    }
+                    .padding(12)
+                }
             }
-            .formStyle(.grouped)
-
-            Divider()
-            buttons
-                .padding(12)
         }
         .onAppear(perform: load)
-        .alert("Could Not Save", isPresented: .constant(saveError != nil)) {
-            Button("OK") { saveError = nil }
-        } message: {
-            Text(saveError ?? "")
+        .alert("Could Not Save", isPresented: showsSaveError, presenting: saveError) { _ in
+            Button("OK") {}
+        } message: { message in
+            Text(message)
         }
+    }
+
+    private var form: some View {
+        Form {
+            serverSection
+            authenticationSection
+            if case .success(let url) = draft.url, url.scheme == "https" {
+                CertificateSection(url: url, pinned: $draft.pinnedCertificate)
+            }
+            ConnectionTestSection(draft: draft, hasStoredPassword: hasStoredPassword)
+        }
+        .formStyle(.grouped)
+    }
+
+    private var showsSaveError: Binding<Bool> {
+        Binding(get: { saveError != nil }, set: { if !$0 { saveError = nil } })
     }
 
     // MARK: Sections
@@ -109,8 +137,6 @@ struct ServerEditorView: View {
             Text(mode == .add ? "New Server" : "Server")
         } footer: {
             Text("The address of Glances 5 running as a web server (glances -s), including the port.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
         }
     }
 
@@ -156,26 +182,6 @@ struct ServerEditorView: View {
                 )
                 .font(.caption)
                 .foregroundStyle(.secondary)
-            }
-        }
-    }
-
-    private var buttons: some View {
-        HStack {
-            if mode == .add {
-                Button("Cancel", role: .cancel) { onFinish?() }
-                    .keyboardShortcut(.cancelAction)
-                Spacer()
-                Button("Add Server", action: save)
-                    .keyboardShortcut(.defaultAction)
-                    .disabled(!isValid)
-            } else {
-                Spacer()
-                Button("Revert") { draft = original }
-                    .disabled(draft == original)
-                Button("Save", action: save)
-                    .keyboardShortcut(.defaultAction)
-                    .disabled(draft == original || !isValid)
             }
         }
     }

@@ -1,6 +1,8 @@
 import MetriBarKit
 import SwiftUI
 
+/// File systems and disk I/O as two edge-to-edge tables in a split view,
+/// like Disk Utility and Activity Monitor.
 struct StorageView: View {
     let monitor: ServerMonitor
 
@@ -11,49 +13,44 @@ struct StorageView: View {
         if monitor.snapshot.fileSystems == nil {
             FeedPlaceholder(monitor: monitor, feed: .storage)
         } else {
-            VStack(alignment: .leading, spacing: 16) {
-                DashboardGroup(title: String(localized: "File Systems")) {
-                    Table(fileSystems.sorted(using: fileSystemOrder), sortOrder: $fileSystemOrder) {
-                        TableColumn("Mount Point", value: \.mount)
-                        TableColumn("Device", value: \.device)
-                        TableColumn("Type", value: \.type).width(min: 50, ideal: 60)
-                        TableColumn("Used", value: \.used) { NumberCell(text: Format.bytes($0.used)) }
-                            .width(min: 70, ideal: 80)
-                        TableColumn("Size", value: \.size) { NumberCell(text: Format.bytes($0.size)) }
-                            .width(min: 70, ideal: 80)
-                        TableColumn("Usage", value: \.percent) { PercentCell(percent: $0.percent, level: $0.level) }
-                            .width(min: 120, ideal: 160)
+            VSplitView {
+                Table(fileSystems.sorted(using: fileSystemOrder), sortOrder: $fileSystemOrder) {
+                    TableColumn("Mount Point", value: \.mount)
+                    TableColumn("Device", value: \.device)
+                    TableColumn("Type", value: \.type).width(min: 50, ideal: 60)
+                    TableColumn("Used", value: \.used) { Text(Format.bytes($0.used)) }
+                        .width(min: 70, ideal: 80)
+                        .alignment(.numeric)
+                    TableColumn("Size", value: \.size) { Text(Format.bytes($0.size)) }
+                        .width(min: 70, ideal: 80)
+                        .alignment(.numeric)
+                    TableColumn("Usage", value: \.percent) { PercentCell(percent: $0.percent, level: $0.level) }
+                        .width(min: 120, ideal: 160)
+                }
+                .frame(minHeight: 120, idealHeight: 260)
+                Table(disks.sorted(using: diskOrder), sortOrder: $diskOrder) {
+                    TableColumn("Disk", value: \.name)
+                    TableColumn("Read", value: \.readBytes) { Text(Format.bytesPerSecond($0.readBytes)) }
+                        .alignment(.numeric)
+                    TableColumn("Write", value: \.writeBytes) { Text(Format.bytesPerSecond($0.writeBytes)) }
+                        .alignment(.numeric)
+                    TableColumn("Read IOPS", value: \.readCount) {
+                        Text(Format.number($0.readCount, fractionDigits: 1))
                     }
-                    .frame(minHeight: 140)
-                }
-                DashboardGroup(title: String(localized: "Disk I/O")) {
-                    Table(disks.sorted(using: diskOrder), sortOrder: $diskOrder) {
-                        TableColumn("Disk", value: \.name)
-                        TableColumn("Read", value: \.readBytes) {
-                            NumberCell(text: Format.bytesPerSecond($0.readBytes))
-                        }
-                        TableColumn("Write", value: \.writeBytes) {
-                            NumberCell(text: Format.bytesPerSecond($0.writeBytes))
-                        }
-                        TableColumn("Read IOPS", value: \.readCount) {
-                            NumberCell(text: Format.number($0.readCount, fractionDigits: 1))
-                        }
-                        TableColumn("Write IOPS", value: \.writeCount) {
-                            NumberCell(text: Format.number($0.writeCount, fractionDigits: 1))
-                        }
-                        TableColumn("Latency", value: \.latency) {
-                            NumberCell(text: String(localized: "\(Format.number($0.latency, fractionDigits: 1)) ms"))
-                        }
+                    .alignment(.numeric)
+                    TableColumn("Write IOPS", value: \.writeCount) {
+                        Text(Format.number($0.writeCount, fractionDigits: 1))
                     }
-                    .frame(minHeight: 120)
+                    .alignment(.numeric)
+                    TableColumn("Latency", value: \.latency) {
+                        Text("\(Format.number($0.latency, fractionDigits: 1)) ms")
+                    }
+                    .alignment(.numeric)
                 }
-                if let swap = monitor.snapshot.swap {
-                    MeterRow(
-                        title: String(localized: "Swap"), percent: swap.value.percent, level: swap.level("percent"),
-                        detail: "\(Format.bytes(swap.value.used)) / \(Format.bytes(swap.value.total))")
-                }
+                .frame(minHeight: 100)
             }
-            .padding()
+            .monospacedDigit()
+            .scrollEdgeEffectStyle(.hard, for: .top)
         }
     }
 

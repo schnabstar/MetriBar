@@ -7,17 +7,24 @@ struct UsageBar: View {
     var color: Color = .accentColor
     var height: CGFloat = 6
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 Capsule().fill(.quaternary)
                 Capsule()
                     .fill(color.gradient)
-                    .frame(width: geometry.size.width * min(max(fraction.isFinite ? fraction : 0, 0), 1))
+                    .frame(width: geometry.size.width * clamped)
             }
         }
         .frame(height: height)
+        .animation(reduceMotion ? nil : .default, value: clamped)
         .accessibilityHidden(true)
+    }
+
+    private var clamped: Double {
+        min(max(fraction.isFinite ? fraction : 0, 0), 1)
     }
 }
 
@@ -31,6 +38,8 @@ struct RingGauge: View {
     let value: String
     var detail: String?
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         VStack(spacing: 8) {
             ZStack {
@@ -40,9 +49,11 @@ struct RingGauge: View {
                     .trim(from: 0, to: fraction)
                     .stroke(level.color.gradient, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                     .rotationEffect(.degrees(-90))
+                    .animation(reduceMotion ? nil : .default, value: fraction)
                 Text(value)
                     .font(.title2.weight(.semibold))
                     .monospacedDigit()
+                    .numericTransition(percent)
                     .minimumScaleFactor(0.6)
                     .padding(.horizontal, 14)
             }
@@ -67,5 +78,23 @@ struct RingGauge: View {
     private var fraction: Double {
         guard let percent, percent.isFinite else { return 0 }
         return min(max(percent / 100, 0), 1)
+    }
+}
+
+extension View {
+    /// Rolls changing digits like Apple's apps do, unless Reduce Motion is on.
+    func numericTransition(_ value: Double?) -> some View {
+        modifier(NumericTransition(value: value.flatMap { $0.isFinite ? $0 : nil } ?? 0))
+    }
+}
+
+private struct NumericTransition: ViewModifier {
+    let value: Double
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func body(content: Content) -> some View {
+        content
+            .contentTransition(.numericText(value: value))
+            .animation(reduceMotion ? nil : .default, value: value)
     }
 }

@@ -51,8 +51,9 @@ struct ServerSummary: View {
 struct MetricsSection: View {
     let snapshot: ServerSnapshot
 
+    /// Labels measured instead of a fixed width, so longer translations fit.
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        MeterGroup {
             if let cpu = snapshot.cpu {
                 MeterRow(title: String(localized: "CPU"), percent: cpu.value.total, level: cpu.level("total"))
             }
@@ -63,7 +64,7 @@ struct MetricsSection: View {
             }
             if let load = snapshot.load?.value {
                 HStack(spacing: 8) {
-                    Text("Load").frame(width: 64, alignment: .leading)
+                    MeterLabel(title: String(localized: "Load"))
                     Text([load.min1, load.min5, load.min15].map(Format.load).joined(separator: " · "))
                         .monospacedDigit()
                     Spacer()
@@ -75,7 +76,7 @@ struct MetricsSection: View {
             }
             if let uptime = snapshot.uptime {
                 HStack(spacing: 8) {
-                    Text("Uptime").frame(width: 64, alignment: .leading)
+                    MeterLabel(title: String(localized: "Uptime"))
                     Text(Format.duration(uptime.duration)).monospacedDigit()
                 }
                 .accessibilityElement(children: .combine)
@@ -105,13 +106,14 @@ struct ContainersSection: View {
                         ContainerRow(container: container)
                     }
                     if containers.count > limit {
-                        Button("and \(containers.count - limit) more in the dashboard") {
+                        Button("Show All \(containers.count) Containers") {
                             model.dashboardSection = .containers
                             openWindow(id: SceneID.dashboard)
                             NSApplication.shared.activate()
                         }
-                        .buttonStyle(.link)
-                        .font(.caption)
+                        .buttonStyle(.menuRow)
+                        // Text in line with the container names.
+                        .padding(.horizontal, -8)
                     }
                 }
             }

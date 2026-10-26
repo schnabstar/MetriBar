@@ -24,8 +24,6 @@ struct DisplaySettingsView: View {
                 Text(
                     "The icon always shows the state of all servers: a warning or error on any server changes its shape."
                 )
-                .font(.caption)
-                .foregroundStyle(.secondary)
             }
         }
         .formStyle(.grouped)

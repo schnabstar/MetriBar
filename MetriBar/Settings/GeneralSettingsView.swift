@@ -27,16 +27,16 @@ struct GeneralSettingsView: View {
                 Text("Refresh")
             } footer: {
                 Text("MetriBar only asks the servers you add. It collects no data and sends nothing anywhere else.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
             }
 
             Section {
                 Toggle("Open MetriBar at login", isOn: loginBinding)
                 if loginItemStatus == .requiresApproval {
-                    Text("Allow MetriBar in System Settings › General › Login Items.")
-                        .font(.caption)
-                        .foregroundStyle(.orange)
+                    LabeledContent {
+                        Button("Open System Settings…") { SMAppService.openSystemSettingsLoginItems() }
+                    } label: {
+                        Text("Allow MetriBar in System Settings › General › Login Items.")
+                    }
                 }
                 if let loginItemError {
                     Text(loginItemError).font(.caption).foregroundStyle(.red)

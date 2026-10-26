@@ -20,9 +20,14 @@ struct ProblemBanner: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline) {
-                Label(effectiveProblem.title, systemImage: "exclamationmark.triangle.fill")
-                    .font(.headline)
-                    .foregroundStyle(.orange)
+                // The color is in the symbol; the text stays readable.
+                Label {
+                    Text(effectiveProblem.title)
+                } icon: {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .symbolRenderingMode(.multicolor)
+                }
+                .font(.headline)
                 Spacer(minLength: 8)
                 Button(copied ? "Copied" : "Copy Details", action: copyDetails)
                     .buttonStyle(.borderless)
@@ -40,12 +45,19 @@ struct ProblemBanner: View {
             .controlSize(.small)
         }
         .padding(10)
-        .background(.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
+        .background(
+            .orange.opacity(0.1), in: ConcentricRectangle(corners: .concentric(minimum: .fixed(8)), isUniform: true)
+        )
         .task(id: problem) {
             localNetworkDenied = false
             if problem.mayBeLocalNetworkPermission {
                 localNetworkDenied = await LocalNetworkCheck.isDenied(for: monitor.config.url) == true
             }
+        }
+        .task(id: copied) {
+            guard copied else { return }
+            try? await Task.sleep(for: .seconds(2))
+            copied = false
         }
     }
 

@@ -18,26 +18,35 @@ struct OverviewContent: View {
     let monitor: ServerMonitor
 
     private var snapshot: ServerSnapshot { monitor.snapshot }
-    private let columns = [GridItem(.adaptive(minimum: 320), spacing: 16, alignment: .top)]
+
+    private enum Card: Identifiable {
+        case trend, network, sensors, storage, containers, system, alerts
+        var id: Self { self }
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             gauges
-            LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
-                trendCard
-                networkCard
-                if snapshot.plugins.contains("sensors") {
-                    sensorsCard
+            CardGrid(items: cards) { card in
+                switch card {
+                case .trend: trendCard
+                case .network: networkCard
+                case .sensors: sensorsCard
+                case .storage: storageCard
+                case .containers: containersCard
+                case .system: systemCard
+                case .alerts: alertsCard
                 }
-                storageCard
-                if snapshot.plugins.contains("containers") {
-                    containersCard
-                }
-                systemCard
-                alertsCard
             }
         }
         .padding()
+    }
+
+    private var cards: [Card] {
+        [
+            .trend, .network, snapshot.plugins.contains("sensors") ? .sensors : nil, .storage,
+            snapshot.plugins.contains("containers") ? .containers : nil, .system, .alerts,
+        ].compactMap { $0 }
     }
 
     // MARK: Gauges
@@ -135,7 +144,7 @@ struct OverviewContent: View {
         let sensors = snapshot.sensors?.items ?? []
         return DashboardCard(
             title: String(localized: "Sensors"), systemImage: "thermometer.medium",
-            showAll: .network
+            showAll: .sensors
         ) {
             if snapshot.sensors == nil {
                 placeholder(feed: .sensors)
@@ -240,8 +249,11 @@ struct OverviewContent: View {
             showAll: .alerts
         ) {
             if ongoing.isEmpty {
-                Label("No active alerts", systemImage: "checkmark.circle.fill")
-                    .foregroundStyle(.green)
+                Label {
+                    Text("No active alerts").foregroundStyle(.secondary)
+                } icon: {
+                    Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
+                }
             } else {
                 ForEach(Array(ongoing.enumerated()), id: \.offset) { _, incident in
                     IncidentRow(incident: incident)
@@ -260,6 +272,7 @@ struct OverviewContent: View {
             Text(Format.bytesPerSecond(value))
                 .font(.title3.weight(.semibold))
                 .monospacedDigit()
+                .numericTransition(value)
         }
     }
 
@@ -316,42 +329,6 @@ struct OverviewContent: View {
     }
 }
 
-/// A rounded card with title, optional accessory text and "Show All" link.
-struct DashboardCard<Content: View>: View {
-    @Environment(AppModel.self) private var model
-    let title: String
-    let systemImage: String
-    var accessory: String?
-    /// Section opened by the "Show All" link.
-    var showAll: DashboardSection?
-    @ViewBuilder let content: Content
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .firstTextBaseline) {
-                Label(title, systemImage: systemImage)
-                    .font(.headline)
-                if let accessory {
-                    Text(accessory)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
-                if let showAll {
-                    Button("Show All") { model.dashboardSection = showAll }
-                        .buttonStyle(.link)
-                        .font(.caption)
-                }
-            }
-            content
-        }
-        .padding(16)
-        .frame(maxWidth: .infinity, alignment: .topLeading)
-        .background(.background.secondary, in: RoundedRectangle(cornerRadius: 12))
-        .overlay(RoundedRectangle(cornerRadius: 12).strokeBorder(.separator.opacity(0.6)))
-    }
-}
-
 /// A small chart without time axis for trends.
 struct Sparkline: View {
     struct Series {
@@ -404,10 +381,12 @@ struct Sparkline: View {
 /// One temperature, fan or battery reading with a bar towards its limit.
 struct SensorRow: View {
     let sensor: Sensor
+    /// Shows the warning and critical temperature below the bar.
+    var showsLimits = false
 
     var body: some View {
-        HStack(spacing: 10) {
-            Image(systemName: symbol)
+        HStack(alignment: .firstTextBaseline, spacing: 10) {
+            Image(systemName: Self.symbol(for: sensor.kind))
                 .foregroundStyle(color)
                 .frame(width: 18)
             VStack(alignment: .leading, spacing: 4) {
@@ -417,18 +396,23 @@ struct SensorRow: View {
                     Text(value)
                         .monospacedDigit()
                         .fontWeight(.medium)
-                        .foregroundStyle(isAlarming ? color : .primary)
+                        .numericTransition(sensor.value)
                 }
                 if let fraction {
                     UsageBar(fraction: fraction, color: color, height: 4)
+                }
+                if showsLimits, let limits {
+                    Text(limits)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
         }
         .accessibilityElement(children: .combine)
     }
 
-    private var symbol: String {
-        switch sensor.kind {
+    static func symbol(for kind: Sensor.Kind) -> String {
+        switch kind {
         case .temperature: "thermometer.medium"
         case .fan: "fan"
         case .battery: "battery.75percent"
@@ -455,9 +439,13 @@ struct SensorRow: View {
         }
     }
 
-    private var isAlarming: Bool {
-        guard sensor.kind == .temperature, let value = sensor.value, let warning = sensor.warning else { return false }
-        return value >= warning
+    private var limits: String? {
+        guard sensor.kind == .temperature else { return nil }
+        let parts = [
+            sensor.warning.map { String(localized: "warning \(Format.temperature($0, unit: sensor.unit))") },
+            sensor.critical.map { String(localized: "critical \(Format.temperature($0, unit: sensor.unit))") },
+        ].compactMap { $0 }
+        return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }
 
     private var color: Color {

@@ -2,8 +2,8 @@ import Foundation
 import MetriBarKit
 import Observation
 
-enum SettingsTab: Hashable {
-    case servers, display, general, about
+enum SettingsTab: String, Hashable {
+    case servers, display, general
 }
 
 /// How a password changes when a server is saved.

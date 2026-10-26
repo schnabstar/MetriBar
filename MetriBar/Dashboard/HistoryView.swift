@@ -24,44 +24,47 @@ struct HistoryContent: View {
     private var history: HistorySet { monitor.snapshot.history }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 24) {
-            if let range = timeRange {
-                Text("History kept by Glances: \(range)")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+        VStack(spacing: 16) {
+            DashboardCard(title: String(localized: "CPU"), systemImage: "cpu") {
+                HistoryChart(
+                    title: String(localized: "CPU"), unit: .percent,
+                    series: [
+                        (String(localized: "User"), history.cpu?.points("user") ?? []),
+                        (String(localized: "System"), history.cpu?.points("system") ?? []),
+                    ], stacked: true)
             }
-            HistoryChart(
-                title: String(localized: "CPU"), unit: .percent,
-                series: [
-                    (String(localized: "User"), history.cpu?.points("user") ?? []),
-                    (String(localized: "System"), history.cpu?.points("system") ?? []),
-                ], stacked: true)
-            HistoryChart(
-                title: String(localized: "Memory"), unit: .percent,
-                series: [(String(localized: "Used"), history.memory?.points("percent") ?? [])])
-            HistoryChart(
-                title: String(localized: "Load"), unit: .number,
-                series: [
-                    (String(localized: "1 min"), history.load?.points("min1") ?? []),
-                    (String(localized: "5 min"), history.load?.points("min5") ?? []),
-                    (String(localized: "15 min"), history.load?.points("min15") ?? []),
-                ])
-            networkChart
+            DashboardCard(title: String(localized: "Memory"), systemImage: "memorychip") {
+                HistoryChart(
+                    title: String(localized: "Memory"), unit: .percent,
+                    series: [(String(localized: "Used"), history.memory?.points("percent") ?? [])])
+            }
+            DashboardCard(title: String(localized: "Load"), systemImage: "gauge.with.dots.needle.33percent") {
+                HistoryChart(
+                    title: String(localized: "Load"), unit: .number,
+                    series: [
+                        (String(localized: "1 min"), history.load?.points("min1") ?? []),
+                        (String(localized: "5 min"), history.load?.points("min5") ?? []),
+                        (String(localized: "15 min"), history.load?.points("min15") ?? []),
+                    ])
+            }
+            networkCard
         }
         .padding()
     }
 
     @ViewBuilder
-    private var networkChart: some View {
+    private var networkCard: some View {
         if let network = history.network {
             let interfaces = network.items(for: "bytes_recv").filter { $0 != "lo" }
             let selected = interface.flatMap { interfaces.contains($0) ? $0 : nil } ?? interfaces.first
             if let selected {
-                VStack(alignment: .leading, spacing: 8) {
+                DashboardCard(title: String(localized: "Network \(selected)"), systemImage: "network") {
                     Picker("Interface", selection: Binding(get: { selected }, set: { interface = $0 })) {
                         ForEach(interfaces, id: \.self) { Text($0).tag($0) }
                     }
+                    .labelsHidden()
                     .fixedSize()
+                } content: {
                     HistoryChart(
                         title: String(localized: "Network \(selected)"), unit: .bytesPerSecond,
                         series: [
@@ -73,11 +76,12 @@ struct HistoryContent: View {
         }
     }
 
-    private var timeRange: String? {
+    /// "History kept by Glances: 2h 48min" for the window subtitle.
+    static func summary(_ history: HistorySet) -> String? {
         guard let timestamps = history.cpu?.timestamps, let first = timestamps.first, let last = timestamps.last,
             last > first
         else { return nil }
-        return Format.duration(.seconds(last - first))
+        return String(localized: "History kept by Glances: \(Format.duration(.seconds(last - first)))")
     }
 }
 
@@ -87,6 +91,7 @@ struct HistoryChart: View {
         case percent, number, bytesPerSecond
     }
 
+    /// Name of the plotted value, for accessibility.
     let title: String
     let unit: Unit
     let series: [(name: String, points: [History.Point])]
@@ -95,38 +100,35 @@ struct HistoryChart: View {
     @State private var selectedDate: Date?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(title).font(.headline)
-            Chart {
-                ForEach(series, id: \.name) { series in
-                    ForEach(series.points, id: \.date) { point in
-                        if stacked {
-                            AreaMark(x: .value("Time", point.date), y: .value(title, point.value))
-                                .foregroundStyle(by: .value("Series", series.name))
-                        } else {
-                            LineMark(x: .value("Time", point.date), y: .value(title, point.value))
-                                .foregroundStyle(by: .value("Series", series.name))
-                        }
+        Chart {
+            ForEach(series, id: \.name) { series in
+                ForEach(series.points, id: \.date) { point in
+                    if stacked {
+                        AreaMark(x: .value("Time", point.date), y: .value(title, point.value))
+                            .foregroundStyle(by: .value("Series", series.name))
+                    } else {
+                        LineMark(x: .value("Time", point.date), y: .value(title, point.value))
+                            .foregroundStyle(by: .value("Series", series.name))
                     }
                 }
-                if let selectedDate {
-                    RuleMark(x: .value("Time", selectedDate))
-                        .foregroundStyle(.secondary.opacity(0.5))
-                        .annotation(position: .top, overflowResolution: .init(x: .fit, y: .disabled)) {
-                            readout(at: selectedDate)
-                        }
-                }
             }
-            .chartYScale(domain: yDomain)
-            .chartYAxis {
-                AxisMarks { value in
-                    AxisGridLine()
-                    AxisValueLabel { Text(format(value.as(Double.self))) }
-                }
+            if let selectedDate {
+                RuleMark(x: .value("Time", selectedDate))
+                    .foregroundStyle(.secondary.opacity(0.5))
+                    .annotation(position: .top, overflowResolution: .init(x: .fit, y: .disabled)) {
+                        readout(at: selectedDate)
+                    }
             }
-            .chartXSelection(value: $selectedDate)
-            .frame(height: 180)
         }
+        .chartYScale(domain: yDomain)
+        .chartYAxis {
+            AxisMarks { value in
+                AxisGridLine()
+                AxisValueLabel { Text(format(value.as(Double.self))) }
+            }
+        }
+        .chartXSelection(value: $selectedDate)
+        .frame(height: 180)
     }
 
     /// 0…100 for percentages, otherwise from zero to a bit above the maximum.
@@ -136,6 +138,8 @@ struct HistoryChart: View {
         return 0...max(maximum * 1.1, unit == .number ? 1 : 1024)
     }
 
+    /// Floats above the chart while hovering, so it is a control-layer
+    /// element and gets Liquid Glass, unlike the cards.
     private func readout(at date: Date) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(date.formatted(date: .omitted, time: .standard)).font(.caption2).foregroundStyle(.secondary)
@@ -147,8 +151,8 @@ struct HistoryChart: View {
                 }
             }
         }
-        .padding(6)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 6))
+        .padding(8)
+        .glassEffect(.regular, in: .rect(cornerRadius: 10))
     }
 
     private func format(_ value: Double?) -> String {

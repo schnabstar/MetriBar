@@ -2,6 +2,25 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-10-26 – Liquid Glass and HIG pass
+
+An audit of every view against the macOS 26 Human Interface Guidelines and the macOS 27 SDK. Guiding rule: Liquid Glass belongs to the navigation and control layer (toolbar, sidebar, inspector, sheets, menu bar window), never to content. MetriBar gets it from system components instead of custom `glassEffect`; the only custom glass is the hover read-out floating over the history charts.
+
+- **Dashboard navigation moved into the sidebar.** One collapsible section per server (health badge and name in the header) with the eight sections as rows, like accounts and mailboxes in Mail. This replaces the custom capsule tab bar in the content. A prototype showed that the sections do not fit into the toolbar: with title, subtitle and German labels, even the new `.pickerStyle(.tabs)` of macOS 27 moved completely into the overflow menu at 1080 pt. "Network & Sensors" became two sections, so there are eight (⌘1–⌘8).
+- The sidebar visibility is stored under a new scene storage key (`showsSidebar`), so it starts visible also for users who had hidden the server-only sidebar.
+- **Toolbar instead of a content header:** server name as title, a per-section subtitle (system and uptime, or the process, container or history summary that used to be a caption), refresh as a toolbar button. Processes add an inspector toggle (⌥⌘I), containers a "Running Only" filter toggle; search stays in the toolbar. Content scrolls under the toolbar; tables use the hard scroll edge effect for their pinned headers.
+- **Menu commands:** the sections and Refresh (⌘R) are in the View menu, enabled through a focused scene value of the dashboard window, instead of hidden buttons. The app menu opens the standard About window; the Help menu links to the source code and issues.
+- **Standard About window** with app icon, version and copyright from the Info.plist and credits for links and the privacy note. It replaces the About tab in the settings.
+- **Tables are edge to edge** without padding; number columns use `TableColumn.alignment(.numeric)`, so header and values align. Storage and alerts show two tables each in a `VSplitView`; alert events became a sortable table.
+- **Cards** keep a plain fill (no glass), lose the border unless Increase Contrast is on, and use one corner radius. `CardGrid` lays them out in rows of equal height, so a short card no longer leaves a gap. The card title opens the matching section (chevron instead of a "Show All" link).
+- **Color is never the only signal, and no yellow text:** levels show a colored symbol with secondary text (`LevelLabel`), warnings use multicolor symbols with primary text.
+- **Menu bar window:** menu-like rows at the bottom (dashboard, web UI, settings, About, quit) as in Control Center modules; the server switcher is a menu with an inline picker, which shows a native check mark and keeps the health symbols. `.menuStyle(.borderlessButton)` is deprecated in the macOS 27 SDK. The problem banner uses a `ConcentricRectangle`.
+- **Meter rows** measure their labels (`MeterGroup`) instead of using a fixed 64 pt column. A `Grid` did not work: it gave the flexible bar column no extra width.
+- **Settings:** each tab has its own size; the add-server sheet uses `.presentationSizing(.form)` fitted to the form and puts Cancel and Add Server at the bottom trailing edge through `cancellationAction`/`confirmationAction`; the server list supports the Delete key and a context menu; the login item hint opens System Settings.
+- Changing numbers roll with `.numericText` content transitions; rings and bars animate. Both respect Reduce Motion.
+- **No macOS 27-only API is used.** CI builds with Xcode 26; anything from the macOS 27 SDK would need `#if compiler(>=6.4)` in addition to `if #available(macOS 27, *)`.
+- **Checking windows in the running app (DEBUG only):** `-MetriBarDemo 1` uses a throwaway model with the demo server; `-MetriBarOpen dashboard,settings,add-server`, `-MetriBarSection <section>` and `-MetriBarSettingsTab <tab>` open and select windows, so they can be captured with `screencapture -l`.
+
 ## 2026-10-26 – CI and repository setup
 
 - **CI** (`.github/workflows/ci.yml`) runs on `macos-26` with the newest installed **Xcode 26** (26.6 at setup), deliberately not the Xcode 27 used locally, so the code keeps building with the oldest supported toolchain. Steps: `swift-format lint --strict`, `swift test` for MetriBarKit, `xcodebuild build` without code signing. First run: green in under two minutes.

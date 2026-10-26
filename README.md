@@ -14,12 +14,13 @@ No agent to install, no cloud, no account, no telemetry.
 
 - **Menu bar:** one icon for the combined status of all servers; its shape changes on warnings, critical values or when a server is offline. Optionally shows the CPU or memory usage of a server.
 - **Popover:** CPU, memory, load, uptime and containers of the selected server, with a server switcher. When a server cannot be read, MetriBar explains why and offers the fix.
-- **Dashboard window:**
+- **Dashboard window** with the sections of every server in the sidebar (⌘1–⌘8):
   - Overview with usage rings, trend, network, sensors (temperatures, fans), storage, containers, system information and active alerts
   - History charts from the history Glances keeps
   - File systems and disk I/O
-  - Network interfaces, sensors and GPU
-  - Processes with search and sorting; command lines only on request
+  - Network interfaces
+  - Sensors and GPU
+  - Processes with search, sorting and an inspector; command lines only on request
   - Containers with CPU and memory limits, network, I/O, uptime and ports
   - Glances alerts and incidents
 - **Multiple servers**, each polled independently. Only the data that is visible is fetched.

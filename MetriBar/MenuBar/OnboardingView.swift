@@ -5,23 +5,23 @@ struct OnboardingView: View {
     let onTryDemo: () -> Void
 
     var body: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "server.rack")
-                .font(.system(size: 32))
-                .foregroundStyle(.secondary)
-            Text("Welcome to MetriBar")
-                .font(.title3.bold())
+        ContentUnavailableView {
+            Label {
+                Text("Welcome to MetriBar")
+            } icon: {
+                Image(nsImage: NSApplication.shared.applicationIconImage)
+                    .resizable()
+                    .frame(width: 64, height: 64)
+                    .accessibilityHidden(true)
+            }
+        } description: {
             Text("Add a server running Glances 5 to see its status in the menu bar.")
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+        } actions: {
             Button("Add Server…", action: onAddServer)
                 .buttonStyle(.borderedProminent)
                 .keyboardShortcut(.defaultAction)
             Button("Try with Demo Data", action: onTryDemo)
                 .buttonStyle(.link)
         }
-        .padding(24)
-        .frame(maxWidth: .infinity)
     }
 }

@@ -20,55 +20,61 @@ struct ContainersView: View {
                 "No Containers", systemImage: "shippingbox",
                 description: Text("Glances reports no containers. Does it have access to the Docker or Podman socket?"))
         } else {
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text(summary).font(.caption).foregroundStyle(.secondary)
-                    Spacer()
-                    Toggle("Running only", isOn: $runningOnly)
-                        .toggleStyle(.checkbox)
+            Table(rows, sortOrder: $sortOrder) {
+                TableColumn("Name", value: \.name) { row in
+                    Label {
+                        Text(row.name)
+                    } icon: {
+                        Image(systemName: row.symbol).foregroundStyle(row.color).imageScale(.small)
+                    }
                 }
-                Table(rows, sortOrder: $sortOrder) {
-                    TableColumn("Name", value: \.name) { row in
-                        Label {
-                            Text(row.name)
-                        } icon: {
-                            Image(systemName: row.symbol).foregroundStyle(row.color).imageScale(.small)
-                        }
+                TableColumn("Status", value: \.status).width(min: 60, ideal: 80)
+                TableColumn("Image", value: \.image)
+                TableColumn("CPU", value: \.cpu) { row in
+                    Text(row.cpuText)
+                }
+                .width(min: 60, ideal: 80)
+                .alignment(.numeric)
+                TableColumn("Memory", value: \.memory) { row in
+                    Text(row.memoryText)
+                }
+                .width(min: 90, ideal: 130)
+                .alignment(.numeric)
+                TableColumn("Network", value: \.network) { row in
+                    Text(verbatim: "↓ \(Format.bitsPerSecond(row.networkRx)) ↑ \(Format.bitsPerSecond(row.networkTx))")
+                }
+                .width(min: 120, ideal: 150)
+                .alignment(.numeric)
+                TableColumn("Disk I/O", value: \.io) { row in
+                    Text(verbatim: "R \(Format.bytesPerSecond(row.ioRead)) W \(Format.bytesPerSecond(row.ioWrite))")
+                }
+                .width(min: 120, ideal: 150)
+                .alignment(.numeric)
+                TableColumn("Up", value: \.started) { row in
+                    Text(row.uptimeText)
+                }
+                .width(min: 60, ideal: 70)
+                .alignment(.numeric)
+                TableColumn("Ports", value: \.ports)
+            }
+            .monospacedDigit()
+            .scrollEdgeEffectStyle(.hard, for: .top)
+            .searchable(text: $search, prompt: Text("Name or image"))
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Toggle(isOn: $runningOnly) {
+                        Label("Running Only", systemImage: "line.3.horizontal.decrease.circle")
+                            .symbolVariant(runningOnly ? .fill : .none)
                     }
-                    TableColumn("Status", value: \.status).width(min: 60, ideal: 80)
-                    TableColumn("Image", value: \.image)
-                    TableColumn("CPU", value: \.cpu) { row in
-                        NumberCell(text: row.cpuText)
-                    }
-                    .width(min: 60, ideal: 80)
-                    TableColumn("Memory", value: \.memory) { row in
-                        NumberCell(text: row.memoryText)
-                    }
-                    .width(min: 90, ideal: 130)
-                    TableColumn("Network", value: \.network) { row in
-                        NumberCell(
-                            text: "↓ \(Format.bitsPerSecond(row.networkRx)) ↑ \(Format.bitsPerSecond(row.networkTx))")
-                    }
-                    .width(min: 120, ideal: 150)
-                    TableColumn("Disk I/O", value: \.io) { row in
-                        NumberCell(
-                            text: "R \(Format.bytesPerSecond(row.ioRead)) W \(Format.bytesPerSecond(row.ioWrite))")
-                    }
-                    .width(min: 120, ideal: 150)
-                    TableColumn("Up", value: \.started) { row in
-                        NumberCell(text: row.uptimeText)
-                    }
-                    .width(min: 60, ideal: 70)
-                    TableColumn("Ports", value: \.ports)
+                    .help("Show only running containers")
                 }
             }
-            .padding()
-            .searchable(text: $search, prompt: Text("Name or image"))
         }
     }
 
-    private var summary: String {
-        let items = monitor.snapshot.containers?.items ?? []
+    /// "37 of 39 running · docker" for the window subtitle.
+    static func summary(_ snapshot: ServerSnapshot) -> String? {
+        guard let items = snapshot.containers?.items, !items.isEmpty else { return nil }
         let engines = Set(items.compactMap(\.engine)).sorted().joined(separator: ", ")
         let running = items.filter(\.isRunning).count
         return String(localized: "\(running) of \(items.count) running") + (engines.isEmpty ? "" : " · \(engines)")

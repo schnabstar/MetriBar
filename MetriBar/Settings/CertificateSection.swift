@@ -35,8 +35,6 @@ struct CertificateSection: View {
             Text(
                 "For a self-signed certificate, compare the fingerprint with the one on the server before trusting it, for example: openssl x509 -in cert.pem -noout -fingerprint -sha256"
             )
-            .font(.caption)
-            .foregroundStyle(.secondary)
         }
         .onChange(of: url) {
             info = nil
