@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Export of a Developer ID signed build, used by Scripts/release.sh. -->
+<plist version="1.0">
+<dict>
+	<key>method</key>
+	<string>developer-id</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>teamID</key>
+	<string>MTV73SM3Y8</string>
+	<key>destination</key>
+	<string>export</string>
+</dict>
+</plist>
