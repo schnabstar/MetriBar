@@ -8,7 +8,7 @@ A running log of technical decisions and of what we learned from real Glances 5 
 - **Integration** (`integration.yml`, nightly and manual) installs Glances 5 from the `develop` branch with pipx on the runner and runs the live tests against it, to notice API changes in the beta early. Containers are not available there; they are covered by the fixtures.
 - Actions are pinned by commit SHA; Dependabot updates them weekly.
 - `main` requires the "Build and test" check; admins can still push directly. Pull requests are squash-merged.
-- Private vulnerability reporting could not be enabled through the API with the current token (404); it is enabled in the repository settings.
+- GitHub's private vulnerability reporting is not offered for this repository (the API answers 404 and the settings page has no switch), so security reports go to info@schnabel.it.
 
 ## 2026-10-26 – Dashboard window
 

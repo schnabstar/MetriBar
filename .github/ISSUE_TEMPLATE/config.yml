@@ -4,8 +4,8 @@ contact_links:
     url: https://github.com/schnabstar/MetriBar/discussions
     about: Ask questions and share ideas.
   - name: Security vulnerability
-    url: https://github.com/schnabstar/MetriBar/security/advisories/new
-    about: Report security problems privately.
+    url: https://github.com/schnabstar/MetriBar/blob/main/SECURITY.md
+    about: Report security problems privately by email.
   - name: Problem with Glances itself
     url: https://github.com/nicolargo/glances/issues
     about: Issues in Glances belong to the Glances project.

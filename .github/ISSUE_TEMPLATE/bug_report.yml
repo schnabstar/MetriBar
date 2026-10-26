@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Thanks for reporting! Please do not include passwords or host names you want to keep private.
-        For security problems, use [private vulnerability reporting](https://github.com/schnabstar/MetriBar/security/advisories/new) instead.
+        For security problems, do not open an issue; follow [SECURITY.md](https://github.com/schnabstar/MetriBar/blob/main/SECURITY.md) instead.
   - type: textarea
     id: description
     attributes:
