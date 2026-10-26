@@ -2,6 +2,16 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-10-26 – Security
+
+- **Passwords live in the file-based login keychain** (`KeychainCredentialStore`, one generic password per server UUID, service `it.schnabel.MetriBar.server`). The data protection keychain was the plan, but it needs an `application-identifier` entitlement and therefore a provisioning profile; the file-based keychain works in the sandbox and binds access to the code signature. Builds signed with a different identity (development vs. Developer ID) may ask once for access.
+- **Certificate pinning per server**: `ServerConfig.pinnedCertificate` holds the SHA-256 fingerprint of the leaf certificate (as browsers and `openssl x509 -fingerprint -sha256` show it). With a pin, exactly that certificate is accepted, also when self-signed or expired; any other certificate fails with `GlancesError.certificateMismatch(presented:)`. Without a pin the system validates as usual. The check runs in a per-task `URLSessionTaskDelegate`; a test against a local HTTPS server with a self-signed certificate confirmed that server-trust challenges reach it.
+- **`CertificateInspector`** reads the certificate a server presents and aborts the TLS handshake before any HTTP request, so no credentials are sent while the user decides whether to trust it.
+- **`TransportSecurity`** classifies a URL as HTTPS, HTTP on a (likely) local network or HTTP. `ServerConfig.sendsPasswordUnencrypted` drives the warning before a password is saved for a plain HTTP server.
+- **`ServerURL.parse`** rejects URLs with embedded credentials (they belong in the Keychain), adds `http://` when missing, and strips query, fragment and pasted API paths such as `/api/5`, keeping reverse-proxy prefixes.
+- **`DiagnosticReport`** produces copyable text without passwords, user names, process command lines or monitored values; the host is replaced by `<host>` unless the user includes it, also inside server error messages.
+- **Logging:** state changes are logged with the server UUID public and everything else private (OSLog default).
+
 ## 2026-10-26 – Polling (ServerMonitor, MonitorCenter)
 
 - **One `ServerMonitor` per server**, owned by `MonitorCenter`, which also computes the menu bar health (worst of all enabled servers).

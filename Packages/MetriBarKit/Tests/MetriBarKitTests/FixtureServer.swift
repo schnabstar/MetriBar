@@ -40,9 +40,11 @@ final class FixtureServer: Sendable {
     private let state = State()
     let transport: StubTransport
 
-    init() {
+    /// - Parameter pathPrefix: Path of a reverse proxy in front of Glances,
+    ///   such as `/glances`. Routes and overrides are given without it.
+    init(pathPrefix: String = "") {
         let state = state
-        transport = StubTransport { request in try Self.reply(for: request, state: state) }
+        transport = StubTransport { request in try Self.reply(for: request, pathPrefix: pathPrefix, state: state) }
     }
 
     func client() -> GlancesClient {
@@ -73,11 +75,14 @@ final class FixtureServer: Sendable {
         paths.filter { $0 == path }.count
     }
 
-    private static func reply(for request: URLRequest, state: State) throws -> StubTransport.Reply {
+    private static func reply(for request: URLRequest, pathPrefix: String, state: State) throws -> StubTransport.Reply {
         if let code = state.failure.withLock({ $0 }) {
             throw URLError(code)
         }
-        let path = request.url?.path ?? ""
+        guard let fullPath = request.url?.path, fullPath.hasPrefix(pathPrefix) else {
+            return .json(#"{"detail": "Not Found"}"#, status: 404)
+        }
+        let path = String(fullPath.dropFirst(pathPrefix.count))
         if let reply = state.overrides.withLock({ $0[path] }) {
             return reply
         }

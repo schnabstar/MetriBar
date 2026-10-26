@@ -56,6 +56,14 @@ struct LiveServerTests {
         #expect(monitor.health != .unknown)
     }
 
+    @Test func certificateCanBeInspected() async throws {
+        let url = try #require(LiveServer.url)
+        guard url.scheme == "https" else { return }
+        let info = try await CertificateInspector.inspect(url)
+        #expect(info.fingerprint.bytes.count == 32)
+        #expect(info.subject != nil)
+    }
+
     @Test func liveValuesAreFilled() async throws {
         let cpu = try await client.get(.cpu)
         #expect(cpu.value.total != nil)

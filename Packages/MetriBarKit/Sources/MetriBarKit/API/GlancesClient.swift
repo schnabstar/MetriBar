@@ -86,6 +86,8 @@ public struct GlancesClient: Sendable {
             (data, response) = try await transport.data(for: request)
         } catch let error as URLError {
             throw error.code == .cancelled ? .cancelled : .transport(error.code)
+        } catch CertificatePinningError.mismatch(let presented) {
+            throw .certificateMismatch(presented: presented)
         } catch is CancellationError {
             throw .cancelled
         } catch {

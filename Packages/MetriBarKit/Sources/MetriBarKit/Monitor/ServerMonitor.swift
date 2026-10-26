@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 import Observation
 
 /// Polls one Glances server and publishes what it knows as `snapshot`.
@@ -308,7 +309,7 @@ public final class ServerMonitor: Identifiable {
         retryAfter = nil
         isStale = false
         lastSuccess = now
-        state = .connected
+        transition(to: .connected)
     }
 
     private func recordFailure(_ error: GlancesError) {
@@ -317,23 +318,33 @@ public final class ServerMonitor: Identifiable {
         retryAfter = nil
         switch error {
         case .unauthorized:
-            state = .needsCredentials
+            transition(to: .needsCredentials)
             needsHandshake = true
         case .unsupportedVersion(let version):
-            state = .unsupportedVersion(version)
+            transition(to: .unsupportedVersion(version))
             needsHandshake = true
         case .notGlances:
-            state = .failed(error)
+            transition(to: .failed(error))
             needsHandshake = true
         case .rateLimited(let after):
-            state = .failed(error)
+            transition(to: .failed(error))
             retryAfter = after
         default:
-            state = .failed(error)
+            transition(to: .failed(error))
         }
         if consecutiveFailures >= settings.staleAfterFailures {
             isStale = true
         }
+    }
+
+    @ObservationIgnored private static let logger = Logger(subsystem: "it.schnabel.MetriBar", category: "monitor")
+
+    /// Sets `state` and logs changes. The error text may contain server
+    /// details, so it stays private in the log; credentials never reach it.
+    private func transition(to newState: ConnectionState) {
+        guard newState != state else { return }
+        state = newState
+        Self.logger.notice("Server \(self.id, privacy: .public): \(String(describing: newState))")
     }
 
     // MARK: - Fetching

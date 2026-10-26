@@ -4,6 +4,9 @@ public enum GlancesError: Error, Sendable, Equatable {
     /// The request did not reach the server or the connection failed,
     /// including TLS and App Transport Security errors.
     case transport(URLError.Code)
+    /// The server presented a certificate other than the pinned one. Either
+    /// the certificate was renewed or someone intercepts the connection.
+    case certificateMismatch(presented: CertificateFingerprint)
     /// The task was cancelled, for example because polling stopped.
     case cancelled
     /// `400`: Glances rejects the `Host` header (DNS rebinding protection)

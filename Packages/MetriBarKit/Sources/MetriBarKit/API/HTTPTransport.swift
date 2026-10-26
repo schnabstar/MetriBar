@@ -9,13 +9,29 @@ public struct URLSessionTransport: HTTPTransport {
     public static let shared = URLSessionTransport()
 
     private let session: URLSession
+    private let pinnedCertificate: CertificateFingerprint?
 
-    public init(configuration: URLSessionConfiguration = .metriBar, delegate: (any URLSessionDelegate)? = nil) {
-        session = URLSession(configuration: configuration, delegate: delegate, delegateQueue: nil)
+    /// - Parameter pinnedCertificate: Accept exactly this certificate, for
+    ///   servers with a self-signed certificate. Without a pin the system
+    ///   validates the certificate as usual.
+    public init(configuration: URLSessionConfiguration = .metriBar, pinnedCertificate: CertificateFingerprint? = nil) {
+        session = URLSession(configuration: configuration)
+        self.pinnedCertificate = pinnedCertificate
     }
 
     public func data(for request: URLRequest) async throws -> (Data, URLResponse) {
-        try await session.data(for: request)
+        guard let pinnedCertificate else {
+            return try await session.data(for: request)
+        }
+        let delegate = PinningTaskDelegate(expected: pinnedCertificate)
+        do {
+            return try await session.data(for: request, delegate: delegate)
+        } catch {
+            if let presented = delegate.mismatch {
+                throw CertificatePinningError.mismatch(presented: presented)
+            }
+            throw error
+        }
     }
 }
 
