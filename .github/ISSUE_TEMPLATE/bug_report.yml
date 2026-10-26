@@ -1,0 +1,52 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please do not include passwords or host names you want to keep private.
+        For security problems, use [private vulnerability reporting](https://github.com/schnabstar/MetriBar/security/advisories/new) instead.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+  - type: input
+    id: metribar-version
+    attributes:
+      label: MetriBar version
+      description: Settings › About
+      placeholder: 0.1.0 (1)
+    validations:
+      required: true
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version
+      placeholder: "26.1"
+    validations:
+      required: true
+  - type: input
+    id: glances-version
+    attributes:
+      label: Glances version
+      description: Shown in the popover status line, or `curl http://SERVER:61208/status`
+      placeholder: 5.0.0b1
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostic details
+      description: Click "Copy Details" next to the error in MetriBar and paste it here. It contains no passwords and hides the host name.
+      render: text

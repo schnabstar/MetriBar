@@ -1,0 +1,46 @@
+name: Integration
+
+# Runs the live tests against Glances 5 from the develop branch, to notice
+# API changes in the beta early. Containers are not available on the runner.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  glances-develop:
+    name: Glances 5 (develop)
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Select Xcode 26
+        run: |
+          xcode="$(ls -d /Applications/Xcode_26*.app | sort -V | tail -1)"
+          sudo xcode-select --switch "$xcode"
+
+      - name: Install Glances 5
+        run: pipx install "glances[web] @ git+https://github.com/nicolargo/glances.git@develop"
+
+      - name: Start Glances
+        run: |
+          glances -s --disable-webui -B 127.0.0.1 > glances.log 2>&1 &
+          for _ in $(seq 1 60); do
+            curl -sf http://127.0.0.1:61208/status && exit 0
+            sleep 1
+          done
+          echo "Glances did not start"
+          exit 1
+
+      - name: Live tests
+        env:
+          METRIBAR_LIVE_URL: http://127.0.0.1:61208
+        run: swift test --package-path Packages/MetriBarKit --filter LiveServerTests
+
+      - name: Glances log
+        if: failure()
+        run: cat glances.log

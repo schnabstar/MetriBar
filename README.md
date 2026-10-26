@@ -1,26 +1,49 @@
 # MetriBar
 
+[![CI](https://github.com/schnabstar/MetriBar/actions/workflows/ci.yml/badge.svg)](https://github.com/schnabstar/MetriBar/actions/workflows/ci.yml)
+
 **Glances 5 in your macOS menu bar.**
 
-MetriBar is a native macOS menu bar app with a dashboard window for servers running [Glances](https://github.com/nicolargo/glances) 5. See status and key metrics at a glance, and open a native dashboard for the details: CPU, memory, load, containers, storage, network, sensors, processes and alerts.
+MetriBar is a native macOS menu bar app with a dashboard window for servers running [Glances](https://github.com/nicolargo/glances) 5. See the status of your Raspberry Pi, NAS or Docker host at a glance, and open a native dashboard for the details.
 
 No agent to install, no cloud, no account, no telemetry.
 
-> **Status:** Early development. MetriBar targets the Glances 5 REST API (`/api/5`), which is currently in beta. Glances 4 is not supported.
+> **Status: preview.** MetriBar uses the Glances 5 REST API (`/api/5`), which is currently in beta. Glances 4 is not supported. Expect changes until Glances 5.0 and MetriBar 1.0 are released.
 
-## Planned features
+## Features
 
-- Menu bar icon showing the combined status of all your servers
-- Compact popover with CPU, memory, load, uptime and containers
-- Dashboard window: overview, history charts, storage & disks, network & sensors, processes, containers, alerts
-- Multiple Glances servers
-- Credentials stored in the macOS Keychain, TLS with optional certificate pinning
-- Strictly read-only: MetriBar never changes anything on your server
+- **Menu bar:** one icon for the combined status of all servers; its shape changes on warnings, critical values or when a server is offline. Optionally shows the CPU or memory usage of a server.
+- **Popover:** CPU, memory, load, uptime and containers of the selected server, with a server switcher. When a server cannot be read, MetriBar explains why and offers the fix.
+- **Dashboard window:**
+  - Overview with usage rings, trend, network, sensors (temperatures, fans), storage, containers, system information and active alerts
+  - History charts from the history Glances keeps
+  - File systems and disk I/O
+  - Network interfaces, sensors and GPU
+  - Processes with search and sorting; command lines only on request
+  - Containers with CPU and memory limits, network, I/O, uptime and ports
+  - Glances alerts and incidents
+- **Multiple servers**, each polled independently. Only the data that is visible is fetched.
+- **Secure by default:** passwords in the Keychain, TLS validation with optional pinning of self-signed certificates, warnings for passwords over plain HTTP, strictly read-only access.
+- **Helpful diagnostics:** a step-by-step connection test, detection of a missing local network permission, and copyable diagnostic details without secrets.
+- English and German.
 
 ## Requirements
 
 - macOS 26 or later
-- A server running Glances 5 in web server mode (`glances -s`)
+- A server running **Glances 5** as a web server (`glances -s`). See [Setting up Glances 5](Docs/glances-setup.md).
+
+## Installation
+
+Signed releases will be published on the [releases page](https://github.com/schnabstar/MetriBar/releases). Until then, build MetriBar from source (see below).
+
+To try MetriBar without a server, choose **Try with Demo Data** after the first launch.
+
+## Documentation
+
+- [Setting up Glances 5](Docs/glances-setup.md): Docker and pipx, password, HTTPS, allowed host names
+- [Security](Docs/security.md): what MetriBar protects and what the server operator should do
+- [Troubleshooting](Docs/troubleshooting.md): connection problems and their fixes
+- [Decisions](Docs/decisions.md): technical decisions and findings during development
 
 ## Building from source
 
@@ -37,11 +60,15 @@ The project signs with the maintainer's team by default. To build and run it you
 
 MetriBar stores passwords in the data protection keychain, which requires a provisioning profile. If your account cannot create one (for example a free Apple ID), the example file shows how to switch your local builds to the file-based keychain.
 
-`MetriBar.xcodeproj` is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen). You only need XcodeGen when you change targets or build settings; source folders are synchronized automatically.
+More in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Privacy
 
-MetriBar only talks to the Glances servers you configure. It collects no data and sends nothing anywhere else.
+MetriBar only talks to the Glances servers you add. It collects no data, has no telemetry and sends nothing anywhere else. See [PRIVACY.md](PRIVACY.md).
+
+## Contributing
+
+Bug reports, ideas, translations and pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## License
 

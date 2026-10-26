@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an idea for MetriBar
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        MetriBar is a read-only client for Glances 5 with no telemetry and no external dependencies. Ideas that fit these principles have the best chance.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: How could it work?
+  - type: textarea
+    id: glances
+    attributes:
+      label: Which Glances data would it use?
+      description: For example a plugin or endpoint of the Glances 5 API.
