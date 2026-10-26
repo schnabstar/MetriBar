@@ -1,6 +1,9 @@
 # Source of truth for MetriBar.xcodeproj. Regenerate with `xcodegen generate`
 # after changing targets or build settings. Source files are synchronized
 # folders, so adding or removing files does not require regeneration.
+#
+# Team, bundle identifier and entitlements come from Config/Shared.xcconfig
+# and can be overridden in Config/Local.xcconfig (see the .example file).
 name: MetriBar
 options:
   bundleIdPrefix: it.schnabel
@@ -11,7 +14,6 @@ options:
 settings:
   base:
     SWIFT_VERSION: "6.0"
-    DEVELOPMENT_TEAM: MTV73SM3Y8
     CODE_SIGN_STYLE: Automatic
     MARKETING_VERSION: 0.1.0
     CURRENT_PROJECT_VERSION: 1
@@ -26,6 +28,9 @@ targets:
   MetriBar:
     type: application
     platform: macOS
+    configFiles:
+      Debug: Config/Shared.xcconfig
+      Release: Config/Shared.xcconfig
     sources:
       - path: MetriBar
         type: syncedFolder
@@ -43,14 +48,10 @@ targets:
         NSLocalNetworkUsageDescription: MetriBar connects to the Glances servers you configure on your local network.
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
-    entitlements:
-      path: Config/MetriBar.entitlements
-      properties:
-        com.apple.security.app-sandbox: true
-        com.apple.security.network.client: true
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: it.schnabel.MetriBar
+        PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID)
+        CODE_SIGN_ENTITLEMENTS: $(METRIBAR_ENTITLEMENTS)
         ENABLE_HARDENED_RUNTIME: YES
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

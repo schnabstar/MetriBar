@@ -1,0 +1,12 @@
+// Copy this file to Config/Local.xcconfig (ignored by git) to build MetriBar
+// with your own Apple Developer team.
+
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+METRIBAR_BUNDLE_ID = com.example.MetriBar
+
+// Without a paid Apple Developer Program membership, Xcode may not be able
+// to create a provisioning profile with the keychain access group. Then use
+// the file-based keychain for your builds by uncommenting both lines:
+//
+// METRIBAR_ENTITLEMENTS = Config/MetriBar-FileKeychain.entitlements
+// SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) METRIBAR_FILE_KEYCHAIN

@@ -1,0 +1,14 @@
+// Signing and identity of the official MetriBar builds.
+//
+// To build with your own Apple Developer team, copy Local.xcconfig.example
+// to Local.xcconfig (ignored by git) and adjust it. Settings in
+// Local.xcconfig override the values below.
+
+DEVELOPMENT_TEAM = MTV73SM3Y8
+METRIBAR_BUNDLE_ID = it.schnabel.MetriBar
+
+// Passwords are stored in the data protection keychain, which needs the
+// keychain access group entitlement and thus a provisioning profile.
+METRIBAR_ENTITLEMENTS = Config/MetriBar.entitlements
+
+#include? "Local.xcconfig"

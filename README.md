@@ -22,6 +22,23 @@ No agent to install, no cloud, no account, no telemetry.
 - macOS 26 or later
 - A server running Glances 5 in web server mode (`glances -s`)
 
+## Building from source
+
+Requirements: Xcode 26 or later on macOS 26 or later.
+
+```sh
+git clone https://github.com/schnabstar/MetriBar.git
+cd MetriBar
+swift test --package-path Packages/MetriBarKit   # core library tests
+open MetriBar.xcodeproj
+```
+
+The project signs with the maintainer's team by default. To build and run it yourself, copy `Config/Local.xcconfig.example` to `Config/Local.xcconfig` (ignored by git) and enter your own team ID and bundle identifier.
+
+MetriBar stores passwords in the data protection keychain, which requires a provisioning profile. If your account cannot create one (for example a free Apple ID), the example file shows how to switch your local builds to the file-based keychain.
+
+`MetriBar.xcodeproj` is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen). You only need XcodeGen when you change targets or build settings; source folders are synchronized automatically.
+
 ## Privacy
 
 MetriBar only talks to the Glances servers you configure. It collects no data and sends nothing anywhere else.

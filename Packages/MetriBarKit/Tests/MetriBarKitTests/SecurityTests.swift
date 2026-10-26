@@ -17,10 +17,11 @@ struct CredentialStoreTests {
     }
 
     /// Writes to the login keychain, so it only runs on request:
-    /// `METRIBAR_KEYCHAIN_TESTS=1 swift test`.
+    /// `METRIBAR_KEYCHAIN_TESTS=1 swift test`. The data protection keychain
+    /// needs the app's entitlements and is verified in the signed app.
     @Test(.enabled(if: ProcessInfo.processInfo.environment["METRIBAR_KEYCHAIN_TESTS"] == "1"))
-    func keychainStoreRoundTrip() throws {
-        let store = KeychainCredentialStore(service: "it.schnabel.MetriBar.tests")
+    func fileBasedKeychainRoundTrip() throws {
+        let store = KeychainCredentialStore(service: "it.schnabel.MetriBar.tests", keychain: .fileBased)
         let id = UUID()
         defer { try? store.removePassword(for: id) }
 
@@ -31,6 +32,15 @@ struct CredentialStoreTests {
         #expect(try store.password(for: id) == "changed")
         try store.removePassword(for: id)
         #expect(try store.password(for: id) == nil)
+    }
+
+    /// The unsigned test runner has no keychain access group.
+    @Test(.enabled(if: ProcessInfo.processInfo.environment["METRIBAR_KEYCHAIN_TESTS"] == "1"))
+    func dataProtectionKeychainReportsMissingEntitlement() {
+        let store = KeychainCredentialStore(service: "it.schnabel.MetriBar.tests", keychain: .dataProtection)
+        #expect(throws: CredentialStoreError.missingEntitlement) {
+            try store.setPassword("secret", for: UUID())
+        }
     }
 }
 

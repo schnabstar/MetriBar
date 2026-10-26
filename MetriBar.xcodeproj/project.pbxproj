@@ -12,6 +12,7 @@
 
 /* Begin PBXFileReference section */
 		334469BA52AA8DC98588D473 /* MetriBarKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetriBarKit; path = Packages/MetriBarKit; sourceTree = SOURCE_ROOT; };
+		5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		CB56909A368C86BFDF61D84E /* MetriBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetriBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B447E321AF25CD0A008CC45 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		5D67C99146DC3EE761ED7C78 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				27EB196FA79D519058E4E09E /* MetriBar */,
+				1B447E321AF25CD0A008CC45 /* Config */,
 				5D67C99146DC3EE761ED7C78 /* Packages */,
 				FDC89C817D7A9A3069AB35BD /* Products */,
 			);
@@ -175,7 +185,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = MTV73SM3Y8;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -246,7 +255,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = MTV73SM3Y8;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -274,10 +282,11 @@
 		};
 		AEC6241F76B43D5A6C908794 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Config/MetriBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(METRIBAR_ENTITLEMENTS)";
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Config/Info.plist;
@@ -285,7 +294,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.schnabel.MetriBar;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID)";
 				SDKROOT = macosx;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 			};
@@ -293,10 +302,11 @@
 		};
 		BC6B4BF9B6D9B5A6835E6FFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Config/MetriBar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(METRIBAR_ENTITLEMENTS)";
 				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Config/Info.plist;
@@ -304,7 +314,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.schnabel.MetriBar;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID)";
 				SDKROOT = macosx;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 			};

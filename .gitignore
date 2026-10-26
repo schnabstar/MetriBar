@@ -16,3 +16,5 @@ dist/
 *.dmg
 *.xcarchive
 
+# Personal signing overrides (see Config/Local.xcconfig.example)
+Config/Local.xcconfig

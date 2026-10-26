@@ -11,22 +11,34 @@ public protocol CredentialStore: Sendable {
 }
 
 public enum CredentialStoreError: Error, Sendable, Equatable {
+    /// The build lacks the keychain access group entitlement, usually
+    /// because it was signed without a provisioning profile.
+    case missingEntitlement
     case keychain(OSStatus)
     case invalidData
 }
 
-/// Generic password items in the login keychain, one per server.
-///
-/// Uses the file-based keychain rather than the data protection keychain,
-/// which would require an `application-identifier` entitlement and thus a
-/// provisioning profile. Access is bound to the app's code signature.
+/// Generic password items in the keychain, one per server.
 public struct KeychainCredentialStore: CredentialStore {
+    public enum Keychain: Sendable {
+        /// The data protection keychain (Apple's recommendation, see
+        /// TN3137). Access is bound to the keychain access group, that is to
+        /// team and bundle identifier, and requires a provisioning profile.
+        case dataProtection
+        /// The file-based login keychain, for builds without a provisioning
+        /// profile. Access is bound to the code signature, so a build signed
+        /// differently asks for permission.
+        case fileBased
+    }
+
     public static let defaultService = "it.schnabel.MetriBar.server"
 
     private let service: String
+    private let keychain: Keychain
 
-    public init(service: String = Self.defaultService) {
+    public init(service: String = Self.defaultService, keychain: Keychain = .dataProtection) {
         self.service = service
+        self.keychain = keychain
     }
 
     public func password(for serverID: UUID) throws(CredentialStoreError) -> String? {
@@ -44,7 +56,7 @@ public struct KeychainCredentialStore: CredentialStore {
         case errSecItemNotFound:
             return nil
         default:
-            throw .keychain(status)
+            throw Self.error(for: status)
         }
     }
 
@@ -58,24 +70,36 @@ public struct KeychainCredentialStore: CredentialStore {
             var item = baseQuery(serverID)
             item[kSecValueData as String] = data
             item[kSecAttrLabel as String] = "MetriBar server password"
+            if keychain == .dataProtection {
+                // Never synced or restored to another Mac.
+                item[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+            }
             let addStatus = SecItemAdd(item as CFDictionary, nil)
-            guard addStatus == errSecSuccess else { throw .keychain(addStatus) }
+            guard addStatus == errSecSuccess else { throw Self.error(for: addStatus) }
         default:
-            throw .keychain(status)
+            throw Self.error(for: status)
         }
     }
 
     public func removePassword(for serverID: UUID) throws(CredentialStoreError) {
         let status = SecItemDelete(baseQuery(serverID) as CFDictionary)
-        guard status == errSecSuccess || status == errSecItemNotFound else { throw .keychain(status) }
+        guard status == errSecSuccess || status == errSecItemNotFound else { throw Self.error(for: status) }
     }
 
     private func baseQuery(_ serverID: UUID) -> [String: Any] {
-        [
+        var query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
             kSecAttrAccount as String: serverID.uuidString,
         ]
+        if keychain == .dataProtection {
+            query[kSecUseDataProtectionKeychain as String] = true
+        }
+        return query
+    }
+
+    private static func error(for status: OSStatus) -> CredentialStoreError {
+        status == errSecMissingEntitlement ? .missingEntitlement : .keychain(status)
     }
 }
 
