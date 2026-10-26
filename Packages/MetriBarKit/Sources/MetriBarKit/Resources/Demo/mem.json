@@ -1,0 +1,21 @@
+{
+  "_levels": {
+    "percent": {
+      "level": "ok",
+      "prominent": true
+    }
+  },
+  "_show_available": false,
+  "active": 2378629120,
+  "available": 4436000768,
+  "buffers": 147488768,
+  "cached": 4178477056,
+  "free": 515309568,
+  "inactive": 2674114560,
+  "percent": 47.5,
+  "shared": 94584832,
+  "slab": 2592686080,
+  "time_since_update": 5.008791996981017,
+  "total": 8453947392,
+  "used": 4017946624
+}

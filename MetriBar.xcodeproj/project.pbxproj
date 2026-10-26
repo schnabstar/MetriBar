@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C553FFC03F67D604E0093B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
 		AA3C4610B18EB22B126B83B6 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD942B09C549DC6133AFAAF /* MetriBarKit */; };
+		EEC6F4D166D9CF425E02F93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */; };
+		F6967DF178011E2DE633E08C /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		334469BA52AA8DC98588D473 /* MetriBarKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetriBarKit; path = Packages/MetriBarKit; sourceTree = SOURCE_ROOT; };
+		5474C28EB4631EF7405B444A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		CB56909A368C86BFDF61D84E /* MetriBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetriBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -48,6 +54,16 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		3E77A103DD576354990C5F87 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */,
+				2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */,
+				5474C28EB4631EF7405B444A /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5D67C99146DC3EE761ED7C78 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +78,7 @@
 				27EB196FA79D519058E4E09E /* MetriBar */,
 				1B447E321AF25CD0A008CC45 /* Config */,
 				5D67C99146DC3EE761ED7C78 /* Packages */,
+				3E77A103DD576354990C5F87 /* Resources */,
 				FDC89C817D7A9A3069AB35BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +99,7 @@
 			buildConfigurationList = A5E1F4A61A26E363A597FFC0 /* Build configuration list for PBXNativeTarget "MetriBar" */;
 			buildPhases = (
 				213540892DF6FC6B8D31F251 /* Sources */,
+				7E60F96E48234B6730AFD8B1 /* Resources */,
 				74649ADB2BA98FBDC9831B98 /* Frameworks */,
 			);
 			buildRules = (
@@ -120,6 +138,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				de,
 				en,
 			);
 			mainGroup = 8DD5F3450F99223DBFC080C5;
@@ -135,6 +154,19 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E60F96E48234B6730AFD8B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEC6F4D166D9CF425E02F93C /* Assets.xcassets in Resources */,
+				F6967DF178011E2DE633E08C /* InfoPlist.xcstrings in Resources */,
+				0C553FFC03F67D604E0093B3 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		213540892DF6FC6B8D31F251 /* Sources */ = {

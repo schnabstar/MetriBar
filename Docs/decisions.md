@@ -2,6 +2,17 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-10-26 – Menu bar, popover and settings
+
+- **`AppModel`** (app target) owns the server list (`ConfigStore`, UserDefaults, no secrets), preferences, the `MonitorCenter` and the system event observer. Passwords go to `AppKeychain.store`; a changed password without other config changes reconnects the monitor.
+- **Connection problems are classified in MetriBarKit** (`ConnectionProblem`, testable) and explained in the app (`ProblemText.swift`, localized) with a matching action: open the server settings, open the Local Network privacy pane, or try again. Timeouts and refused connections are checked with `LocalNetworkCheck` before blaming the server.
+- **Problem banner only when the server is unusable** (offline after three failures, rejected credentials, unsupported version). Single failed attempts only show "Retrying…" in the status line.
+- **Connection test** runs against the unsaved editor values with a fail-fast session (`.metriBarConnectionTest`, no waiting for connectivity) and stops at the first failing step.
+- **Demo server:** anonymized fixtures ship in MetriBarKit (`Resources/Demo`, ~140 KB) and back `DemoServer`, used for "Try with Demo Data", previews and snapshots; later also for App Store review.
+- **Localization:** English source strings in code, `Resources/Localizable.xcstrings` with German translations (informal "du", as macOS uses). Strings are extracted with `xcrun xcstringstool sync` from the `.stringsdata` files of a build. `Resources/InfoPlist.xcstrings` localizes the local network prompt.
+- **Resources live outside the synchronized source folder** (`Resources/` as a regular group): XcodeGen does not create a Copy Bundle Resources phase for synchronized folders, so assets and string catalogs were missing from the app bundle.
+- **Snapshot tool (DEBUG only):** `-MetriBarSnapshots 1` renders the popover and problem banners with demo data to PNGs in the sandbox container's `tmp/snapshots`. `ImageRenderer` cannot draw AppKit-backed controls (buttons with some styles, progress bars, `Form`), which appear as placeholders; the settings window has to be checked in the running app.
+
 ## 2026-10-26 – Security
 
 - **Passwords live in the data protection keychain** (`KeychainCredentialStore`, one generic password per server UUID, service `it.schnabel.MetriBar.server`, accessible after first unlock, this device only). Apple's TN3137 calls the file-based keychain "on the road to deprecation", and switching before the first release avoids a migration later. Access is bound to the keychain access group (team + bundle ID) instead of the exact code signature, so development and release builds share items without prompts.

@@ -8,7 +8,10 @@ let package = Package(
         .library(name: "MetriBarKit", targets: ["MetriBarKit"])
     ],
     targets: [
-        .target(name: "MetriBarKit"),
+        .target(
+            name: "MetriBarKit",
+            resources: [.copy("Resources/Demo")]
+        ),
         .testTarget(
             name: "MetriBarKitTests",
             dependencies: ["MetriBarKit"],

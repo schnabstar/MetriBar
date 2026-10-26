@@ -34,6 +34,9 @@ targets:
     sources:
       - path: MetriBar
         type: syncedFolder
+      # Asset catalog and string catalogs, as a regular group so that the
+      # target gets a Copy Bundle Resources phase.
+      - path: Resources
     dependencies:
       - package: MetriBarKit
     info:

@@ -1,27 +1,24 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(AppModel.self) private var model
+
     var body: some View {
-        TabView {
-            Tab("Servers", systemImage: "server.rack") {
-                placeholder("Configured Glances servers will appear here.")
+        @Bindable var model = model
+        TabView(selection: $model.settingsTab) {
+            Tab("Servers", systemImage: "server.rack", value: SettingsTab.servers) {
+                ServersSettingsView()
             }
-            Tab("Display", systemImage: "menubar.rectangle") {
-                placeholder("Choose what the menu bar shows.")
+            Tab("Display", systemImage: "menubar.rectangle", value: SettingsTab.display) {
+                DisplaySettingsView()
             }
-            Tab("General", systemImage: "gearshape") {
-                placeholder("Refresh intervals and launch at login.")
+            Tab("General", systemImage: "gearshape", value: SettingsTab.general) {
+                GeneralSettingsView()
             }
-            Tab("About", systemImage: "info.circle") {
+            Tab("About", systemImage: "info.circle", value: SettingsTab.about) {
                 AboutView()
             }
         }
-        .frame(width: 520, height: 360)
-    }
-
-    private func placeholder(_ text: LocalizedStringKey) -> some View {
-        Text(text)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(width: 720, height: 540)
     }
 }

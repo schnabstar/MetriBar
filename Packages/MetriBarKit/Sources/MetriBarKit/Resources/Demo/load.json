@@ -1,0 +1,17 @@
+{
+  "_levels": {
+    "min15": {
+      "level": "ok",
+      "prominent": true
+    },
+    "min5": {
+      "level": "ok",
+      "prominent": false
+    }
+  },
+  "cpucore": 4,
+  "min1": 0.9423828125,
+  "min15": 0.78466796875,
+  "min5": 0.9970703125,
+  "time_since_update": 5.009304681996582
+}

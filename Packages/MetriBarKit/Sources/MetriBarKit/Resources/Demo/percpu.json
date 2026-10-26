@@ -1,0 +1,148 @@
+{
+  "_key": "cpu_number",
+  "_levels": {
+    "0": {
+      "iowait": {
+        "level": "ok",
+        "prominent": false
+      },
+      "system": {
+        "level": "ok",
+        "prominent": false
+      },
+      "user": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "1": {
+      "iowait": {
+        "level": "ok",
+        "prominent": false
+      },
+      "system": {
+        "level": "ok",
+        "prominent": false
+      },
+      "user": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "2": {
+      "iowait": {
+        "level": "ok",
+        "prominent": false
+      },
+      "system": {
+        "level": "ok",
+        "prominent": false
+      },
+      "user": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "3": {
+      "iowait": {
+        "level": "ok",
+        "prominent": false
+      },
+      "system": {
+        "level": "ok",
+        "prominent": false
+      },
+      "user": {
+        "level": "ok",
+        "prominent": false
+      }
+    }
+  },
+  "data": [
+    {
+      "cpu_number": 0,
+      "guest": 0.0,
+      "guest_nice": 0.0,
+      "idle": 89.5,
+      "iowait": 0.2,
+      "irq": 0.0,
+      "nice": 0.0,
+      "softirq": 0.2,
+      "steal": 0.0,
+      "system": 2.2,
+      "total": 10.5,
+      "user": 7.9
+    },
+    {
+      "cpu_number": 1,
+      "guest": 0.0,
+      "guest_nice": 0.0,
+      "idle": 85.7,
+      "iowait": 0.2,
+      "irq": 0.0,
+      "nice": 0.0,
+      "softirq": 0.0,
+      "steal": 0.0,
+      "system": 3.7,
+      "total": 14.3,
+      "user": 10.4
+    },
+    {
+      "cpu_number": 2,
+      "guest": 0.0,
+      "guest_nice": 0.0,
+      "idle": 90.6,
+      "iowait": 0.8,
+      "irq": 0.0,
+      "nice": 0.0,
+      "softirq": 0.2,
+      "steal": 0.0,
+      "system": 2.6,
+      "total": 9.4,
+      "user": 5.8
+    },
+    {
+      "cpu_number": 3,
+      "guest": 0.0,
+      "guest_nice": 0.0,
+      "idle": 84.2,
+      "iowait": 0.4,
+      "irq": 0.0,
+      "nice": 0.0,
+      "softirq": 0.2,
+      "steal": 0.0,
+      "system": 2.2,
+      "total": 15.8,
+      "user": 13.0
+    }
+  ],
+  "max_cpu_display": 4,
+  "stat_fields": [
+    "user",
+    "system",
+    "iowait",
+    "idle",
+    "irq",
+    "nice",
+    "steal",
+    "guest"
+  ],
+  "thresholds": {
+    "iowait": {
+      "careful": 50.0,
+      "critical": 90.0,
+      "warning": 70.0
+    },
+    "system": {
+      "careful": 50.0,
+      "critical": 90.0,
+      "warning": 70.0
+    },
+    "user": {
+      "careful": 50.0,
+      "critical": 90.0,
+      "warning": 70.0
+    }
+  },
+  "time_since_update": 5.0094123859889805
+}

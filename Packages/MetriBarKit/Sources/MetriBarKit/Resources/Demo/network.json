@@ -1,0 +1,128 @@
+{
+  "_key": "interface_name",
+  "_levels": {
+    "eth0": {
+      "bytes_recv": {
+        "level": "ok",
+        "prominent": false
+      },
+      "bytes_sent": {
+        "level": "ok",
+        "prominent": false
+      },
+      "errors_in": {
+        "level": "ok",
+        "prominent": false
+      },
+      "errors_out": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "eth1": {
+      "bytes_recv": {
+        "level": "ok",
+        "prominent": false
+      },
+      "bytes_sent": {
+        "level": "ok",
+        "prominent": false
+      },
+      "errors_in": {
+        "level": "ok",
+        "prominent": false
+      },
+      "errors_out": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "eth2": {
+      "bytes_recv": {
+        "level": "ok",
+        "prominent": false
+      },
+      "bytes_sent": {
+        "level": "ok",
+        "prominent": false
+      },
+      "errors_in": {
+        "level": "ok",
+        "prominent": false
+      },
+      "errors_out": {
+        "level": "ok",
+        "prominent": false
+      }
+    },
+    "lo": {
+      "errors_in": {
+        "level": "ok",
+        "prominent": false
+      },
+      "errors_out": {
+        "level": "ok",
+        "prominent": false
+      }
+    }
+  },
+  "data": [
+    {
+      "bytes_recv": 0.0,
+      "bytes_recv_cumul": 67405,
+      "bytes_sent": 0.0,
+      "bytes_sent_cumul": 67405,
+      "bytes_speed_rate_per_sec": 0.0,
+      "dropped_in": 0.0,
+      "dropped_out": 0.0,
+      "errors_in": 0.0,
+      "errors_out": 0.0,
+      "hidden": false,
+      "interface_name": "lo",
+      "is_up": true
+    },
+    {
+      "bytes_recv": 193358.50448061017,
+      "bytes_recv_cumul": 58487372,
+      "bytes_sent": 8200.32882988927,
+      "bytes_sent_cumul": 2589397,
+      "bytes_speed_rate_per_sec": 1250000000.0,
+      "dropped_in": 0.0,
+      "dropped_out": 0.0,
+      "errors_in": 0.0,
+      "errors_out": 0.0,
+      "hidden": false,
+      "interface_name": "eth0",
+      "is_up": true
+    },
+    {
+      "bytes_recv": 1421.7096812778693,
+      "bytes_recv_cumul": 119321,
+      "bytes_sent": 11353.917621717197,
+      "bytes_sent_cumul": 2145723,
+      "bytes_speed_rate_per_sec": 1250000000.0,
+      "dropped_in": 0.0,
+      "dropped_out": 0.0,
+      "errors_in": 0.0,
+      "errors_out": 0.0,
+      "hidden": false,
+      "interface_name": "eth1",
+      "is_up": true
+    },
+    {
+      "bytes_recv": 0.0,
+      "bytes_recv_cumul": 2918,
+      "bytes_sent": 0.0,
+      "bytes_sent_cumul": 3673,
+      "bytes_speed_rate_per_sec": 1250000000.0,
+      "dropped_in": 0.0,
+      "dropped_out": 0.0,
+      "errors_in": 0.0,
+      "errors_out": 0.0,
+      "hidden": false,
+      "interface_name": "eth2",
+      "is_up": true
+    }
+  ],
+  "time_since_update": 5.0101649400021415
+}

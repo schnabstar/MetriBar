@@ -1,0 +1,1678 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "%@/s": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@/s"
+          }
+        }
+      }
+    },
+    "%lld cores": {
+      "localizations": {
+        "de": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Kern"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld Kerne"
+                }
+              }
+            }
+          }
+        },
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld core"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld cores"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "About": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Über"
+          }
+        }
+      }
+    },
+    "Add Server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server hinzufügen"
+          }
+        }
+      }
+    },
+    "Add Server…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server hinzufügen …"
+          }
+        }
+      }
+    },
+    "Add a Glances 5 server in Settings.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Füge in den Einstellungen einen Glances-5-Server hinzu."
+          }
+        }
+      }
+    },
+    "Add a server running Glances 5 to see its status in the menu bar.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Füge einen Server mit Glances 5 hinzu, um seinen Status in der Menüleiste zu sehen."
+          }
+        }
+      }
+    },
+    "Allow MetriBar in System Settings › General › Login Items.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlaube MetriBar in den Systemeinstellungen › Allgemein › Anmeldeobjekte."
+          }
+        }
+      }
+    },
+    "Authentication": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmeldung"
+          }
+        }
+      }
+    },
+    "CPU": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CPU"
+          }
+        }
+      }
+    },
+    "CPU %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CPU %@"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        }
+      }
+    },
+    "Certificate": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zertifikat"
+          }
+        }
+      }
+    },
+    "Certificate changed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zertifikat hat sich geändert"
+          }
+        }
+      }
+    },
+    "Certificate not trusted": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zertifikat nicht vertrauenswürdig"
+          }
+        }
+      }
+    },
+    "Check Certificate": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zertifikat prüfen"
+          }
+        }
+      }
+    },
+    "Connecting": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinden"
+          }
+        }
+      }
+    },
+    "Connecting…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinden …"
+          }
+        }
+      }
+    },
+    "Connection Test": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindungstest"
+          }
+        }
+      }
+    },
+    "Connection problem": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindungsproblem"
+          }
+        }
+      }
+    },
+    "Connection refused": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindung abgelehnt"
+          }
+        }
+      }
+    },
+    "Containers %lld/%lld running": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Container: %lld/%lld laufen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Containers %1$lld/%2$lld running"
+          }
+        }
+      }
+    },
+    "Containers: available": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Container: verfügbar"
+          }
+        }
+      }
+    },
+    "Containers: plugin not active": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Container: Plugin nicht aktiv"
+          }
+        }
+      }
+    },
+    "Copied": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopiert"
+          }
+        }
+      }
+    },
+    "Copy Details": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details kopieren"
+          }
+        }
+      }
+    },
+    "Copy diagnostic details without passwords or host name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnosedetails ohne Passwörter und Hostnamen kopieren"
+          }
+        }
+      }
+    },
+    "Could Not Save": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichern nicht möglich"
+          }
+        }
+      }
+    },
+    "Critical": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kritisch"
+          }
+        }
+      }
+    },
+    "Display": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anzeige"
+          }
+        }
+      }
+    },
+    "Encrypted connection (HTTPS)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verschlüsselte Verbindung (HTTPS)"
+          }
+        }
+      }
+    },
+    "Enter user name and password below, not in the URL.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gib Benutzername und Passwort unten ein, nicht in der URL."
+          }
+        }
+      }
+    },
+    "Every %lld seconds": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle %lld Sekunden"
+          }
+        }
+      }
+    },
+    "Every second": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jede Sekunde"
+          }
+        }
+      }
+    },
+    "For a self-signed certificate, compare the fingerprint with the one on the server before trusting it, for example: openssl x509 -in cert.pem -noout -fingerprint -sha256": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vergleiche bei einem selbstsignierten Zertifikat den Fingerabdruck mit dem auf dem Server, bevor du ihm vertraust, zum Beispiel: openssl x509 -in cert.pem -noout -fingerprint -sha256"
+          }
+        }
+      }
+    },
+    "General": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allgemein"
+          }
+        }
+      }
+    },
+    "Glances %@ on %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances %@ auf %@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Glances %1$@ on %2$@"
+          }
+        }
+      }
+    },
+    "Glances 4 detected": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances 4 erkannt"
+          }
+        }
+      }
+    },
+    "Glances 5 in your menu bar.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances 5 in deiner Menüleiste."
+          }
+        }
+      }
+    },
+    "Glances blocks further logins for now. MetriBar tries again in %lld seconds.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances sperrt weitere Anmeldeversuche vorübergehend. MetriBar versucht es in %lld Sekunden erneut."
+          }
+        }
+      }
+    },
+    "Glances blocks further logins for now. MetriBar tries again later.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances sperrt weitere Anmeldeversuche vorübergehend. MetriBar versucht es später erneut."
+          }
+        }
+      }
+    },
+    "Glances only accepts the host names listed in webui_allowed_hosts. Add the name or address you use in MetriBar to that setting.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glances akzeptiert nur die Hostnamen aus webui_allowed_hosts. Ergänze dort den Namen oder die Adresse, die du in MetriBar verwendest."
+          }
+        }
+      }
+    },
+    "Host name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hostname"
+          }
+        }
+      }
+    },
+    "Host name rejected": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hostname abgelehnt"
+          }
+        }
+      }
+    },
+    "In the background": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Hintergrund"
+          }
+        }
+      }
+    },
+    "Issued to": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausgestellt für"
+          }
+        }
+      }
+    },
+    "Licensed under the Apache License 2.0. MetriBar is not affiliated with the Glances project.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lizenziert unter der Apache License 2.0. MetriBar steht in keiner Verbindung zum Glances-Projekt."
+          }
+        }
+      }
+    },
+    "Load": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last"
+          }
+        }
+      }
+    },
+    "Local network access not allowed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff aufs lokale Netzwerk nicht erlaubt"
+          }
+        }
+      }
+    },
+    "Login": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmeldung"
+          }
+        }
+      }
+    },
+    "Login failed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmeldung fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "Memory": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speicher"
+          }
+        }
+      }
+    },
+    "Memory %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speicher %@"
+          }
+        }
+      }
+    },
+    "Menu bar shows": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menüleiste zeigt"
+          }
+        }
+      }
+    },
+    "MetriBar": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar"
+          }
+        }
+      }
+    },
+    "MetriBar collects no data and has no telemetry.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar erhebt keine Daten und hat keine Telemetrie."
+          }
+        }
+      }
+    },
+    "MetriBar forgets the server and deletes its saved password.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar vergisst den Server und löscht sein gespeichertes Passwort."
+          }
+        }
+      }
+    },
+    "MetriBar only asks the servers you add. It collects no data and sends nothing anywhere else.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar fragt nur die Server ab, die du hinzufügst. Es erhebt keine Daten und sendet nichts an andere Stellen."
+          }
+        }
+      }
+    },
+    "MetriBar requires Glances 5. Update Glances on the server.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar benötigt Glances 5. Aktualisiere Glances auf dem Server."
+          }
+        }
+      }
+    },
+    "MetriBar, %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar, %@"
+          }
+        }
+      }
+    },
+    "Monitor this server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diesen Server überwachen"
+          }
+        }
+      }
+    },
+    "Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "New Server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neuer Server"
+          }
+        }
+      }
+    },
+    "No Server Selected": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Server ausgewählt"
+          }
+        }
+      }
+    },
+    "No containers found. Does Glances have access to the Docker socket?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Container gefunden. Hat Glances Zugriff auf den Docker-Socket?"
+          }
+        }
+      }
+    },
+    "No network connection": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Netzwerkverbindung"
+          }
+        }
+      }
+    },
+    "No response": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Antwort"
+          }
+        }
+      }
+    },
+    "No servers": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Server"
+          }
+        }
+      }
+    },
+    "Not a Glances server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Glances-Server"
+          }
+        }
+      }
+    },
+    "Not trusted by macOS": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für macOS nicht vertrauenswürdig"
+          }
+        }
+      }
+    },
+    "Nothing answers on this port. Is Glances running as a web server (glances -s)? Glances 5 only listens on 127.0.0.1 by default: start it with -B 0.0.0.0 or set bind_address.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf diesem Port antwortet nichts. Läuft Glances als Webserver (glances -s)? Glances 5 lauscht standardmäßig nur auf 127.0.0.1: Starte es mit -B 0.0.0.0 oder setze bind_address."
+          }
+        }
+      }
+    },
+    "OK": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Offline": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline"
+          }
+        }
+      }
+    },
+    "Open Dashboard": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dashboard öffnen"
+          }
+        }
+      }
+    },
+    "Open MetriBar at login": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar bei der Anmeldung öffnen"
+          }
+        }
+      }
+    },
+    "Open Privacy Settings": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datenschutzeinstellungen öffnen"
+          }
+        }
+      }
+    },
+    "Open the Glances web interface in the browser": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Glances-Weboberfläche im Browser öffnen"
+          }
+        }
+      }
+    },
+    "Password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort"
+          }
+        }
+      }
+    },
+    "Quit": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beenden"
+          }
+        }
+      }
+    },
+    "Quit MetriBar": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MetriBar beenden"
+          }
+        }
+      }
+    },
+    "Refresh": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualisieren"
+          }
+        }
+      }
+    },
+    "Refresh now": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt aktualisieren"
+          }
+        }
+      }
+    },
+    "Remove": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entfernen"
+          }
+        }
+      }
+    },
+    "Remove Server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server entfernen"
+          }
+        }
+      }
+    },
+    "Remove “%@”?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„%@“ entfernen?"
+          }
+        }
+      }
+    },
+    "Report a Problem": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Problem melden"
+          }
+        }
+      }
+    },
+    "Required": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erforderlich"
+          }
+        }
+      }
+    },
+    "Retrying…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neuer Versuch …"
+          }
+        }
+      }
+    },
+    "Revert": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurücksetzen"
+          }
+        }
+      }
+    },
+    "SHA-256 fingerprint": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SHA-256-Fingerabdruck"
+          }
+        }
+      }
+    },
+    "Save": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichern"
+          }
+        }
+      }
+    },
+    "Saved in Keychain": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Schlüsselbund gesichert"
+          }
+        }
+      }
+    },
+    "Secure connection failed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichere Verbindung fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "Select a server or add one with +.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle einen Server aus oder füge mit + einen hinzu."
+          }
+        }
+      }
+    },
+    "Sensors: available": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sensoren: verfügbar"
+          }
+        }
+      }
+    },
+    "Sensors: not available": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sensoren: nicht verfügbar"
+          }
+        }
+      }
+    },
+    "Server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server"
+          }
+        }
+      }
+    },
+    "Server Settings…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Servereinstellungen …"
+          }
+        }
+      }
+    },
+    "Server error": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serverfehler"
+          }
+        }
+      }
+    },
+    "Server not found": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server nicht gefunden"
+          }
+        }
+      }
+    },
+    "Server reachable and running Glances 5": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server erreichbar, Glances 5 läuft"
+          }
+        }
+      }
+    },
+    "Server requires a password": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server verlangt ein Passwort"
+          }
+        }
+      }
+    },
+    "Server selected in the menu": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Menü ausgewählter Server"
+          }
+        }
+      }
+    },
+    "Server settings": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Servereinstellungen"
+          }
+        }
+      }
+    },
+    "Servers": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server"
+          }
+        }
+      }
+    },
+    "Showing values from %@.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Angezeigte Werte: %@."
+          }
+        }
+      }
+    },
+    "Something answers at this URL, but it is not Glances 5. Check the address and port; Glances uses port 61208 by default.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unter dieser URL antwortet etwas, aber nicht Glances 5. Prüfe Adresse und Port; Glances verwendet standardmäßig Port 61208."
+          }
+        }
+      }
+    },
+    "Source Code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quellcode"
+          }
+        }
+      }
+    },
+    "Status": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
+          }
+        }
+      }
+    },
+    "Status icon and CPU usage": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statussymbol und CPU-Auslastung"
+          }
+        }
+      }
+    },
+    "Status icon and memory usage": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statussymbol und Speicherauslastung"
+          }
+        }
+      }
+    },
+    "Status icon only": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur Statussymbol"
+          }
+        }
+      }
+    },
+    "Stop Trusting": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht mehr vertrauen"
+          }
+        }
+      }
+    },
+    "Switch server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server wechseln"
+          }
+        }
+      }
+    },
+    "Test Connection": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindung testen"
+          }
+        }
+      }
+    },
+    "The Keychain reported error %lld.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Schlüsselbund meldet den Fehler %lld."
+          }
+        }
+      }
+    },
+    "The URL is not valid.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die URL ist ungültig."
+          }
+        }
+      }
+    },
+    "The URL needs a host name or IP address.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die URL braucht einen Hostnamen oder eine IP-Adresse."
+          }
+        }
+      }
+    },
+    "The address of Glances 5 running as a web server (glances -s), including the port.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Adresse von Glances 5 im Webserver-Modus (glances -s), einschließlich Port."
+          }
+        }
+      }
+    },
+    "The answer could not be read. Glances 5 is still in beta; please report this together with the diagnostic details.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Antwort konnte nicht gelesen werden. Glances 5 ist noch eine Beta – bitte melde das zusammen mit den Diagnosedetails."
+          }
+        }
+      }
+    },
+    "The certificate is self-signed, expired or issued for another name. You can check it and trust it in the server settings.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Zertifikat ist selbstsigniert, abgelaufen oder für einen anderen Namen ausgestellt. Du kannst es in den Servereinstellungen prüfen und ihm vertrauen."
+          }
+        }
+      }
+    },
+    "The containers plugin is not active on this server.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Container-Plugin ist auf diesem Server nicht aktiv."
+          }
+        }
+      }
+    },
+    "The encrypted connection could not be established. Does the server use HTTPS on this port? For plain HTTP, start the URL with http://.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die verschlüsselte Verbindung kam nicht zustande. Verwendet der Server auf diesem Port HTTPS? Für unverschlüsseltes HTTP beginne die URL mit http://."
+          }
+        }
+      }
+    },
+    "The host name could not be resolved. Check the URL and, if you use one, the VPN connection.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Hostname konnte nicht aufgelöst werden. Prüfe die URL und gegebenenfalls die VPN-Verbindung."
+          }
+        }
+      }
+    },
+    "The icon always shows the state of all servers: a warning or error on any server changes its shape.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Symbol zeigt immer den Zustand aller Server: Eine Warnung oder ein Fehler auf einem Server ändert seine Form."
+          }
+        }
+      }
+    },
+    "The password is sent unencrypted and can be read by others on the network. Use HTTPS, for example with a reverse proxy.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Passwort wird unverschlüsselt übertragen und kann im Netzwerk mitgelesen werden. Verwende HTTPS, zum Beispiel über einen Reverse Proxy."
+          }
+        }
+      }
+    },
+    "The saved password could not be read.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das gespeicherte Passwort konnte nicht gelesen werden."
+          }
+        }
+      }
+    },
+    "The server answered with HTTP status %lld.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Server antwortete mit HTTP-Status %lld."
+          }
+        }
+      }
+    },
+    "The server did not answer in time. Check that it is running and reachable from this Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Server hat nicht rechtzeitig geantwortet. Prüfe, ob er läuft und von diesem Mac aus erreichbar ist."
+          }
+        }
+      }
+    },
+    "The server presented a different certificate than the one you trusted. If you renewed it, trust the new certificate in the server settings. Otherwise someone may be intercepting the connection.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Server zeigt ein anderes Zertifikat als das, dem du vertraut hast. Wenn du es erneuert hast, vertraue dem neuen Zertifikat in den Servereinstellungen. Andernfalls könnte jemand die Verbindung abfangen."
+          }
+        }
+      }
+    },
+    "The server rejected the user name or password. MetriBar stops trying until you change them, so you are not locked out.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Server hat Benutzername oder Passwort abgelehnt. MetriBar versucht es erst wieder, wenn du sie änderst, damit du nicht gesperrt wirst."
+          }
+        }
+      }
+    },
+    "The server runs Glances %@. This version of MetriBar supports Glances 5.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf dem Server läuft Glances %@. Diese Version von MetriBar unterstützt Glances 5."
+          }
+        }
+      }
+    },
+    "This Mac is not connected to a network.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Mac ist mit keinem Netzwerk verbunden."
+          }
+        }
+      }
+    },
+    "This build of MetriBar cannot use the Keychain. See the build instructions in the README.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Build von MetriBar kann den Schlüsselbund nicht verwenden. Siehe die Bauanleitung im README."
+          }
+        }
+      }
+    },
+    "This is not a valid URL.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das ist keine gültige URL."
+          }
+        }
+      }
+    },
+    "This server requires a password. Add the user name and password in the server settings.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Server verlangt ein Passwort. Trage Benutzername und Passwort in den Servereinstellungen ein."
+          }
+        }
+      }
+    },
+    "Too many attempts": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zu viele Versuche"
+          }
+        }
+      }
+    },
+    "Trust This Certificate": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diesem Zertifikat vertrauen"
+          }
+        }
+      }
+    },
+    "Trusted by macOS": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für macOS vertrauenswürdig"
+          }
+        }
+      }
+    },
+    "Trusted by you": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Von dir als vertrauenswürdig markiert"
+          }
+        }
+      }
+    },
+    "Trusted certificate": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vertrauenswürdiges Zertifikat"
+          }
+        }
+      }
+    },
+    "Try Again": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut versuchen"
+          }
+        }
+      }
+    },
+    "Try with Demo Data": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Demo-Daten ausprobieren"
+          }
+        }
+      }
+    },
+    "URL": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "URL"
+          }
+        }
+      }
+    },
+    "Unencrypted connection": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unverschlüsselte Verbindung"
+          }
+        }
+      }
+    },
+    "Unencrypted connection (local network)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unverschlüsselte Verbindung (lokales Netzwerk)"
+          }
+        }
+      }
+    },
+    "Unencrypted connection blocked": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unverschlüsselte Verbindung blockiert"
+          }
+        }
+      }
+    },
+    "Unexpected response": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unerwartete Antwort"
+          }
+        }
+      }
+    },
+    "Unsupported Glances version": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht unterstützte Glances-Version"
+          }
+        }
+      }
+    },
+    "Uptime": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laufzeit"
+          }
+        }
+      }
+    },
+    "Use http:// or https:// instead of %@://.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verwende http:// oder https:// statt %@://."
+          }
+        }
+      }
+    },
+    "User name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Benutzername"
+          }
+        }
+      }
+    },
+    "Value of": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wert von"
+          }
+        }
+      }
+    },
+    "Values readable": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Werte lesbar"
+          }
+        }
+      }
+    },
+    "Version %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version %@"
+          }
+        }
+      }
+    },
+    "Warning": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warnung"
+          }
+        }
+      }
+    },
+    "Web UI": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weboberfläche"
+          }
+        }
+      }
+    },
+    "Welcome to MetriBar": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Willkommen bei MetriBar"
+          }
+        }
+      }
+    },
+    "While the menu or dashboard is open": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Menü oder Dashboard geöffnet sind"
+          }
+        }
+      }
+    },
+    "and %lld more in the dashboard": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "und %lld weitere im Dashboard"
+          }
+        }
+      }
+    },
+    "just now": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "gerade eben"
+          }
+        }
+      }
+    },
+    "macOS blocked the unencrypted connection. Use HTTPS if the server supports it.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS hat die unverschlüsselte Verbindung blockiert. Verwende HTTPS, wenn der Server es unterstützt."
+          }
+        }
+      }
+    },
+    "macOS does not allow MetriBar to connect to devices on your local network. Turn on MetriBar in System Settings › Privacy & Security › Local Network.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS erlaubt MetriBar nicht, sich mit Geräten in deinem lokalen Netzwerk zu verbinden. Aktiviere MetriBar in den Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

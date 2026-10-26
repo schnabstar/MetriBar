@@ -1,0 +1,60 @@
+{
+  "_levels": {
+    "cpu": {
+      "level": "ok",
+      "prominent": false
+    },
+    "load": {
+      "level": "ok",
+      "prominent": false
+    },
+    "mem": {
+      "level": "ok",
+      "prominent": false
+    },
+    "swap": {
+      "level": "careful",
+      "prominent": false
+    }
+  },
+  "bar_char": "\u25aa",
+  "cpu": 12.5,
+  "cpu_hz": 2400000000,
+  "cpu_hz_current": 1500000000,
+  "cpu_log_core": 4,
+  "cpu_name": "CPU",
+  "cpu_phys_core": 4,
+  "load": 19.6,
+  "max_cpu_display": 4,
+  "mem": 47.5,
+  "percpu": [
+    {
+      "cpu_number": 0,
+      "level": "ok",
+      "total": 10.5
+    },
+    {
+      "cpu_number": 1,
+      "level": "ok",
+      "total": 14.3
+    },
+    {
+      "cpu_number": 2,
+      "level": "ok",
+      "total": 9.4
+    },
+    {
+      "cpu_number": 3,
+      "level": "ok",
+      "total": 15.8
+    }
+  ],
+  "percpu_other": null,
+  "stats_list": [
+    "cpu",
+    "mem",
+    "load"
+  ],
+  "swap": 57.4,
+  "time_since_update": 5.010889290977502
+}
