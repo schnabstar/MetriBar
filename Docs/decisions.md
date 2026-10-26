@@ -8,7 +8,9 @@ A running log of technical decisions and of what we learned from real Glances 5 
 - **Lenient decoding everywhere.** Every model field uses `@Lenient`: a missing key, `null` or an unexpected type becomes `nil` instead of failing the whole payload. Collections drop items that fail to decode. The history bug above was found because a test checked that the decoded series was not empty — tests must assert content, not only that decoding succeeds.
 - **JSON5 decoding** is enabled so that `NaN` and `Infinity` from Python's `json` module do not fail a payload.
 - **ATS:** plain HTTP to `127.0.0.1` and `localhost` works from the sandboxed app with `NSAllowsArbitraryLoads`.
-- **Local network privacy:** the first HTTPS request to a LAN host (`192.168.x.x`) waited for the permission prompt and failed with `URLError.timedOut` after the 20 s resource timeout. The app must show a hint ("waiting for local network permission") on the first connection and retry automatically; `NWPath.UnsatisfiedReason.localNetworkDenied` distinguishes a denial.
+- **Local network privacy (macOS 27.0.1):** the first HTTPS request to a LAN host (`192.168.x.x`) waited for the permission prompt and failed with `URLError.timedOut` after the 20 s resource timeout. Although the user clicked "Allow" in the prompt, the switch in System Settings › Privacy & Security › Local Network was off afterwards, and every request timed out. The network log shows the cause: `path: unsatisfied (Local network prohibited)`. After switching it on, the request succeeded within a second — also with the app outside `/Applications` (Apple Development signature).
+  - Consequences for the app: a timeout to a private address is not enough to explain the problem. The connection test checks the path with Network.framework (`NWPath.UnsatisfiedReason.localNetworkDenied`) and, when access is denied, offers a button that opens `x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_LocalNetwork`. The first connection shows a hint while the system prompt is pending and retries automatically.
+  - Developer note: in zsh, `log` is a shell builtin. Use `/usr/bin/log show …` to read the unified log.
 
 ## 2026-10-26 – Findings from a real Glances 5.0.0b1 server
 
@@ -35,6 +37,5 @@ Captured with `Scripts/capture-fixtures.py` (anonymized fixtures in `Packages/Me
 ## Open spikes
 
 - Menu bar label with a number: does `MenuBarExtra` respect `monospacedDigit()`?
-- Local network privacy prompt on first connection to a LAN host (macOS 26/27).
-- ATS behaviour for HTTP to an IP address, a `.local` name and a qualified LAN host name.
 - Opening settings and the dashboard from the popover: window ordering and focus.
+- ATS for plain HTTP to a `.local` name and a qualified LAN host name (only `127.0.0.1` and `localhost` were testable; the test server has no plain HTTP port).
