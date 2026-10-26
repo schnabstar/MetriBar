@@ -38,6 +38,24 @@ struct LiveServerTests {
         if plugins.contains("gpu") { _ = try await client.get(.gpu) }
     }
 
+    @MainActor
+    @Test func monitorFetchesEveryFeed() async throws {
+        let url = try #require(LiveServer.url)
+        let monitor = ServerMonitor(config: ServerConfig(url: url), client: client)
+        monitor.start()
+        defer { monitor.stop() }
+        let view = Task { await monitor.keepActive(Set(Feed.allCases)) }
+        defer { view.cancel() }
+
+        for _ in 0..<100 where monitor.snapshot.updated.count < Feed.allCases.count {
+            try await Task.sleep(for: .milliseconds(100))
+        }
+        #expect(monitor.state == .connected)
+        #expect(Set(monitor.snapshot.updated.keys) == Set(Feed.allCases))
+        #expect(monitor.feedErrors.isEmpty, "\(monitor.feedErrors)")
+        #expect(monitor.health != .unknown)
+    }
+
     @Test func liveValuesAreFilled() async throws {
         let cpu = try await client.get(.cpu)
         #expect(cpu.value.total != nil)

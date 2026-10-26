@@ -2,6 +2,17 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-10-26 – Polling (ServerMonitor, MonitorCenter)
+
+- **One `ServerMonitor` per server**, owned by `MonitorCenter`, which also computes the menu bar health (worst of all enabled servers).
+- **Feeds** group endpoints: `core` and `containers` run in the background every 10 s; views keep further feeds (`overview`, `storage`, `network`, `sensors`, `processes`, `alerts`, `history`) active with `keepActive(_:)` from a `.task` modifier. While any view is subscribed, all active feeds are fetched every 2 s. Subscriptions are reference-counted, so the popover and the dashboard can overlap.
+- **History is downloaded completely every 30 s** while visible instead of merging increments. The payload (a few hundred KB on a LAN) is cheaper than the merging logic for gaps, restarts and per-item series.
+- **Failures:** backoff doubles from the current interval up to 60 s; `Retry-After` wins if longer. After three failures in a row the values are marked stale and the server counts as offline; single failures keep the last health so the menu bar does not flicker.
+- **401 and unsupported versions halt polling** until the configuration changes or the user refreshes, so a wrong password cannot trigger Glances' failed-login rate limit (10 per minute).
+- **A failing optional feed** (for example sensors) is recorded in `feedErrors` and does not affect the connection state. A failing `core` feed or a 401 from any feed is a connection failure.
+- **Sleep, wake and network changes:** `SystemEventObserver` reports them; the center pauses all monitors before sleep and polls immediately after wake or a network change.
+- **Testing:** the monitor takes a clock; tests use a manual clock and a fake server built from the fixtures, so intervals, backoff and halting are verified exactly without waiting.
+
 ## 2026-10-26 – API layer and first connections from the sandboxed app
 
 - **History of collection plugins is nested per item.** `/api/5/network/history` returns `{"series": {"bytes_recv": {"eth0": [...], "lo": [...]}}}`, also when `item=eth0` is given. Plugins with a single set of fields (cpu, mem, load) return `{"series": {"user": [...]}}`. `History` decodes both shapes (`series` and `itemSeries`).
