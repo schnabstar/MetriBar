@@ -27,7 +27,8 @@ An audit of every view against the macOS 26 Human Interface Guidelines and the m
 - **Integration** (`integration.yml`, nightly and manual) installs Glances 5 from the `develop` branch with pipx on the runner and runs the live tests against it, to notice API changes in the beta early. Containers are not available there; they are covered by the fixtures.
 - Actions are pinned by commit SHA; Dependabot updates them weekly.
 - `main` requires the "Build and test" check; admins can still push directly. Pull requests are squash-merged.
-- GitHub's private vulnerability reporting is not offered for this repository (the API answers 404 and the settings page has no switch), so security reports go to info@schnabel.it.
+- Security reports go through GitHub's private vulnerability reporting or to info@schnabel.it. The feature could not be enabled while the repository was private (the API answered 404 and the settings page had no switch); it is on since the repository became public.
+- Secret scanning with push protection, Dependabot alerts and security updates, and CodeQL default setup (Swift, Actions) are enabled.
 
 ## 2026-10-26 – Dashboard window
 

@@ -2,7 +2,10 @@
 
 ## Reporting a vulnerability
 
-Please do **not** open a public issue for security problems. Send an email to **info@schnabel.it** instead.
+Please do **not** open a public issue for security problems. Report it privately instead:
+
+- Use [GitHub's private vulnerability reporting](https://github.com/schnabstar/MetriBar/security/advisories/new) (Security tab › Report a vulnerability), or
+- send an email to **info@schnabel.it**.
 
 Please include the MetriBar version, your macOS version, steps to reproduce and the impact you see. Leave out real passwords and host names.
 
