@@ -42,3 +42,16 @@ Releases are Developer ID signed, notarized by Apple and published on GitHub. Ve
 
 - The App Sandbox, hardened runtime and the absence of `get-task-allow` are checked by the script.
 - Updates are not installed automatically; users download new versions from the releases page. Homebrew distribution is planned for 1.0.
+
+## Screenshots and social preview
+
+`Docs/images/` holds the README screenshots and the social preview (`social-preview.png`, 1280×640, set by hand under Settings › General › Social preview). Make the screenshots from a Debug build with demo data and an English interface, so no real server data appears:
+
+```sh
+open -n <Debug MetriBar.app> --args -AppleLanguages "(en)" -AppleLocale en_US \
+  -MetriBarDemo 1 -MetriBarOpen dashboard -MetriBarSection overview
+screencapture -o -l <window id> Docs/images/dashboard-overview.png
+```
+
+Capture the window only (`-l`), never the whole screen.
+

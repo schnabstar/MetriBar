@@ -8,6 +8,8 @@ MetriBar is a native macOS menu bar app with a dashboard window for servers runn
 
 No agent to install, no cloud, no account, no telemetry.
 
+![MetriBar dashboard showing CPU, memory, swap and load, trends, network, sensors and storage of a demo server](Docs/images/dashboard-overview.png)
+
 > **Status: preview.** MetriBar uses the Glances 5 REST API (`/api/5`), which is currently in beta. Glances 4 is not supported. Expect changes until Glances 5.0 and MetriBar 1.0 are released.
 
 ## Features
@@ -28,16 +30,29 @@ No agent to install, no cloud, no account, no telemetry.
 - **Helpful diagnostics:** a step-by-step connection test, detection of a missing local network permission, and copyable diagnostic details without secrets.
 - English and German.
 
+![Processes of a demo server, sorted by CPU](Docs/images/dashboard-processes.png)
+
+The screenshots show the built-in demo data, not a real server.
+
 ## Requirements
 
-- macOS 26 or later
+- macOS 26 or later, on Apple silicon or Intel (the app is universal)
 - A server running **Glances 5** as a web server (`glances -s`). See [Setting up Glances 5](Docs/glances-setup.md).
 
 ## Installation
 
-Signed releases will be published on the [releases page](https://github.com/schnabstar/MetriBar/releases). Until then, build MetriBar from source (see below).
+1. Download the disk image (`MetriBar-<version>.dmg`) from the [latest release](https://github.com/schnabstar/MetriBar/releases). While MetriBar is in preview, releases are marked *Pre-release*, so GitHub does not show them as "Latest": open the newest entry in the list.
+2. Open the disk image and drag **MetriBar** to your Applications folder.
+
+The app is signed with a Developer ID and notarized by Apple. Each release also lists a SHA-256 checksum (`MetriBar-<version>.sha256`) if you want to verify the download.
 
 To try MetriBar without a server, choose **Try with Demo Data** after the first launch.
+
+### Updating
+
+MetriBar has no automatic updater and never contacts anything except your servers. To update, download the new version from the [releases page](https://github.com/schnabstar/MetriBar/releases) and replace the app in your Applications folder. Your servers and settings are kept; passwords stay in the Keychain. Watch the repository (*Watch › Custom › Releases*) to be notified about new versions.
+
+You can also [build MetriBar from source](#building-from-source).
 
 ## Documentation
 
