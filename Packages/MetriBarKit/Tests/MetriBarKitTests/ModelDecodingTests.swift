@@ -120,6 +120,25 @@ struct ModelDecodingTests {
         #expect(try sensor(#"{"type":"fan_speed","value":9000,"warning":10,"critical":20}"#).level == .unknown)
     }
 
+    @Test func temperatureWithoutThresholdsFollowsReportedLevel() throws {
+        let sensors = try GlancesClient.decode(ItemCollection<Sensor>.self, from: Data("""
+            {"_key": "label",
+             "_levels": {
+               "cpu_thermal 0": {"value": {"level": "warning"}},
+               "pwmfan 0": {"value": {"level": "critical"}}},
+             "data": [
+               {"label": "cpu_thermal 0", "type": "temperature_core", "unit": "C",
+                "value": 52, "warning": null, "critical": null},
+               {"label": "pwmfan 0", "type": "fan_speed", "unit": "R", "value": 1123}]}
+            """.utf8))
+        #expect(sensors.items[0].level == .ok)
+        #expect(sensors.hottestLevel == .warning)
+
+        var snapshot = ServerSnapshot()
+        snapshot.sensors = sensors
+        #expect(snapshot.worstLevel == .warning)
+    }
+
     @Test func processes() throws {
         let processes = try decode(.topProcesses(25), fixture: "processlist-top")
         #expect(!processes.isEmpty)

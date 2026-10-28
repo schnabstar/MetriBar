@@ -41,7 +41,7 @@ public struct ServerSnapshot: Sendable, Equatable {
     }
 
     private var hottestSensorLevel: Level? {
-        sensors?.items.map(\.level).max()
+        sensors?.hottestLevel
     }
 
     public var hasUnhealthyContainers: Bool {

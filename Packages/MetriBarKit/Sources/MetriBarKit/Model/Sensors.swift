@@ -37,6 +37,21 @@ public struct Sensor: Decodable, Sendable, Equatable {
     }
 }
 
+extension ItemCollection where Item == Sensor {
+    /// Highest level among the temperatures. Besides the hardware thresholds of
+    /// each sensor this honors the level Glances reports in `_levels`, which
+    /// is the only signal for sensors that come without thresholds.
+    public var hottestLevel: Level? {
+        items
+            .filter { $0.kind == .temperature }
+            .map { sensor in
+                let reported = sensor.label.map { level("value", item: $0) } ?? .unknown
+                return max(sensor.level, reported)
+            }
+            .max()
+    }
+}
+
 /// One item of `/api/5/gpu`.
 public struct GPU: Decodable, Sendable, Equatable {
     @Lenient public var gpuId: String?
