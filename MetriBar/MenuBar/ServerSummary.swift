@@ -108,8 +108,7 @@ struct ContainersSection: View {
                     if containers.count > limit {
                         Button("Show All \(containers.count) Containers") {
                             model.dashboardSection = .containers
-                            openWindow(id: SceneID.dashboard)
-                            NSApplication.shared.activate()
+                            openDashboard(using: openWindow)
                         }
                         .buttonStyle(.menuRow)
                         // Text in line with the container names.

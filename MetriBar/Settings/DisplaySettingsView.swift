@@ -10,6 +10,7 @@ struct DisplaySettingsView: View {
                     Text("Status icon only").tag(Preferences.MenuBarValue.none)
                     Text("Status icon and CPU usage").tag(Preferences.MenuBarValue.cpu)
                     Text("Status icon and memory usage").tag(Preferences.MenuBarValue.memory)
+                    Text("Status icon, CPU and memory usage").tag(Preferences.MenuBarValue.cpuAndMemory)
                 }
                 .pickerStyle(.radioGroup)
 
@@ -22,7 +23,7 @@ struct DisplaySettingsView: View {
                 .disabled(model.preferences.menuBarValue == .none)
             } footer: {
                 Text(
-                    "The icon always shows the state of all servers: a warning or error on any server changes its shape."
+                    "The icon always shows the state of all servers: a warning or error on any server, such as high usage, a high temperature or an unhealthy container, changes its shape."
                 )
             }
         }

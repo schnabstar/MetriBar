@@ -108,6 +108,18 @@ struct ModelDecodingTests {
         #expect(sensors.items.allSatisfy { $0.value != nil && $0.unit != nil })
     }
 
+    @Test func temperatureLevelFollowsHardwareThresholds() throws {
+        func sensor(_ json: String) throws -> Sensor {
+            try JSONDecoder().decode(Sensor.self, from: Data(json.utf8))
+        }
+        let base = #""type":"temperature_core","unit":"C""#
+        #expect(try sensor("{\(base),\"value\":50,\"warning\":80,\"critical\":95}").level == .ok)
+        #expect(try sensor("{\(base),\"value\":85,\"warning\":80,\"critical\":95}").level == .warning)
+        #expect(try sensor("{\(base),\"value\":96,\"warning\":80,\"critical\":95}").level == .critical)
+        #expect(try sensor("{\(base),\"value\":96,\"warning\":0,\"critical\":0}").level == .ok)
+        #expect(try sensor(#"{"type":"fan_speed","value":9000,"warning":10,"critical":20}"#).level == .unknown)
+    }
+
     @Test func processes() throws {
         let processes = try decode(.topProcesses(25), fixture: "processlist-top")
         #expect(!processes.isEmpty)

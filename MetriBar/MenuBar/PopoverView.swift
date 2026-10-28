@@ -51,8 +51,7 @@ struct PopoverView: View {
     }
 
     private func showDashboard() {
-        openWindow(id: SceneID.dashboard)
-        NSApplication.shared.activate()
+        openDashboard(using: openWindow)
     }
 
     private func showSettings(editing serverID: UUID? = nil, addingServer: Bool = false) {
@@ -134,4 +133,14 @@ struct ServerHeader: View {
             }
         return [system, glances, updated].compactMap { $0 }.joined(separator: " · ")
     }
+}
+
+/// Opens the dashboard and closes the menu bar window it was opened from,
+/// which would otherwise stay in front of the dashboard.
+@MainActor
+func openDashboard(using openWindow: OpenWindowAction) {
+    let popover = NSApplication.shared.keyWindow
+    openWindow(id: SceneID.dashboard)
+    NSApplication.shared.activate()
+    popover?.close()
 }

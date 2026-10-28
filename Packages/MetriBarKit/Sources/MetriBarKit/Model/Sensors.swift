@@ -26,6 +26,15 @@ public struct Sensor: Decodable, Sendable, Equatable {
         default: .other
         }
     }
+
+    /// Level of a temperature against its hardware thresholds. Other sensor
+    /// kinds, and thresholds Glances reports as 0, do not raise a level.
+    public var level: Level {
+        guard kind == .temperature, let value else { return .unknown }
+        if let critical, critical > 0, value >= critical { return .critical }
+        if let warning, warning > 0, value >= warning { return .warning }
+        return .ok
+    }
 }
 
 /// One item of `/api/5/gpu`.
