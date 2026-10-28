@@ -1,143 +1,159 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "%@ GHz": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ GHz"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ GHz" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ GHz"
           }
         }
       }
     },
-    "%@ ms": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ ms"
+    "%@ ms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ms"
           }
         }
       }
     },
-    "%@ of %@ CPU": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ von %@ CPU"
+    "%@ of %@ · %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ von %@ · %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ of %2$@ CPU"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ of %2$@ · %3$@"
           }
         }
       }
     },
-    "%@ of %@ · %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ von %@ · %@"
+    "%@ of %@ CPU" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ von %@ CPU"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ of %2$@ · %3$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ of %2$@ CPU"
           }
         }
       }
     },
-    "%@ rpm": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ U/min"
+    "%@ rpm" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ U/min"
           }
         }
       }
     },
-    "%@/s": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@/s"
-          }
-        }
-      }
-    },
-    "%@: %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@: %@"
+    "%@: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@: %2$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
           }
         }
       }
     },
-    "%lld %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld %@"
+    "%@/s" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@/s"
+          }
+        }
+      }
+    },
+    "%lld · %lld running · %lld threads" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld · %lld aktiv · %lld Threads"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld %2$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld · %2$lld running · %3$lld threads"
           }
         }
       }
     },
-    "%lld cores": {
-      "localizations": {
-        "de": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Kern"
+    "%lld %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
+    "%lld cores" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Kern"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Kerne"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Kerne"
                 }
               }
             }
           }
         },
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld core"
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld core"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld cores"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld cores"
                 }
               }
             }
@@ -145,2844 +161,2838 @@
         }
       }
     },
-    "%lld of %lld running": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld von %lld laufen"
+    "%lld of %lld running" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld von %lld laufen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld of %2$lld running"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of %2$lld running"
           }
         }
       }
     },
-    "%lld · %lld running · %lld threads": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld · %lld aktiv · %lld Threads"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld · %2$lld running · %3$lld threads"
+    "1 min" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Min."
           }
         }
       }
     },
-    "1 min": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "1 Min."
+    "5 min" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 Min."
           }
         }
       }
     },
-    "15 min": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "15 Min."
-          }
-        }
-      }
-    },
-    "5 min": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 Min."
-          }
-        }
-      }
-    },
-    "5 min %@ · 15 min %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 Min. %@ · 15 Min. %@"
+    "5 min %@ · 15 min %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 Min. %@ · 15 Min. %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "5 min %1$@ · 15 min %2$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "5 min %1$@ · 15 min %2$@"
           }
         }
       }
     },
-    "About MetriBar": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Über MetriBar"
+    "15 min" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 Min."
           }
         }
       }
     },
-    "Active Alerts": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aktive Alerts"
+    "About MetriBar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über MetriBar"
           }
         }
       }
     },
-    "Add Server": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server hinzufügen"
+    "Active Alerts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktive Alerts"
           }
         }
       }
     },
-    "Add Server…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server hinzufügen …"
+    "Add a Glances 5 server to see its details here." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge einen Glances-5-Server hinzu, um hier seine Details zu sehen."
           }
         }
       }
     },
-    "Add a Glances 5 server to see its details here.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Füge einen Glances-5-Server hinzu, um hier seine Details zu sehen."
+    "Add a server running Glances 5 to see its status in the menu bar." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge einen Server mit Glances 5 hinzu, um seinen Status in der Menüleiste zu sehen."
           }
         }
       }
     },
-    "Add a server running Glances 5 to see its status in the menu bar.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Füge einen Server mit Glances 5 hinzu, um seinen Status in der Menüleiste zu sehen."
+    "Add Server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server hinzufügen"
           }
         }
       }
     },
-    "Alerts": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alerts"
+    "Add Server…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server hinzufügen …"
           }
         }
       }
     },
-    "Allow MetriBar in System Settings › General › Login Items.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erlaube MetriBar in den Systemeinstellungen › Allgemein › Anmeldeobjekte."
+    "Alerts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alerts"
           }
         }
       }
     },
-    "Authentication": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anmeldung"
+    "Allow MetriBar in System Settings › General › Login Items." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlaube MetriBar in den Systemeinstellungen › Allgemein › Anmeldeobjekte."
           }
         }
       }
     },
-    "Batteries": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Batterien"
+    "Authentication" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anmeldung"
           }
         }
       }
     },
-    "CPU": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CPU"
+    "Batteries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batterien"
           }
         }
       }
     },
-    "CPU %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CPU %@"
+    "Cancel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
           }
         }
       }
     },
-    "Cancel": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abbrechen"
+    "careful" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "erhöht"
           }
         }
       }
     },
-    "Certificate": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zertifikat"
+    "Certificate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zertifikat"
           }
         }
       }
     },
-    "Certificate changed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zertifikat hat sich geändert"
+    "Certificate changed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zertifikat hat sich geändert"
           }
         }
       }
     },
-    "Certificate not trusted": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zertifikat nicht vertrauenswürdig"
+    "Certificate not trusted" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zertifikat nicht vertrauenswürdig"
           }
         }
       }
     },
-    "Check Certificate": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zertifikat prüfen"
+    "Check Certificate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zertifikat prüfen"
           }
         }
       }
     },
-    "Command Line": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Befehlszeile"
+    "Command Line" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Befehlszeile"
           }
         }
       }
     },
-    "Connecting": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbinden"
+    "Connecting" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbinden"
           }
         }
       }
     },
-    "Connecting…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbinden …"
+    "Connecting…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbinden …"
           }
         }
       }
     },
-    "Connection Test": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbindungstest"
+    "Connection problem" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbindungsproblem"
           }
         }
       }
     },
-    "Connection problem": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbindungsproblem"
+    "Connection refused" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbindung abgelehnt"
           }
         }
       }
     },
-    "Connection refused": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbindung abgelehnt"
+    "Connection Test" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbindungstest"
           }
         }
       }
     },
-    "Containers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Container"
+    "Containers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container"
           }
         }
       }
     },
-    "Containers %lld/%lld running": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Container: %lld/%lld laufen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Containers %1$lld/%2$lld running"
-          }
-        }
-      }
-    },
-    "Containers Plugin Not Active": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Container-Plugin nicht aktiv"
-          }
-        }
-      }
-    },
-    "Containers: available": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Container: verfügbar"
-          }
-        }
-      }
-    },
-    "Containers: plugin not active": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Container: Plugin nicht aktiv"
-          }
-        }
-      }
-    },
-    "Copied": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kopiert"
-          }
-        }
-      }
-    },
-    "Copy Details": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Details kopieren"
-          }
-        }
-      }
-    },
-    "Copy Name": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Namen kopieren"
-          }
-        }
-      }
-    },
-    "Copy PID": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PID kopieren"
-          }
-        }
-      }
-    },
-    "Copy diagnostic details without passwords or host name": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diagnosedetails ohne Passwörter und Hostnamen kopieren"
-          }
-        }
-      }
-    },
-    "Could Not Save": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sichern nicht möglich"
-          }
-        }
-      }
-    },
-    "Critical": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kritisch"
-          }
-        }
-      }
-    },
-    "Device": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gerät"
-          }
-        }
-      }
-    },
-    "Disk": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laufwerk"
-          }
-        }
-      }
-    },
-    "Disk I/O": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laufwerks-I/O"
-          }
-        }
-      }
-    },
-    "Display": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anzeige"
-          }
-        }
-      }
-    },
-    "Encrypted connection (HTTPS)": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verschlüsselte Verbindung (HTTPS)"
-          }
-        }
-      }
-    },
-    "End": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ende"
-          }
-        }
-      }
-    },
-    "Enter user name and password below, not in the URL.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gib Benutzername und Passwort unten ein, nicht in der URL."
-          }
-        }
-      }
-    },
-    "Event": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ereignis"
-          }
-        }
-      }
-    },
-    "Every %lld seconds": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle %lld Sekunden"
-          }
-        }
-      }
-    },
-    "Every second": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jede Sekunde"
-          }
-        }
-      }
-    },
-    "Fans": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lüfter"
-          }
-        }
-      }
-    },
-    "For a self-signed certificate, compare the fingerprint with the one on the server before trusting it, for example: openssl x509 -in cert.pem -noout -fingerprint -sha256": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vergleiche bei einem selbstsignierten Zertifikat den Fingerabdruck mit dem auf dem Server, bevor du ihm vertraust, zum Beispiel: openssl x509 -in cert.pem -noout -fingerprint -sha256"
-          }
-        }
-      }
-    },
-    "General": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Allgemein"
-          }
-        }
-      }
-    },
-    "Glances": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances"
-          }
-        }
-      }
-    },
-    "Glances %@ on %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances %@ auf %@"
+    "Containers %lld/%lld running" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container: %lld/%lld laufen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Glances %1$@ on %2$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Containers %1$lld/%2$lld running"
           }
         }
       }
     },
-    "Glances 4 detected": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances 4 erkannt"
+    "Containers Plugin Not Active" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container-Plugin nicht aktiv"
           }
         }
       }
     },
-    "Glances 5 in your menu bar.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances 5 in deiner Menüleiste."
+    "Containers: available" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container: verfügbar"
           }
         }
       }
     },
-    "Glances blocks further logins for now. MetriBar tries again in %lld seconds.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances sperrt weitere Anmeldeversuche vorübergehend. MetriBar versucht es in %lld Sekunden erneut."
+    "Containers: plugin not active" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container: Plugin nicht aktiv"
           }
         }
       }
     },
-    "Glances blocks further logins for now. MetriBar tries again later.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances sperrt weitere Anmeldeversuche vorübergehend. MetriBar versucht es später erneut."
+    "Copied" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopiert"
           }
         }
       }
     },
-    "Glances is still collecting its first values.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances sammelt noch die ersten Werte."
+    "Copy Details" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details kopieren"
           }
         }
       }
     },
-    "Glances on this server does not publish container data.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances liefert auf diesem Server keine Container-Daten."
+    "Copy diagnostic details without passwords or host name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnosedetails ohne Passwörter und Hostnamen kopieren"
           }
         }
       }
     },
-    "Glances on this server does not publish sensor data.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances liefert auf diesem Server keine Sensordaten."
+    "Copy Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namen kopieren"
           }
         }
       }
     },
-    "Glances only accepts the host names listed in webui_allowed_hosts. Add the name or address you use in MetriBar to that setting.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances akzeptiert nur die Hostnamen aus webui_allowed_hosts. Ergänze dort den Namen oder die Adresse, die du in MetriBar verwendest."
+    "Copy PID" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PID kopieren"
           }
         }
       }
     },
-    "Glances reports no containers. Does it have access to the Docker or Podman socket?": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances meldet keine Container. Hat es Zugriff auf den Docker- oder Podman-Socket?"
+    "Could Not Save" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichern nicht möglich"
           }
         }
       }
     },
-    "Glances reports no sensors on this server.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances meldet auf diesem Server keine Sensoren."
+    "CPU" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU"
           }
         }
       }
     },
-    "History": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verlauf"
+    "CPU %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU %@"
           }
         }
       }
     },
-    "History kept by Glances: %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Von Glances gespeicherter Verlauf: %@"
+    "critical" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kritisch"
           }
         }
       }
     },
-    "Host name": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hostname"
+    "Critical" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kritisch"
           }
         }
       }
     },
-    "Host name rejected": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hostname abgelehnt"
+    "critical %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kritisch %@"
           }
         }
       }
     },
-    "Image": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Image"
+    "Device" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerät"
           }
         }
       }
     },
-    "In the background": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Im Hintergrund"
+    "Disk" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufwerk"
           }
         }
       }
     },
-    "Incident": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vorfall"
+    "Disk I/O" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufwerks-I/O"
           }
         }
       }
     },
-    "Interface": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schnittstelle"
+    "Display" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzeige"
           }
         }
       }
     },
-    "Issued to": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ausgestellt für"
+    "Encrypted connection (HTTPS)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verschlüsselte Verbindung (HTTPS)"
           }
         }
       }
     },
-    "Latency": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Latenz"
+    "End" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ende"
           }
         }
       }
     },
-    "Level": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stufe"
+    "Enter user name and password below, not in the URL." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gib Benutzername und Passwort unten ein, nicht in der URL."
           }
         }
       }
     },
-    "Link": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbindung"
+    "Event" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ereignis"
           }
         }
       }
     },
-    "Load": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last"
+    "Every %lld seconds" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle %lld Sekunden"
           }
         }
       }
     },
-    "Local network access not allowed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zugriff aufs lokale Netzwerk nicht erlaubt"
+    "Every second" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jede Sekunde"
           }
         }
       }
     },
-    "Login": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anmeldung"
+    "Fans" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lüfter"
           }
         }
       }
     },
-    "Login failed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anmeldung fehlgeschlagen"
+    "For a self-signed certificate, compare the fingerprint with the one on the server before trusting it, for example: openssl x509 -in cert.pem -noout -fingerprint -sha256" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vergleiche bei einem selbstsignierten Zertifikat den Fingerabdruck mit dem auf dem Server, bevor du ihm vertraust, zum Beispiel: openssl x509 -in cert.pem -noout -fingerprint -sha256"
           }
         }
       }
     },
-    "May contain passwords or tokens passed as arguments.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kann als Argumente übergebene Passwörter oder Tokens enthalten."
+    "General" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allgemein"
           }
         }
       }
     },
-    "Memory": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Speicher"
+    "Glances" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances"
           }
         }
       }
     },
-    "Memory %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Speicher %@"
-          }
-        }
-      }
-    },
-    "Menu bar shows": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Menüleiste zeigt"
-          }
-        }
-      }
-    },
-    "MetriBar": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar"
-          }
-        }
-      }
-    },
-    "MetriBar Source Code": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar-Quellcode"
-          }
-        }
-      }
-    },
-    "MetriBar collects no data and has no telemetry.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar erhebt keine Daten und hat keine Telemetrie."
-          }
-        }
-      }
-    },
-    "MetriBar forgets the server and deletes its saved password.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar vergisst den Server und löscht sein gespeichertes Passwort."
-          }
-        }
-      }
-    },
-    "MetriBar is not affiliated with the Glances project.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar steht in keiner Verbindung zum Glances-Projekt."
-          }
-        }
-      }
-    },
-    "MetriBar only asks the servers you add. It collects no data and sends nothing anywhere else.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar fragt nur die Server ab, die du hinzufügst. Es erhebt keine Daten und sendet nichts an andere Stellen."
-          }
-        }
-      }
-    },
-    "MetriBar requires Glances 5. Update Glances on the server.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar benötigt Glances 5. Aktualisiere Glances auf dem Server."
-          }
-        }
-      }
-    },
-    "MetriBar, %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar, %@"
-          }
-        }
-      }
-    },
-    "Monitor this server": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diesen Server überwachen"
-          }
-        }
-      }
-    },
-    "Mount Point": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einhängepunkt"
-          }
-        }
-      }
-    },
-    "Name": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name"
-          }
-        }
-      }
-    },
-    "Name or image": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name oder Image"
-          }
-        }
-      }
-    },
-    "Name or user": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name oder Benutzer"
-          }
-        }
-      }
-    },
-    "Network": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Netzwerk"
-          }
-        }
-      }
-    },
-    "Network %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Netzwerk %@"
-          }
-        }
-      }
-    },
-    "New Server": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neuer Server"
-          }
-        }
-      }
-    },
-    "Nice": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nice"
-          }
-        }
-      }
-    },
-    "No Alerts": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Alerts"
-          }
-        }
-      }
-    },
-    "No Containers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Container"
-          }
-        }
-      }
-    },
-    "No Process Selected": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kein Prozess ausgewählt"
-          }
-        }
-      }
-    },
-    "No Sensors": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Sensoren"
-          }
-        }
-      }
-    },
-    "No Server Selected": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kein Server ausgewählt"
-          }
-        }
-      }
-    },
-    "No Servers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Server"
-          }
-        }
-      }
-    },
-    "No active alerts": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine aktiven Alerts"
-          }
-        }
-      }
-    },
-    "No containers found. Does Glances have access to the Docker socket?": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Container gefunden. Hat Glances Zugriff auf den Docker-Socket?"
-          }
-        }
-      }
-    },
-    "No file systems reported.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Dateisysteme gemeldet."
-          }
-        }
-      }
-    },
-    "No incidents.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Vorfälle."
-          }
-        }
-      }
-    },
-    "No network connection": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Netzwerkverbindung"
-          }
-        }
-      }
-    },
-    "No response": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Antwort"
-          }
-        }
-      }
-    },
-    "No sensors reported.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Sensoren gemeldet."
-          }
-        }
-      }
-    },
-    "No value has crossed a Glances threshold recently.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zuletzt hat kein Wert einen Glances-Schwellwert überschritten."
-          }
-        }
-      }
-    },
-    "Not a Glances server": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kein Glances-Server"
-          }
-        }
-      }
-    },
-    "Not monitored": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nicht überwacht"
-          }
-        }
-      }
-    },
-    "Not trusted by macOS": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Für macOS nicht vertrauenswürdig"
-          }
-        }
-      }
-    },
-    "Nothing answers on this port. Is Glances running as a web server (glances -s)? Glances 5 only listens on 127.0.0.1 by default: start it with -B 0.0.0.0 or set bind_address.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auf diesem Port antwortet nichts. Läuft Glances als Webserver (glances -s)? Glances 5 lauscht standardmäßig nur auf 127.0.0.1: Starte es mit -B 0.0.0.0 oder setze bind_address."
-          }
-        }
-      }
-    },
-    "OK": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
-          }
-        }
-      }
-    },
-    "Offline": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Offline"
-          }
-        }
-      }
-    },
-    "Open Dashboard": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dashboard öffnen"
-          }
-        }
-      }
-    },
-    "Open Glances Web UI": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Glances-Weboberfläche öffnen"
-          }
-        }
-      }
-    },
-    "Open MetriBar at login": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar bei der Anmeldung öffnen"
-          }
-        }
-      }
-    },
-    "Open Privacy Settings": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Datenschutzeinstellungen öffnen"
-          }
-        }
-      }
-    },
-    "Open System Settings…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Systemeinstellungen öffnen …"
-          }
-        }
-      }
-    },
-    "Operating system": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Betriebssystem"
-          }
-        }
-      }
-    },
-    "Other Sensors": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weitere Sensoren"
-          }
-        }
-      }
-    },
-    "Overview": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Übersicht"
-          }
-        }
-      }
-    },
-    "PID": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PID"
-          }
-        }
-      }
-    },
-    "Password": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passwort"
-          }
-        }
-      }
-    },
-    "Ports": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ports"
-          }
-        }
-      }
-    },
-    "Previous Level": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vorherige Stufe"
-          }
-        }
-      }
-    },
-    "Process Details": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prozessdetails"
-          }
-        }
-      }
-    },
-    "Processes": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prozesse"
-          }
-        }
-      }
-    },
-    "Processor": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prozessor"
-          }
-        }
-      }
-    },
-    "Quit MetriBar": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "MetriBar beenden"
-          }
-        }
-      }
-    },
-    "Read": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lesen"
-          }
-        }
-      }
-    },
-    "Read IOPS": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lese-IOPS"
-          }
-        }
-      }
-    },
-    "Received": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Empfangen"
-          }
-        }
-      }
-    },
-    "Refresh": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aktualisieren"
-          }
-        }
-      }
-    },
-    "Refresh now": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jetzt aktualisieren"
-          }
-        }
-      }
-    },
-    "Remove": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Entfernen"
-          }
-        }
-      }
-    },
-    "Remove Server": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server entfernen"
-          }
-        }
-      }
-    },
-    "Remove Server…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server entfernen …"
-          }
-        }
-      }
-    },
-    "Remove “%@”?": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "„%@“ entfernen?"
-          }
-        }
-      }
-    },
-    "Report a Problem": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Problem melden"
-          }
-        }
-      }
-    },
-    "Required": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erforderlich"
-          }
-        }
-      }
-    },
-    "Resident": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Resident"
-          }
-        }
-      }
-    },
-    "Retrying…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neuer Versuch …"
-          }
-        }
-      }
-    },
-    "Revert": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zurücksetzen"
-          }
-        }
-      }
-    },
-    "Running Only": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nur laufende"
-          }
-        }
-      }
-    },
-    "SHA-256 fingerprint": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SHA-256-Fingerabdruck"
-          }
-        }
-      }
-    },
-    "Save": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sichern"
-          }
-        }
-      }
-    },
-    "Saved in Keychain": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Im Schlüsselbund gesichert"
-          }
-        }
-      }
-    },
-    "Secure connection failed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sichere Verbindung fehlgeschlagen"
-          }
-        }
-      }
-    },
-    "Select a process to see its details.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wähle einen Prozess aus, um seine Details zu sehen."
-          }
-        }
-      }
-    },
-    "Select a server or add one with +.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wähle einen Server aus oder füge mit + einen hinzu."
-          }
-        }
-      }
-    },
-    "Sensors": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sensoren"
-          }
-        }
-      }
-    },
-    "Sensors Plugin Not Active": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sensoren-Plugin nicht aktiv"
-          }
-        }
-      }
-    },
-    "Sensors: available": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sensoren: verfügbar"
-          }
-        }
-      }
-    },
-    "Sensors: not available": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sensoren: nicht verfügbar"
-          }
-        }
-      }
-    },
-    "Sent": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesendet"
-          }
-        }
-      }
-    },
-    "Series": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reihe"
-          }
-        }
-      }
-    },
-    "Server": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server"
-          }
-        }
-      }
-    },
-    "Server Settings…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Servereinstellungen …"
-          }
-        }
-      }
-    },
-    "Server error": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Serverfehler"
-          }
-        }
-      }
-    },
-    "Server not found": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server nicht gefunden"
-          }
-        }
-      }
-    },
-    "Server reachable and running Glances 5": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server erreichbar, Glances 5 läuft"
-          }
-        }
-      }
-    },
-    "Server requires a password": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server verlangt ein Passwort"
-          }
-        }
-      }
-    },
-    "Server selected in the menu": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Im Menü ausgewählter Server"
-          }
-        }
-      }
-    },
-    "Servers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server"
-          }
-        }
-      }
-    },
-    "Settings…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einstellungen …"
-          }
-        }
-      }
-    },
-    "Show %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ anzeigen"
-          }
-        }
-      }
-    },
-    "Show All %lld Containers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle %lld Container anzeigen"
-          }
-        }
-      }
-    },
-    "Show Command Line": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Befehlszeile anzeigen"
-          }
-        }
-      }
-    },
-    "Show Details": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Details anzeigen"
-          }
-        }
-      }
-    },
-    "Show only running containers": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nur laufende Container anzeigen"
-          }
-        }
-      }
-    },
-    "Show or hide the details of the selected process": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Details des ausgewählten Prozesses ein- oder ausblenden"
-          }
-        }
-      }
-    },
-    "Showing values from %@.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Angezeigte Werte: %@."
-          }
-        }
-      }
-    },
-    "Since %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seit %@"
-          }
-        }
-      }
-    },
-    "Size": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Größe"
-          }
-        }
-      }
-    },
-    "Something answers at this URL, but it is not Glances 5. Check the address and port; Glances uses port 61208 by default.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unter dieser URL antwortet etwas, aber nicht Glances 5. Prüfe Adresse und Port; Glances verwendet standardmäßig Port 61208."
-          }
-        }
-      }
-    },
-    "Source Code": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quellcode"
-          }
-        }
-      }
-    },
-    "Start": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beginn"
-          }
-        }
-      }
-    },
-    "Status": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Status"
-          }
-        }
-      }
-    },
-    "Status icon and CPU usage": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statussymbol und CPU-Auslastung"
-          }
-        }
-      }
-    },
-    "Status icon and memory usage": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Statussymbol und Speicherauslastung"
-          }
-        }
-      }
-    },
-    "Status icon only": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nur Statussymbol"
-          }
-        }
-      }
-    },
-    "Stop Trusting": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nicht mehr vertrauen"
-          }
-        }
-      }
-    },
-    "Storage": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Speicherplatz"
-          }
-        }
-      }
-    },
-    "Swap": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Swap"
-          }
-        }
-      }
-    },
-    "Switch server": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Server wechseln"
-          }
-        }
-      }
-    },
-    "System": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "System"
-          }
-        }
-      }
-    },
-    "Temperature": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Temperatur"
-          }
-        }
-      }
-    },
-    "Temperatures": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Temperaturen"
-          }
-        }
-      }
-    },
-    "Test Connection": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbindung testen"
-          }
-        }
-      }
-    },
-    "The Keychain reported error %lld.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Schlüsselbund meldet den Fehler %lld."
-          }
-        }
-      }
-    },
-    "The URL is not valid.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die URL ist ungültig."
-          }
-        }
-      }
-    },
-    "The URL needs a host name or IP address.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die URL braucht einen Hostnamen oder eine IP-Adresse."
-          }
-        }
-      }
-    },
-    "The address of Glances 5 running as a web server (glances -s), including the port.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Adresse von Glances 5 im Webserver-Modus (glances -s), einschließlich Port."
-          }
-        }
-      }
-    },
-    "The answer could not be read. Glances 5 is still in beta; please report this together with the diagnostic details.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Antwort konnte nicht gelesen werden. Glances 5 ist noch eine Beta – bitte melde das zusammen mit den Diagnosedetails."
-          }
-        }
-      }
-    },
-    "The certificate is self-signed, expired or issued for another name. You can check it and trust it in the server settings.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Zertifikat ist selbstsigniert, abgelaufen oder für einen anderen Namen ausgestellt. Du kannst es in den Servereinstellungen prüfen und ihm vertrauen."
-          }
-        }
-      }
-    },
-    "The containers plugin is not active on this server.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Container-Plugin ist auf diesem Server nicht aktiv."
-          }
-        }
-      }
-    },
-    "The encrypted connection could not be established. Does the server use HTTPS on this port? For plain HTTP, start the URL with http://.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die verschlüsselte Verbindung kam nicht zustande. Verwendet der Server auf diesem Port HTTPS? Für unverschlüsseltes HTTP beginne die URL mit http://."
-          }
-        }
-      }
-    },
-    "The host name could not be resolved. Check the URL and, if you use one, the VPN connection.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Hostname konnte nicht aufgelöst werden. Prüfe die URL und gegebenenfalls die VPN-Verbindung."
-          }
-        }
-      }
-    },
-    "The icon always shows the state of all servers: a warning or error on any server changes its shape.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Symbol zeigt immer den Zustand aller Server: Eine Warnung oder ein Fehler auf einem Server ändert seine Form."
-          }
-        }
-      }
-    },
-    "The password is sent unencrypted and can be read by others on the network. Use HTTPS, for example with a reverse proxy.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Passwort wird unverschlüsselt übertragen und kann im Netzwerk mitgelesen werden. Verwende HTTPS, zum Beispiel über einen Reverse Proxy."
-          }
-        }
-      }
-    },
-    "The saved password could not be read.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das gespeicherte Passwort konnte nicht gelesen werden."
-          }
-        }
-      }
-    },
-    "The server answered with HTTP status %lld.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Server antwortete mit HTTP-Status %lld."
-          }
-        }
-      }
-    },
-    "The server did not answer in time. Check that it is running and reachable from this Mac.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Server hat nicht rechtzeitig geantwortet. Prüfe, ob er läuft und von diesem Mac aus erreichbar ist."
-          }
-        }
-      }
-    },
-    "The server presented a different certificate than the one you trusted. If you renewed it, trust the new certificate in the server settings. Otherwise someone may be intercepting the connection.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Server zeigt ein anderes Zertifikat als das, dem du vertraut hast. Wenn du es erneuert hast, vertraue dem neuen Zertifikat in den Servereinstellungen. Andernfalls könnte jemand die Verbindung abfangen."
-          }
-        }
-      }
-    },
-    "The server rejected the user name or password. MetriBar stops trying until you change them, so you are not locked out.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Server hat Benutzername oder Passwort abgelehnt. MetriBar versucht es erst wieder, wenn du sie änderst, damit du nicht gesperrt wirst."
-          }
-        }
-      }
-    },
-    "The server runs Glances %@. This version of MetriBar supports Glances 5.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auf dem Server läuft Glances %@. Diese Version von MetriBar unterstützt Glances 5."
-          }
-        }
-      }
-    },
-    "This Mac is not connected to a network.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dieser Mac ist mit keinem Netzwerk verbunden."
-          }
-        }
-      }
-    },
-    "This build of MetriBar cannot use the Keychain. See the build instructions in the README.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dieser Build von MetriBar kann den Schlüsselbund nicht verwenden. Siehe die Bauanleitung im README."
-          }
-        }
-      }
-    },
-    "This is not a valid URL.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das ist keine gültige URL."
-          }
-        }
-      }
-    },
-    "This server requires a password. Add the user name and password in the server settings.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dieser Server verlangt ein Passwort. Trage Benutzername und Passwort in den Servereinstellungen ein."
-          }
-        }
-      }
-    },
-    "Threads": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Threads"
-          }
-        }
-      }
-    },
-    "Time": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zeit"
-          }
-        }
-      }
-    },
-    "Too many attempts": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zu viele Versuche"
-          }
-        }
-      }
-    },
-    "Top %lld of %lld processes, as sorted by the server. %lld threads.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die ersten %lld von %lld Prozessen in der Sortierung des Servers. %lld Threads."
+    "Glances %@ on %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances %@ auf %@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Top %1$lld of %2$lld processes, as sorted by the server. %3$lld threads."
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Glances %1$@ on %2$@"
           }
         }
       }
     },
-    "Top Processes": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Top-Prozesse"
+    "Glances 4 detected" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances 4 erkannt"
           }
         }
       }
     },
-    "Top processes: %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Top-Prozesse: %@"
+    "Glances 5 in your menu bar." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances 5 in deiner Menüleiste."
           }
         }
       }
     },
-    "Total %@ received · %@ sent": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesamt %@ empfangen · %@ gesendet"
+    "Glances blocks further logins for now. MetriBar tries again in %lld seconds." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances sperrt weitere Anmeldeversuche vorübergehend. MetriBar versucht es in %lld Sekunden erneut."
+          }
+        }
+      }
+    },
+    "Glances blocks further logins for now. MetriBar tries again later." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances sperrt weitere Anmeldeversuche vorübergehend. MetriBar versucht es später erneut."
+          }
+        }
+      }
+    },
+    "Glances is still collecting its first values." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances sammelt noch die ersten Werte."
+          }
+        }
+      }
+    },
+    "Glances on this server does not publish container data." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances liefert auf diesem Server keine Container-Daten."
+          }
+        }
+      }
+    },
+    "Glances on this server does not publish sensor data." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances liefert auf diesem Server keine Sensordaten."
+          }
+        }
+      }
+    },
+    "Glances only accepts the host names listed in webui_allowed_hosts. Add the name or address you use in MetriBar to that setting." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances akzeptiert nur die Hostnamen aus webui_allowed_hosts. Ergänze dort den Namen oder die Adresse, die du in MetriBar verwendest."
+          }
+        }
+      }
+    },
+    "Glances reports no containers. Does it have access to the Docker or Podman socket?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances meldet keine Container. Hat es Zugriff auf den Docker- oder Podman-Socket?"
+          }
+        }
+      }
+    },
+    "Glances reports no sensors on this server." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances meldet auf diesem Server keine Sensoren."
+          }
+        }
+      }
+    },
+    "History" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlauf"
+          }
+        }
+      }
+    },
+    "History kept by Glances: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von Glances gespeicherter Verlauf: %@"
+          }
+        }
+      }
+    },
+    "Host name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hostname"
+          }
+        }
+      }
+    },
+    "Host name rejected" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hostname abgelehnt"
+          }
+        }
+      }
+    },
+    "Image" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
+          }
+        }
+      }
+    },
+    "In the background" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Hintergrund"
+          }
+        }
+      }
+    },
+    "Incident" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorfall"
+          }
+        }
+      }
+    },
+    "Interface" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnittstelle"
+          }
+        }
+      }
+    },
+    "Issued to" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgestellt für"
+          }
+        }
+      }
+    },
+    "just now" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gerade eben"
+          }
+        }
+      }
+    },
+    "last %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "letzte %@"
+          }
+        }
+      }
+    },
+    "Latency" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latenz"
+          }
+        }
+      }
+    },
+    "Level" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stufe"
+          }
+        }
+      }
+    },
+    "Link" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbindung"
+          }
+        }
+      }
+    },
+    "Load" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last"
+          }
+        }
+      }
+    },
+    "Local network access not allowed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zugriff aufs lokale Netzwerk nicht erlaubt"
+          }
+        }
+      }
+    },
+    "Login" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anmeldung"
+          }
+        }
+      }
+    },
+    "Login failed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anmeldung fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "macOS blocked the unencrypted connection. Use HTTPS if the server supports it." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS hat die unverschlüsselte Verbindung blockiert. Verwende HTTPS, wenn der Server es unterstützt."
+          }
+        }
+      }
+    },
+    "macOS does not allow MetriBar to connect to devices on your local network. Turn on MetriBar in System Settings › Privacy & Security › Local Network." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS erlaubt MetriBar nicht, sich mit Geräten in deinem lokalen Netzwerk zu verbinden. Aktiviere MetriBar in den Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk."
+          }
+        }
+      }
+    },
+    "May contain passwords or tokens passed as arguments." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kann als Argumente übergebene Passwörter oder Tokens enthalten."
+          }
+        }
+      }
+    },
+    "Memory" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speicher"
+          }
+        }
+      }
+    },
+    "Memory %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speicher %@"
+          }
+        }
+      }
+    },
+    "Menu bar shows" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menüleiste zeigt"
+          }
+        }
+      }
+    },
+    "MetriBar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar"
+          }
+        }
+      }
+    },
+    "MetriBar collects no data and has no telemetry." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar erhebt keine Daten und hat keine Telemetrie."
+          }
+        }
+      }
+    },
+    "MetriBar forgets the server and deletes its saved password." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar vergisst den Server und löscht sein gespeichertes Passwort."
+          }
+        }
+      }
+    },
+    "MetriBar is not affiliated with the Glances project." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar steht in keiner Verbindung zum Glances-Projekt."
+          }
+        }
+      }
+    },
+    "MetriBar only asks the servers you add. It collects no data and sends nothing anywhere else." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar fragt nur die Server ab, die du hinzufügst. Es erhebt keine Daten und sendet nichts an andere Stellen."
+          }
+        }
+      }
+    },
+    "MetriBar requires Glances 5. Update Glances on the server." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar benötigt Glances 5. Aktualisiere Glances auf dem Server."
+          }
+        }
+      }
+    },
+    "MetriBar Source Code" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar-Quellcode"
+          }
+        }
+      }
+    },
+    "MetriBar, %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar, %@"
+          }
+        }
+      }
+    },
+    "Monitor this server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diesen Server überwachen"
+          }
+        }
+      }
+    },
+    "Mount Point" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einhängepunkt"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "Name or image" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name oder Image"
+          }
+        }
+      }
+    },
+    "Name or user" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name oder Benutzer"
+          }
+        }
+      }
+    },
+    "Network" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerk"
+          }
+        }
+      }
+    },
+    "Network %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerk %@"
+          }
+        }
+      }
+    },
+    "New Server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Server"
+          }
+        }
+      }
+    },
+    "Nice" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nice"
+          }
+        }
+      }
+    },
+    "No active alerts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine aktiven Alerts"
+          }
+        }
+      }
+    },
+    "No Alerts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Alerts"
+          }
+        }
+      }
+    },
+    "No Containers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Container"
+          }
+        }
+      }
+    },
+    "No containers found. Does Glances have access to the Docker socket?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Container gefunden. Hat Glances Zugriff auf den Docker-Socket?"
+          }
+        }
+      }
+    },
+    "No file systems reported." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Dateisysteme gemeldet."
+          }
+        }
+      }
+    },
+    "No incidents." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Vorfälle."
+          }
+        }
+      }
+    },
+    "No network connection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Netzwerkverbindung"
+          }
+        }
+      }
+    },
+    "No Process Selected" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Prozess ausgewählt"
+          }
+        }
+      }
+    },
+    "No response" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Antwort"
+          }
+        }
+      }
+    },
+    "No Sensors" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Sensoren"
+          }
+        }
+      }
+    },
+    "No sensors reported." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Sensoren gemeldet."
+          }
+        }
+      }
+    },
+    "No Server Selected" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Server ausgewählt"
+          }
+        }
+      }
+    },
+    "No Servers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Server"
+          }
+        }
+      }
+    },
+    "No value has crossed a Glances threshold recently." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuletzt hat kein Wert einen Glances-Schwellwert überschritten."
+          }
+        }
+      }
+    },
+    "Not a Glances server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Glances-Server"
+          }
+        }
+      }
+    },
+    "Not monitored" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht überwacht"
+          }
+        }
+      }
+    },
+    "Not trusted by macOS" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für macOS nicht vertrauenswürdig"
+          }
+        }
+      }
+    },
+    "Nothing answers on this port. Is Glances running as a web server (glances -s)? Glances 5 only listens on 127.0.0.1 by default: start it with -B 0.0.0.0 or set bind_address." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf diesem Port antwortet nichts. Läuft Glances als Webserver (glances -s)? Glances 5 lauscht standardmäßig nur auf 127.0.0.1: Starte es mit -B 0.0.0.0 oder setze bind_address."
+          }
+        }
+      }
+    },
+    "Offline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offline"
+          }
+        }
+      }
+    },
+    "ok" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ok"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "ongoing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "andauernd"
+          }
+        }
+      }
+    },
+    "Open Dashboard" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dashboard öffnen"
+          }
+        }
+      }
+    },
+    "Open Glances Web UI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Glances-Weboberfläche öffnen"
+          }
+        }
+      }
+    },
+    "Open MetriBar at login" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar bei der Anmeldung öffnen"
+          }
+        }
+      }
+    },
+    "Open Privacy Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzeinstellungen öffnen"
+          }
+        }
+      }
+    },
+    "Open System Settings…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systemeinstellungen öffnen …"
+          }
+        }
+      }
+    },
+    "Operating system" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Betriebssystem"
+          }
+        }
+      }
+    },
+    "Other Sensors" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weitere Sensoren"
+          }
+        }
+      }
+    },
+    "Overview" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersicht"
+          }
+        }
+      }
+    },
+    "Password" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passwort"
+          }
+        }
+      }
+    },
+    "PID" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PID"
+          }
+        }
+      }
+    },
+    "Ports" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ports"
+          }
+        }
+      }
+    },
+    "Previous Level" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorherige Stufe"
+          }
+        }
+      }
+    },
+    "Process Details" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozessdetails"
+          }
+        }
+      }
+    },
+    "Processes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozesse"
+          }
+        }
+      }
+    },
+    "Processor" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prozessor"
+          }
+        }
+      }
+    },
+    "Quit MetriBar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar beenden"
+          }
+        }
+      }
+    },
+    "RAM %@" : {
+
+    },
+    "Read" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lesen"
+          }
+        }
+      }
+    },
+    "Read IOPS" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lese-IOPS"
+          }
+        }
+      }
+    },
+    "Received" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empfangen"
+          }
+        }
+      }
+    },
+    "Refresh" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisieren"
+          }
+        }
+      }
+    },
+    "Refresh now" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt aktualisieren"
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entfernen"
+          }
+        }
+      }
+    },
+    "Remove “%@”?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "„%@“ entfernen?"
+          }
+        }
+      }
+    },
+    "Remove Server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server entfernen"
+          }
+        }
+      }
+    },
+    "Remove Server…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server entfernen …"
+          }
+        }
+      }
+    },
+    "Report a Problem" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problem melden"
+          }
+        }
+      }
+    },
+    "Required" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erforderlich"
+          }
+        }
+      }
+    },
+    "Resident" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resident"
+          }
+        }
+      }
+    },
+    "Retrying…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Versuch …"
+          }
+        }
+      }
+    },
+    "Revert" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen"
+          }
+        }
+      }
+    },
+    "running" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "laufen"
+          }
+        }
+      }
+    },
+    "Running Only" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur laufende"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichern"
+          }
+        }
+      }
+    },
+    "Saved in Keychain" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Schlüsselbund gesichert"
+          }
+        }
+      }
+    },
+    "Secure connection failed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sichere Verbindung fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "Select a process to see its details." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle einen Prozess aus, um seine Details zu sehen."
+          }
+        }
+      }
+    },
+    "Select a server or add one with +." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle einen Server aus oder füge mit + einen hinzu."
+          }
+        }
+      }
+    },
+    "Sensors" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensoren"
+          }
+        }
+      }
+    },
+    "Sensors Plugin Not Active" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensoren-Plugin nicht aktiv"
+          }
+        }
+      }
+    },
+    "Sensors: available" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensoren: verfügbar"
+          }
+        }
+      }
+    },
+    "Sensors: not available" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensoren: nicht verfügbar"
+          }
+        }
+      }
+    },
+    "Sent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesendet"
+          }
+        }
+      }
+    },
+    "Series" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reihe"
+          }
+        }
+      }
+    },
+    "Server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
+          }
+        }
+      }
+    },
+    "Server error" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serverfehler"
+          }
+        }
+      }
+    },
+    "Server not found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server nicht gefunden"
+          }
+        }
+      }
+    },
+    "Server reachable and running Glances 5" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server erreichbar, Glances 5 läuft"
+          }
+        }
+      }
+    },
+    "Server requires a password" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server verlangt ein Passwort"
+          }
+        }
+      }
+    },
+    "Server selected in the menu" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Menü ausgewählter Server"
+          }
+        }
+      }
+    },
+    "Server Settings…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servereinstellungen …"
+          }
+        }
+      }
+    },
+    "Servers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server"
+          }
+        }
+      }
+    },
+    "Settings…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen …"
+          }
+        }
+      }
+    },
+    "SHA-256 fingerprint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SHA-256-Fingerabdruck"
+          }
+        }
+      }
+    },
+    "Show %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ anzeigen"
+          }
+        }
+      }
+    },
+    "Show All %lld Containers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle %lld Container anzeigen"
+          }
+        }
+      }
+    },
+    "Show Command Line" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Befehlszeile anzeigen"
+          }
+        }
+      }
+    },
+    "Show Details" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details anzeigen"
+          }
+        }
+      }
+    },
+    "Show only running containers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur laufende Container anzeigen"
+          }
+        }
+      }
+    },
+    "Show or hide the details of the selected process" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details des ausgewählten Prozesses ein- oder ausblenden"
+          }
+        }
+      }
+    },
+    "Showing values from %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angezeigte Werte: %@."
+          }
+        }
+      }
+    },
+    "Since %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seit %@"
+          }
+        }
+      }
+    },
+    "Size" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Größe"
+          }
+        }
+      }
+    },
+    "Something answers at this URL, but it is not Glances 5. Check the address and port; Glances uses port 61208 by default." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unter dieser URL antwortet etwas, aber nicht Glances 5. Prüfe Adresse und Port; Glances verwendet standardmäßig Port 61208."
+          }
+        }
+      }
+    },
+    "Source Code" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quellcode"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginn"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
+    },
+    "Status icon and CPU usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statussymbol und CPU-Auslastung"
+          }
+        }
+      }
+    },
+    "Status icon and memory usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statussymbol und Speicherauslastung"
+          }
+        }
+      }
+    },
+    "Status icon only" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur Statussymbol"
+          }
+        }
+      }
+    },
+    "Status icon, CPU and memory usage" : {
+
+    },
+    "Stop Trusting" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht mehr vertrauen"
+          }
+        }
+      }
+    },
+    "stopped" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gestoppt"
+          }
+        }
+      }
+    },
+    "Storage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speicherplatz"
+          }
+        }
+      }
+    },
+    "Swap" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap"
+          }
+        }
+      }
+    },
+    "Switch server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server wechseln"
+          }
+        }
+      }
+    },
+    "System" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
+    "Temperature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatur"
+          }
+        }
+      }
+    },
+    "Temperatures" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperaturen"
+          }
+        }
+      }
+    },
+    "Test Connection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbindung testen"
+          }
+        }
+      }
+    },
+    "The address of Glances 5 running as a web server (glances -s), including the port." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Adresse von Glances 5 im Webserver-Modus (glances -s), einschließlich Port."
+          }
+        }
+      }
+    },
+    "The answer could not be read. Glances 5 is still in beta; please report this together with the diagnostic details." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Antwort konnte nicht gelesen werden. Glances 5 ist noch eine Beta – bitte melde das zusammen mit den Diagnosedetails."
+          }
+        }
+      }
+    },
+    "The certificate is self-signed, expired or issued for another name. You can check it and trust it in the server settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Zertifikat ist selbstsigniert, abgelaufen oder für einen anderen Namen ausgestellt. Du kannst es in den Servereinstellungen prüfen und ihm vertrauen."
+          }
+        }
+      }
+    },
+    "The containers plugin is not active on this server." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Container-Plugin ist auf diesem Server nicht aktiv."
+          }
+        }
+      }
+    },
+    "The encrypted connection could not be established. Does the server use HTTPS on this port? For plain HTTP, start the URL with http://." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die verschlüsselte Verbindung kam nicht zustande. Verwendet der Server auf diesem Port HTTPS? Für unverschlüsseltes HTTP beginne die URL mit http://."
+          }
+        }
+      }
+    },
+    "The host name could not be resolved. Check the URL and, if you use one, the VPN connection." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Hostname konnte nicht aufgelöst werden. Prüfe die URL und gegebenenfalls die VPN-Verbindung."
+          }
+        }
+      }
+    },
+    "The icon always shows the state of all servers: a warning or error on any server changes its shape." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Symbol zeigt immer den Zustand aller Server: Eine Warnung oder ein Fehler auf einem Server ändert seine Form."
+          }
+        }
+      }
+    },
+    "The icon always shows the state of all servers: a warning or error on any server, such as high usage, a high temperature or an unhealthy container, changes its shape." : {
+
+    },
+    "The Keychain reported error %lld." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Schlüsselbund meldet den Fehler %lld."
+          }
+        }
+      }
+    },
+    "The password is sent unencrypted and can be read by others on the network. Use HTTPS, for example with a reverse proxy." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Passwort wird unverschlüsselt übertragen und kann im Netzwerk mitgelesen werden. Verwende HTTPS, zum Beispiel über einen Reverse Proxy."
+          }
+        }
+      }
+    },
+    "The saved password could not be read." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das gespeicherte Passwort konnte nicht gelesen werden."
+          }
+        }
+      }
+    },
+    "The server answered with HTTP status %lld." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Server antwortete mit HTTP-Status %lld."
+          }
+        }
+      }
+    },
+    "The server did not answer in time. Check that it is running and reachable from this Mac." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Server hat nicht rechtzeitig geantwortet. Prüfe, ob er läuft und von diesem Mac aus erreichbar ist."
+          }
+        }
+      }
+    },
+    "The server presented a different certificate than the one you trusted. If you renewed it, trust the new certificate in the server settings. Otherwise someone may be intercepting the connection." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Server zeigt ein anderes Zertifikat als das, dem du vertraut hast. Wenn du es erneuert hast, vertraue dem neuen Zertifikat in den Servereinstellungen. Andernfalls könnte jemand die Verbindung abfangen."
+          }
+        }
+      }
+    },
+    "The server rejected the user name or password. MetriBar stops trying until you change them, so you are not locked out." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Server hat Benutzername oder Passwort abgelehnt. MetriBar versucht es erst wieder, wenn du sie änderst, damit du nicht gesperrt wirst."
+          }
+        }
+      }
+    },
+    "The server runs Glances %@. This version of MetriBar supports Glances 5." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf dem Server läuft Glances %@. Diese Version von MetriBar unterstützt Glances 5."
+          }
+        }
+      }
+    },
+    "The URL is not valid." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die URL ist ungültig."
+          }
+        }
+      }
+    },
+    "The URL needs a host name or IP address." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die URL braucht einen Hostnamen oder eine IP-Adresse."
+          }
+        }
+      }
+    },
+    "This build of MetriBar cannot use the Keychain. See the build instructions in the README." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Build von MetriBar kann den Schlüsselbund nicht verwenden. Siehe die Bauanleitung im README."
+          }
+        }
+      }
+    },
+    "This is not a valid URL." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist keine gültige URL."
+          }
+        }
+      }
+    },
+    "This Mac is not connected to a network." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Mac ist mit keinem Netzwerk verbunden."
+          }
+        }
+      }
+    },
+    "This server requires a password. Add the user name and password in the server settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Server verlangt ein Passwort. Trage Benutzername und Passwort in den Servereinstellungen ein."
+          }
+        }
+      }
+    },
+    "Threads" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Threads"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit"
+          }
+        }
+      }
+    },
+    "Too many attempts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu viele Versuche"
+          }
+        }
+      }
+    },
+    "Top %lld of %lld processes, as sorted by the server. %lld threads." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die ersten %lld von %lld Prozessen in der Sortierung des Servers. %lld Threads."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Total %1$@ received · %2$@ sent"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Top %1$lld of %2$lld processes, as sorted by the server. %3$lld threads."
           }
         }
       }
     },
-    "Total Received": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Empfangen gesamt"
+    "Top Processes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top-Prozesse"
           }
         }
       }
     },
-    "Total Sent": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesendet gesamt"
+    "Top processes: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top-Prozesse: %@"
           }
         }
       }
     },
-    "Trend": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verlauf"
-          }
-        }
-      }
-    },
-    "Trust This Certificate": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diesem Zertifikat vertrauen"
-          }
-        }
-      }
-    },
-    "Trusted by macOS": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Für macOS vertrauenswürdig"
-          }
-        }
-      }
-    },
-    "Trusted by you": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Von dir als vertrauenswürdig markiert"
-          }
-        }
-      }
-    },
-    "Trusted certificate": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vertrauenswürdiges Zertifikat"
-          }
-        }
-      }
-    },
-    "Try Again": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erneut versuchen"
-          }
-        }
-      }
-    },
-    "Try with Demo Data": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mit Demo-Daten ausprobieren"
-          }
-        }
-      }
-    },
-    "Type": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Typ"
-          }
-        }
-      }
-    },
-    "URL": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "URL"
-          }
-        }
-      }
-    },
-    "Unencrypted connection": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unverschlüsselte Verbindung"
-          }
-        }
-      }
-    },
-    "Unencrypted connection (local network)": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unverschlüsselte Verbindung (lokales Netzwerk)"
-          }
-        }
-      }
-    },
-    "Unencrypted connection blocked": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unverschlüsselte Verbindung blockiert"
-          }
-        }
-      }
-    },
-    "Unexpected response": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unerwartete Antwort"
-          }
-        }
-      }
-    },
-    "Unsupported Glances version": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nicht unterstützte Glances-Version"
-          }
-        }
-      }
-    },
-    "Up": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Läuft seit"
-          }
-        }
-      }
-    },
-    "Uptime": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laufzeit"
-          }
-        }
-      }
-    },
-    "Usage": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belegung"
-          }
-        }
-      }
-    },
-    "Use http:// or https:// instead of %@://.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verwende http:// oder https:// statt %@://."
-          }
-        }
-      }
-    },
-    "Used": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Belegt"
-          }
-        }
-      }
-    },
-    "User": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Benutzer"
-          }
-        }
-      }
-    },
-    "User %@ · System %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Benutzer %@ · System %@"
+    "Total %@ received · %@ sent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamt %@ empfangen · %@ gesendet"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "User %1$@ · System %2$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Total %1$@ received · %2$@ sent"
           }
         }
       }
     },
-    "User name": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Benutzername"
+    "Total Received" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empfangen gesamt"
           }
         }
       }
     },
-    "Utilization": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auslastung"
+    "Total Sent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesendet gesamt"
           }
         }
       }
     },
-    "Value": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wert"
+    "Trend" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlauf"
           }
         }
       }
     },
-    "Value of": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wert von"
+    "Trust This Certificate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diesem Zertifikat vertrauen"
           }
         }
       }
     },
-    "Values readable": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Werte lesbar"
+    "Trusted by macOS" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für macOS vertrauenswürdig"
           }
         }
       }
     },
-    "Virtual": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Virtuell"
+    "Trusted by you" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von dir als vertrauenswürdig markiert"
           }
         }
       }
     },
-    "Warning": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warnung"
+    "Trusted certificate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vertrauenswürdiges Zertifikat"
           }
         }
       }
     },
-    "Welcome to MetriBar": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Willkommen bei MetriBar"
+    "Try Again" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut versuchen"
           }
         }
       }
     },
-    "While the menu or dashboard is open": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wenn Menü oder Dashboard geöffnet sind"
+    "Try with Demo Data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit Demo-Daten ausprobieren"
           }
         }
       }
     },
-    "Write": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schreiben"
+    "Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ"
           }
         }
       }
     },
-    "Write IOPS": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schreib-IOPS"
+    "Unencrypted connection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unverschlüsselte Verbindung"
           }
         }
       }
     },
-    "careful": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "erhöht"
+    "Unencrypted connection (local network)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unverschlüsselte Verbindung (lokales Netzwerk)"
           }
         }
       }
     },
-    "critical": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kritisch"
+    "Unencrypted connection blocked" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unverschlüsselte Verbindung blockiert"
           }
         }
       }
     },
-    "critical %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kritisch %@"
+    "Unexpected response" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unerwartete Antwort"
           }
         }
       }
     },
-    "just now": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "gerade eben"
+    "unhealthy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unhealthy"
           }
         }
       }
     },
-    "last %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "letzte %@"
+    "unknown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unbekannt"
           }
         }
       }
     },
-    "macOS blocked the unencrypted connection. Use HTTPS if the server supports it.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS hat die unverschlüsselte Verbindung blockiert. Verwende HTTPS, wenn der Server es unterstützt."
+    "unknown end" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ende unbekannt"
           }
         }
       }
     },
-    "macOS does not allow MetriBar to connect to devices on your local network. Turn on MetriBar in System Settings › Privacy & Security › Local Network.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "macOS erlaubt MetriBar nicht, sich mit Geräten in deinem lokalen Netzwerk zu verbinden. Aktiviere MetriBar in den Systemeinstellungen › Datenschutz & Sicherheit › Lokales Netzwerk."
+    "unknown start" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginn unbekannt"
           }
         }
       }
     },
-    "ok": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ok"
+    "Unsupported Glances version" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht unterstützte Glances-Version"
           }
         }
       }
     },
-    "ongoing": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "andauernd"
+    "Up" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Läuft seit"
           }
         }
       }
     },
-    "running": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "laufen"
+    "up %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "läuft seit %@"
           }
         }
       }
     },
-    "stopped": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "gestoppt"
+    "Uptime" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laufzeit"
           }
         }
       }
     },
-    "unhealthy": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "unhealthy"
+    "URL" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
           }
         }
       }
     },
-    "unknown": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "unbekannt"
+    "Usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belegung"
           }
         }
       }
     },
-    "unknown end": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ende unbekannt"
+    "Use http:// or https:// instead of %@://." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwende http:// oder https:// statt %@://."
           }
         }
       }
     },
-    "unknown start": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beginn unbekannt"
+    "Used" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belegt"
           }
         }
       }
     },
-    "up %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "läuft seit %@"
+    "User" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzer"
           }
         }
       }
     },
-    "warning": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warnung"
+    "User %@ · System %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzer %@ · System %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "User %1$@ · System %2$@"
           }
         }
       }
     },
-    "warning %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warnung %@"
+    "User name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzername"
+          }
+        }
+      }
+    },
+    "Utilization" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auslastung"
+          }
+        }
+      }
+    },
+    "Value" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert"
+          }
+        }
+      }
+    },
+    "Value of" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert von"
+          }
+        }
+      }
+    },
+    "Values readable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werte lesbar"
+          }
+        }
+      }
+    },
+    "Virtual" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Virtuell"
+          }
+        }
+      }
+    },
+    "warning" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warnung"
+          }
+        }
+      }
+    },
+    "Warning" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warnung"
+          }
+        }
+      }
+    },
+    "warning %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warnung %@"
+          }
+        }
+      }
+    },
+    "Welcome to MetriBar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Willkommen bei MetriBar"
+          }
+        }
+      }
+    },
+    "While the menu or dashboard is open" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Menü oder Dashboard geöffnet sind"
+          }
+        }
+      }
+    },
+    "Write" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreiben"
+          }
+        }
+      }
+    },
+    "Write IOPS" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreib-IOPS"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

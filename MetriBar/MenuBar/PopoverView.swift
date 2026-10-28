@@ -35,14 +35,14 @@ struct PopoverView: View {
                 .keyboardShortcut("d")
                 .disabled(model.servers.isEmpty)
             if let monitor = model.selectedMonitor, monitor.config.url != DemoServer.url {
-                Button("Open Glances Web UI") { openURL(monitor.config.url) }
+                Button("Open Glances Web UI") { dismissingMenuBarWindow { openURL(monitor.config.url) } }
             }
             Divider()
                 .padding(.horizontal, 8)
                 .padding(.vertical, 5)
             Button("Settings…") { showSettings(editing: model.selectedMonitor?.id) }
                 .keyboardShortcut(",")
-            Button("About MetriBar", action: AboutPanel.show)
+            Button("About MetriBar") { dismissingMenuBarWindow(AboutPanel.show) }
             Button("Quit MetriBar") { NSApplication.shared.terminate(nil) }
                 .keyboardShortcut("q")
         }
@@ -58,8 +58,10 @@ struct PopoverView: View {
         model.settingsTab = .servers
         if let serverID { model.editingServerID = serverID }
         model.isAddingServer = addingServer
-        NSApplication.shared.activate()
-        openSettings()
+        dismissingMenuBarWindow {
+            NSApplication.shared.activate()
+            openSettings()
+        }
     }
 }
 
@@ -135,12 +137,19 @@ struct ServerHeader: View {
     }
 }
 
-/// Opens the dashboard and closes the menu bar window it was opened from,
-/// which would otherwise stay in front of the dashboard.
+/// Runs an action chosen in the menu bar window and closes that window, which
+/// would otherwise stay in front of whatever the action opens.
+@MainActor
+func dismissingMenuBarWindow(_ action: () -> Void) {
+    let popover = NSApplication.shared.keyWindow
+    action()
+    popover?.close()
+}
+
 @MainActor
 func openDashboard(using openWindow: OpenWindowAction) {
-    let popover = NSApplication.shared.keyWindow
-    openWindow(id: SceneID.dashboard)
-    NSApplication.shared.activate()
-    popover?.close()
+    dismissingMenuBarWindow {
+        openWindow(id: SceneID.dashboard)
+        NSApplication.shared.activate()
+    }
 }
