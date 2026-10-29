@@ -20,9 +20,23 @@ struct MenuBarLabel: View {
         guard let monitor = model.menuBarMonitor, monitor.health != .offline else { return nil }
         switch model.preferences.menuBarValue {
         case .none: return nil
-        case .cpu: return monitor.snapshot.cpu.map { Format.percent($0.value.total) }
-        case .memory: return monitor.snapshot.memory.map { Format.percent($0.value.percent) }
+        case .cpu: return cpu(of: monitor)
+        case .memory: return memory(of: monitor)
+        case .cpuAndMemory:
+            let parts = [
+                cpu(of: monitor).map { String(localized: "CPU \($0)") },
+                memory(of: monitor).map { String(localized: "RAM \($0)") },
+            ].compactMap { $0 }
+            return parts.isEmpty ? nil : parts.joined(separator: " · ")
         }
+    }
+
+    private func cpu(of monitor: ServerMonitor) -> String? {
+        monitor.snapshot.cpu.map { Format.percent($0.value.total) }
+    }
+
+    private func memory(of monitor: ServerMonitor) -> String? {
+        monitor.snapshot.memory.map { Format.percent($0.value.percent) }
     }
 
     private var accessibilityText: String {

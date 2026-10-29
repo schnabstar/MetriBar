@@ -4,7 +4,7 @@ import ServiceManagement
 
 struct Preferences: Codable, Equatable {
     enum MenuBarValue: String, Codable, CaseIterable {
-        case none, cpu, memory
+        case none, cpu, memory, cpuAndMemory
     }
 
     var menuBarValue: MenuBarValue = .none

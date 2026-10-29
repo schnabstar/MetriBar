@@ -108,6 +108,40 @@ struct ModelDecodingTests {
         #expect(sensors.items.allSatisfy { $0.value != nil && $0.unit != nil })
     }
 
+    @Test func temperatureLevelFollowsHardwareThresholds() throws {
+        func sensor(_ json: String) throws -> Sensor {
+            try JSONDecoder().decode(Sensor.self, from: Data(json.utf8))
+        }
+        let base = #""type":"temperature_core","unit":"C""#
+        #expect(try sensor("{\(base),\"value\":50,\"warning\":80,\"critical\":95}").level == .ok)
+        #expect(try sensor("{\(base),\"value\":85,\"warning\":80,\"critical\":95}").level == .warning)
+        #expect(try sensor("{\(base),\"value\":96,\"warning\":80,\"critical\":95}").level == .critical)
+        #expect(try sensor("{\(base),\"value\":96,\"warning\":0,\"critical\":0}").level == .ok)
+        #expect(try sensor(#"{"type":"fan_speed","value":9000,"warning":10,"critical":20}"#).level == .unknown)
+    }
+
+    @Test func temperatureWithoutThresholdsFollowsReportedLevel() throws {
+        let sensors = try GlancesClient.decode(
+            ItemCollection<Sensor>.self,
+            from: Data(
+                """
+                {"_key": "label",
+                 "_levels": {
+                   "cpu_thermal 0": {"value": {"level": "warning"}},
+                   "pwmfan 0": {"value": {"level": "critical"}}},
+                 "data": [
+                   {"label": "cpu_thermal 0", "type": "temperature_core", "unit": "C",
+                    "value": 52, "warning": null, "critical": null},
+                   {"label": "pwmfan 0", "type": "fan_speed", "unit": "R", "value": 1123}]}
+                """.utf8))
+        #expect(sensors.items[0].level == .ok)
+        #expect(sensors.hottestLevel == .warning)
+
+        var snapshot = ServerSnapshot()
+        snapshot.sensors = sensors
+        #expect(snapshot.worstLevel == .warning)
+    }
+
     @Test func processes() throws {
         let processes = try decode(.topProcesses(25), fixture: "processlist-top")
         #expect(!processes.isEmpty)

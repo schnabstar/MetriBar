@@ -9,7 +9,7 @@ public enum Feed: Hashable, Sendable, CaseIterable {
     /// fs, diskio, memswap
     case storage
     case network
-    /// sensors and, if present, gpu
+    /// sensors and, if present, gpu; the temperatures count toward the health
     case sensors
     /// processcount and the top processes
     case processes
@@ -19,7 +19,7 @@ public enum Feed: Hashable, Sendable, CaseIterable {
     case history
 
     /// Feeds every monitor fetches, also when no view is visible.
-    public static let background: Set<Feed> = [.core, .containers]
+    public static let background: Set<Feed> = [.core, .containers, .sensors]
 }
 
 public struct PollingSettings: Sendable, Equatable {

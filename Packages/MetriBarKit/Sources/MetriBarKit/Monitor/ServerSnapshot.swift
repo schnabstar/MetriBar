@@ -35,9 +35,13 @@ public struct ServerSnapshot: Sendable, Equatable {
 
     /// Highest threshold level of the values the menu bar watches.
     public var worstLevel: Level {
-        [cpu?.worstLevel, memory?.worstLevel, load?.worstLevel, containers?.worstLevel]
+        [cpu?.worstLevel, memory?.worstLevel, load?.worstLevel, containers?.worstLevel, hottestSensorLevel]
             .compactMap { $0 }
             .max() ?? .unknown
+    }
+
+    private var hottestSensorLevel: Level? {
+        sensors?.hottestLevel
     }
 
     public var hasUnhealthyContainers: Bool {
