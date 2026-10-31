@@ -2,7 +2,7 @@
 # Builds a Developer ID signed and notarized release of MetriBar into dist/.
 # Publishing on GitHub is a separate step, see Docs/release.md.
 #
-# Usage: Scripts/release.sh <version>       for example 0.1.0-preview.1
+# Usage: Scripts/release.sh <version>       for example 0.11.0
 #
 # Requirements: a "Developer ID Application" certificate in the keychain and
 # notarization credentials stored with

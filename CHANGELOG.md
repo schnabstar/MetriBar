@@ -2,9 +2,24 @@
 
 All notable changes to MetriBar are documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/). Versions before 1.0 are previews that require the Glances 5 beta.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/). Versions before 1.0 may still change; they require a Glances 5 server.
 
 ## [Unreleased]
+
+## [0.11.0] - 2026-10-31
+
+First regular release, no longer marked as a preview. Requires a server running Glances 5.
+
+### Added
+
+- The menu bar can show CPU and memory usage side by side.
+- Temperatures above their hardware warning or critical threshold change the status icon like other alerts. The sensors feed is now fetched in the background for this.
+- Sensors without thresholds, such as `cpu_thermal` on a Raspberry Pi, use the level Glances reports.
+
+### Changed
+
+- The menu bar window closes when you open the dashboard, the web UI, settings or About, instead of staying in front.
+- The settings window has the same size for every pane and one sidebar that lists the servers, Display and General, like System Settings.
 
 ## [0.1.0-preview.1] - 2026-10-26
 

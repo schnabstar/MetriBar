@@ -10,7 +10,7 @@ No agent to install, no cloud, no account, no telemetry.
 
 ![MetriBar dashboard showing CPU, memory, swap and load, trends, network, sensors and storage of a demo server](Docs/images/dashboard-overview.png)
 
-> **Status: preview.** MetriBar uses the Glances 5 REST API (`/api/5`), which is currently in beta. Glances 4 is not supported. Expect changes until Glances 5.0 and MetriBar 1.0 are released.
+> **Status:** MetriBar uses the Glances 5 REST API (`/api/5`), which is currently in beta. Glances 4 is not supported. Expect changes until Glances 5.0 and MetriBar 1.0 are released.
 
 ## Features
 
@@ -41,7 +41,7 @@ The screenshots show the built-in demo data, not a real server.
 
 ## Installation
 
-1. Download the disk image (`MetriBar-<version>.dmg`) from the [latest release](https://github.com/schnabstar/MetriBar/releases). While MetriBar is in preview, releases are marked *Pre-release*, so GitHub does not show them as "Latest": open the newest entry in the list.
+1. Download the disk image (`MetriBar-<version>.dmg`) from the [latest release](https://github.com/schnabstar/MetriBar/releases).
 2. Open the disk image and drag **MetriBar** to your Applications folder.
 
 The app is signed with a Developer ID and notarized by Apple. Each release also lists a SHA-256 checksum (`MetriBar-<version>.sha256`) if you want to verify the download.

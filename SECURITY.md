@@ -13,7 +13,7 @@ You can expect an acknowledgement within a week. MetriBar is maintained by one p
 
 ## Supported versions
 
-MetriBar is in preview. Security fixes go into the latest release only.
+MetriBar is not yet at 1.0. Security fixes go into the latest release only.
 
 ## Scope
 
