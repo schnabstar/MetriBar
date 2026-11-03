@@ -11,6 +11,7 @@ struct SettingsSidebar: View {
         case server(UUID)
         case display
         case notifications
+        case thresholds
         case general
     }
 
@@ -35,6 +36,8 @@ struct SettingsSidebar: View {
                     .tag(Item.display)
                 Label("Notifications", systemImage: "bell")
                     .tag(Item.notifications)
+                Label("Thresholds", systemImage: "slider.horizontal.3")
+                    .tag(Item.thresholds)
                 Label("General", systemImage: "gearshape")
                     .tag(Item.general)
             }
@@ -86,6 +89,7 @@ struct SettingsSidebar: View {
                 case .servers: model.editingServerID.map(Item.server)
                 case .display: .display
                 case .notifications: .notifications
+                case .thresholds: .thresholds
                 case .general: .general
                 }
             },
@@ -96,6 +100,7 @@ struct SettingsSidebar: View {
                     model.editingServerID = id
                 case .display: model.settingsTab = .display
                 case .notifications: model.settingsTab = .notifications
+                case .thresholds: model.settingsTab = .thresholds
                 case .general: model.settingsTab = .general
                 case nil: break
                 }

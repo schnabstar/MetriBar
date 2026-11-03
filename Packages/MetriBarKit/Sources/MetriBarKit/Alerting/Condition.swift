@@ -10,8 +10,28 @@ public struct Condition: Sendable, Hashable {
         case container
         case sensor
         case fileSystem
+        /// A rule of the user fired; see `ThresholdRule`.
+        case rule
         /// The server cannot be read.
         case offline
+    }
+
+    /// What a `rule` condition is about, for the text of a notification.
+    public struct RuleDetail: Sendable, Hashable {
+        public var metric: RuleMetric
+        public var comparison: ThresholdRule.Comparison
+        public var limit: Double
+        /// The mount point or sensor the value belongs to, if there are several.
+        public var itemName: String?
+
+        public init(
+            metric: RuleMetric, comparison: ThresholdRule.Comparison, limit: Double, itemName: String? = nil
+        ) {
+            self.metric = metric
+            self.comparison = comparison
+            self.limit = limit
+            self.itemName = itemName
+        }
     }
 
     public var kind: Kind
@@ -21,25 +41,30 @@ public struct Condition: Sendable, Hashable {
     /// Percent for CPU, memory and file systems, degrees for sensors, the
     /// five minute average for the load; `nil` if there is none.
     public var value: Double?
+    /// Only for `rule` conditions.
+    public var rule: RuleDetail?
 
-    public init(_ kind: Kind, item: String? = nil, level: Level, value: Double? = nil) {
+    public init(
+        _ kind: Kind, item: String? = nil, level: Level, value: Double? = nil, rule: RuleDetail? = nil
+    ) {
         self.kind = kind
         self.item = item
         self.level = level
         self.value = value
+        self.rule = rule
     }
 }
 
 extension Condition.Kind {
     /// The feed that delivers the values of this kind; `nil` for `offline`,
-    /// which comes from the connection.
+    /// which comes from the connection, and for `rule`, which depends on the rule.
     public var feed: Feed? {
         switch self {
         case .cpu, .memory, .load: .core
         case .container: .containers
         case .sensor: .sensors
         case .fileSystem: .storage
-        case .offline: nil
+        case .rule, .offline: nil
         }
     }
 }

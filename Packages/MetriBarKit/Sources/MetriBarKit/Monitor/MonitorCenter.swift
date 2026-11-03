@@ -11,6 +11,7 @@ public final class MonitorCenter {
     public private(set) var settings: PollingSettings
     /// Feeds every monitor fetches in the background besides the usual ones.
     public private(set) var extraBackgroundFeeds: Set<Feed> = []
+    public private(set) var rules: [ThresholdRule] = []
 
     @ObservationIgnored private let clock: any Clock<Duration>
     @ObservationIgnored private let makeClient: @MainActor (ServerConfig) -> GlancesClient
@@ -49,6 +50,7 @@ public final class MonitorCenter {
             }
             let monitor = ServerMonitor(config: config, client: makeClient(config), settings: settings, clock: clock)
             monitor.setExtraBackgroundFeeds(extraBackgroundFeeds)
+            monitor.setRules(rules)
             monitor.start()
             return monitor
         }
@@ -68,6 +70,15 @@ public final class MonitorCenter {
         self.settings = settings
         for monitor in monitors {
             monitor.update(settings: settings)
+        }
+    }
+
+    /// Hands the rules to the monitors; each one keeps those for its server.
+    public func setRules(_ rules: [ThresholdRule]) {
+        guard rules != self.rules else { return }
+        self.rules = rules
+        for monitor in monitors {
+            monitor.setRules(rules)
         }
     }
 

@@ -1,12 +1,62 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ %@ · %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %@ · %@"
+          }
+        }
+      }
+    },
+    "%@ above %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ über %@"
+          }
+        }
+      }
+    },
+    "%@ below %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ unter %@"
+          }
+        }
+      }
+    },
+    "%@ for %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ für %@"
+          }
+        }
+      }
+    },
     "%@ GHz" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ GHz"
+          }
+        }
+      }
+    },
+    "%@ MB/s" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ MB/s"
           }
         }
       }
@@ -243,6 +293,16 @@
         }
       }
     },
+    "A disk above 85 %" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Datenträger über 85 %"
+          }
+        }
+      }
+    },
     "A short spike is not reported. The same problem is reported at most every 15 minutes, unless it gets worse." : {
       "localizations" : {
         "de" : {
@@ -259,6 +319,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Über MetriBar"
+          }
+        }
+      }
+    },
+    "Above" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über"
           }
         }
       }
@@ -293,6 +363,16 @@
         }
       }
     },
+    "Add Rule" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel hinzufügen"
+          }
+        }
+      }
+    },
     "Add Server" : {
       "localizations" : {
         "de" : {
@@ -323,6 +403,26 @@
         }
       }
     },
+    "All" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle"
+          }
+        }
+      }
+    },
+    "All servers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Server"
+          }
+        }
+      }
+    },
     "Allow MetriBar in System Settings › General › Login Items." : {
       "localizations" : {
         "de" : {
@@ -349,6 +449,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Batterien"
+          }
+        }
+      }
+    },
+    "Below" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unter"
           }
         }
       }
@@ -709,6 +819,26 @@
         }
       }
     },
+    "CPU above 90 % for 5 minutes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU über 90 % für 5 Minuten"
+          }
+        }
+      }
+    },
+    "CPU usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU-Auslastung"
+          }
+        }
+      }
+    },
     "critical" : {
       "localizations" : {
         "de" : {
@@ -735,6 +865,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "kritisch %@"
+          }
+        }
+      }
+    },
+    "Custom Rule…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigene Regel …"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
+    },
+    "Delete Rule" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel löschen"
           }
         }
       }
@@ -769,6 +929,26 @@
         }
       }
     },
+    "Disk usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenträgerbelegung"
+          }
+        }
+      }
+    },
+    "Disk usage of “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belegung von „%@“"
+          }
+        }
+      }
+    },
     "Disk “%@”" : {
       "localizations" : {
         "de" : {
@@ -795,6 +975,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Laden"
+          }
+        }
+      }
+    },
+    "Duplicate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplizieren"
+          }
+        }
+      }
+    },
+    "Edit…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten …"
+          }
+        }
+      }
+    },
+    "Enabled" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingeschaltet"
           }
         }
       }
@@ -865,6 +1075,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lüfter"
+          }
+        }
+      }
+    },
+    "Fires when" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löst aus, wenn"
           }
         }
       }
@@ -1045,6 +1265,16 @@
         }
       }
     },
+    "Has to last" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muss andauern"
+          }
+        }
+      }
+    },
     "Hidden in the menu bar window" : {
       "localizations" : {
         "de" : {
@@ -1215,6 +1445,16 @@
         }
       }
     },
+    "Limit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grenzwert"
+          }
+        }
+      }
+    },
     "Link" : {
       "localizations" : {
         "de" : {
@@ -1231,6 +1471,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Last"
+          }
+        }
+      }
+    },
+    "Load (5 minutes)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last (5 Minuten)"
           }
         }
       }
@@ -1311,6 +1561,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Speicher %@"
+          }
+        }
+      }
+    },
+    "Memory above 90 % for 5 minutes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speicher über 90 % für 5 Minuten"
+          }
+        }
+      }
+    },
+    "Memory usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speicherauslastung"
           }
         }
       }
@@ -1485,6 +1755,16 @@
         }
       }
     },
+    "Mount point" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einhängepunkt"
+          }
+        }
+      }
+    },
     "Name" : {
       "localizations" : {
         "de" : {
@@ -1531,6 +1811,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Netzwerk %@"
+          }
+        }
+      }
+    },
+    "Network download" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerk-Download"
+          }
+        }
+      }
+    },
+    "Network upload" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Netzwerk-Upload"
+          }
+        }
+      }
+    },
+    "New Rule" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Regel"
           }
         }
       }
@@ -1641,6 +1951,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keine Antwort"
+          }
+        }
+      }
+    },
+    "No Rules" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Regeln"
           }
         }
       }
@@ -2168,6 +2488,36 @@
         }
       }
     },
+    "Rule" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel"
+          }
+        }
+      }
+    },
+    "Rule is on" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regel ist an"
+          }
+        }
+      }
+    },
+    "Rules only change what MetriBar shows and reports; nothing changes on your servers. A rule that fires changes the status icon like a warning from Glances." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regeln ändern nur, was MetriBar anzeigt und meldet; auf deinen Servern ändert sich nichts. Eine Regel, die auslöst, ändert das Statussymbol wie eine Warnung von Glances."
+          }
+        }
+      }
+    },
     "running" : {
       "localizations" : {
         "de" : {
@@ -2244,6 +2594,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Testmitteilung senden"
+          }
+        }
+      }
+    },
+    "Sensor" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensor"
           }
         }
       }
@@ -2394,6 +2754,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server"
+          }
+        }
+      }
+    },
+    "Set your own limits, such as CPU above 90 % for 5 minutes. A rule that fires changes the status icon, and is reported by notifications if they are on." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lege eigene Grenzwerte fest, zum Beispiel CPU über 90 % für 5 Minuten. Eine Regel, die auslöst, ändert das Statussymbol und wird von Mitteilungen gemeldet, wenn diese an sind."
           }
         }
       }
@@ -2631,6 +3001,26 @@
         }
       }
     },
+    "Swap above 50 % for 5 minutes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap über 50 % für 5 Minuten"
+          }
+        }
+      }
+    },
+    "Swap usage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap-Auslastung"
+          }
+        }
+      }
+    },
     "Switch server" : {
       "localizations" : {
         "de" : {
@@ -2657,6 +3047,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Temperatur"
+          }
+        }
+      }
+    },
+    "Temperature above 80 °C for 1 minute" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatur über 80 °C für 1 Minute"
           }
         }
       }
@@ -2771,6 +3171,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Der Schlüsselbund meldet den Fehler %lld."
+          }
+        }
+      }
+    },
+    "The limit has to be between %@ and %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Grenzwert muss zwischen %@ und %@ liegen."
           }
         }
       }
@@ -2921,6 +3331,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Threads"
+          }
+        }
+      }
+    },
+    "Thresholds" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwellenwerte"
           }
         }
       }
@@ -3163,6 +3583,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ende unbekannt"
+          }
+        }
+      }
+    },
+    "Unknown server" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unbekannter Server"
           }
         }
       }

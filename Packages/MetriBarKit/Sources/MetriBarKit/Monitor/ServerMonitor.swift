@@ -23,6 +23,10 @@ public final class ServerMonitor: Identifiable {
     /// in `snapshot` are outdated.
     public private(set) var isStale = false
     public private(set) var consecutiveFailures = 0
+    /// The user's rules for this server, with the hold time applied: `ok`
+    /// while a rule does not fire, its level while it does. They count for
+    /// `health` like the levels Glances reports.
+    public private(set) var ruleConditions: [Condition] = []
 
     @ObservationIgnored private var client: GlancesClient
     @ObservationIgnored private var settings: PollingSettings
@@ -32,6 +36,8 @@ public final class ServerMonitor: Identifiable {
     @ObservationIgnored private var isPaused = false
     @ObservationIgnored private var needsHandshake = true
     @ObservationIgnored private var subscriptions: [Feed: Int] = [:]
+    @ObservationIgnored private var rules: [ThresholdRule] = []
+    @ObservationIgnored private var ruleEvaluator = RuleEvaluator()
     @ObservationIgnored private var backgroundFeeds = Feed.background
     @ObservationIgnored private var historyAge: Duration?
     @ObservationIgnored private var retryAfter: Duration?
@@ -70,7 +76,7 @@ public final class ServerMonitor: Identifiable {
     }
 
     private var dataHealth: ServerHealth {
-        let level = snapshot.worstLevel
+        let level = max(snapshot.worstLevel, ruleConditions.map(\.level).max() ?? .unknown)
         if level >= .critical { return .critical }
         if level >= .warning || snapshot.hasUnhealthyContainers { return .warning }
         return .ok
@@ -145,6 +151,19 @@ public final class ServerMonitor: Identifiable {
         reschedule(pollNow: true)
     }
 
+    /// Sets the rules for this server; rules of other servers are ignored.
+    public func setRules(_ rules: [ThresholdRule]) {
+        let mine = rules.filter { $0.appliesTo(id) }
+        guard mine != self.rules else { return }
+        self.rules = mine
+        refreshRuleConditions()
+    }
+
+    private func refreshRuleConditions(now: Date = .now) {
+        let unavailable = Set(Feed.allCases.filter { feedErrors[$0] != nil || snapshot.updated[$0] == nil })
+        ruleConditions = ruleEvaluator.evaluate(rules: rules, snapshot: snapshot, unavailable: unavailable, now: now)
+    }
+
     /// Fetches `feeds` in the background besides the ones every monitor
     /// fetches, for example the file systems while notifications watch them.
     public func setExtraBackgroundFeeds(_ feeds: Set<Feed>) {
@@ -171,6 +190,8 @@ public final class ServerMonitor: Identifiable {
         needsHandshake = true
         if endpointChanged {
             snapshot = ServerSnapshot()
+            ruleEvaluator = RuleEvaluator()
+            ruleConditions = []
             feedErrors = [:]
             lastSuccess = nil
             isStale = false
@@ -342,6 +363,7 @@ public final class ServerMonitor: Identifiable {
             }
         }
         snapshot = next
+        refreshRuleConditions(now: now)
         consecutiveFailures = 0
         retryAfter = nil
         isStale = false

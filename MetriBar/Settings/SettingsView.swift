@@ -15,6 +15,7 @@ struct SettingsView: View {
             case .servers: ServerSettingsDetail()
             case .display: DisplaySettingsView()
             case .notifications: NotificationSettingsView()
+            case .thresholds: ThresholdSettingsView()
             case .general: GeneralSettingsView()
             }
         }
