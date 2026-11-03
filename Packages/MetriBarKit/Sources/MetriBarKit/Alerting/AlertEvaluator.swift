@@ -65,7 +65,9 @@ public struct ServerObservation: Sendable {
 /// passes `now`. Rules:
 ///
 /// - A condition has to stay at or above the chosen level for the hold
-///   time before it is reported, so a short spike is not.
+///   time before it is reported, so a short spike is not. Conditions of the
+///   user's own rules are the exception: they have their own level and hold
+///   time, and arrive after both were applied.
 /// - The same condition is reported at most once per `cooldown`, so a value
 ///   that hovers around its threshold does not produce a stream of
 ///   notifications.
@@ -121,13 +123,13 @@ public struct AlertEvaluator: Sendable {
             guard settings.notifiesOffline else { return [] }
             if let graceUntil, now < graceUntil { return [] }
             let condition = Condition(.offline, level: .critical)
-            if step(offlineKey, active: .critical, now: now, quiet: quiet) != nil {
+            if step(offlineKey, active: .critical, hold: settings.holdTime, now: now, quiet: quiet) != nil {
                 emit(.offline, condition)
             }
             return notices
         }
 
-        if step(offlineKey, active: .ok, now: now, quiet: quiet) != nil {
+        if step(offlineKey, active: .ok, hold: settings.holdTime, now: now, quiet: quiet) != nil {
             emit(.backOnline, Condition(.offline, level: .ok))
         }
 
@@ -143,8 +145,12 @@ public struct AlertEvaluator: Sendable {
         for condition in observation.conditions where !observation.unavailable.contains(condition.kind) {
             let key = ConditionKey(serverID: observation.serverID, kind: condition.kind, item: condition.item)
             seen.insert(key)
-            let active = condition.level >= settings.threshold.level ? condition.level : .ok
-            switch step(key, active: active, now: now, quiet: quiet) {
+            // A rule the user wrote is reported from the level it was given,
+            // and its hold time has already been applied by `RuleEvaluator`.
+            let isRule = condition.kind == .rule
+            let floor = isRule ? Level.warning : settings.threshold.level
+            let active = condition.level >= floor ? condition.level : .ok
+            switch step(key, active: active, hold: isRule ? 0 : settings.holdTime, now: now, quiet: quiet) {
             case .raised?: emit(.raised, condition)
             case .escalated?: emit(.escalated, condition)
             case .recovered?: if settings.notifiesRecovery { emit(.recovered, condition) }
@@ -184,7 +190,9 @@ public struct AlertEvaluator: Sendable {
 
     /// Moves one condition forward. `active` is its level if that is at or
     /// above the chosen level, otherwise `ok`.
-    private mutating func step(_ key: ConditionKey, active: Level, now: Date, quiet: Bool) -> Step? {
+    private mutating func step(
+        _ key: ConditionKey, active: Level, hold: TimeInterval, now: Date, quiet: Bool
+    ) -> Step? {
         var state = states[key] ?? State()
         defer {
             let cooledDown = state.lastRaised.map { now.timeIntervalSince($0) >= Self.cooldown } ?? true
@@ -216,7 +224,7 @@ public struct AlertEvaluator: Sendable {
             return nil
         }
 
-        guard !quiet, let since = state.since, now.timeIntervalSince(since) >= settings.holdTime else { return nil }
+        guard !quiet, let since = state.since, now.timeIntervalSince(since) >= hold else { return nil }
         if let last = state.lastRaised, now.timeIntervalSince(last) < Self.cooldown { return nil }
         state.notifiedLevel = active
         state.lastRaised = now

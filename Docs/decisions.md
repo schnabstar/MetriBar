@@ -2,6 +2,21 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-11-05 – Custom thresholds
+
+Rules are the user's own limits (`ThresholdRule`: metric, above/below, limit, hold time, warning/critical, one server or all). They only change what MetriBar shows and reports; MetriBar stays read-only towards Glances.
+
+- **One place decides, the monitor.** `ServerMonitor` owns a `RuleEvaluator` and publishes `ruleConditions`; `dataHealth` takes the maximum of Glances' `worstLevel` and the rule levels. So the icon, the dashboard and the notifications agree, and rules work with notifications off. The rule fires after the hold time and ends with a hysteresis (3 points for percent, 2 °C, 0.2 load, 5 % of the limit for MB/s), and both are part of `RuleEvaluator`, a pure struct that takes `now` like `AlertEvaluator`.
+- **Rules bypass the global notification settings.** A rule has its own level and hold time, so `AlertEvaluator` reports a `rule` condition from `warning` up and without a second wait, also when the general setting is "critical only, after 10 minutes". The cooldown (15 min), quiet hours, the per-server switch and the recovery option still apply.
+- **Per value, not per rule.** A disk rule without a mount point and a temperature rule without a sensor apply to every file system or sensor; each has its own timer and state (`RuleEvaluator` keys: rule and item). Network throughput is the sum of all interfaces that are up without loopback, in MB/s (Glances reports bytes per second).
+- **Feeds:** `RuleMetric.Kind.feed` maps a metric to its feed; `ThresholdRule.requiredFeeds` are fetched in the background beyond the usual ones, merged with the storage feed that notifications need (`AppModel.refreshBackgroundFeeds`). Swap comes from the storage feed.
+- **Failed feeds keep the state.** Like for notifications, values of a feed with an error are not used: no timer runs, a firing rule keeps firing, and the start of a pending rule is forgotten, so an old start time cannot fire right after an outage. (A test caught that the pending start was not reset at first.)
+- **An interrupted observation resets the waiting rules (found by the Codex review of the pull request).** A rule counts the time the value stayed beyond the limit, so it needs continuous observations. `RuleEvaluator.suspend()` forgets the start of every rule that is still waiting; `ServerMonitor` calls it when a poll fails (`recordFailure`, where the core feed failing does not set a feed error, so the old time stamp would have stayed "fresh"), on `pause()` (sleep) and on `stop()`. A firing rule keeps firing. `ServerMonitor` takes the wall clock as a parameter (`now`, default `Date()`) so tests can move time without waiting.
+- **State belongs to what is measured, not only to the rule's id (also from the review).** The key of a state is the rule id, the metric, the comparison and the item. Editing a firing CPU rule to memory therefore starts from scratch, with its hold time, instead of inheriting "firing"; the same for above/below and for a changed mount point or sensor. A changed limit or hold time keeps the state. The condition key the alerts see contains the metric kind for the same reason.
+- **Storage:** `RuleStore` (UserDefaults, `{"version": 1, "rules": [...]}`) loads each rule on its own, so a metric from a later version drops only that rule. Decoding is tolerant: only the metric and the limit are required. Deleting a server deletes its rules.
+- **Not done:** rules per container, rule hits as their own table in the alerts section of the dashboard (the status of a firing rule is visible as the health of the server), and a rule on the history of a value ("average over 5 minutes"). The hold time is "the value stayed beyond the limit", not an average.
+- **Checking in the app (DEBUG only):** `-MetriBarFakeRule 1` adds a rule that fires on the demo server.
+
 ## 2026-11-04 – Notifications
 
 Notifications are local (`UNUserNotificationCenter`, no entitlement in the sandbox), off by default, and the permission is requested when the user turns them on, not at launch.

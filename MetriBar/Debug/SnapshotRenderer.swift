@@ -66,7 +66,8 @@
             let defaults = UserDefaults(suiteName: suite)!
             defaults.removePersistentDomain(forName: suite)
             return AppModel(
-                configStore: ConfigStore(defaults: defaults), credentials: InMemoryCredentialStore(),
+                configStore: ConfigStore(defaults: defaults), ruleStore: RuleStore(defaults: defaults),
+                credentials: InMemoryCredentialStore(),
                 defaults: defaults, observeSystemEvents: false,
                 deliversNotifications: deliversNotifications)
         }

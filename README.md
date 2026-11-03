@@ -25,6 +25,7 @@ No agent to install, no cloud, no account, no telemetry. An optional update chec
   - Processes with search, sorting and an inspector; command lines only on request
   - Containers with CPU and memory limits, network, I/O, uptime and ports
   - Glances alerts and incidents
+- **Your own thresholds:** rules such as "CPU above 90 % for 5 minutes" or "a disk above 85 %" for one server or all, for CPU, memory, swap, load, disks, temperatures and network throughput, with a hold time and a hysteresis. A rule that fires changes the status icon like a warning from Glances and is reported by notifications. Rules only change what MetriBar shows; nothing changes on your servers.
 - **Notifications** (off by default): a macOS notification when a value reaches warning or critical, a container becomes unhealthy, or a server cannot be reached, with a hold time against short spikes, quiet hours and a switch per server. They are created on your Mac; nothing is sent anywhere.
 - **Multiple servers**, each polled independently. Only the data that is visible is fetched.
 - **Secure by default:** passwords in the Keychain, TLS validation with optional pinning of self-signed certificates, warnings for passwords over plain HTTP, strictly read-only access.

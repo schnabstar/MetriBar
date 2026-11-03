@@ -35,6 +35,7 @@ nonisolated enum NoticeText {
         case .container: return String(localized: "Container “\(item)”")
         case .sensor: return String(localized: "Temperature of “\(item)”")
         case .fileSystem: return String(localized: "Disk “\(item)”")
+        case .rule: return condition.rule.map(RuleText.condition) ?? String(localized: "Rule")
         case .offline: return String(localized: "Connection")
         }
     }
@@ -52,6 +53,7 @@ nonisolated enum NoticeText {
         case .cpu, .memory, .fileSystem: return Format.percent(condition.value)
         case .sensor: return Format.temperature(condition.value, unit: "C")
         case .load: return Format.load(condition.value)
+        case .rule: return condition.rule.flatMap { RuleText.value(condition.value, unit: $0.metric.kind.unit) }
         case .container, .offline: return nil
         }
     }

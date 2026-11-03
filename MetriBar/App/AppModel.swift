@@ -3,7 +3,7 @@ import MetriBarKit
 import Observation
 
 enum SettingsTab: String, Hashable {
-    case servers, display, notifications, general
+    case servers, display, notifications, thresholds, general
 }
 
 /// How a password changes when a server is saved.
@@ -22,6 +22,7 @@ final class AppModel {
     let alerts: AlertCenter
     let notifier = NotificationService()
     private(set) var servers: [ServerConfig] = []
+    private(set) var rules: [ThresholdRule] = []
     private(set) var preferences: Preferences
 
     /// Server shown in the popover and the dashboard.
@@ -42,6 +43,7 @@ final class AppModel {
     private(set) var dashboardRequest = 0
 
     @ObservationIgnored private let configStore: ConfigStore
+    @ObservationIgnored private let ruleStore: RuleStore
     @ObservationIgnored private let credentials: any CredentialStore
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let events = SystemEventObserver()
@@ -56,6 +58,7 @@ final class AppModel {
 
     init(
         configStore: ConfigStore = ConfigStore(),
+        ruleStore: RuleStore = RuleStore(),
         credentials: any CredentialStore = AppKeychain.store,
         defaults: UserDefaults = .standard,
         observeSystemEvents: Bool = true,
@@ -63,6 +66,7 @@ final class AppModel {
         updateTransport: any HTTPTransport = URLSessionTransport(configuration: .metriBarConnectionTest)
     ) {
         self.configStore = configStore
+        self.ruleStore = ruleStore
         self.credentials = credentials
         self.defaults = defaults
         self.deliversNotifications = deliversNotifications
@@ -81,6 +85,8 @@ final class AppModel {
             monitors: { [center] in center.monitors },
             deliver: { notices in notifier.post(notices) })
         servers = configStore.load()
+        rules = ruleStore.load()
+        center.setRules(rules)
         center.apply(servers)
         if preferences.checksForUpdates { updates.startAutomaticChecks() }
         if observeSystemEvents {
@@ -92,8 +98,8 @@ final class AppModel {
         if deliversNotifications {
             notifier.onOpenServer = { [weak self] id in self?.showAlerts(for: id) }
             notifier.activate()
-            applyNotificationSettings()
         }
+        applyNotificationSettings()
     }
 
     // MARK: - Selection
@@ -123,7 +129,7 @@ final class AppModel {
         if pollingChanged {
             center.update(settings: next.pollingSettings)
         }
-        if next.notifications != previous.notifications, deliversNotifications {
+        if next.notifications != previous.notifications {
             applyNotificationSettings()
         }
         if next.checksForUpdates != previous.checksForUpdates {
@@ -135,12 +141,18 @@ final class AppModel {
         }
     }
 
-    /// Starts or stops the alerts and, while they are on, fetches the file
-    /// systems in the background so a full disk can be noticed.
+    /// Starts or stops the alerts.
     private func applyNotificationSettings() {
-        let settings = preferences.notifications
-        alerts.update(settings: settings)
-        center.setExtraBackgroundFeeds(settings.isEnabled ? [.storage] : [])
+        if deliversNotifications { alerts.update(settings: preferences.notifications) }
+        refreshBackgroundFeeds()
+    }
+
+    /// Fetches what is needed in the background beyond the usual: the file
+    /// systems while notifications watch them, and the feeds of the rules.
+    private func refreshBackgroundFeeds() {
+        var feeds = ThresholdRule.requiredFeeds(rules)
+        if preferences.notifications.isEnabled { feeds.insert(.storage) }
+        center.setExtraBackgroundFeeds(feeds)
     }
 
     /// Turns notifications on or off. Turning them on asks the system for
@@ -208,6 +220,10 @@ final class AppModel {
         if selectedServerID == id { selectedServerID = servers.first?.id }
         if editingServerID == id { editingServerID = nil }
         if preferences.menuBarServerID == id { update { $0.menuBarServerID = nil } }
+        if rules.contains(where: { $0.serverID == id }) {
+            rules.removeAll { $0.serverID == id }
+            persistRules()
+        }
         persist()
     }
 
@@ -222,6 +238,40 @@ final class AppModel {
         guard server(demo.id) == nil else { return }
         try? save(demo, password: .keep)
         selectedServerID = demo.id
+    }
+
+    // MARK: - Rules
+
+    /// Adds a rule or replaces the one with the same `id`.
+    func saveRule(_ rule: ThresholdRule) {
+        if let index = rules.firstIndex(where: { $0.id == rule.id }) {
+            rules[index] = rule
+        } else {
+            rules.append(rule)
+        }
+        persistRules()
+    }
+
+    func removeRule(_ id: UUID) {
+        rules.removeAll { $0.id == id }
+        persistRules()
+    }
+
+    /// A copy right below the original.
+    @discardableResult
+    func duplicateRule(_ id: UUID) -> UUID? {
+        guard let index = rules.firstIndex(where: { $0.id == id }) else { return nil }
+        var copy = rules[index]
+        copy.id = UUID()
+        rules.insert(copy, at: index + 1)
+        persistRules()
+        return copy.id
+    }
+
+    private func persistRules() {
+        ruleStore.save(rules)
+        center.setRules(rules)
+        refreshBackgroundFeeds()
     }
 
     private func persist() {

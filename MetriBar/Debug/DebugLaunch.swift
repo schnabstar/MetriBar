@@ -10,6 +10,7 @@
     /// what they show. `-MetriBarFakeUpdate 1` pretends that a newer release
     /// exists, without contacting GitHub. `-MetriBarFakeNotification 1` sends
     /// a notification about a critical CPU of the demo server.
+    /// `-MetriBarFakeRule 1` adds a rule that fires on the demo server.
     @MainActor
     enum DebugLaunch {
         static func makeModel() -> AppModel? {
@@ -30,6 +31,9 @@
                 }
             }
             if defaults.bool(forKey: "MetriBarFakeUpdate") { model.updates.showFakeUpdate() }
+            if defaults.bool(forKey: "MetriBarFakeRule") {
+                model.saveRule(ThresholdRule(metric: RuleMetric(.cpu), limit: 5, severity: .critical))
+            }
             if let section = defaults.string(forKey: "MetriBarSection").flatMap(DashboardSection.init(rawValue:)) {
                 model.dashboardSection = section
             }
