@@ -7,19 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0036C620F69F4AAEC9ECA338 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3B8084FC218DEF06FC322E /* MetriBarKit */; };
 		0C553FFC03F67D604E0093B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
+		23D9926D4B3CACDAA4BCEDF8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
+		257EE2FB65CB4FAF99BE0F3B /* MetriBarWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4870423BE1403512CC50F7AF /* background.tiff in Resources */ = {isa = PBXBuildFile; fileRef = D2432E3A6B93D2E9D00AFA81 /* background.tiff */; };
+		4E31D93459FF7CE4C8CCBC99 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */; };
 		AA3C4610B18EB22B126B83B6 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD942B09C549DC6133AFAAF /* MetriBarKit */; };
+		CF00226325AFAADF9653C2C0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD22F455EBC04939D7BD854 /* SwiftUI.framework */; };
+		DFF856D878BB0A216E107420 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
 		EEC6F4D166D9CF425E02F93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */; };
+		F452B8EB2C3989D4E8E8AEB6 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
 		F6967DF178011E2DE633E08C /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E0AF446442E7DC7F9F49DF68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F42DFC0B67062DEEAE4F1919 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B33CD967F289A5B3CFB6C4ED;
+			remoteInfo = MetriBarWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5D8DC283E30D4838825AD98B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				257EE2FB65CB4FAF99BE0F3B /* MetriBarWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		2F276BB75589BE620D378C10 /* WidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViews.swift; sourceTree = "<group>"; };
 		334469BA52AA8DC98588D473 /* MetriBarKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetriBarKit; path = Packages/MetriBarKit; sourceTree = SOURCE_ROOT; };
 		5474C28EB4631EF7405B444A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		9DD22F455EBC04939D7BD854 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CB56909A368C86BFDF61D84E /* MetriBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetriBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2432E3A6B93D2E9D00AFA81 /* background.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = background.tiff; sourceTree = "<group>"; };
+		E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MetriBarWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +69,15 @@
 			path = MetriBar;
 			sourceTree = "<group>";
 		};
+		FA24E2FBE99819654F00AA79 /* MetriBarWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = MetriBarWidgets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +86,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA3C4610B18EB22B126B83B6 /* MetriBarKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD08A0C42BBC50F9FCC43531 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0036C620F69F4AAEC9ECA338 /* MetriBarKit in Frameworks */,
+				4E31D93459FF7CE4C8CCBC99 /* WidgetKit.framework in Frameworks */,
+				CF00226325AFAADF9653C2C0 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,14 +110,40 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		1E0FDABBC941999D8CA67A2C /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				2F276BB75589BE620D378C10 /* WidgetViews.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		1F0CBB52982A9C362C570A94 /* DiskImage */ = {
+			isa = PBXGroup;
+			children = (
+				D2432E3A6B93D2E9D00AFA81 /* background.tiff */,
+			);
+			path = DiskImage;
+			sourceTree = "<group>";
+		};
 		3E77A103DD576354990C5F87 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */,
 				2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */,
 				5474C28EB4631EF7405B444A /* Localizable.xcstrings */,
+				1F0CBB52982A9C362C570A94 /* DiskImage */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5414E479D8CFF2423EEB43D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DD22F455EBC04939D7BD854 /* SwiftUI.framework */,
+				2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5D67C99146DC3EE761ED7C78 /* Packages */ = {
@@ -76,17 +158,29 @@
 			isa = PBXGroup;
 			children = (
 				27EB196FA79D519058E4E09E /* MetriBar */,
+				FA24E2FBE99819654F00AA79 /* MetriBarWidgets */,
 				1B447E321AF25CD0A008CC45 /* Config */,
 				5D67C99146DC3EE761ED7C78 /* Packages */,
 				3E77A103DD576354990C5F87 /* Resources */,
+				F0F03F6B7772D5B98E883E43 /* Shared */,
+				5414E479D8CFF2423EEB43D0 /* Frameworks */,
 				FDC89C817D7A9A3069AB35BD /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		F0F03F6B7772D5B98E883E43 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1E0FDABBC941999D8CA67A2C /* Widgets */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		FDC89C817D7A9A3069AB35BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				CB56909A368C86BFDF61D84E /* MetriBar.app */,
+				E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +188,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B33CD967F289A5B3CFB6C4ED /* MetriBarWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B37EF67FF4504981F894CD7 /* Build configuration list for PBXNativeTarget "MetriBarWidgets" */;
+			buildPhases = (
+				EC6DE601C809AE14BDDB2441 /* Sources */,
+				1529D4FC3E882C89D45243E4 /* Resources */,
+				FD08A0C42BBC50F9FCC43531 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FA24E2FBE99819654F00AA79 /* MetriBarWidgets */,
+			);
+			name = MetriBarWidgets;
+			packageProductDependencies = (
+				8C3B8084FC218DEF06FC322E /* MetriBarKit */,
+			);
+			productName = MetriBarWidgets;
+			productReference = E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C9BBD456E20F600A5ADC5F21 /* MetriBar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5E1F4A61A26E363A597FFC0 /* Build configuration list for PBXNativeTarget "MetriBar" */;
@@ -101,10 +218,12 @@
 				213540892DF6FC6B8D31F251 /* Sources */,
 				7E60F96E48234B6730AFD8B1 /* Resources */,
 				74649ADB2BA98FBDC9831B98 /* Frameworks */,
+				5D8DC283E30D4838825AD98B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B7B9C0436825AB39BD20F91E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				27EB196FA79D519058E4E09E /* MetriBar */,
@@ -126,6 +245,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					B33CD967F289A5B3CFB6C4ED = {
+						DevelopmentTeam = MTV73SM3Y8;
+						ProvisioningStyle = Automatic;
+					};
 					C9BBD456E20F600A5ADC5F21 = {
 						DevelopmentTeam = MTV73SM3Y8;
 						ProvisioningStyle = Automatic;
@@ -151,11 +274,20 @@
 			projectRoot = "";
 			targets = (
 				C9BBD456E20F600A5ADC5F21 /* MetriBar */,
+				B33CD967F289A5B3CFB6C4ED /* MetriBarWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1529D4FC3E882C89D45243E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23D9926D4B3CACDAA4BCEDF8 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E60F96E48234B6730AFD8B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +295,7 @@
 				EEC6F4D166D9CF425E02F93C /* Assets.xcassets in Resources */,
 				F6967DF178011E2DE633E08C /* InfoPlist.xcstrings in Resources */,
 				0C553FFC03F67D604E0093B3 /* Localizable.xcstrings in Resources */,
+				4870423BE1403512CC50F7AF /* background.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,10 +306,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F452B8EB2C3989D4E8E8AEB6 /* WidgetViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC6DE601C809AE14BDDB2441 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFF856D878BB0A216E107420 /* WidgetViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B7B9C0436825AB39BD20F91E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B33CD967F289A5B3CFB6C4ED /* MetriBarWidgets */;
+			targetProxy = E0AF446442E7DC7F9F49DF68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		38A241781DE5F1D824256D6D /* Debug */ = {
@@ -312,6 +462,22 @@
 			};
 			name = Release;
 		};
+		7683A55D37043571DB804A0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(METRIBAR_WIDGET_ENTITLEMENTS)";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Config/WidgetsInfo.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID).Widgets";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		AEC6241F76B43D5A6C908794 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
@@ -352,9 +518,34 @@
 			};
 			name = Debug;
 		};
+		E785906054E2BE64AA4A1E39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(METRIBAR_WIDGET_ENTITLEMENTS)";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Config/WidgetsInfo.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID).Widgets";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6B37EF67FF4504981F894CD7 /* Build configuration list for PBXNativeTarget "MetriBarWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E785906054E2BE64AA4A1E39 /* Debug */,
+				7683A55D37043571DB804A0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		89AB5928CBBC959C6670F5C1 /* Build configuration list for PBXProject "MetriBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -383,6 +574,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8C3B8084FC218DEF06FC322E /* MetriBarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetriBarKit;
+		};
 		9CD942B09C549DC6133AFAAF /* MetriBarKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MetriBarKit;

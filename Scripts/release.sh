@@ -42,10 +42,25 @@ app="$build/export/MetriBar.app"
 
 echo "==> Verifying signature"
 codesign --verify --deep --strict --verbose=2 "$app"
-codesign -d --entitlements :- "$app" 2>/dev/null | plutil -p - | grep -q "get-task-allow" && {
-  echo "Release build must not contain get-task-allow" >&2
-  exit 1
-}
+# The app and its widget extension must be sandboxed, run with the hardened
+# runtime and not allow debugging.
+for bundle in "$app" "$app"/Contents/PlugIns/*.appex; do
+  [[ -e "$bundle" ]] || continue
+  name="${bundle:t}"
+  entitlements=$(codesign -d --entitlements :- "$bundle" 2>/dev/null | plutil -p -)
+  if grep -q "get-task-allow" <<<"$entitlements"; then
+    echo "$name must not contain get-task-allow" >&2
+    exit 1
+  fi
+  if ! grep -q '"com.apple.security.app-sandbox" => true' <<<"$entitlements"; then
+    echo "$name is not sandboxed" >&2
+    exit 1
+  fi
+  if ! codesign -dv "$bundle" 2>&1 | grep -q "flags=.*runtime"; then
+    echo "$name does not use the hardened runtime" >&2
+    exit 1
+  fi
+done
 
 echo "==> Notarizing the app"
 ditto -c -k --keepParent "$app" "$build/MetriBar.zip"

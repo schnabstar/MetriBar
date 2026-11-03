@@ -10,3 +10,9 @@ METRIBAR_BUNDLE_ID = com.example.MetriBar
 //
 // METRIBAR_ENTITLEMENTS = Config/MetriBar-FileKeychain.entitlements
 // SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) METRIBAR_FILE_KEYCHAIN
+//
+// The widgets read MetriBar's data from an App Group, which also needs a
+// provisioning profile. Without one, build the widget extension without the
+// App Group; the widgets then show a hint to open MetriBar:
+//
+// METRIBAR_WIDGET_ENTITLEMENTS = Config/MetriBarWidgets-NoGroup.entitlements

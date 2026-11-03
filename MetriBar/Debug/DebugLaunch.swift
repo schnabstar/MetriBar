@@ -10,7 +10,8 @@
     /// what they show. `-MetriBarFakeUpdate 1` pretends that a newer release
     /// exists, without contacting GitHub. `-MetriBarFakeNotification 1` sends
     /// a notification about a critical CPU of the demo server.
-    /// `-MetriBarFakeRule 1` adds a rule that fires on the demo server.
+    /// `-MetriBarFakeWidgets 1` writes the widget data of the demo
+    /// server as if a widget were on the desktop. `-MetriBarFakeRule 1` adds a rule that fires on the demo server.
     /// `-MetriBarMenuBar cpu,memory,networkDown` shows those values in the
     /// menu bar, `-MetriBarMenuBarStyle labels|symbols|valuesOnly` sets the style,
     /// `-MetriBarMenuBarTrend 1` adds the trend line.
@@ -20,7 +21,10 @@
             let defaults = UserDefaults.standard
             guard defaults.bool(forKey: "MetriBarDemo") else { return nil }
             let fakeNotification = defaults.bool(forKey: "MetriBarFakeNotification")
-            let model = SnapshotRenderer.makeModel(suite: "MetriBarDemo", deliversNotifications: fakeNotification)
+            let fakeWidgets = defaults.bool(forKey: "MetriBarFakeWidgets")
+            let model = SnapshotRenderer.makeModel(
+                suite: "MetriBarDemo", deliversNotifications: fakeNotification || fakeWidgets)
+            model.widgets.debugForcesActivity = fakeWidgets
             model.addDemoServer()
             if fakeNotification {
                 let demo = DemoServer.config()

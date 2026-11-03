@@ -2,15 +2,18 @@ import SwiftUI
 
 @main
 struct MetriBarApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @State private var model: AppModel
 
     init() {
         #if DEBUG
             SnapshotRenderer.runIfRequested()
-            _model = State(initialValue: DebugLaunch.makeModel() ?? AppModel())
+            let model = DebugLaunch.makeModel() ?? AppModel()
         #else
-            _model = State(initialValue: AppModel())
+            let model = AppModel()
         #endif
+        _model = State(initialValue: model)
+        AppDelegate.openURL = { [weak model] url in model?.open(url) }
     }
 
     var body: some Scene {

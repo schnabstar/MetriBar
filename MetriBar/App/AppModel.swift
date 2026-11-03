@@ -20,6 +20,7 @@ final class AppModel {
     let center: MonitorCenter
     let updates: UpdateModel
     let alerts: AlertCenter
+    let widgets: WidgetBridge
     let notifier = NotificationService()
     private(set) var servers: [ServerConfig] = []
     private(set) var rules: [ThresholdRule] = []
@@ -87,6 +88,9 @@ final class AppModel {
             settings: deliversNotifications ? preferences.notifications : NotificationSettings(),
             monitors: { [center] in center.monitors },
             deliver: { notices in notifier.post(notices) })
+        widgets = WidgetBridge(
+            directory: deliversNotifications ? WidgetBridge.groupDirectory : nil,
+            monitors: { [center] in center.monitors })
         servers = configStore.load()
         rules = ruleStore.load()
         center.setRules(rules)
@@ -102,6 +106,8 @@ final class AppModel {
             notifier.onOpenServer = { [weak self] id in self?.showAlerts(for: id) }
             notifier.activate()
         }
+        widgets.onActiveChange = { [weak self] _ in self?.refreshBackgroundFeeds() }
+        widgets.start()
         applyNotificationSettings()
         updateTrendSampling()
     }
@@ -187,7 +193,8 @@ final class AppModel {
     /// and of the values in the menu bar.
     private func refreshBackgroundFeeds() {
         var feeds = ThresholdRule.requiredFeeds(rules).union(MenuBarMetric.requiredFeeds(preferences.menuBarItems))
-        if preferences.notifications.isEnabled { feeds.insert(.storage) }
+        // The widgets show the fullest disk.
+        if preferences.notifications.isEnabled || widgets.isActive { feeds.insert(.storage) }
         center.setExtraBackgroundFeeds(feeds)
     }
 
@@ -197,6 +204,21 @@ final class AppModel {
         update { $0.notifications.isEnabled = enabled }
         guard enabled else { return }
         Task { await notifier.requestAuthorization() }
+    }
+
+    /// Opens what a `metribar:` address asks for, which comes from a widget
+    /// or from anywhere else. It only brings up the dashboard.
+    func open(_ url: URL) {
+        switch DeepLink(url: url) {
+        case .dashboard?:
+            dashboardRequest += 1
+        case .server(let id)?:
+            if server(id) != nil { selectedServerID = id }
+            dashboardSection = .overview
+            dashboardRequest += 1
+        case nil:
+            break
+        }
     }
 
     /// Shows the alerts of a server in the dashboard, for example after a
