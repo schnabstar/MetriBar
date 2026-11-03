@@ -11,4 +11,10 @@ METRIBAR_BUNDLE_ID = it.schnabel.MetriBar
 // keychain access group entitlement and thus a provisioning profile.
 METRIBAR_ENTITLEMENTS = Config/MetriBar.entitlements
 
+// The app and the widget extension share data through an App Group, which
+// needs a provisioning profile as well. On macOS the group identifier starts
+// with the team ID.
+METRIBAR_WIDGET_ENTITLEMENTS = Config/MetriBarWidgets.entitlements
+METRIBAR_APP_GROUP = $(TeamIdentifierPrefix)$(METRIBAR_BUNDLE_ID)
+
 #include? "Local.xcconfig"

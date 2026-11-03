@@ -37,8 +37,14 @@ targets:
       # Asset catalog and string catalogs, as a regular group so that the
       # target gets a Copy Bundle Resources phase.
       - path: Resources
+      # The views of the widgets, which the snapshot tool renders in DEBUG
+      # builds. A regular group, because Xcode does not allow one synchronized
+      # folder in two targets; adding a file here needs `xcodegen generate`.
+      - path: Shared/Widgets
     dependencies:
       - package: MetriBarKit
+      - target: MetriBarWidgets
+        embed: true
     info:
       path: Config/Info.plist
       properties:
@@ -51,6 +57,12 @@ targets:
         NSLocalNetworkUsageDescription: MetriBar connects to the Glances servers you configure on your local network.
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
+        # Widgets open the dashboard with metribar://dashboard and
+        # metribar://server/<id>.
+        CFBundleURLTypes:
+          - CFBundleURLName: $(METRIBAR_BUNDLE_ID)
+            CFBundleURLSchemes: [metribar]
+        MetriBarAppGroup: $(METRIBAR_APP_GROUP)
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID)
@@ -60,3 +72,38 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         COMBINE_HIDPI_IMAGES: YES
+  MetriBarWidgets:
+    type: app-extension
+    platform: macOS
+    configFiles:
+      Debug: Config/Shared.xcconfig
+      Release: Config/Shared.xcconfig
+    sources:
+      - path: MetriBarWidgets
+        type: syncedFolder
+      - path: Shared/Widgets
+      # The same translations as the app: one catalog, one source of truth.
+      - path: Resources/Localizable.xcstrings
+    dependencies:
+      - package: MetriBarKit
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+    info:
+      path: Config/WidgetsInfo.plist
+      properties:
+        CFBundleDisplayName: MetriBar
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSMinimumSystemVersion: "26.0"
+        NSHumanReadableCopyright: Copyright © 2026 Thomas Schnabel. Licensed under the Apache License 2.0.
+        MetriBarAppGroup: $(METRIBAR_APP_GROUP)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID).Widgets
+        CODE_SIGN_ENTITLEMENTS: $(METRIBAR_WIDGET_ENTITLEMENTS)
+        ENABLE_HARDENED_RUNTIME: YES
+        APPLICATION_EXTENSION_API_ONLY: YES
+        SKIP_INSTALL: YES
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks"

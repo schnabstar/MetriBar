@@ -29,6 +29,8 @@ MetriBar is a read-only client for Glances. This page describes what MetriBar do
 **Privacy**
 
 - No telemetry, analytics or third-party SDKs. MetriBar connects to the servers you add and, only if you turn on the update check (off by default), once a day to `api.github.com` to read the latest release. That request carries no identifier; the app opens only links inside the `schnabstar/MetriBar` repository and installs nothing.
+- The widgets get a small summary through an App Group container: server names, their state and four values. It never contains passwords, user names, URLs, certificate data or process and container names, and a test checks that. The widget extension is sandboxed without network or Keychain access.
+- The `metribar://dashboard` and `metribar://server/<id>` addresses that widgets open are parsed strictly; their only effect is to bring up the dashboard. They cannot change a setting, start or stop anything or reach a server.
 - Log messages contain server IDs; host names and errors are marked private in the system log.
 - "Copy Details" creates a diagnostic report without passwords, user names, command lines or monitored values, and replaces the host name with `<host>`.
 

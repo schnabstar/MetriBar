@@ -27,7 +27,7 @@ jobs:
           xcodebuild -version
 
       - name: Check formatting
-        run: xcrun swift-format lint --strict --recursive MetriBar Packages
+        run: xcrun swift-format lint --strict --recursive MetriBar MetriBarWidgets Shared Packages
 
       - name: Test MetriBarKit
         run: swift test --package-path Packages/MetriBarKit

@@ -42,7 +42,8 @@ Releases are Developer ID signed, notarized by Apple and published on GitHub. Ve
 
 ## Notes
 
-- The App Sandbox, hardened runtime and the absence of `get-task-allow` are checked by the script.
+- The App Sandbox, the hardened runtime and the absence of `get-task-allow` are checked by the script for the app and for the widget extension inside it (`Contents/PlugIns/MetriBarWidgets.appex`). The extension is signed by the same export with the same Developer ID; on macOS an App Group whose identifier starts with the team ID needs no entry in a provisioning profile, so the extension has none. Notarizing the app covers the extension.
+- After installing a release, add a widget from the widget gallery to check that the extension is found; the system registers it when MetriBar has been started from a normal location such as the Applications folder.
 - Updates are not installed automatically; users download new versions from the releases page. Homebrew distribution is planned for 1.0.
 - The opt-in update check in the app reads `releases/latest` of the GitHub repository. It only sees regular releases: a draft or a release marked *pre-release* is never offered. The tag must be `vX.Y.Z` (or `vX.Y.Z-preview.n`) and match `MARKETING_VERSION`, because the app compares the tag with its own version. The release page and the disk image link must stay in the `schnabstar/MetriBar` repository, the app opens no other address.
 - With a Homebrew cask (planned for 1.0) the check would point at the wrong way to update; the app should then suggest `brew upgrade --cask` instead. Not done yet.

@@ -27,6 +27,7 @@ No agent to install, no cloud, no account, no telemetry. An optional update chec
   - Glances alerts and incidents
 - **Your own thresholds:** rules such as "CPU above 90 % for 5 minutes" or "a disk above 85 %" for one server or all, for CPU, memory, swap, load, disks, temperatures and network throughput, with a hold time and a hysteresis. A rule that fires changes the status icon like a warning from Glances and is reported by notifications. Rules only change what MetriBar shows; nothing changes on your servers.
 - **Notifications** (off by default): a macOS notification when a value reaches warning or critical, a container becomes unhealthy, or a server cannot be reached, with a hold time against short spikes, quiet hours and a switch per server. They are created on your Mac; nothing is sent anywhere.
+- **Widgets and a control** (macOS 26): a small or medium widget for one server (CPU, memory, disk, temperature), a medium or large one for all servers, and a control for the Control Center and the menu bar that shows the state of your servers and opens the dashboard. Add them from the widget gallery; MetriBar has to be running to keep them current.
 - **Multiple servers**, each polled independently. Only the data that is visible is fetched.
 - **Secure by default:** passwords in the Keychain, TLS validation with optional pinning of self-signed certificates, warnings for passwords over plain HTTP, strictly read-only access.
 - **Helpful diagnostics:** a step-by-step connection test, detection of a missing local network permission, and copyable diagnostic details without secrets.
@@ -77,6 +78,8 @@ open MetriBar.xcodeproj
 ```
 
 The project signs with the maintainer's team by default. To build and run it yourself, copy `Config/Local.xcconfig.example` to `Config/Local.xcconfig` (ignored by git) and enter your own team ID and bundle identifier.
+
+The widgets read MetriBar's data from an App Group, which is part of the signing as well. Builds without a provisioning profile can use the widget entitlements without the App Group (see the example file); the widgets then ask you to open MetriBar.
 
 MetriBar stores passwords in the data protection keychain, which requires a provisioning profile. If your account cannot create one (for example a free Apple ID), the example file shows how to switch your local builds to the file-based keychain.
 

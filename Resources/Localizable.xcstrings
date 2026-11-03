@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
     "%@ %@ · %@" : {
       "localizations" : {
         "de" : {
@@ -113,6 +123,16 @@
         }
       }
     },
+    "%@ °C" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ °C"
+          }
+        }
+      }
+    },
     "%@: %@" : {
       "localizations" : {
         "de" : {
@@ -155,6 +175,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@: wieder normal"
+          }
+        }
+      }
+    },
+    "%lld need attention" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld brauchen Aufmerksamkeit"
           }
         }
       }
@@ -243,6 +273,16 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$lld of %2$lld running"
+          }
+        }
+      }
+    },
+    "+%lld more" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld weitere"
           }
         }
       }
@@ -423,6 +463,16 @@
         }
       }
     },
+    "All Servers" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Server"
+          }
+        }
+      }
+    },
     "Allow MetriBar in System Settings › General › Login Items." : {
       "localizations" : {
         "de" : {
@@ -489,6 +539,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abbrechen"
+          }
+        }
+      }
+    },
+    "Cannot be reached" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht erreichbar"
           }
         }
       }
@@ -855,6 +915,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "CPU-Auslastung"
+          }
+        }
+      }
+    },
+    "CPU, memory, disk and temperature of one server." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPU, Speicher, Laufwerk und Temperatur eines Servers."
           }
         }
       }
@@ -1451,6 +1521,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zuletzt geprüft: %@"
+          }
+        }
+      }
+    },
+    "Last data %@ ago" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzte Daten vor %@"
           }
         }
       }
@@ -2266,6 +2346,16 @@
         }
       }
     },
+    "Open MetriBar to show your servers." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne MetriBar, um deine Server anzuzeigen."
+          }
+        }
+      }
+    },
     "Open Privacy Settings" : {
       "localizations" : {
         "de" : {
@@ -2302,6 +2392,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weitere Sensoren"
+          }
+        }
+      }
+    },
+    "Outdated" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veraltet"
           }
         }
       }
@@ -3399,6 +3499,36 @@
         }
       }
     },
+    "The server this widget shows." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Server, den dieses Widget zeigt."
+          }
+        }
+      }
+    },
+    "The state of all your servers at a glance." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Zustand aller deiner Server auf einen Blick."
+          }
+        }
+      }
+    },
+    "The state of your servers. Opens the dashboard." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Zustand deiner Server. Öffnet das Dashboard."
+          }
+        }
+      }
+    },
     "The status icon is always there. The values appear next to it, in this order. If the menu bar is full, macOS hides items that do not fit; fewer values and the symbols style take less room." : {
       "localizations" : {
         "de" : {
@@ -3984,6 +4114,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Virtuell"
+          }
+        }
+      }
+    },
+    "Waiting for data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warte auf Daten"
           }
         }
       }
