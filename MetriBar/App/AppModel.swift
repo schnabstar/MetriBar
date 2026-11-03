@@ -23,6 +23,8 @@ final class AppModel {
     let notifier = NotificationService()
     private(set) var servers: [ServerConfig] = []
     private(set) var rules: [ThresholdRule] = []
+    /// Recent values of the menu bar items, for the trend line.
+    private(set) var menuBarSampler = MenuBarSampler()
     private(set) var preferences: Preferences
 
     /// Server shown in the popover and the dashboard.
@@ -47,6 +49,7 @@ final class AppModel {
     @ObservationIgnored private let credentials: any CredentialStore
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let events = SystemEventObserver()
+    @ObservationIgnored private var samplerTask: Task<Void, Never>?
     /// `false` for throwaway models of the debug tools, which must not
     /// touch the system notification center.
     @ObservationIgnored private let deliversNotifications: Bool
@@ -100,6 +103,7 @@ final class AppModel {
             notifier.activate()
         }
         applyNotificationSettings()
+        updateTrendSampling()
     }
 
     // MARK: - Selection
@@ -131,6 +135,11 @@ final class AppModel {
         }
         if next.notifications != previous.notifications {
             applyNotificationSettings()
+        } else if next.menuBarItems != previous.menuBarItems {
+            refreshBackgroundFeeds()
+        }
+        if next.menuBarItems != previous.menuBarItems || next.menuBarTrend != previous.menuBarTrend {
+            updateTrendSampling()
         }
         if next.checksForUpdates != previous.checksForUpdates {
             if next.checksForUpdates {
@@ -141,6 +150,32 @@ final class AppModel {
         }
     }
 
+    /// Samples the menu bar values every ten seconds while the trend line
+    /// is on; the loop does not run, and nothing is kept, otherwise.
+    private func updateTrendSampling() {
+        let wanted = preferences.menuBarTrend && !preferences.menuBarItems.isEmpty
+        guard wanted else {
+            samplerTask?.cancel()
+            samplerTask = nil
+            if menuBarSampler != MenuBarSampler() { menuBarSampler = MenuBarSampler() }
+            return
+        }
+        guard samplerTask == nil else { return }
+        samplerTask = Task { [weak self] in
+            while !Task.isCancelled {
+                self?.sampleMenuBar()
+                try? await Task.sleep(for: .seconds(10))
+            }
+        }
+    }
+
+    private func sampleMenuBar() {
+        let monitor = menuBarMonitor
+        let readable = monitor.map { $0.health != .offline && $0.health != .unknown } ?? false
+        menuBarSampler.record(
+            serverID: monitor?.id, items: preferences.menuBarItems, snapshot: readable ? monitor?.snapshot : nil)
+    }
+
     /// Starts or stops the alerts.
     private func applyNotificationSettings() {
         if deliversNotifications { alerts.update(settings: preferences.notifications) }
@@ -148,9 +183,10 @@ final class AppModel {
     }
 
     /// Fetches what is needed in the background beyond the usual: the file
-    /// systems while notifications watch them, and the feeds of the rules.
+    /// systems while notifications watch them, and the feeds of the rules
+    /// and of the values in the menu bar.
     private func refreshBackgroundFeeds() {
-        var feeds = ThresholdRule.requiredFeeds(rules)
+        var feeds = ThresholdRule.requiredFeeds(rules).union(MenuBarMetric.requiredFeeds(preferences.menuBarItems))
         if preferences.notifications.isEnabled { feeds.insert(.storage) }
         center.setExtraBackgroundFeeds(feeds)
     }

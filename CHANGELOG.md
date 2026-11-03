@@ -8,12 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- The menu bar can show up to three values next to the status icon: CPU, memory, swap, load (5 minutes), the highest temperature, the fullest disk, network download or upload, and containers with problems (Settings › Display). They come with symbols, words or numbers only; an optional trend line follows the first value; and they can be limited to the times when something is wrong, so the menu bar shows the icon alone otherwise. The setting of 0.11.0 is carried over.
 - Your own thresholds (Settings › Thresholds): rules such as CPU above 90 % for 5 minutes, a disk above 85 % or a temperature above 80 °C, for one server or all of them. They cover CPU, memory, swap, load (5 minutes), disks, temperatures and network throughput, with a level (warning or critical) and a hold time. A rule that fires changes the status icon like a warning from Glances and is reported by notifications, whatever their general level and hold time are. A rule ends when the value is back by a small margin, so a value at its limit does not flip. Templates help to start; nothing changes on your servers.
 - Notifications, off by default (Settings › Notifications): MetriBar tells you when CPU, memory, load, a container, a temperature or a file system reaches warning or critical, and when a server cannot be reached or is back. A problem has to last (2 minutes by default) before it is reported, the same problem is reported at most every 15 minutes unless it gets worse, quiet hours hold notifications back until they end, and every server has its own switch. Clicking a notification opens the alerts of that server. The file systems are fetched in the background while notifications are on, so a full disk is noticed.
 - Optional update check, off by default (Settings › General › Updates). When turned on, MetriBar asks GitHub once a day whether a newer release exists and points it out in the menu bar window and in the settings, with links to the release notes and the download. **Check for Updates…** in the app menu checks once on request. Nothing is installed automatically.
 
 ### Changed
 
+- The menu bar shows its values as one image instead of text next to the icon, because the system keeps only one image and one text of a label. The image follows the colors of the menu bar like a symbol.
 - The disk image has a new window in the style of Liquid Glass: a light background with glass panes behind MetriBar and Applications, an arrow between them and the app icon as volume icon.
 
 ## [0.11.0] - 2026-10-31

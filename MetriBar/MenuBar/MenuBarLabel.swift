@@ -6,44 +6,37 @@ struct MenuBarLabel: View {
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
-        HStack(spacing: 4) {
-            Image(systemName: model.center.health.symbolName)
-            if let value {
-                Text(value)
-                    .monospacedDigit()
-            }
-        }
+        let segments = segments
+        Image(
+            nsImage: MenuBarImage.render(
+                health: model.center.health, segments: segments, style: model.preferences.menuBarStyle,
+                trend: trend(segments))
+        )
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(accessibilityText)
+        .accessibilityLabel(accessibilityText(segments))
         // A click on a notification asks for the dashboard from outside the views.
         .onChange(of: model.dashboardRequest) { openDashboard(using: openWindow) }
     }
 
-    private var value: String? {
-        guard let monitor = model.menuBarMonitor, monitor.health != .offline else { return nil }
-        switch model.preferences.menuBarValue {
-        case .none: return nil
-        case .cpu: return cpu(of: monitor)
-        case .memory: return memory(of: monitor)
-        case .cpuAndMemory:
-            let parts = [
-                cpu(of: monitor).map { String(localized: "CPU \($0)") },
-                memory(of: monitor).map { String(localized: "RAM \($0)") },
-            ].compactMap { $0 }
-            return parts.isEmpty ? nil : parts.joined(separator: " · ")
-        }
+    /// The values to show next to the icon: none while the server cannot be
+    /// read, and, if the user chose so, none while everything is fine.
+    private var segments: [MenuBarSegment] {
+        let preferences = model.preferences
+        guard !preferences.menuBarItems.isEmpty, let monitor = model.menuBarMonitor, monitor.health != .offline
+        else { return [] }
+        if preferences.menuBarVisibility == .onlyOnProblems, model.center.health < .warning { return [] }
+        return MenuBarText.segments(preferences.menuBarItems, from: monitor.snapshot)
     }
 
-    private func cpu(of monitor: ServerMonitor) -> String? {
-        monitor.snapshot.cpu.map { Format.percent($0.value.total) }
+    /// The trend of the first value, if the user wants one.
+    private func trend(_ segments: [MenuBarSegment]) -> TrendLine? {
+        guard model.preferences.menuBarTrend, let first = segments.first else { return nil }
+        return TrendLine(values: model.menuBarSampler.history(for: first.metric), range: first.metric.fixedRange)
     }
 
-    private func memory(of monitor: ServerMonitor) -> String? {
-        monitor.snapshot.memory.map { Format.percent($0.value.percent) }
-    }
-
-    private var accessibilityText: String {
+    private func accessibilityText(_ segments: [MenuBarSegment]) -> String {
         let status = String(localized: "MetriBar, \(model.center.health.label)")
-        return [status, value].compactMap { $0 }.joined(separator: ", ")
+        let values = segments.map { "\($0.metric.title) \($0.text)" }
+        return ([status] + values).joined(separator: ", ")
     }
 }

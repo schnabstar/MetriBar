@@ -433,6 +433,16 @@
         }
       }
     },
+    "Always" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Immer"
+          }
+        }
+      }
+    },
     "Authentication" : {
       "localizations" : {
         "de" : {
@@ -695,6 +705,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Container-Plugin nicht aktiv"
+          }
+        }
+      }
+    },
+    "Containers with problems" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container mit Problemen"
           }
         }
       }
@@ -1109,6 +1129,16 @@
         }
       }
     },
+    "Fullest disk" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vollster Datenträger"
+          }
+        }
+      }
+    },
     "General" : {
       "localizations" : {
         "de" : {
@@ -1281,6 +1311,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Im Menüleistenfenster ausgeblendet"
+          }
+        }
+      }
+    },
+    "Highest temperature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Höchste Temperatur"
           }
         }
       }
@@ -1585,7 +1625,18 @@
         }
       }
     },
+    "Menu bar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menüleiste"
+          }
+        }
+      }
+    },
     "Menu bar shows" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2015,6 +2066,16 @@
         }
       }
     },
+    "None" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keiner"
+          }
+        }
+      }
+    },
     "Not a Glances server" : {
       "localizations" : {
         "de" : {
@@ -2105,6 +2166,16 @@
         }
       }
     },
+    "Numbers only" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur Zahlen"
+          }
+        }
+      }
+    },
     "Off by default. When on, MetriBar asks GitHub once a day whether a newer version exists. GitHub sees your IP address; nothing else is sent. Updates are never installed automatically." : {
       "localizations" : {
         "de" : {
@@ -2151,6 +2222,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "andauernd"
+          }
+        }
+      }
+    },
+    "Only when something is wrong" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur bei Problemen"
           }
         }
       }
@@ -2331,6 +2412,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MetriBar beenden"
+          }
+        }
+      }
+    },
+    "RAM" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RAM"
           }
         }
       }
@@ -2848,6 +2939,16 @@
         }
       }
     },
+    "Show values" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werte anzeigen"
+          }
+        }
+      }
+    },
     "Showing values from %@." : {
       "localizations" : {
         "de" : {
@@ -2929,6 +3030,7 @@
       }
     },
     "Status icon and CPU usage" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2939,6 +3041,7 @@
       }
     },
     "Status icon and memory usage" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2949,6 +3052,7 @@
       }
     },
     "Status icon only" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2987,6 +3091,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Speicherplatz"
+          }
+        }
+      }
+    },
+    "Style" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Darstellung"
           }
         }
       }
@@ -3031,12 +3145,32 @@
         }
       }
     },
+    "Symbols" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbole"
+          }
+        }
+      }
+    },
     "System" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "System"
+          }
+        }
+      }
+    },
+    "Temp" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temp."
           }
         }
       }
@@ -3165,6 +3299,16 @@
     "The icon always shows the state of all servers: a warning or error on any server, such as high usage, a high temperature or an unhealthy container, changes its shape." : {
 
     },
+    "The icon always shows the state of all servers: a warning or error on any server, such as high usage, a high temperature, an unhealthy container or one of your own rules, changes its shape." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Symbol zeigt immer den Zustand aller Server: Eine Warnung oder ein Fehler auf einem Server, etwa hohe Auslastung, eine hohe Temperatur, ein Container mit Problemen oder eine deiner eigenen Regeln, ändert seine Form."
+          }
+        }
+      }
+    },
     "The Keychain reported error %lld." : {
       "localizations" : {
         "de" : {
@@ -3251,6 +3395,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Auf dem Server läuft Glances %@. Diese Version von MetriBar unterstützt Glances 5."
+          }
+        }
+      }
+    },
+    "The status icon is always there. The values appear next to it, in this order. If the menu bar is full, macOS hides items that do not fit; fewer values and the symbols style take less room." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Statussymbol ist immer da. Die Werte erscheinen daneben, in dieser Reihenfolge. Ist die Menüleiste voll, blendet macOS Objekte aus, die nicht passen; weniger Werte und die Darstellung mit Symbolen brauchen weniger Platz."
           }
         }
       }
@@ -3443,6 +3597,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verlauf"
+          }
+        }
+      }
+    },
+    "Trend line after the first value" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verlaufslinie nach dem ersten Wert"
           }
         }
       }
@@ -3763,6 +3927,16 @@
         }
       }
     },
+    "Value %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert %lld"
+          }
+        }
+      }
+    },
     "Value is back to normal" : {
       "localizations" : {
         "de" : {
@@ -3774,11 +3948,22 @@
       }
     },
     "Value of" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wert von"
+          }
+        }
+      }
+    },
+    "Values of" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werte von"
           }
         }
       }
@@ -3859,6 +4044,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wenn Menü oder Dashboard geöffnet sind"
+          }
+        }
+      }
+    },
+    "Words" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wörter"
           }
         }
       }
