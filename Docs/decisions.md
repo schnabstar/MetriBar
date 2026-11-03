@@ -2,6 +2,19 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-11-03 – Update check (opt-in)
+
+MetriBar can tell the user about a newer release, but never installs one. Distribution stays a notarized DMG from GitHub, and the next step (Homebrew for 1.0) is a package manager's job, so Sparkle would only add a dependency, XPC services and sandbox entitlements.
+
+- **Opt-in, off by default.** The privacy promise ("contacts only your servers") held until now, so the check had to be a conscious choice. `Preferences.checksForUpdates` is false, there is no prompt at first launch, and nothing leaves the Mac while it is off. The footer, `PRIVACY.md` and the README say what is sent: one anonymous `GET api.github.com/repos/schnabstar/MetriBar/releases/latest` with a generic `User-Agent: MetriBar/<version>`; GitHub sees the IP address. Anonymous requests are limited to 60 per hour per IP, far above one per day; a 403/429 is reported as "GitHub is limiting requests" and counts as a check, so it is not repeated at once.
+- **`releases/latest` skips drafts and pre-releases,** so previews are never offered. A running pre-release is still offered the final release (the plan said it would not check at all; offering the final release is the more useful behavior).
+- **Links are validated.** `ReleaseInfo` only exposes the release page and the DMG if they are `https://github.com/schnabstar/MetriBar/…` (no user info, no port, no look-alike hosts); `AvailableUpdate` is built only from such a release. A manipulated answer cannot make the app open another site. Release notes are not rendered at all, only linked.
+- **Schedule:** a task started when the setting is on waits 5 s after launch, then looks at the clock every hour and checks if the last check is a day old (`UpdatePolicy.isDue`, also when the clock was set back). The hourly look also covers wake from sleep without extra event handling. User actions ("Check Now", the app menu command) ignore the setting and the schedule.
+- **State:** `UpdateModel` stores the time of the last check, the found release (`AvailableUpdate`, Codable) and the skipped version in UserDefaults, outside `Preferences`, so a check does not look like a settings change. A found update survives a restart until it is installed (`known.appVersion > current`). A failed automatic check keeps an update found earlier. "Skip This Version" only hides the banner in the menu bar window; the settings still show it, and a manual check brings it back.
+- **`Preferences` moved into MetriBarKit** to be tested (the app target has no tests). Its `init(from:)` uses `decodeIfPresent`: the synthesized decoder would fail on data written by 0.11.0, and `AppModel` would silently reset all settings. The same applies to every later addition to `Preferences` and `ServerConfig`.
+- **Not done:** detecting a Homebrew installation (no cask yet), verifying the SHA-256 of a download (the app downloads nothing), and a check on wake or when opening the settings (the hourly look is enough).
+- **Checking in the app (DEBUG only):** `-MetriBarFakeUpdate 1` shows a fake release 99.0.0 without contacting GitHub. For the real path, a copy of the app with `CFBundleShortVersionString` set to a lower version (`plutil -replace`, then `codesign --force --sign -`) finds the real release.
+
 ## 2026-10-26 – Liquid Glass and HIG pass
 
 An audit of every view against the macOS 26 Human Interface Guidelines and the macOS 27 SDK. Guiding rule: Liquid Glass belongs to the navigation and control layer (toolbar, sidebar, inspector, sheets, menu bar window), never to content. MetriBar gets it from system components instead of custom `glassEffect`; the only custom glass is the hover read-out floating over the history charts.

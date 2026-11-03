@@ -6,7 +6,7 @@
 
 MetriBar is a native macOS menu bar app with a dashboard window for servers running [Glances](https://github.com/nicolargo/glances) 5. See the status of your Raspberry Pi, NAS or Docker host at a glance, and open a native dashboard for the details.
 
-No agent to install, no cloud, no account, no telemetry.
+No agent to install, no cloud, no account, no telemetry. An optional update check is off until you turn it on.
 
 ![MetriBar dashboard showing CPU, memory, swap and load, trends, network, sensors and storage of a demo server](Docs/images/dashboard-overview.png)
 
@@ -50,7 +50,9 @@ To try MetriBar without a server, choose **Try with Demo Data** after the first 
 
 ### Updating
 
-MetriBar has no automatic updater and never contacts anything except your servers. To update, download the new version from the [releases page](https://github.com/schnabstar/MetriBar/releases) and replace the app in your Applications folder. Your servers and settings are kept; passwords stay in the Keychain. Watch the repository (*Watch › Custom › Releases*) to be notified about new versions.
+MetriBar does not install updates by itself. To update, download the new version from the [releases page](https://github.com/schnabstar/MetriBar/releases) and replace the app in your Applications folder. Your servers and settings are kept; passwords stay in the Keychain.
+
+To be told about new versions, turn on **Check for updates automatically** in Settings › General. MetriBar then asks GitHub once a day whether a newer release exists (GitHub sees your IP address, nothing else is sent) and points it out in the menu bar window. The setting is off by default, and **Check for Updates…** in the app menu checks once on request. You can also watch the repository (*Watch › Custom › Releases*).
 
 You can also [build MetriBar from source](#building-from-source).
 
@@ -80,7 +82,7 @@ More in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Privacy
 
-MetriBar only talks to the Glances servers you add. It collects no data, has no telemetry and sends nothing anywhere else. See [PRIVACY.md](PRIVACY.md).
+MetriBar talks to the Glances servers you add and, only if you turn it on, to GitHub for the update check. It collects no data and has no telemetry. See [PRIVACY.md](PRIVACY.md).
 
 ## Contributing
 

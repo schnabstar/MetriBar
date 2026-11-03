@@ -1,3 +1,4 @@
+import MetriBarKit
 import SwiftUI
 
 struct DisplaySettingsView: View {

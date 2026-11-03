@@ -18,6 +18,7 @@ enum PasswordChange: Equatable {
 @Observable
 final class AppModel {
     let center: MonitorCenter
+    let updates: UpdateModel
     private(set) var servers: [ServerConfig] = []
     private(set) var preferences: Preferences
 
@@ -48,7 +49,8 @@ final class AppModel {
         configStore: ConfigStore = ConfigStore(),
         credentials: any CredentialStore = AppKeychain.store,
         defaults: UserDefaults = .standard,
-        observeSystemEvents: Bool = true
+        observeSystemEvents: Bool = true,
+        updateTransport: any HTTPTransport = URLSessionTransport(configuration: .metriBarConnectionTest)
     ) {
         self.configStore = configStore
         self.credentials = credentials
@@ -61,8 +63,10 @@ final class AppModel {
         center = MonitorCenter(settings: preferences.pollingSettings) { [credentials] config in
             Self.makeClient(for: config, credentials: credentials)
         }
+        updates = UpdateModel(currentVersion: Self.currentVersion, transport: updateTransport, defaults: defaults)
         servers = configStore.load()
         center.apply(servers)
+        if preferences.checksForUpdates { updates.startAutomaticChecks() }
         if observeSystemEvents {
             events.start { [weak self] event in self?.center.handle(event) }
         }
@@ -86,7 +90,8 @@ final class AppModel {
         var next = preferences
         change(&next)
         guard next != preferences else { return }
-        let pollingChanged = next.pollingSettings != preferences.pollingSettings
+        let previous = preferences
+        let pollingChanged = next.pollingSettings != previous.pollingSettings
         preferences = next
         if let data = try? JSONEncoder().encode(next) {
             defaults.set(data, forKey: Keys.preferences)
@@ -94,6 +99,19 @@ final class AppModel {
         if pollingChanged {
             center.update(settings: next.pollingSettings)
         }
+        if next.checksForUpdates != previous.checksForUpdates {
+            if next.checksForUpdates {
+                updates.startAutomaticChecks()
+            } else {
+                updates.stopAutomaticChecks()
+            }
+        }
+    }
+
+    /// The version of the running app, from the Info.plist.
+    static var currentVersion: AppVersion {
+        (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String).flatMap(AppVersion.init)
+            ?? AppVersion(major: 0, minor: 0, patch: 0)
     }
 
     // MARK: - Servers

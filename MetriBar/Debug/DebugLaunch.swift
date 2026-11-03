@@ -6,7 +6,8 @@
     /// demo server instead of the saved servers, and add
     /// `-MetriBarOpen dashboard,settings,add-server` to open those windows.
     /// `-MetriBarSection processes` and `-MetriBarSettingsTab general` choose
-    /// what they show.
+    /// what they show. `-MetriBarFakeUpdate 1` pretends that a newer release
+    /// exists, without contacting GitHub.
     @MainActor
     enum DebugLaunch {
         static func makeModel() -> AppModel? {
@@ -14,6 +15,7 @@
             guard defaults.bool(forKey: "MetriBarDemo") else { return nil }
             let model = SnapshotRenderer.makeModel(suite: "MetriBarDemo")
             model.addDemoServer()
+            if defaults.bool(forKey: "MetriBarFakeUpdate") { model.updates.showFakeUpdate() }
             if let section = defaults.string(forKey: "MetriBarSection").flatMap(DashboardSection.init(rawValue:)) {
                 model.dashboardSection = section
             }

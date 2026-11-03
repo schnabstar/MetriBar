@@ -22,6 +22,11 @@ struct PopoverView: View {
                     onTryDemo: { model.addDemoServer() }
                 )
             }
+            if let update = model.updates.announced {
+                UpdateBanner(update: update, onSkip: { model.updates.skipAvailableVersion() })
+                    .padding(.horizontal, 10)
+                    .padding(.bottom, 10)
+            }
             Divider()
             footer
         }

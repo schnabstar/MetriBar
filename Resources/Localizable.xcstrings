@@ -383,6 +383,46 @@
         }
       }
     },
+    "Check for updates automatically" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisch nach Updates suchen"
+          }
+        }
+      }
+    },
+    "Check for Updates…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Updates suchen…"
+          }
+        }
+      }
+    },
+    "Check Now" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt prüfen"
+          }
+        }
+      }
+    },
+    "Checking…" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe…"
+          }
+        }
+      }
+    },
     "Command Line" : {
       "localizations" : {
         "de" : {
@@ -549,6 +589,26 @@
         }
       }
     },
+    "Could not check for updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Suche nach Updates ist fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "Could not reach GitHub." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub ist nicht erreichbar."
+          }
+        }
+      }
+    },
     "Could Not Save" : {
       "localizations" : {
         "de" : {
@@ -649,6 +709,16 @@
         }
       }
     },
+    "Download" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laden"
+          }
+        }
+      }
+    },
     "Encrypted connection (HTTPS)" : {
       "localizations" : {
         "de" : {
@@ -735,6 +805,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Allgemein"
+          }
+        }
+      }
+    },
+    "GitHub is limiting requests right now. Try again later." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub begrenzt gerade die Anfragen. Versuche es später noch einmal."
+          }
+        }
+      }
+    },
+    "GitHub sent an unexpected answer." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub hat eine unerwartete Antwort gesendet."
           }
         }
       }
@@ -865,6 +955,16 @@
         }
       }
     },
+    "Hidden in the menu bar window" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Menüleistenfenster ausgeblendet"
+          }
+        }
+      }
+    },
     "History" : {
       "localizations" : {
         "de" : {
@@ -975,12 +1075,32 @@
         }
       }
     },
+    "Last checked %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuletzt geprüft: %@"
+          }
+        }
+      }
+    },
     "Latency" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Latenz"
+          }
+        }
+      }
+    },
+    "Later" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Später"
           }
         }
       }
@@ -1115,6 +1235,46 @@
         }
       }
     },
+    "MetriBar %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar %@"
+          }
+        }
+      }
+    },
+    "MetriBar %@ is available" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar %@ ist verfügbar"
+          }
+        }
+      }
+    },
+    "MetriBar %@ is available." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar %@ ist verfügbar."
+          }
+        }
+      }
+    },
+    "MetriBar asks the servers you add. It collects no data and sends nothing to anyone else, except the update check if you turn it on below." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar fragt die Server ab, die du hinzufügst. Es sammelt keine Daten und sendet nichts an andere, außer der Update-Suche, falls du sie unten einschaltest."
+          }
+        }
+      }
+    },
     "MetriBar collects no data and has no telemetry." : {
       "localizations" : {
         "de" : {
@@ -1145,12 +1305,22 @@
         }
       }
     },
-    "MetriBar only asks the servers you add. It collects no data and sends nothing anywhere else." : {
+    "MetriBar is up to date" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MetriBar fragt nur die Server ab, die du hinzufügst. Es erhebt keine Daten und sendet nichts an andere Stellen."
+            "value" : "MetriBar ist aktuell"
+          }
+        }
+      }
+    },
+    "MetriBar is up to date." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar ist aktuell."
           }
         }
       }
@@ -1455,6 +1625,16 @@
         }
       }
     },
+    "Off by default. When on, MetriBar asks GitHub once a day whether a newer version exists. GitHub sees your IP address; nothing else is sent. Updates are never installed automatically." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardmäßig aus. Wenn eingeschaltet, fragt MetriBar einmal täglich bei GitHub an, ob es eine neuere Version gibt. GitHub sieht deine IP-Adresse, sonst wird nichts gesendet. Updates werden nie automatisch installiert."
+          }
+        }
+      }
+    },
     "Offline" : {
       "localizations" : {
         "de" : {
@@ -1704,6 +1884,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jetzt aktualisieren"
+          }
+        }
+      }
+    },
+    "Release Notes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versionshinweise"
           }
         }
       }
@@ -2114,6 +2304,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Größe"
+          }
+        }
+      }
+    },
+    "Skip This Version" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version überspringen"
           }
         }
       }
@@ -2787,6 +2987,16 @@
         }
       }
     },
+    "Updates" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programmupdates"
+          }
+        }
+      }
+    },
     "Uptime" : {
       "localizations" : {
         "de" : {
@@ -2989,6 +3199,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schreib-IOPS"
+          }
+        }
+      }
+    },
+    "You have MetriBar %@." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast MetriBar %@."
+          }
+        }
+      }
+    },
+    "You have MetriBar %@. MetriBar does not install updates by itself; download the new version and replace the app in your Applications folder." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast MetriBar %@. MetriBar installiert Updates nicht selbst; lade die neue Version herunter und ersetze die App im Ordner „Programme“."
           }
         }
       }
