@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- The disk image has a new window in the style of Liquid Glass: a light background with glass panes behind MetriBar and Applications, an arrow between them and the app icon as volume icon.
+
 ## [0.11.0] - 2026-10-31
 
 First regular release, no longer marked as a preview. Requires a server running Glances 5.

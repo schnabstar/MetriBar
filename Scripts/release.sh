@@ -53,13 +53,8 @@ xcrun notarytool submit "$build/MetriBar.zip" --keychain-profile "$profile" --wa
 xcrun stapler staple "$app"
 
 echo "==> Building the disk image"
-staging="$build/dmg"
-mkdir -p "$staging"
-ditto "$app" "$staging/MetriBar.app"
-ln -s /Applications "$staging/Applications"
 dmg="$dist/MetriBar-$version.dmg"
-rm -f "$dmg"
-hdiutil create -volname "MetriBar $version" -srcfolder "$staging" -format UDZO -ov "$dmg" -quiet
+Scripts/make-dmg.sh "$app" "$dmg"
 identity=$(security find-identity -v -p codesigning | awk -F'"' '/Developer ID Application/ { print $2; exit }')
 codesign --sign "$identity" --timestamp "$dmg"
 
