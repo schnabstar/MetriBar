@@ -6,8 +6,12 @@ import Testing
 struct RuleEvaluatorTests {
     private let start = Date(timeIntervalSince1970: 1_800_000_000)
 
-    private func snapshot(cpu: Double? = nil, disks: [String: Double] = [:]) -> ServerSnapshot {
+    private func snapshot(cpu: Double? = nil, memory: Double? = nil, disks: [String: Double] = [:]) -> ServerSnapshot {
         var snapshot = ServerSnapshot()
+        if let memory {
+            snapshot.memory = Reading(
+                value: try! JSONDecoder().decode(Memory.self, from: Data(#"{"percent":\#(memory)}"#.utf8)))
+        }
         if let cpu {
             snapshot.cpu = Reading(value: try! JSONDecoder().decode(CPU.self, from: Data(#"{"total":\#(cpu)}"#.utf8)))
         }
@@ -163,5 +167,102 @@ struct RuleEvaluatorTests {
         #expect(levels(&evaluator, rules, snapshot(cpu: 60), at: 10) == [.ok, .warning])
         #expect(levels(&evaluator, rules, snapshot(cpu: 89), at: 15) == [.ok, .warning])
         #expect(levels(&evaluator, rules, snapshot(cpu: 30), at: 20) == [.ok, .ok])
+    }
+
+    // MARK: - Interrupted observation
+
+    @Test func suspendingForgetsThePendingStartButNotAFiringRule() {
+        let rules = [
+            ThresholdRule(metric: RuleMetric(.cpu), limit: 90, holdSeconds: 300),
+            ThresholdRule(metric: RuleMetric(.disk), limit: 85),
+        ]
+        var evaluator = RuleEvaluator()
+        let both = snapshot(cpu: 95, disks: ["/a": 90])
+        // The disk rule fires at once, the CPU rule waits.
+        #expect(levels(&evaluator, rules, both, at: 0) == [.ok, .warning])
+
+        evaluator.suspend()
+        // Ten minutes later: the CPU rule has not been watched since, so it starts anew.
+        #expect(levels(&evaluator, rules, both, at: 600) == [.ok, .warning])
+        #expect(levels(&evaluator, rules, both, at: 899) == [.ok, .warning])
+        #expect(levels(&evaluator, rules, both, at: 900) == [.warning, .warning])
+    }
+
+    @Test func withoutSuspendingTheOutageWouldCount() {
+        let rule = ThresholdRule(metric: RuleMetric(.cpu), limit: 90, holdSeconds: 300)
+        var evaluator = RuleEvaluator()
+        _ = levels(&evaluator, [rule], snapshot(cpu: 95), at: 0)
+        // Documents why `suspend()` exists.
+        #expect(levels(&evaluator, [rule], snapshot(cpu: 95), at: 600) == [.warning])
+    }
+
+    // MARK: - Edited rules
+
+    @Test func aRuleEditedToAnotherMetricStartsFromScratch() {
+        let id = UUID()
+        let cpu = ThresholdRule(id: id, metric: RuleMetric(.cpu), limit: 90)
+        var evaluator = RuleEvaluator()
+        #expect(levels(&evaluator, [cpu], snapshot(cpu: 95), at: 0) == [.warning])
+
+        // The same rule, now about the disk, with a hold time.
+        let disk = ThresholdRule(id: id, metric: RuleMetric(.disk), limit: 50, holdSeconds: 60)
+        let first = evaluator.evaluate(
+            rules: [disk], snapshot: snapshot(cpu: 95, disks: ["/a": 70]), now: start.addingTimeInterval(10))
+        #expect(first.map(\.level) == [.ok])
+        #expect(first.first?.rule?.metric == RuleMetric(.disk))
+        #expect(levels(&evaluator, [disk], snapshot(disks: ["/a": 70]), at: 69) == [.ok])
+        #expect(levels(&evaluator, [disk], snapshot(disks: ["/a": 70]), at: 70) == [.warning])
+    }
+
+    /// Both measure one value of the whole server, so only the metric tells them apart.
+    @Test func aFiringCPURuleEditedToMemoryDoesNotFireAtOnce() {
+        let id = UUID()
+        var evaluator = RuleEvaluator()
+        let cpu = ThresholdRule(id: id, metric: RuleMetric(.cpu), limit: 90)
+        #expect(levels(&evaluator, [cpu], snapshot(cpu: 95, memory: 60), at: 0) == [.warning])
+
+        let memory = ThresholdRule(id: id, metric: RuleMetric(.memory), limit: 50, holdSeconds: 60)
+        #expect(levels(&evaluator, [memory], snapshot(cpu: 95, memory: 60), at: 10) == [.ok])
+        #expect(levels(&evaluator, [memory], snapshot(cpu: 95, memory: 60), at: 69) == [.ok])
+        #expect(levels(&evaluator, [memory], snapshot(cpu: 95, memory: 60), at: 70) == [.warning])
+    }
+
+    @Test func aRuleEditedFromAboveToBelowStartsFromScratch() {
+        let id = UUID()
+        var evaluator = RuleEvaluator()
+        let above = ThresholdRule(id: id, metric: RuleMetric(.cpu), comparison: .above, limit: 50)
+        #expect(levels(&evaluator, [above], snapshot(cpu: 95), at: 0) == [.warning])
+        let below = ThresholdRule(id: id, metric: RuleMetric(.cpu), comparison: .below, limit: 99, holdSeconds: 60)
+        #expect(levels(&evaluator, [below], snapshot(cpu: 95), at: 10) == [.ok])
+    }
+
+    @Test func aRuleEditedToAnotherItemStartsFromScratch() {
+        let id = UUID()
+        var evaluator = RuleEvaluator()
+        let all = ThresholdRule(id: id, metric: RuleMetric(.disk), limit: 85, holdSeconds: 60)
+        _ = levels(&evaluator, [all], snapshot(disks: ["/a": 90]), at: 0)
+        let one = ThresholdRule(id: id, metric: RuleMetric(.disk, item: "/a"), limit: 85, holdSeconds: 60)
+        #expect(levels(&evaluator, [one], snapshot(disks: ["/a": 90]), at: 120) == [.ok])
+    }
+
+    @Test func conditionsOfAnEditedMetricHaveAnotherKeyForTheAlerts() {
+        let id = UUID()
+        var evaluator = RuleEvaluator()
+        let cpu = evaluator.evaluate(
+            rules: [ThresholdRule(id: id, metric: RuleMetric(.cpu), limit: 1)], snapshot: snapshot(cpu: 5), now: start)
+        let disk = evaluator.evaluate(
+            rules: [ThresholdRule(id: id, metric: RuleMetric(.disk), limit: 1)],
+            snapshot: snapshot(disks: ["/a": 5]), now: start)
+        #expect(cpu.first?.item != disk.first?.item)
+    }
+
+    @Test func aChangedLimitKeepsTheState() {
+        let id = UUID()
+        var evaluator = RuleEvaluator()
+        let strict = ThresholdRule(id: id, metric: RuleMetric(.cpu), limit: 90, holdSeconds: 300)
+        _ = levels(&evaluator, [strict], snapshot(cpu: 95), at: 0)
+        // A small change of the limit does not make the rule wait all over again.
+        let relaxed = ThresholdRule(id: id, metric: RuleMetric(.cpu), limit: 92, holdSeconds: 300)
+        #expect(levels(&evaluator, [relaxed], snapshot(cpu: 95), at: 300) == [.warning])
     }
 }

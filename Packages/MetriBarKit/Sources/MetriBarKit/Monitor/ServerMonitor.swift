@@ -31,6 +31,8 @@ public final class ServerMonitor: Identifiable {
     @ObservationIgnored private var client: GlancesClient
     @ObservationIgnored private var settings: PollingSettings
     @ObservationIgnored private let clock: any Clock<Duration>
+    /// The wall clock, for the time stamps of the feeds and the rules.
+    @ObservationIgnored private let now: @MainActor () -> Date
     @ObservationIgnored private var loopTask: Task<Void, Never>?
     @ObservationIgnored private var isRunning = false
     @ObservationIgnored private var isPaused = false
@@ -46,13 +48,15 @@ public final class ServerMonitor: Identifiable {
         config: ServerConfig,
         client: GlancesClient,
         settings: PollingSettings = PollingSettings(),
-        clock: any Clock<Duration> = ContinuousClock()
+        clock: any Clock<Duration> = ContinuousClock(),
+        now: @escaping @MainActor () -> Date = { Date() }
     ) {
         self.id = config.id
         self.config = config
         self.client = client
         self.settings = settings
         self.clock = clock
+        self.now = now
     }
 
     // MARK: - Derived state
@@ -121,6 +125,7 @@ public final class ServerMonitor: Identifiable {
     }
 
     public func stop() {
+        ruleEvaluator.suspend()
         isRunning = false
         loopTask?.cancel()
         loopTask = nil
@@ -129,6 +134,8 @@ public final class ServerMonitor: Identifiable {
 
     /// Stops polling until `resume()`, for example while the Mac sleeps.
     public func pause() {
+        // Sleeping must not count towards a hold time either.
+        ruleEvaluator.suspend()
         isPaused = true
         loopTask?.cancel()
         loopTask = nil
@@ -159,9 +166,10 @@ public final class ServerMonitor: Identifiable {
         refreshRuleConditions()
     }
 
-    private func refreshRuleConditions(now: Date = .now) {
+    private func refreshRuleConditions() {
         let unavailable = Set(Feed.allCases.filter { feedErrors[$0] != nil || snapshot.updated[$0] == nil })
-        ruleConditions = ruleEvaluator.evaluate(rules: rules, snapshot: snapshot, unavailable: unavailable, now: now)
+        ruleConditions = ruleEvaluator.evaluate(
+            rules: rules, snapshot: snapshot, unavailable: unavailable, now: now())
     }
 
     /// Fetches `feeds` in the background besides the ones every monitor
@@ -347,7 +355,7 @@ public final class ServerMonitor: Identifiable {
                 return recordFailure(error)
             }
         }
-        let now = Date.now
+        let now = now()
         var next = snapshot
         for (feed, result) in results {
             switch result {
@@ -363,7 +371,7 @@ public final class ServerMonitor: Identifiable {
             }
         }
         snapshot = next
-        refreshRuleConditions(now: now)
+        refreshRuleConditions()
         consecutiveFailures = 0
         retryAfter = nil
         isStale = false
@@ -373,6 +381,8 @@ public final class ServerMonitor: Identifiable {
 
     private func recordFailure(_ error: GlancesError) {
         guard error != .cancelled else { return }
+        // The time of the outage must not count towards a hold time.
+        ruleEvaluator.suspend()
         consecutiveFailures += 1
         retryAfter = nil
         switch error {

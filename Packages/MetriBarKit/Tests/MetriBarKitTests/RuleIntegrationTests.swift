@@ -97,6 +97,77 @@ struct RuleIntegrationTests {
         #expect(monitor.ruleConditions.map(\.level) == [.warning])
     }
 
+    // MARK: - Interrupted observation
+
+    private final class Clockwork {
+        var date = Date(timeIntervalSince1970: 1_800_000_000)
+    }
+
+    private func makeTimedMonitor(_ rule: ThresholdRule, _ time: Clockwork) async -> ServerMonitor {
+        server.override("/api/5/cpu", with: .json(#"{"total": 95}"#))
+        let monitor = ServerMonitor(config: config, client: server.client(), clock: clock, now: { time.date })
+        monitor.setRules([rule])
+        monitor.start()
+        await waitUntil("monitor connected") { monitor.state == .connected }
+        return monitor
+    }
+
+    private func poll(_ monitor: ServerMonitor, until condition: () -> Bool) async {
+        await waitUntil("monitor waits") { !clock.pendingDelays.isEmpty }
+        clock.advance(by: clock.pendingDelays.first ?? .seconds(10))
+        await waitUntil("poll finished", condition)
+    }
+
+    @Test func anOutageDoesNotCountTowardsTheHoldTime() async {
+        let time = Clockwork()
+        let rule = ThresholdRule(metric: RuleMetric(.cpu), limit: 90, holdSeconds: 300)
+        let monitor = await makeTimedMonitor(rule, time)
+        defer { monitor.stop() }
+        #expect(monitor.ruleConditions.map(\.level) == [.ok])
+
+        // The connection fails; ten minutes pass before it is back.
+        server.goOffline()
+        await poll(monitor) { monitor.consecutiveFailures > 0 }
+        time.date.addTimeInterval(600)
+        server.reset()
+        server.override("/api/5/cpu", with: .json(#"{"total": 95}"#))
+        await poll(monitor) { monitor.consecutiveFailures == 0 }
+        // Without the reset the start from before the outage would fire it now.
+        #expect(monitor.ruleConditions.map(\.level) == [.ok])
+
+        time.date.addTimeInterval(299)
+        await poll(monitor) { monitor.snapshot.updated[.core] == time.date }
+        #expect(monitor.ruleConditions.map(\.level) == [.ok])
+        time.date.addTimeInterval(1)
+        await poll(monitor) { monitor.snapshot.updated[.core] == time.date }
+        #expect(monitor.ruleConditions.map(\.level) == [.warning])
+    }
+
+    @Test func sleepingDoesNotCountTowardsTheHoldTime() async {
+        let time = Clockwork()
+        let rule = ThresholdRule(metric: RuleMetric(.cpu), limit: 90, holdSeconds: 300)
+        let monitor = await makeTimedMonitor(rule, time)
+        defer { monitor.stop() }
+
+        monitor.pause()
+        time.date.addTimeInterval(3600)
+        monitor.resume()
+        await waitUntil("polled after waking") { monitor.snapshot.updated[.core] == time.date }
+        #expect(monitor.ruleConditions.map(\.level) == [.ok])
+    }
+
+    @Test func aFiringRuleKeepsFiringThroughAnOutage() async {
+        let time = Clockwork()
+        let rule = ThresholdRule(metric: RuleMetric(.cpu), limit: 90)
+        let monitor = await makeTimedMonitor(rule, time)
+        defer { monitor.stop() }
+        #expect(monitor.ruleConditions.map(\.level) == [.warning])
+
+        server.goOffline()
+        await poll(monitor) { monitor.consecutiveFailures > 0 }
+        #expect(monitor.ruleConditions.map(\.level) == [.warning])
+    }
+
     // MARK: - Center
 
     @Test func theCenterHandsRulesToNewAndExistingMonitors() async {

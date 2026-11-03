@@ -8,8 +8,12 @@ import Foundation
 /// conditions have the level of the rule while it fires and `ok` otherwise;
 /// the hold time is already applied, so `AlertEvaluator` does not wait again.
 public struct RuleEvaluator: Sendable {
+    /// A rule that is edited to measure something else starts from scratch:
+    /// the state belongs to what is measured, not only to the rule's id.
     private struct Key: Hashable {
         var rule: UUID
+        var metric: RuleMetric
+        var comparison: ThresholdRule.Comparison
         var item: String?
     }
 
@@ -21,6 +25,15 @@ public struct RuleEvaluator: Sendable {
     private var states: [Key: State] = [:]
 
     public init() {}
+
+    /// Forgets the start of every rule that is waiting for its hold time,
+    /// because the observation was interrupted: the connection failed, or
+    /// the Mac slept. A rule that already fires keeps firing.
+    public mutating func suspend() {
+        for key in states.keys where states[key]?.firing != true {
+            states[key]?.since = nil
+        }
+    }
 
     /// - Parameters:
     ///   - unavailable: Feeds without current data. Rules on them keep their
@@ -39,7 +52,8 @@ public struct RuleEvaluator: Sendable {
             }
 
             if unavailable.contains(rule.metric.kind.feed) {
-                for key in states.keys where key.rule == rule.id {
+                for key in states.keys
+                where key.rule == rule.id && key.metric == rule.metric && key.comparison == rule.comparison {
                     keep.insert(key)
                     // A start time from before the outage must not count.
                     if states[key]?.firing != true { states[key]?.since = nil }
@@ -51,7 +65,7 @@ public struct RuleEvaluator: Sendable {
             }
 
             for reading in MetricReader.read(rule.metric, from: snapshot) {
-                let key = Key(rule: rule.id, item: reading.item)
+                let key = Key(rule: rule.id, metric: rule.metric, comparison: rule.comparison, item: reading.item)
                 keep.insert(key)
                 var state = states[key] ?? State()
                 if state.firing {
@@ -80,6 +94,6 @@ public struct RuleEvaluator: Sendable {
 
     /// Identifies the value of a rule among the conditions of a server.
     private static func itemKey(_ key: Key) -> String {
-        "\(key.rule.uuidString)|\(key.item ?? "")"
+        "\(key.rule.uuidString)|\(key.metric.kind.rawValue)|\(key.item ?? "")"
     }
 }
