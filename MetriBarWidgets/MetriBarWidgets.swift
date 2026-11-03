@@ -15,7 +15,7 @@ struct MetriBarWidgetBundle: WidgetBundle {
 struct ServerStatusWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
-            kind: "it.schnabel.MetriBar.server", intent: SelectServerIntent.self, provider: ServerProvider()
+            kind: WidgetKind.server, intent: SelectServerIntent.self, provider: ServerProvider()
         ) {
             entry in
             ServerStatusContainer(entry: entry)
@@ -30,7 +30,7 @@ struct ServerStatusWidget: Widget {
 struct ServerListWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(
-            kind: "it.schnabel.MetriBar.servers", intent: SelectServerIntent.self, provider: ServerProvider()
+            kind: WidgetKind.servers, intent: SelectServerIntent.self, provider: ServerProvider()
         ) {
             entry in
             ServerListContainer(entry: entry)
@@ -62,7 +62,7 @@ struct StatusControl: ControlWidget {
     }
 
     var body: some ControlWidgetConfiguration {
-        StaticControlConfiguration(kind: "it.schnabel.MetriBar.status", provider: Provider()) { value in
+        StaticControlConfiguration(kind: WidgetKind.status, provider: Provider()) { value in
             ControlWidgetButton(action: OpenURLIntent(DeepLink.dashboard.url)) {
                 Label(
                     value.problems > 0 ? "\(value.problems) need attention" : value.health.label,

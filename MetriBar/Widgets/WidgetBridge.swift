@@ -89,6 +89,9 @@ final class WidgetBridge {
         if action == .writeAndReload {
             lastReload = now
             WidgetCenter.shared.reloadAllTimelines()
+            // A control is not a timeline: it has to be asked separately, or it
+            // keeps its old value until the user touches it.
+            ControlCenter.shared.reloadControls(ofKind: WidgetKind.status)
         }
     }
 
@@ -99,11 +102,14 @@ final class WidgetBridge {
         if let lastActivityCheck, now.timeIntervalSince(lastActivityCheck) < 60 { return }
         lastActivityCheck = now
 
+        // Someone may have added only the control, which is no widget
+        // configuration, or only widgets.
         let widgets = (try? await WidgetCenter.shared.currentConfigurations()) ?? []
+        let controls = (try? await ControlCenter.shared.currentControls()) ?? []
         #if DEBUG
-            let active = !widgets.isEmpty || debugForcesActivity
+            let active = !widgets.isEmpty || !controls.isEmpty || debugForcesActivity
         #else
-            let active = !widgets.isEmpty
+            let active = !widgets.isEmpty || !controls.isEmpty
         #endif
         guard active != isActive else { return }
         isActive = active

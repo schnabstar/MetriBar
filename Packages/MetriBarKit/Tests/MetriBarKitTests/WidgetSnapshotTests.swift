@@ -265,3 +265,14 @@ struct WidgetSnapshotTests {
                 lastReload: now.addingTimeInterval(-200), now: now) == .nothing)
     }
 }
+
+struct WidgetKindTests {
+    /// The extension declares these and the app reloads by them: a typo would
+    /// leave a widget or control without updates and without an error.
+    @Test func kindsAreDistinctAndInTheAppsNamespace() {
+        let kinds = [WidgetKind.server, WidgetKind.servers, WidgetKind.status]
+        #expect(Set(kinds).count == kinds.count)
+        #expect(kinds.allSatisfy { $0.hasPrefix("it.schnabel.MetriBar.") })
+        #expect(WidgetKind.status == "it.schnabel.MetriBar.status")
+    }
+}
