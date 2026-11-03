@@ -1,3 +1,4 @@
+import MetriBarKit
 import ServiceManagement
 import SwiftUI
 
@@ -26,7 +27,9 @@ struct GeneralSettingsView: View {
             } header: {
                 Text("Refresh")
             } footer: {
-                Text("MetriBar only asks the servers you add. It collects no data and sends nothing anywhere else.")
+                Text(
+                    "MetriBar asks the servers you add. It collects no data and sends nothing to anyone else, except the update check if you turn it on below."
+                )
             }
 
             Section {
@@ -42,6 +45,8 @@ struct GeneralSettingsView: View {
                     Text(loginItemError).font(.caption).foregroundStyle(.red)
                 }
             }
+
+            UpdateSection()
         }
         .formStyle(.grouped)
         .onAppear { loginItemStatus = LoginItem.status }

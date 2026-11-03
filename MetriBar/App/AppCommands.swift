@@ -10,6 +10,7 @@ struct AppCommands: Commands {
     var body: some Commands {
         CommandGroup(replacing: .appInfo) {
             Button("About MetriBar", action: AboutPanel.show)
+            Button("Check for Updates…") { Task { await UpdateAlert.check(using: model.updates) } }
         }
         CommandGroup(before: .toolbar) {
             Group {

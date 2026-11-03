@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- Optional update check, off by default (Settings › General › Updates). When turned on, MetriBar asks GitHub once a day whether a newer release exists and points it out in the menu bar window and in the settings, with links to the release notes and the download. **Check for Updates…** in the app menu checks once on request. Nothing is installed automatically.
+
 ### Changed
 
 - The disk image has a new window in the style of Liquid Glass: a light background with glass panes behind MetriBar and Applications, an arrow between them and the app icon as volume icon.
