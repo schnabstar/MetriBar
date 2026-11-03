@@ -14,7 +14,7 @@ No agent to install, no cloud, no account, no telemetry. An optional update chec
 
 ## Features
 
-- **Menu bar:** one icon for the combined status of all servers; its shape changes on warnings, critical values or when a server is offline. Optionally shows the CPU or memory usage of a server.
+- **Menu bar:** one icon for the combined status of all servers; its shape changes on warnings, critical values or when a server is offline. Optionally shows up to three values of a server next to it (CPU, memory, swap, load, highest temperature, fullest disk, network download or upload, containers with problems), with symbols, words or numbers only, optionally with a trend line, and optionally only while something is wrong.
 - **Popover:** CPU, memory, load, uptime and containers of the selected server, with a server switcher. When a server cannot be read, MetriBar explains why and offers the fix.
 - **Dashboard window** with the sections of every server in the sidebar (⌘1–⌘8):
   - Overview with usage rings, trend, network, sensors (temperatures, fans), storage, containers, system information and active alerts

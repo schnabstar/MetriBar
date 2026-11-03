@@ -56,8 +56,31 @@
                     to: directory)
                 feeds.cancel()
             }
+            writeMenuBarImages(demo: demo, to: directory)
             logger.notice("snapshots written to \(directory.path, privacy: .public)")
             NSApplication.shared.terminate(nil)
+        }
+
+        /// The menu bar image in every style, with and without a trend line,
+        /// on a gray background, because the real menu bar may be too full to
+        /// show a wide item.
+        private static func writeMenuBarImages(demo: AppModel, to directory: URL) {
+            guard let snapshot = demo.selectedMonitor?.snapshot else { return }
+            let items: [MenuBarMetric] = [.cpu, .memory, .networkDown]
+            let segments = MenuBarText.segments(items, from: snapshot)
+            let trend = TrendLine(
+                values: [10, 12, 30, 28, 45, nil, nil, 62, 35, 20, nil, 33, 31], range: 0...100)
+            for style in MenuBarStyle.allCases {
+                for (name, line) in [("", TrendLine?.none), ("-trend", trend)] {
+                    let content = MenuBarContent(health: .ok, segments: segments, style: style, trend: line)
+                        .padding(8)
+                        .background(Color(white: 0.8))
+                    write(content, name: "menubar-\(style.rawValue)\(name)", to: directory)
+                }
+            }
+            let warning = MenuBarContent(health: .warning, segments: segments, style: .symbols).padding(8)
+                .background(Color(white: 0.8))
+            write(warning, name: "menubar-warning", to: directory)
         }
 
         /// A model with its own defaults, emptied first, so runs start alike

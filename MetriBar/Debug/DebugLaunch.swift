@@ -11,6 +11,9 @@
     /// exists, without contacting GitHub. `-MetriBarFakeNotification 1` sends
     /// a notification about a critical CPU of the demo server.
     /// `-MetriBarFakeRule 1` adds a rule that fires on the demo server.
+    /// `-MetriBarMenuBar cpu,memory,networkDown` shows those values in the
+    /// menu bar, `-MetriBarMenuBarStyle labels|symbols|valuesOnly` sets the style,
+    /// `-MetriBarMenuBarTrend 1` adds the trend line.
     @MainActor
     enum DebugLaunch {
         static func makeModel() -> AppModel? {
@@ -31,6 +34,16 @@
                 }
             }
             if defaults.bool(forKey: "MetriBarFakeUpdate") { model.updates.showFakeUpdate() }
+            if let names = defaults.string(forKey: "MetriBarMenuBar") {
+                // `-MetriBarMenuBar cpu,memory,networkDown -MetriBarMenuBarStyle labels`
+                let items = names.split(separator: ",").compactMap { MenuBarMetric(rawValue: String($0)) }
+                let style = defaults.string(forKey: "MetriBarMenuBarStyle").flatMap(MenuBarStyle.init(rawValue:))
+                model.update {
+                    $0.menuBarItems = Preferences.normalized(items)
+                    if let style { $0.menuBarStyle = style }
+                    $0.menuBarTrend = defaults.bool(forKey: "MetriBarMenuBarTrend")
+                }
+            }
             if defaults.bool(forKey: "MetriBarFakeRule") {
                 model.saveRule(ThresholdRule(metric: RuleMetric(.cpu), limit: 5, severity: .critical))
             }

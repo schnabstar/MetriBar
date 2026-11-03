@@ -2,6 +2,19 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-11-05 – Menu bar values
+
+The menu bar shows up to three values of one server next to the status icon. The choice (`Preferences.menuBarItems`, `menuBarStyle`, `menuBarVisibility`, `menuBarTrend`) replaces the four fixed combinations of 0.11.0; `Preferences` still reads the old `menuBarValue` once (`cpu` and `memory` as one value without a label, `cpuAndMemory` as two with labels) and writes only the new keys.
+
+- **One template image instead of a label with several views.** A first version used an `HStack` of images and texts: `MenuBarExtra` turns its label into a status item with one image and one text and keeps only the first of each, so the second and third value vanished (0.11.0 worked because its label was one icon and one `Text`). `MenuBarImage` now draws the whole content with `ImageRenderer` into one `NSImage` (`isTemplate`, scale of the main screen), which also makes symbols and a trend line possible. As a template it takes the color of the menu bar, in light and dark mode and over every wallpaper. VoiceOver gets the text through `accessibilityLabel`. The open spike "does `MenuBarExtra` respect `monospacedDigit()`" is settled: the digits are drawn by SwiftUI into the image, monospaced.
+- **The menu bar can be full.** On a Mac with a notch and many menu extras, macOS hides a status item that does not fit and shows a "«" in its place; a 210 pt wide item (three values with symbols) was hidden on a 13-inch MacBook Air with seven other extras, a 75 pt one was not. Nothing the app can do about it, so the style "symbols" is compact, the footer of the setting says so, the trend line is off by default, and "only when something is wrong" keeps the icon alone most of the time. Because of this the images were checked with the snapshot tool (`-MetriBarSnapshots 1` now also writes `menubar-*.png`, all styles, with and without trend, on a gray background).
+- **Values come from `MetricReader`** (step 3): the fullest disk and the highest temperature are the maximum over all file systems and sensors; network is the sum of the interfaces that are up without loopback; containers counts `unhealthy` ones. A value the server did not report is left out. `MenuBarText` (MetriBarKit) formats with the locale, labels and symbols are in the app.
+- **Feeds:** `MenuBarMetric.feed` says which feed a value needs; `AppModel.refreshBackgroundFeeds` adds them to the rules' and notifications' background feeds for all monitors.
+- **Trend line:** `MenuBarSampler` (MetriBarKit) keeps the last 30 samples of each item for the menu bar server, one every ten seconds, in memory only; the loop runs only while the trend is on. Another server or a removed item starts a new history. A sample that could not be taken (the server was unreadable, or it lacked the value) is kept as a gap in its place, once there is a value before it, and `TrendLayout` breaks the line there. A first version dropped such samples, so the line joined the values before and after an outage as if nothing had happened; the review of the pull request found that. A single sample between two gaps is drawn as a dot, and a long outage pushes the old values out until nothing is left to draw. Percentages are drawn over 0 to 100 so a quiet CPU does not look like a storm; other values fit themselves to the range. Glances' own history was not used because it covers few values and is only fetched while the dashboard is open.
+- **"Only when something is wrong":** the values show while the combined health of all servers is warning or worse (including offline servers and firing rules); otherwise only the icon.
+- **Not done:** a color or shape per value (a template image has only alpha), a trend line for every value, and the choice of a server per value.
+- **Checking in the app (DEBUG only):** `-MetriBarMenuBar cpu,memory,networkDown -MetriBarMenuBarStyle labels -MetriBarMenuBarTrend 1`.
+
 ## 2026-11-05 – Custom thresholds
 
 Rules are the user's own limits (`ThresholdRule`: metric, above/below, limit, hold time, warning/critical, one server or all). They only change what MetriBar shows and reports; MetriBar stays read-only towards Glances.
@@ -153,6 +166,5 @@ Captured with `Scripts/capture-fixtures.py` (anonymized fixtures in `Packages/Me
 
 ## Open spikes
 
-- Menu bar label with a number: does `MenuBarExtra` respect `monospacedDigit()`?
 - Opening settings and the dashboard from the popover: window ordering and focus.
 - ATS for plain HTTP to a `.local` name and a qualified LAN host name (only `127.0.0.1` and `localhost` were testable; the test server has no plain HTTP port).
