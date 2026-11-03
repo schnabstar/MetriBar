@@ -29,7 +29,8 @@ enum MenuBarImage {
 
 /// The recent values of the first menu bar item, drawn after it.
 struct TrendLine: Equatable {
-    var values: [Double]
+    /// Oldest first; a `nil` is a gap.
+    var values: [Double?]
     /// Percentages over 0 to 100; `nil` fits the line to its values.
     var range: ClosedRange<Double>?
 }
@@ -47,7 +48,7 @@ struct MenuBarContent: View {
             Image(systemName: health.symbolName)
             ForEach(Array(segments.enumerated()), id: \.element.metric) { index, segment in
                 SegmentContent(segment: segment, style: style)
-                if index == 0, let trend, trend.values.count >= 2 {
+                if index == 0, let trend, trend.values.compactMap({ $0 }).count >= 2 {
                     TrendShape(values: trend.values, range: trend.range)
                         .stroke(style: StrokeStyle(lineWidth: 1.4, lineCap: .round, lineJoin: .round))
                         .frame(width: 26, height: 11)
@@ -94,23 +95,22 @@ private struct SegmentContent: View {
     }
 }
 
-/// A line through the values, the oldest on the left.
+/// A line through the values, the oldest on the left, broken at the gaps.
 private nonisolated struct TrendShape: Shape {
-    let values: [Double]
+    let values: [Double?]
     let range: ClosedRange<Double>?
 
     func path(in rect: CGRect) -> Path {
-        let low = range?.lowerBound ?? (values.min() ?? 0)
-        var high = range?.upperBound ?? (values.max() ?? 1)
-        // A flat line has no height to scale to: draw it in the middle.
-        let flat = high - low < 0.000_001
-        if flat { high = low + 1 }
         var path = Path()
-        for (index, value) in values.enumerated() {
-            let x = rect.minX + rect.width * CGFloat(index) / CGFloat(values.count - 1)
-            let fraction = flat ? 0.5 : min(max((value - low) / (high - low), 0), 1)
-            let point = CGPoint(x: x, y: rect.maxY - rect.height * CGFloat(fraction))
-            if index == 0 { path.move(to: point) } else { path.addLine(to: point) }
+        for segment in TrendLayout.segments(values, range: range) {
+            let points = segment.map {
+                CGPoint(x: rect.minX + rect.width * $0.x, y: rect.maxY - rect.height * $0.y)
+            }
+            guard let first = points.first else { continue }
+            path.move(to: first)
+            // One sample alone is drawn as a dot (a zero-length line with round caps).
+            if points.count == 1 { path.addLine(to: first) }
+            for point in points.dropFirst() { path.addLine(to: point) }
         }
         return path
     }

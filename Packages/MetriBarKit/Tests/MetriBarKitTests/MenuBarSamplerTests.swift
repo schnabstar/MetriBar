@@ -55,27 +55,58 @@ struct MenuBarSamplerTests {
         #expect(sampler.history(for: .memory) == [52])
     }
 
-    @Test func aServerThatCannotBeReadLeavesAGapNotAValue() {
+    @Test func aServerThatCannotBeReadLeavesAGapInItsPlace() {
         var sampler = MenuBarSampler()
         sampler.record(serverID: server, items: [.cpu], snapshot: snapshot(cpu: 10))
         sampler.record(serverID: server, items: [.cpu], snapshot: nil)
+        sampler.record(serverID: server, items: [.cpu], snapshot: nil)
         sampler.record(serverID: server, items: [.cpu], snapshot: snapshot(cpu: 12))
-        #expect(sampler.history(for: .cpu) == [10, 12])
+        // Two samples were missed: the line must not join 10 and 12.
+        #expect(sampler.history(for: .cpu) == [10, nil, nil, 12])
     }
 
-    @Test func aMissingValueIsNotRecorded() {
+    @Test func aHistoryDoesNotStartWithGaps() {
+        var sampler = MenuBarSampler()
+        sampler.record(serverID: server, items: [.cpu], snapshot: nil)
+        sampler.record(serverID: server, items: [.cpu], snapshot: nil)
+        #expect(sampler.history(for: .cpu).isEmpty)
+        sampler.record(serverID: server, items: [.cpu], snapshot: snapshot(cpu: 10))
+        #expect(sampler.history(for: .cpu) == [10])
+    }
+
+    @Test func aMissingValueIsAGapOnceThereWasOne() {
         var sampler = MenuBarSampler()
         sampler.record(serverID: server, items: [.cpu, .memory], snapshot: snapshot(cpu: 10))
+        // Memory was never there: no history, no gaps.
         #expect(sampler.history(for: .cpu) == [10])
         #expect(sampler.history(for: .memory).isEmpty)
+
+        sampler.record(serverID: server, items: [.cpu, .memory], snapshot: snapshot(cpu: 11, memory: 50))
+        sampler.record(serverID: server, items: [.cpu, .memory], snapshot: snapshot(cpu: 12))
+        #expect(sampler.history(for: .memory) == [50, nil])
     }
 
-    @Test func notAFiniteNumberIsIgnored() {
+    @Test func gapsCountTowardsTheCapacity() {
+        var sampler = MenuBarSampler()
+        sampler.record(serverID: server, items: [.cpu], snapshot: snapshot(cpu: 10))
+        for _ in 0..<SampleHistory.capacity {
+            sampler.record(serverID: server, items: [.cpu], snapshot: nil)
+        }
+        // A long outage pushes the old value out; nothing is left to draw.
+        let history = sampler.history(for: .cpu)
+        #expect(history.count == SampleHistory.capacity)
+        #expect(history.allSatisfy { $0 == nil })
+    }
+
+    @Test func notAFiniteNumberIsAGap() {
         var history = SampleHistory()
+        history.append(1)
         history.append(.nan)
         history.append(.infinity)
         history.append(3)
-        #expect(history.values == [3])
+        #expect(history.values == [1, nil, nil, 3])
+        #expect(history.hasValues)
+        #expect(!SampleHistory().hasValues)
     }
 
     @Test func percentagesHaveAFixedRange() {

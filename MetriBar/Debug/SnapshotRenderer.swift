@@ -68,7 +68,8 @@
             guard let snapshot = demo.selectedMonitor?.snapshot else { return }
             let items: [MenuBarMetric] = [.cpu, .memory, .networkDown]
             let segments = MenuBarText.segments(items, from: snapshot)
-            let trend = TrendLine(values: [10, 12, 30, 28, 45, 40, 62, 35, 20, 25, 33, 31], range: 0...100)
+            let trend = TrendLine(
+                values: [10, 12, 30, 28, 45, nil, nil, 62, 35, 20, nil, 33, 31], range: 0...100)
             for style in MenuBarStyle.allCases {
                 for (name, line) in [("", TrendLine?.none), ("-trend", trend)] {
                     let content = MenuBarContent(health: .ok, segments: segments, style: style, trend: line)
