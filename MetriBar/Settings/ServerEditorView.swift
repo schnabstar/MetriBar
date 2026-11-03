@@ -12,6 +12,7 @@ struct ServerDraft: Equatable {
     var password = ""
     var passwordEdited = false
     var isEnabled = true
+    var notificationsEnabled = true
     var pinnedCertificate: CertificateFingerprint?
 
     init() {}
@@ -23,6 +24,7 @@ struct ServerDraft: Equatable {
         requiresPassword = config.username != nil
         username = config.username ?? "glances"
         isEnabled = config.isEnabled
+        notificationsEnabled = config.notificationsEnabled
         pinnedCertificate = config.pinnedCertificate
     }
 
@@ -39,7 +41,8 @@ struct ServerDraft: Equatable {
             url: url,
             username: requiresPassword ? (trimmedUser.isEmpty ? "glances" : trimmedUser) : nil,
             isEnabled: isEnabled,
-            pinnedCertificate: url.scheme == "https" ? pinnedCertificate : nil
+            pinnedCertificate: url.scheme == "https" ? pinnedCertificate : nil,
+            notificationsEnabled: notificationsEnabled
         )
     }
 
@@ -133,6 +136,7 @@ struct ServerEditorView: View {
             if case .edit = mode {
                 Toggle("Monitor this server", isOn: $draft.isEnabled)
             }
+            Toggle("Notify about problems", isOn: $draft.notificationsEnabled)
         } header: {
             Text(mode == .add ? "New Server" : "Server")
         } footer: {

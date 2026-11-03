@@ -89,6 +89,26 @@
         }
       }
     },
+    "%@: %@ (%@)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: %@ (%@)"
+          }
+        }
+      }
+    },
+    "%@: back to normal" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: wieder normal"
+          }
+        }
+      }
+    },
     "%lld · %lld running · %lld threads" : {
       "localizations" : {
         "de" : {
@@ -223,6 +243,16 @@
         }
       }
     },
+    "A short spike is not reported. The same problem is reported at most every 15 minutes, unless it gets worse." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurze Spitzen werden nicht gemeldet. Dasselbe Problem wird höchstens alle 15 Minuten gemeldet, außer es wird schlimmer."
+          }
+        }
+      }
+    },
     "About MetriBar" : {
       "localizations" : {
         "de" : {
@@ -323,12 +353,32 @@
         }
       }
     },
+    "Can be reached again." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ist wieder erreichbar."
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abbrechen"
+          }
+        }
+      }
+    },
+    "Cannot be reached." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ist nicht erreichbar."
           }
         }
       }
@@ -453,6 +503,16 @@
         }
       }
     },
+    "Connection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbindung"
+          }
+        }
+      }
+    },
     "Connection problem" : {
       "localizations" : {
         "de" : {
@@ -479,6 +539,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verbindungstest"
+          }
+        }
+      }
+    },
+    "Container “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Container „%@“"
           }
         }
       }
@@ -699,6 +769,16 @@
         }
       }
     },
+    "Disk “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenträger „%@“"
+          }
+        }
+      }
+    },
     "Display" : {
       "localizations" : {
         "de" : {
@@ -795,6 +875,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vergleiche bei einem selbstsignierten Zertifikat den Fingerabdruck mit dem auf dem Server, bevor du ihm vertraust, zum Beispiel: openssl x509 -in cert.pem -noout -fingerprint -sha256"
+          }
+        }
+      }
+    },
+    "From" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Von"
           }
         }
       }
@@ -1011,6 +1101,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Image"
+          }
+        }
+      }
+    },
+    "Immediately" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sofort"
           }
         }
       }
@@ -1281,6 +1381,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MetriBar erhebt keine Daten und hat keine Telemetrie."
+          }
+        }
+      }
+    },
+    "MetriBar creates notifications on this Mac from what your servers report. Nothing is sent anywhere. You can turn off single servers in their settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MetriBar erzeugt Mitteilungen auf diesem Mac aus dem, was deine Server melden. Es wird nichts versendet. Einzelne Server kannst du in ihren Einstellungen ausschalten."
           }
         }
       }
@@ -1625,6 +1735,56 @@
         }
       }
     },
+    "Nothing is reported during quiet hours. A problem that is still there afterwards is reported then." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In den Ruhezeiten wird nichts gemeldet. Ein Problem, das danach noch besteht, wird dann gemeldet."
+          }
+        }
+      }
+    },
+    "Notifications" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mitteilungen"
+          }
+        }
+      }
+    },
+    "Notifications are turned off for MetriBar in System Settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mitteilungen für MetriBar sind in den Systemeinstellungen ausgeschaltet."
+          }
+        }
+      }
+    },
+    "Notify about problems" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bei Problemen benachrichtigen"
+          }
+        }
+      }
+    },
+    "Notify from" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigen ab"
+          }
+        }
+      }
+    },
     "Off by default. When on, MetriBar asks GitHub once a day whether a newer version exists. GitHub sees your IP address; nothing else is sent. Updates are never installed automatically." : {
       "localizations" : {
         "de" : {
@@ -1795,6 +1955,16 @@
         }
       }
     },
+    "Problem has to last" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problem muss andauern"
+          }
+        }
+      }
+    },
     "Process Details" : {
       "localizations" : {
         "de" : {
@@ -1821,6 +1991,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prozessor"
+          }
+        }
+      }
+    },
+    "Quiet hours" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruhezeiten"
           }
         }
       }
@@ -2058,6 +2238,16 @@
         }
       }
     },
+    "Send Test Notification" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Testmitteilung senden"
+          }
+        }
+      }
+    },
     "Sensors" : {
       "localizations" : {
         "de" : {
@@ -2124,6 +2314,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Server"
+          }
+        }
+      }
+    },
+    "Server cannot be reached" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server nicht erreichbar"
           }
         }
       }
@@ -2461,6 +2661,16 @@
         }
       }
     },
+    "Temperature of “%@”" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatur von „%@“"
+          }
+        }
+      }
+    },
     "Temperatures" : {
       "localizations" : {
         "de" : {
@@ -2661,6 +2871,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dieser Build von MetriBar kann den Schlüsselbund nicht verwenden. Siehe die Bauanleitung im README."
+          }
+        }
+      }
+    },
+    "This is a test notification." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist eine Testmitteilung."
           }
         }
       }
@@ -2967,6 +3187,16 @@
         }
       }
     },
+    "Until" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bis"
+          }
+        }
+      }
+    },
     "Up" : {
       "localizations" : {
         "de" : {
@@ -3103,6 +3333,16 @@
         }
       }
     },
+    "Value is back to normal" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert ist wieder normal"
+          }
+        }
+      }
+    },
     "Value of" : {
       "localizations" : {
         "de" : {
@@ -3169,6 +3409,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Willkommen bei MetriBar"
+          }
+        }
+      }
+    },
+    "What to report" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was gemeldet wird"
           }
         }
       }

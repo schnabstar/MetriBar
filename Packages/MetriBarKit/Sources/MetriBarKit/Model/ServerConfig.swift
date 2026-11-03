@@ -13,6 +13,8 @@ public struct ServerConfig: Codable, Sendable, Identifiable, Hashable {
     /// Certificate accepted for this server even if the system does not
     /// trust it, for self-signed certificates. Not a secret.
     public var pinnedCertificate: CertificateFingerprint?
+    /// Whether this server may raise notifications, if they are turned on.
+    public var notificationsEnabled: Bool
 
     public init(
         id: UUID = UUID(),
@@ -20,7 +22,8 @@ public struct ServerConfig: Codable, Sendable, Identifiable, Hashable {
         url: URL,
         username: String? = nil,
         isEnabled: Bool = true,
-        pinnedCertificate: CertificateFingerprint? = nil
+        pinnedCertificate: CertificateFingerprint? = nil,
+        notificationsEnabled: Bool = true
     ) {
         self.id = id
         self.name = name
@@ -28,6 +31,7 @@ public struct ServerConfig: Codable, Sendable, Identifiable, Hashable {
         self.username = username
         self.isEnabled = isEnabled
         self.pinnedCertificate = pinnedCertificate
+        self.notificationsEnabled = notificationsEnabled
     }
 
     public var displayName: String {
@@ -41,5 +45,26 @@ public struct ServerConfig: Codable, Sendable, Identifiable, Hashable {
     /// The password would travel unencrypted: warn before saving it.
     public var sendsPasswordUnencrypted: Bool {
         username != nil && transportSecurity != .encrypted
+    }
+}
+
+extension ServerConfig {
+    private enum CodingKeys: String, CodingKey {
+        case id, name, url, username, isEnabled, pinnedCertificate, notificationsEnabled
+    }
+
+    /// Decodes tolerantly: only `id` and `url` are required, everything else
+    /// falls back to its default. A field added in a later version therefore
+    /// does not make the saved servers of an earlier version unreadable.
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.init(
+            id: try container.decode(UUID.self, forKey: .id),
+            name: try container.decodeIfPresent(String.self, forKey: .name) ?? "",
+            url: try container.decode(URL.self, forKey: .url),
+            username: try container.decodeIfPresent(String.self, forKey: .username),
+            isEnabled: try container.decodeIfPresent(Bool.self, forKey: .isEnabled) ?? true,
+            pinnedCertificate: try container.decodeIfPresent(CertificateFingerprint.self, forKey: .pinnedCertificate),
+            notificationsEnabled: try container.decodeIfPresent(Bool.self, forKey: .notificationsEnabled) ?? true)
     }
 }

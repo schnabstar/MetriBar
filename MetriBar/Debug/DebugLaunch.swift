@@ -1,4 +1,5 @@
 #if DEBUG
+    import MetriBarKit
     import SwiftUI
 
     /// Development tool for checking windows in the running app with demo
@@ -7,14 +8,27 @@
     /// `-MetriBarOpen dashboard,settings,add-server` to open those windows.
     /// `-MetriBarSection processes` and `-MetriBarSettingsTab general` choose
     /// what they show. `-MetriBarFakeUpdate 1` pretends that a newer release
-    /// exists, without contacting GitHub.
+    /// exists, without contacting GitHub. `-MetriBarFakeNotification 1` sends
+    /// a notification about a critical CPU of the demo server.
     @MainActor
     enum DebugLaunch {
         static func makeModel() -> AppModel? {
             let defaults = UserDefaults.standard
             guard defaults.bool(forKey: "MetriBarDemo") else { return nil }
-            let model = SnapshotRenderer.makeModel(suite: "MetriBarDemo")
+            let fakeNotification = defaults.bool(forKey: "MetriBarFakeNotification")
+            let model = SnapshotRenderer.makeModel(suite: "MetriBarDemo", deliversNotifications: fakeNotification)
             model.addDemoServer()
+            if fakeNotification {
+                let demo = DemoServer.config()
+                Task {
+                    await model.notifier.requestAuthorization()
+                    model.notifier.post([
+                        AlertNotice(
+                            serverID: demo.id, serverName: demo.displayName, event: .raised,
+                            condition: Condition(.cpu, level: .critical, value: 97))
+                    ])
+                }
+            }
             if defaults.bool(forKey: "MetriBarFakeUpdate") { model.updates.showFakeUpdate() }
             if let section = defaults.string(forKey: "MetriBarSection").flatMap(DashboardSection.init(rawValue:)) {
                 model.dashboardSection = section

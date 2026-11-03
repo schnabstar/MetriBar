@@ -2,6 +2,22 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-11-04 – Notifications
+
+Notifications are local (`UNUserNotificationCenter`, no entitlement in the sandbox), off by default, and the permission is requested when the user turns them on, not at launch.
+
+- **A pure evaluator decides, a timer drives it.** `AlertEvaluator` (MetriBarKit) is a state machine without clock or side effects: it gets a `ServerObservation` and `now` and returns `AlertNotice`s. `AlertCenter` calls it every 15 s for all monitors. It works from a timer instead of hooks into `ServerMonitor`, because time has to pass also when a server stopped answering or polling was halted (rejected credentials); a hook at the end of each poll would never fire then.
+- **Rules:** a condition has to stay at or above the chosen level (warning or critical) for the hold time (default 2 min) before it is reported. The same condition is reported at most once per 15 min (cooldown), so a value at its threshold does not produce a stream. A reported problem that gets worse is reported at once (warning to critical), one that gets better is not. Recovery is reported only if asked for; a server that was reported offline is always reported back. A container or sensor that disappears is dropped without a recovery notice.
+- **Quiet hours hold back, they do not drop.** During quiet hours nothing is reported and the state is not marked as reported, so a problem that lasts beyond them is reported when they end. Recovery notices during quiet hours are dropped.
+- **Sleep and network changes:** after wake or a network change, offline servers are ignored for 60 s and problems that were waiting start counting anew; without that, a critical value from before the sleep would be reported at once from an hour-old start time.
+- **Sources are the ones of the menu bar icon** (`ServerSnapshot.conditions`: CPU, memory, load, containers including unhealthy ones, temperatures), plus file systems. File systems come from the storage feed, which is not a background feed for everyone: `MonitorCenter.setExtraBackgroundFeeds` adds it only while notifications are on (three more requests per interval: fs, diskio, swap). They do not change the icon, because `worstLevel` would otherwise depend on whether the storage view was opened before.
+- **A monitor is not restarted for a setting that does not concern the connection.** `ServerConfig.notificationsEnabled` is a new field; `ServerMonitor.update(config:client:)` keeps the connection when only that field changed (but not when the config is unchanged, which is how `reconnect` swaps the client; a test caught that mistake).
+- **`ServerConfig` decodes tolerantly now** (only `id` and `url` required), like `Preferences`, so saved servers of 0.11.0 stay readable. A test loads the old format through `ConfigStore`.
+- **Notices replace each other:** the request identifier is the condition (server, kind, item), so a worse level replaces the older banner instead of stacking. Banners are also shown while MetriBar's own windows are in front. Sound only for critical and offline. No "Time Sensitive" level, which needs an extra capability.
+- **Clicks:** the delegate sets the server and the alerts section and bumps `AppModel.dashboardRequest`; `MenuBarLabel` observes it and opens the window, because only a view has `openWindow`.
+- **Not done:** per-condition mute, notification actions (mute for an hour), a history of what was reported. Custom thresholds come next and will feed the same evaluator.
+- **Checking in the app (DEBUG only):** `-MetriBarFakeNotification 1` asks for permission and posts a critical CPU notice for the demo server. The system prompt has to be answered by hand.
+
 ## 2026-11-03 – Update check (opt-in)
 
 MetriBar can tell the user about a newer release, but never installs one. Distribution stays a notarized DMG from GitHub, and the next step (Homebrew for 1.0) is a package manager's job, so Sparkle would only add a dependency, XPC services and sandbox entitlements.

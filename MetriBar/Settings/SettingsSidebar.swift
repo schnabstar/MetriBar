@@ -10,6 +10,7 @@ struct SettingsSidebar: View {
     private enum Item: Hashable {
         case server(UUID)
         case display
+        case notifications
         case general
     }
 
@@ -32,6 +33,8 @@ struct SettingsSidebar: View {
             Section {
                 Label("Display", systemImage: "menubar.rectangle")
                     .tag(Item.display)
+                Label("Notifications", systemImage: "bell")
+                    .tag(Item.notifications)
                 Label("General", systemImage: "gearshape")
                     .tag(Item.general)
             }
@@ -82,6 +85,7 @@ struct SettingsSidebar: View {
                 switch model.settingsTab {
                 case .servers: model.editingServerID.map(Item.server)
                 case .display: .display
+                case .notifications: .notifications
                 case .general: .general
                 }
             },
@@ -91,6 +95,7 @@ struct SettingsSidebar: View {
                     model.settingsTab = .servers
                     model.editingServerID = id
                 case .display: model.settingsTab = .display
+                case .notifications: model.settingsTab = .notifications
                 case .general: model.settingsTab = .general
                 case nil: break
                 }

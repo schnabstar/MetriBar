@@ -93,4 +93,47 @@ struct MonitorCenterTests {
         center.reconnect(homeConfig.id)
         await waitUntil { home.count("/status") == 2 }
     }
+
+    @Test func notificationSettingOfAServerDoesNotRestartItsMonitor() async {
+        let center = makeCenter()
+        center.apply([homeConfig])
+        defer { center.stopAll() }
+        await waitUntil { center.monitor(for: homeConfig.id)?.state == .connected }
+        let requests = home.paths.count
+
+        var muted = homeConfig
+        muted.notificationsEnabled = false
+        center.apply([muted])
+        let monitor = center.monitor(for: homeConfig.id)
+        #expect(monitor?.config.notificationsEnabled == false)
+        #expect(monitor?.state == .connected)
+        #expect(home.paths.count == requests)
+
+        // Other changes still reconnect.
+        var renamedURL = muted
+        renamedURL.username = "glances"
+        center.apply([renamedURL])
+        #expect(center.monitor(for: homeConfig.id)?.state == .connecting)
+    }
+
+    @Test func extraBackgroundFeedsReachExistingAndNewMonitors() async {
+        let center = makeCenter()
+        center.apply([homeConfig])
+        defer { center.stopAll() }
+        await waitUntil { center.monitor(for: homeConfig.id)?.state == .connected }
+        #expect(home.count("/api/5/fs") == 0)
+
+        center.setExtraBackgroundFeeds([.storage])
+        await waitUntil("storage fetched") { center.monitor(for: homeConfig.id)?.snapshot.fileSystems != nil }
+        #expect(home.count("/api/5/fs") >= 1)
+
+        center.apply([homeConfig, nasConfig])
+        await waitUntil("storage fetched for the new server") {
+            center.monitor(for: nasConfig.id)?.snapshot.fileSystems != nil
+        }
+
+        // Back to the usual set: the file systems are not fetched any more.
+        center.setExtraBackgroundFeeds([])
+        #expect(center.extraBackgroundFeeds.isEmpty)
+    }
 }

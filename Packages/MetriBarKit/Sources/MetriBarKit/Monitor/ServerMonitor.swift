@@ -32,6 +32,7 @@ public final class ServerMonitor: Identifiable {
     @ObservationIgnored private var isPaused = false
     @ObservationIgnored private var needsHandshake = true
     @ObservationIgnored private var subscriptions: [Feed: Int] = [:]
+    @ObservationIgnored private var backgroundFeeds = Feed.background
     @ObservationIgnored private var historyAge: Duration?
     @ObservationIgnored private var retryAfter: Duration?
 
@@ -126,8 +127,26 @@ public final class ServerMonitor: Identifiable {
         reschedule(pollNow: true)
     }
 
+    /// Fetches `feeds` in the background besides the ones every monitor
+    /// fetches, for example the file systems while notifications watch them.
+    public func setExtraBackgroundFeeds(_ feeds: Set<Feed>) {
+        let next = Feed.background.union(feeds)
+        guard next != backgroundFeeds else { return }
+        let added = next.subtracting(backgroundFeeds)
+        backgroundFeeds = next
+        if !added.isEmpty, isRunning, !isPaused, !isHalted { reschedule(pollNow: true) }
+    }
+
     /// Applies a changed configuration or new credentials.
     public func update(config: ServerConfig, client: GlancesClient) {
+        // A setting that does not concern the connection must not restart it.
+        // Not for an unchanged config: that is a new client for the same server.
+        var connectionOnly = self.config
+        connectionOnly.notificationsEnabled = config.notificationsEnabled
+        if config != self.config, connectionOnly == config {
+            self.config = config
+            return
+        }
         let endpointChanged = config.url != self.config.url || config.username != self.config.username
         self.config = config
         self.client = client
@@ -172,7 +191,7 @@ public final class ServerMonitor: Identifiable {
 
     private func addSubscription(_ feeds: Set<Feed>) {
         let wasLive = !subscriptions.isEmpty
-        let newlyActive = feeds.filter { subscriptions[$0, default: 0] == 0 && !Feed.background.contains($0) }
+        let newlyActive = feeds.filter { subscriptions[$0, default: 0] == 0 && !backgroundFeeds.contains($0) }
         for feed in feeds {
             subscriptions[feed, default: 0] += 1
         }
@@ -230,7 +249,7 @@ public final class ServerMonitor: Identifiable {
     }
 
     private func dueFeeds() -> [Feed] {
-        let active = Feed.background.union(subscriptions.keys)
+        let active = backgroundFeeds.union(subscriptions.keys)
         return Feed.allCases.filter { feed in
             guard active.contains(feed) else { return false }
             guard feed == .history else { return true }

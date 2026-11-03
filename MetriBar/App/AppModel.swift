@@ -3,7 +3,7 @@ import MetriBarKit
 import Observation
 
 enum SettingsTab: String, Hashable {
-    case servers, display, general
+    case servers, display, notifications, general
 }
 
 /// How a password changes when a server is saved.
@@ -19,6 +19,8 @@ enum PasswordChange: Equatable {
 final class AppModel {
     let center: MonitorCenter
     let updates: UpdateModel
+    let alerts: AlertCenter
+    let notifier = NotificationService()
     private(set) var servers: [ServerConfig] = []
     private(set) var preferences: Preferences
 
@@ -35,10 +37,17 @@ final class AppModel {
     /// Section shown in the dashboard window.
     var dashboardSection: DashboardSection = .overview
 
+    /// Increases when something outside a view, such as a click on a
+    /// notification, wants the dashboard window to open.
+    private(set) var dashboardRequest = 0
+
     @ObservationIgnored private let configStore: ConfigStore
     @ObservationIgnored private let credentials: any CredentialStore
     @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private let events = SystemEventObserver()
+    /// `false` for throwaway models of the debug tools, which must not
+    /// touch the system notification center.
+    @ObservationIgnored private let deliversNotifications: Bool
 
     private enum Keys {
         static let preferences = "preferences"
@@ -50,11 +59,13 @@ final class AppModel {
         credentials: any CredentialStore = AppKeychain.store,
         defaults: UserDefaults = .standard,
         observeSystemEvents: Bool = true,
+        deliversNotifications: Bool = true,
         updateTransport: any HTTPTransport = URLSessionTransport(configuration: .metriBarConnectionTest)
     ) {
         self.configStore = configStore
         self.credentials = credentials
         self.defaults = defaults
+        self.deliversNotifications = deliversNotifications
         let preferences =
             defaults.data(forKey: Keys.preferences)
             .flatMap { try? JSONDecoder().decode(Preferences.self, from: $0) } ?? Preferences()
@@ -64,11 +75,24 @@ final class AppModel {
             Self.makeClient(for: config, credentials: credentials)
         }
         updates = UpdateModel(currentVersion: Self.currentVersion, transport: updateTransport, defaults: defaults)
+        let notifier = notifier
+        alerts = AlertCenter(
+            settings: deliversNotifications ? preferences.notifications : NotificationSettings(),
+            monitors: { [center] in center.monitors },
+            deliver: { notices in notifier.post(notices) })
         servers = configStore.load()
         center.apply(servers)
         if preferences.checksForUpdates { updates.startAutomaticChecks() }
         if observeSystemEvents {
-            events.start { [weak self] event in self?.center.handle(event) }
+            events.start { [weak self] event in
+                self?.center.handle(event)
+                self?.alerts.handle(event)
+            }
+        }
+        if deliversNotifications {
+            notifier.onOpenServer = { [weak self] id in self?.showAlerts(for: id) }
+            notifier.activate()
+            applyNotificationSettings()
         }
     }
 
@@ -99,6 +123,9 @@ final class AppModel {
         if pollingChanged {
             center.update(settings: next.pollingSettings)
         }
+        if next.notifications != previous.notifications, deliversNotifications {
+            applyNotificationSettings()
+        }
         if next.checksForUpdates != previous.checksForUpdates {
             if next.checksForUpdates {
                 updates.startAutomaticChecks()
@@ -106,6 +133,30 @@ final class AppModel {
                 updates.stopAutomaticChecks()
             }
         }
+    }
+
+    /// Starts or stops the alerts and, while they are on, fetches the file
+    /// systems in the background so a full disk can be noticed.
+    private func applyNotificationSettings() {
+        let settings = preferences.notifications
+        alerts.update(settings: settings)
+        center.setExtraBackgroundFeeds(settings.isEnabled ? [.storage] : [])
+    }
+
+    /// Turns notifications on or off. Turning them on asks the system for
+    /// permission the first time.
+    func setNotificationsEnabled(_ enabled: Bool) {
+        update { $0.notifications.isEnabled = enabled }
+        guard enabled else { return }
+        Task { await notifier.requestAuthorization() }
+    }
+
+    /// Shows the alerts of a server in the dashboard, for example after a
+    /// click on a notification.
+    func showAlerts(for serverID: UUID?) {
+        if let serverID, server(serverID) != nil { selectedServerID = serverID }
+        dashboardSection = .alerts
+        dashboardRequest += 1
     }
 
     /// The version of the running app, from the Info.plist.

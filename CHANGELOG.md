@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Notifications, off by default (Settings › Notifications): MetriBar tells you when CPU, memory, load, a container, a temperature or a file system reaches warning or critical, and when a server cannot be reached or is back. A problem has to last (2 minutes by default) before it is reported, the same problem is reported at most every 15 minutes unless it gets worse, quiet hours hold notifications back until they end, and every server has its own switch. Clicking a notification opens the alerts of that server. The file systems are fetched in the background while notifications are on, so a full disk is noticed.
 - Optional update check, off by default (Settings › General › Updates). When turned on, MetriBar asks GitHub once a day whether a newer release exists and points it out in the menu bar window and in the settings, with links to the release notes and the download. **Check for Updates…** in the app menu checks once on request. Nothing is installed automatically.
 
 ### Changed

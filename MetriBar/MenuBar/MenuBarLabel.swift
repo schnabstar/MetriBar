@@ -3,6 +3,7 @@ import SwiftUI
 
 struct MenuBarLabel: View {
     @Environment(AppModel.self) private var model
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         HStack(spacing: 4) {
@@ -14,6 +15,8 @@ struct MenuBarLabel: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(accessibilityText)
+        // A click on a notification asks for the dashboard from outside the views.
+        .onChange(of: model.dashboardRequest) { openDashboard(using: openWindow) }
     }
 
     private var value: String? {
