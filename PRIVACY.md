@@ -14,4 +14,4 @@ To remove all MetriBar data, remove your servers in MetriBar's settings (this al
 
 Questions: info@schnabel.it
 
-Last updated: November 4, 2026
+Last updated: November 3, 2026

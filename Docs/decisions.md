@@ -2,7 +2,7 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
-## 2026-11-06 – Widgets and a control
+## 2026-11-03 – Widgets and a control
 
 Desktop widgets (small and medium for one server, medium and large for all) and a control for the Control Center and menu bar. The open spike (can a sandboxed `LSUIElement` agent with an App Group and a widget extension be signed with Developer ID and work?) came out positive, so the step went ahead.
 
@@ -19,7 +19,7 @@ Desktop widgets (small and medium for one server, medium and large for all) and 
 - **Release.** `Scripts/release.sh` now checks the sandbox, the hardened runtime and the absence of `get-task-allow` for the app and for the extension; the check was run against the exported spike build (accepted) and the Debug build (rejected).
 - **Not done:** an interactive control (state toggles), a widget for containers or alerts, a widget that works while MetriBar is not running, and a Homebrew-specific note.
 
-## 2026-11-05 – Menu bar values
+## 2026-11-03 – Menu bar values
 
 The menu bar shows up to three values of one server next to the status icon. The choice (`Preferences.menuBarItems`, `menuBarStyle`, `menuBarVisibility`, `menuBarTrend`) replaces the four fixed combinations of 0.11.0; `Preferences` still reads the old `menuBarValue` once (`cpu` and `memory` as one value without a label, `cpuAndMemory` as two with labels) and writes only the new keys.
 
@@ -32,7 +32,7 @@ The menu bar shows up to three values of one server next to the status icon. The
 - **Not done:** a color or shape per value (a template image has only alpha), a trend line for every value, and the choice of a server per value.
 - **Checking in the app (DEBUG only):** `-MetriBarMenuBar cpu,memory,networkDown -MetriBarMenuBarStyle labels -MetriBarMenuBarTrend 1`.
 
-## 2026-11-05 – Custom thresholds
+## 2026-11-03 – Custom thresholds
 
 Rules are the user's own limits (`ThresholdRule`: metric, above/below, limit, hold time, warning/critical, one server or all). They only change what MetriBar shows and reports; MetriBar stays read-only towards Glances.
 
@@ -47,7 +47,7 @@ Rules are the user's own limits (`ThresholdRule`: metric, above/below, limit, ho
 - **Not done:** rules per container, rule hits as their own table in the alerts section of the dashboard (the status of a firing rule is visible as the health of the server), and a rule on the history of a value ("average over 5 minutes"). The hold time is "the value stayed beyond the limit", not an average.
 - **Checking in the app (DEBUG only):** `-MetriBarFakeRule 1` adds a rule that fires on the demo server.
 
-## 2026-11-04 – Notifications
+## 2026-11-03 – Notifications
 
 Notifications are local (`UNUserNotificationCenter`, no entitlement in the sandbox), off by default, and the permission is requested when the user turns them on, not at launch.
 

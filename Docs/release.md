@@ -21,7 +21,7 @@ Releases are Developer ID signed, notarized by Apple and published on GitHub. Ve
 4. Build, sign and notarize:
 
    ```sh
-   Scripts/release.sh 0.11.0
+   Scripts/release.sh 0.12.0
    ```
 
    The script archives the app, exports it with Developer ID, notarizes and staples the app, builds a signed and notarized disk image (Finder lays out its window, so run it in a logged-in session and allow the terminal to control Finder), checks both with Gatekeeper and writes the DMG, a ZIP and SHA-256 checksums to `dist/`. It does not publish anything.
@@ -32,10 +32,10 @@ Releases are Developer ID signed, notarized by Apple and published on GitHub. Ve
 6. Tag and publish:
 
    ```sh
-   git tag -a v0.11.0 -m "MetriBar 0.11.0"
-   git push origin v0.11.0
-   gh release create v0.11.0 --latest --title "MetriBar 0.11.0" \
-     --notes-file <notes> dist/MetriBar-0.11.0.{dmg,zip,sha256}
+   git tag -a v0.12.0 -m "MetriBar 0.12.0"
+   git push origin v0.12.0
+   gh release create v0.12.0 --latest --title "MetriBar 0.12.0" \
+     --notes-file <notes> dist/MetriBar-0.12.0.{dmg,zip,sha256}
    ```
 
    Use the changelog section of the version as notes and mention that Glances 5 is required.

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-11-03
+
+Requires a server running Glances 5 and macOS 26 or later.
+
 ### Added
 
 - Widgets and a control (macOS 26): a small or medium widget for one server (CPU, memory, disk, temperature; you choose the server), a medium or large widget for all servers, and a control for the Control Center and the menu bar that shows the state of all servers and opens the dashboard. Clicking a widget opens the dashboard at that server. MetriBar writes a small summary (server names, state and four values, no addresses or credentials) into an App Group container while at least one widget or control exists, and deletes it afterwards; the widgets themselves have no network access. MetriBar has to be running to keep them current.
