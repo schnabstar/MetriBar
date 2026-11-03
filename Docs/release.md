@@ -24,7 +24,9 @@ Releases are Developer ID signed, notarized by Apple and published on GitHub. Ve
    Scripts/release.sh 0.11.0
    ```
 
-   The script archives the app, exports it with Developer ID, notarizes and staples the app, builds a signed and notarized disk image, checks both with Gatekeeper and writes the DMG, a ZIP and SHA-256 checksums to `dist/`. It does not publish anything.
+   The script archives the app, exports it with Developer ID, notarizes and staples the app, builds a signed and notarized disk image (Finder lays out its window, so run it in a logged-in session and allow the terminal to control Finder), checks both with Gatekeeper and writes the DMG, a ZIP and SHA-256 checksums to `dist/`. It does not publish anything.
+
+   The disk image background is `Resources/DiskImage/background.tiff`. Regenerate it with `xcrun swift Scripts/make-dmg-background.swift Resources/DiskImage/background.tiff` after changing the layout, and keep the icon positions in `Scripts/make-dmg.sh` in sync.
 
 5. Install the DMG on a Mac and check that it opens without warnings.
 6. Tag and publish:
