@@ -17,6 +17,7 @@ public struct Preferences: Codable, Sendable, Equatable {
     public var liveIntervalSeconds = 2
     /// Ask GitHub about new releases of MetriBar. Off until the user turns it on.
     public var checksForUpdates = false
+    public var notifications = NotificationSettings()
 
     public static let baseIntervalChoices = [5, 10, 30, 60]
     public static let liveIntervalChoices = [1, 2, 5]
@@ -30,7 +31,7 @@ public struct Preferences: Codable, Sendable, Equatable {
 
 extension Preferences {
     private enum CodingKeys: String, CodingKey {
-        case menuBarValue, menuBarServerID, baseIntervalSeconds, liveIntervalSeconds, checksForUpdates
+        case menuBarValue, menuBarServerID, baseIntervalSeconds, liveIntervalSeconds, checksForUpdates, notifications
     }
 
     public init(from decoder: any Decoder) throws {
@@ -44,5 +45,7 @@ extension Preferences {
         liveIntervalSeconds =
             try container.decodeIfPresent(Int.self, forKey: .liveIntervalSeconds) ?? liveIntervalSeconds
         checksForUpdates = try container.decodeIfPresent(Bool.self, forKey: .checksForUpdates) ?? checksForUpdates
+        notifications =
+            (try? container.decodeIfPresent(NotificationSettings.self, forKey: .notifications)) ?? notifications
     }
 }

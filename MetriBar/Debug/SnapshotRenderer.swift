@@ -62,12 +62,13 @@
 
         /// A model with its own defaults, emptied first, so runs start alike
         /// and leave one preferences file per suite behind.
-        static func makeModel(suite: String) -> AppModel {
+        static func makeModel(suite: String, deliversNotifications: Bool = false) -> AppModel {
             let defaults = UserDefaults(suiteName: suite)!
             defaults.removePersistentDomain(forName: suite)
             return AppModel(
                 configStore: ConfigStore(defaults: defaults), credentials: InMemoryCredentialStore(),
-                defaults: defaults, observeSystemEvents: false)
+                defaults: defaults, observeSystemEvents: false,
+                deliversNotifications: deliversNotifications)
         }
 
         private static func write(_ view: some View, name: String, to directory: URL) {

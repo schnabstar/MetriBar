@@ -9,6 +9,8 @@ public final class MonitorCenter {
     /// Monitors in the order of the configuration.
     public private(set) var monitors: [ServerMonitor] = []
     public private(set) var settings: PollingSettings
+    /// Feeds every monitor fetches in the background besides the usual ones.
+    public private(set) var extraBackgroundFeeds: Set<Feed> = []
 
     @ObservationIgnored private let clock: any Clock<Duration>
     @ObservationIgnored private let makeClient: @MainActor (ServerConfig) -> GlancesClient
@@ -46,6 +48,7 @@ public final class MonitorCenter {
                 return monitor
             }
             let monitor = ServerMonitor(config: config, client: makeClient(config), settings: settings, clock: clock)
+            monitor.setExtraBackgroundFeeds(extraBackgroundFeeds)
             monitor.start()
             return monitor
         }
@@ -65,6 +68,14 @@ public final class MonitorCenter {
         self.settings = settings
         for monitor in monitors {
             monitor.update(settings: settings)
+        }
+    }
+
+    public func setExtraBackgroundFeeds(_ feeds: Set<Feed>) {
+        guard feeds != extraBackgroundFeeds else { return }
+        extraBackgroundFeeds = feeds
+        for monitor in monitors {
+            monitor.setExtraBackgroundFeeds(feeds)
         }
     }
 

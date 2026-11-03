@@ -32,6 +32,7 @@ public final class ServerMonitor: Identifiable {
     @ObservationIgnored private var isPaused = false
     @ObservationIgnored private var needsHandshake = true
     @ObservationIgnored private var subscriptions: [Feed: Int] = [:]
+    @ObservationIgnored private var backgroundFeeds = Feed.background
     @ObservationIgnored private var historyAge: Duration?
     @ObservationIgnored private var retryAfter: Duration?
 
@@ -73,6 +74,24 @@ public final class ServerMonitor: Identifiable {
         if level >= .critical { return .critical }
         if level >= .warning || snapshot.hasUnhealthyContainers { return .warning }
         return .ok
+    }
+
+    /// The conditions the notifications may look at, and the kinds whose
+    /// values must not be trusted right now.
+    ///
+    /// When an optional feed fails (the file systems, say) while the core
+    /// feed works, the monitor keeps the old values and records the error
+    /// separately. Those values say nothing about the present, so they are
+    /// left out, as are values of a feed that was not fetched for `maxAge`.
+    public func watchedConditions(now: Date, maxAge: TimeInterval = 300) -> WatchedConditions {
+        var unavailable: Set<Condition.Kind> = []
+        for kind in Condition.Kind.allCases {
+            guard let feed = kind.feed else { continue }
+            let fresh = snapshot.updated[feed].map { now.timeIntervalSince($0) <= maxAge } ?? false
+            if feedErrors[feed] != nil || !fresh { unavailable.insert(kind) }
+        }
+        return WatchedConditions(
+            conditions: snapshot.conditions.filter { !unavailable.contains($0.kind) }, unavailable: unavailable)
     }
 
     private var isHalted: Bool {
@@ -126,8 +145,26 @@ public final class ServerMonitor: Identifiable {
         reschedule(pollNow: true)
     }
 
+    /// Fetches `feeds` in the background besides the ones every monitor
+    /// fetches, for example the file systems while notifications watch them.
+    public func setExtraBackgroundFeeds(_ feeds: Set<Feed>) {
+        let next = Feed.background.union(feeds)
+        guard next != backgroundFeeds else { return }
+        let added = next.subtracting(backgroundFeeds)
+        backgroundFeeds = next
+        if !added.isEmpty, isRunning, !isPaused, !isHalted { reschedule(pollNow: true) }
+    }
+
     /// Applies a changed configuration or new credentials.
     public func update(config: ServerConfig, client: GlancesClient) {
+        // A setting that does not concern the connection must not restart it.
+        // Not for an unchanged config: that is a new client for the same server.
+        var connectionOnly = self.config
+        connectionOnly.notificationsEnabled = config.notificationsEnabled
+        if config != self.config, connectionOnly == config {
+            self.config = config
+            return
+        }
         let endpointChanged = config.url != self.config.url || config.username != self.config.username
         self.config = config
         self.client = client
@@ -172,7 +209,7 @@ public final class ServerMonitor: Identifiable {
 
     private func addSubscription(_ feeds: Set<Feed>) {
         let wasLive = !subscriptions.isEmpty
-        let newlyActive = feeds.filter { subscriptions[$0, default: 0] == 0 && !Feed.background.contains($0) }
+        let newlyActive = feeds.filter { subscriptions[$0, default: 0] == 0 && !backgroundFeeds.contains($0) }
         for feed in feeds {
             subscriptions[feed, default: 0] += 1
         }
@@ -230,7 +267,7 @@ public final class ServerMonitor: Identifiable {
     }
 
     private func dueFeeds() -> [Feed] {
-        let active = Feed.background.union(subscriptions.keys)
+        let active = backgroundFeeds.union(subscriptions.keys)
         return Feed.allCases.filter { feed in
             guard active.contains(feed) else { return false }
             guard feed == .history else { return true }
@@ -449,4 +486,11 @@ public final class ServerMonitor: Identifiable {
             }
         }
     }
+}
+
+public struct WatchedConditions: Sendable, Equatable {
+    /// Conditions with current values.
+    public var conditions: [Condition]
+    /// Kinds without current values: their feed failed or is outdated.
+    public var unavailable: Set<Condition.Kind>
 }
