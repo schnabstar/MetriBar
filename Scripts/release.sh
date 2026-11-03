@@ -56,7 +56,10 @@ for bundle in "$app" "$app"/Contents/PlugIns/*.appex; do
     echo "$name is not sandboxed" >&2
     exit 1
   fi
-  if ! codesign -dv "$bundle" 2>&1 | grep -q "flags=.*runtime"; then
+  # Not "codesign | grep -q": grep quits at the first match, codesign then gets
+  # SIGPIPE and, with pipefail, the pipeline counts as failed.
+  signature=$(codesign -dv "$bundle" 2>&1)
+  if ! grep -q "flags=.*runtime" <<<"$signature"; then
     echo "$name does not use the hardened runtime" >&2
     exit 1
   fi
