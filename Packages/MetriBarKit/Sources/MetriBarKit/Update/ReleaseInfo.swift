@@ -77,13 +77,26 @@ public struct ReleaseInfo: Decodable, Sendable, Equatable {
     }
 
     /// Accepts `https://github.com/schnabstar/MetriBar/…` and nothing else.
+    ///
+    /// The path is checked segment by segment in its encoded form: a prefix
+    /// check alone lets `…/MetriBar/../../other/` through, which opens
+    /// another repository once the URL is resolved.
     static func repositoryURL(_ string: String) -> URL? {
         guard let url = URL(string: string),
             url.scheme == "https",
             url.host()?.lowercased() == "github.com",
             url.user == nil, url.port == nil,
-            url.path(percentEncoded: false).hasPrefix("/schnabstar/MetriBar/")
+            url.path(percentEncoded: true).hasPrefix("/schnabstar/MetriBar/")
         else { return nil }
+        let segments = url.path(percentEncoded: true).split(separator: "/", omittingEmptySubsequences: false)
+            .dropFirst()
+        for segment in segments {
+            // Also catches `%2e%2e` and an encoded `/` or `\` inside a segment.
+            guard let decoded = segment.removingPercentEncoding,
+                decoded != ".", decoded != "..",
+                !decoded.contains("/"), !decoded.contains("\\")
+            else { return nil }
+        }
         return url
     }
 }

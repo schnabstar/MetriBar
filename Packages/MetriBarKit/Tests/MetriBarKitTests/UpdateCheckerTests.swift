@@ -57,19 +57,40 @@ struct UpdateCheckerTests {
             "https://github.com.evil.example/schnabstar/MetriBar/releases",
             "https://user@github.com/schnabstar/MetriBar/releases",
             "https://github.com/schnabstar/MetriBar-fake/releases",
+            "https://github.com/schnabstar/MetriBar/../../attacker/releases/tag/v0.12.0",
+            "https://github.com/schnabstar/MetriBar/releases/../../../attacker/repo",
+            "https://github.com/schnabstar/MetriBar/%2e%2e/%2E%2e/attacker/repo",
+            "https://github.com/schnabstar/MetriBar/.%2e/attacker/repo",
+            "https://github.com/schnabstar/MetriBar/releases/%2e/tag",
+            "https://github.com/schnabstar/MetriBar/..%2F..%2Fattacker/repo",
+            "https://github.com/schnabstar/MetriBar/releases%5C..%5Cattacker",
             "javascript:alert(1)",
         ] {
             #expect(await result(reply: Self.release(url: url)) == .failed(.invalidResponse), "\(url)")
         }
     }
 
+    @Test func acceptsReleaseLinksWithEncodedCharacters() {
+        #expect(
+            ReleaseInfo.repositoryURL("https://github.com/schnabstar/MetriBar/releases/tag/v0.12.0-preview.1") != nil)
+        #expect(
+            ReleaseInfo.repositoryURL("https://github.com/schnabstar/MetriBar/releases/download/v1/My%20App.dmg") != nil
+        )
+        #expect(ReleaseInfo.repositoryURL("https://github.com/schnabstar/MetriBar/releases/tag/v1.0.0?x=..") != nil)
+    }
+
     @Test func hostileAssetLinkIsDropped() async {
-        let assets = #"[{"name": "MetriBar.dmg", "browser_download_url": "https://evil.example/MetriBar.dmg"}]"#
-        guard case .available(let update) = await result(reply: Self.release(assets: assets)) else {
-            Issue.record("expected an available update")
-            return
+        for link in [
+            "https://evil.example/MetriBar.dmg",
+            "https://github.com/schnabstar/MetriBar/../../attacker/repo/releases/download/v1/MetriBar.dmg",
+        ] {
+            let assets = #"[{"name": "MetriBar.dmg", "browser_download_url": "\#(link)"}]"#
+            guard case .available(let update) = await result(reply: Self.release(assets: assets)) else {
+                Issue.record("expected an available update")
+                return
+            }
+            #expect(update.diskImageURL == nil, "\(link)")
         }
-        #expect(update.diskImageURL == nil)
     }
 
     @Test func garbageTagsAndBodiesAreInvalid() async {
