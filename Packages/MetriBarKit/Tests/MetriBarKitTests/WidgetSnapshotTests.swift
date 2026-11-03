@@ -149,10 +149,12 @@ struct WidgetSnapshotTests {
         let monitor = await connectedMonitor(ServerConfig(name: "NAS", url: URL(string: "https://nas.example.com")!))
         defer { monitor.stop() }
         server.goOffline()
-        await waitUntil("monitor waits") { !clock.pendingDelays.isEmpty }
-        for _ in 0..<3 {
+        // Three failed polls in a row make the server unreadable. Each one is
+        // waited for, so the test does not depend on how fast the machine is.
+        for failures in 1...3 {
+            await waitUntil("monitor waits for the next attempt") { !clock.pendingDelays.isEmpty }
             clock.advance(by: clock.pendingDelays.first ?? .seconds(60))
-            try? await Task.sleep(for: .milliseconds(20))
+            await waitUntil("failure \(failures) recorded") { monitor.consecutiveFailures >= failures }
         }
         await waitUntil("offline") { monitor.health == .offline }
         let entry = try #require(WidgetSnapshot.make(from: [monitor], now: now).servers.first)
