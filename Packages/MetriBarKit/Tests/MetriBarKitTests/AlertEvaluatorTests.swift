@@ -270,6 +270,54 @@ struct AlertEvaluatorTests {
         #expect(events.map(\.event) == [.escalated])
     }
 
+    // MARK: - Outdated values
+
+    private func observe(
+        _ level: Level, kind: Condition.Kind, unavailable: Set<Condition.Kind>
+    ) -> ServerObservation {
+        ServerObservation(
+            serverID: server, serverName: "NAS", isOffline: false,
+            conditions: [Condition(kind, item: kind == .fileSystem ? "/mnt" : nil, level: level, value: 90)],
+            unavailable: unavailable)
+    }
+
+    @Test func outdatedValuesDoNotAdvanceTheTimer() {
+        var evaluator = AlertEvaluator(settings: settings(hold: 120))
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: []), at: 0) == [])
+        // The feed fails for a long time; its last value is still critical.
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: [.fileSystem]), at: 100) == [])
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: [.fileSystem]), at: 500) == [])
+        // Fresh again: counting starts anew, the old start is not used.
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: []), at: 520) == [])
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: []), at: 639) == [])
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: []), at: 640) == [.raised])
+    }
+
+    @Test func outdatedValuesAreNeitherARecoveryNorANewProblem() {
+        var asked = settings(hold: 0)
+        asked.notifiesRecovery = true
+        var evaluator = AlertEvaluator(settings: asked)
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: []), at: 0) == [.raised])
+        // Nothing is known while the feed fails: not even a gone condition is a recovery.
+        let none = ServerObservation(
+            serverID: server, serverName: "NAS", isOffline: false, conditions: [], unavailable: [.fileSystem])
+        #expect(evaluator.evaluate(none, now: start.addingTimeInterval(10)).isEmpty)
+        // Still critical afterwards: it was reported, not reported again.
+        #expect(run(&evaluator, observe(.critical, kind: .fileSystem, unavailable: []), at: 20) == [])
+        // Now it really is over.
+        #expect(run(&evaluator, observe(.ok, kind: .fileSystem, unavailable: []), at: 30) == [.recovered])
+    }
+
+    @Test func outdatedKindsDoNotAffectOtherKinds() {
+        var evaluator = AlertEvaluator(settings: settings(hold: 0))
+        let both = ServerObservation(
+            serverID: server, serverName: "NAS", isOffline: false,
+            conditions: [Condition(.cpu, level: .critical), Condition(.fileSystem, item: "/mnt", level: .critical)],
+            unavailable: [.fileSystem])
+        let notices = evaluator.evaluate(both, now: start)
+        #expect(notices.map(\.condition.kind) == [.cpu])
+    }
+
     // MARK: - Servers
 
     @Test func serversDoNotInfluenceEachOther() {

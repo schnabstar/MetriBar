@@ -10,7 +10,8 @@ struct AlertCenterTests {
     private let config = ServerConfig(name: "NAS", url: URL(string: "https://nas.example.com")!)
 
     private final class Box {
-        var date = Date(timeIntervalSince1970: 1_800_000_000)
+        // The monitors stamp their feeds with the real time, so start there.
+        var date = Date()
         var notices: [AlertNotice] = []
     }
 
@@ -134,13 +135,99 @@ struct AlertCenterTests {
         let center = makeCenter([monitor], box: box, hold: 120)
 
         center.evaluate()
-        box.date.addTimeInterval(3600)
+        box.date.addTimeInterval(130)
         center.handle(.didWake)
+        // Without the reset the start of 130 s ago would report it at once.
         center.evaluate()
         #expect(box.notices.isEmpty)
         box.date.addTimeInterval(120)
         center.evaluate()
         #expect(box.notices.map(\.event) == [.raised])
+    }
+
+    // MARK: - Outdated values
+
+    private static let criticalFileSystems = """
+        {"_key": "mnt_point", "data": [{"mnt_point": "/mnt/data", "percent": 97}],
+         "_levels": {"/mnt/data": {"percent": {"level": "critical", "prominent": true}}}}
+        """
+
+    @Test func valuesOfAFailedFeedAreNotReported() async {
+        server.override("/api/5/fs", with: .json(Self.criticalFileSystems))
+        let monitor = ServerMonitor(config: config, client: server.client(), clock: clock)
+        monitor.setExtraBackgroundFeeds([.storage])
+        monitor.start()
+        defer { monitor.stop() }
+        await waitUntil("storage fetched") { monitor.snapshot.fileSystems != nil }
+        let box = Box()
+        let center = makeCenter([monitor], box: box, hold: 60)
+
+        center.evaluate()
+        #expect(box.notices.isEmpty)
+
+        // The file systems fail while the core feed keeps working.
+        server.override("/api/5/fs", with: .json(#"{"detail": "broken"}"#, status: 500))
+        await waitUntil("monitor waits") { !clock.pendingDelays.isEmpty }
+        clock.advance(by: clock.pendingDelays.first ?? .seconds(10))
+        await waitUntil("storage failed") { monitor.feedErrors[.storage] != nil }
+        #expect(monitor.health != .offline)
+        #expect(monitor.snapshot.fileSystems != nil)
+
+        // The old value would be past the hold time by now. It is not looked at.
+        // (The monitor stamps its feeds with the real time, so the simulated
+        // time stays below the five minutes after which values count as old.)
+        box.date.addTimeInterval(70)
+        center.evaluate()
+        box.date.addTimeInterval(70)
+        center.evaluate()
+        #expect(box.notices.isEmpty)
+
+        // Fresh values again: the clock for the hold time starts anew.
+        server.override("/api/5/fs", with: .json(Self.criticalFileSystems))
+        await waitUntil("monitor waits again") { !clock.pendingDelays.isEmpty }
+        clock.advance(by: clock.pendingDelays.first ?? .seconds(10))
+        await waitUntil("storage back") { monitor.feedErrors[.storage] == nil }
+        center.evaluate()
+        #expect(box.notices.isEmpty)
+        box.date.addTimeInterval(60)
+        center.evaluate()
+        #expect(box.notices.map(\.event) == [.raised])
+        #expect(box.notices.first?.condition.kind == .fileSystem)
+    }
+
+    @Test func aFailedFeedDoesNotSilenceTheOthers() async {
+        server.override(
+            "/api/5/cpu", with: .json(#"{"total": 97, "_levels": {"total": {"level": "critical", "prominent": true}}}"#)
+        )
+        server.override("/api/5/containers", with: .json(#"{"detail": "broken"}"#, status: 500))
+        let monitor = await makeMonitor()
+        defer { monitor.stop() }
+        await waitUntil("containers failed") { monitor.feedErrors[.containers] != nil }
+        let box = Box()
+        makeCenter([monitor], box: box).evaluate()
+        #expect(box.notices.map(\.condition.kind) == [.cpu])
+    }
+
+    @Test func valuesNotFetchedForALongTimeAreNotReported() async {
+        server.override(
+            "/api/5/cpu", with: .json(#"{"total": 97, "_levels": {"total": {"level": "critical", "prominent": true}}}"#)
+        )
+        let monitor = await makeMonitor()
+        defer { monitor.stop() }
+        let box = Box()
+        let center = makeCenter([monitor], box: box)
+
+        let fresh = monitor.watchedConditions(now: box.date)
+        #expect(fresh.unavailable == [.fileSystem])
+        #expect(fresh.conditions.contains { $0.kind == .cpu })
+
+        // The monitor has not polled for ten minutes, for whatever reason.
+        box.date.addTimeInterval(600)
+        let old = monitor.watchedConditions(now: box.date)
+        #expect(old.conditions.isEmpty)
+        #expect(old.unavailable.isSuperset(of: [.cpu, .memory, .load, .container, .sensor, .fileSystem]))
+        center.evaluate()
+        #expect(box.notices.isEmpty)
     }
 
     @Test func runsEveryFewSecondsWhileOnAndStopsWhenOff() async {

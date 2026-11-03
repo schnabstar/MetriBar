@@ -30,6 +30,20 @@ public struct Condition: Sendable, Hashable {
     }
 }
 
+extension Condition.Kind {
+    /// The feed that delivers the values of this kind; `nil` for `offline`,
+    /// which comes from the connection.
+    public var feed: Feed? {
+        switch self {
+        case .cpu, .memory, .load: .core
+        case .container: .containers
+        case .sensor: .sensors
+        case .fileSystem: .storage
+        case .offline: nil
+        }
+    }
+}
+
 /// Identifies a condition of one server over time.
 public struct ConditionKey: Hashable, Sendable {
     public var serverID: UUID

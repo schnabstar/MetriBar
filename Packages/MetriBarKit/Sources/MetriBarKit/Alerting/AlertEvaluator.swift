@@ -43,12 +43,19 @@ public struct ServerObservation: Sendable {
     /// The server cannot be read. Its values are outdated then and not looked at.
     public var isOffline: Bool
     public var conditions: [Condition]
+    /// Kinds whose values are outdated, for example because their feed
+    /// failed. They are neither reported nor counted as recovered.
+    public var unavailable: Set<Condition.Kind>
 
-    public init(serverID: UUID, serverName: String, isOffline: Bool, conditions: [Condition]) {
+    public init(
+        serverID: UUID, serverName: String, isOffline: Bool, conditions: [Condition],
+        unavailable: Set<Condition.Kind> = []
+    ) {
         self.serverID = serverID
         self.serverName = serverName
         self.isOffline = isOffline
         self.conditions = conditions
+        self.unavailable = unavailable
     }
 }
 
@@ -68,6 +75,8 @@ public struct ServerObservation: Sendable {
 ///   offline is always reported back online.
 /// - During quiet hours nothing is reported and nothing is lost: a problem
 ///   that lasts beyond them is reported when they end.
+/// - Values that are outdated (their feed failed) are not looked at: no
+///   timer runs on them and nothing counts as recovered.
 /// - After the Mac woke up or the network changed, offline servers are
 ///   ignored for a minute and waiting problems start counting anew, because
 ///   the values of before the sleep say nothing about now.
@@ -122,8 +131,16 @@ public struct AlertEvaluator: Sendable {
             emit(.backOnline, Condition(.offline, level: .ok))
         }
 
+        // Outdated values neither start nor advance a timer. What was
+        // reported stays reported, so the problem is not announced a second
+        // time when fresh values show it again.
         var seen: Set<ConditionKey> = [offlineKey]
-        for condition in observation.conditions {
+        for key in states.keys where key.serverID == observation.serverID && observation.unavailable.contains(key.kind)
+        {
+            states[key]?.since = nil
+            seen.insert(key)
+        }
+        for condition in observation.conditions where !observation.unavailable.contains(condition.kind) {
             let key = ConditionKey(serverID: observation.serverID, kind: condition.kind, item: condition.item)
             seen.insert(key)
             let active = condition.level >= settings.threshold.level ? condition.level : .ok

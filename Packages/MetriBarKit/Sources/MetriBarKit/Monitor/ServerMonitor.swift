@@ -76,6 +76,24 @@ public final class ServerMonitor: Identifiable {
         return .ok
     }
 
+    /// The conditions the notifications may look at, and the kinds whose
+    /// values must not be trusted right now.
+    ///
+    /// When an optional feed fails (the file systems, say) while the core
+    /// feed works, the monitor keeps the old values and records the error
+    /// separately. Those values say nothing about the present, so they are
+    /// left out, as are values of a feed that was not fetched for `maxAge`.
+    public func watchedConditions(now: Date, maxAge: TimeInterval = 300) -> WatchedConditions {
+        var unavailable: Set<Condition.Kind> = []
+        for kind in Condition.Kind.allCases {
+            guard let feed = kind.feed else { continue }
+            let fresh = snapshot.updated[feed].map { now.timeIntervalSince($0) <= maxAge } ?? false
+            if feedErrors[feed] != nil || !fresh { unavailable.insert(kind) }
+        }
+        return WatchedConditions(
+            conditions: snapshot.conditions.filter { !unavailable.contains($0.kind) }, unavailable: unavailable)
+    }
+
     private var isHalted: Bool {
         switch state {
         case .needsCredentials, .unsupportedVersion: true
@@ -468,4 +486,11 @@ public final class ServerMonitor: Identifiable {
             }
         }
     }
+}
+
+public struct WatchedConditions: Sendable, Equatable {
+    /// Conditions with current values.
+    public var conditions: [Condition]
+    /// Kinds without current values: their feed failed or is outdated.
+    public var unavailable: Set<Condition.Kind>
 }

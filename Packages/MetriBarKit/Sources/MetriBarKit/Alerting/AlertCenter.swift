@@ -89,9 +89,10 @@ public final class AlertCenter {
             case .offline: isOffline = true
             case .ok, .warning, .critical: isOffline = false
             }
+            let watched = monitor.watchedConditions(now: date)
             let observation = ServerObservation(
                 serverID: monitor.id, serverName: monitor.displayName, isOffline: isOffline,
-                conditions: isOffline ? [] : monitor.snapshot.conditions)
+                conditions: isOffline ? [] : watched.conditions, unavailable: watched.unavailable)
             notices += evaluator.evaluate(observation, now: date)
         }
         if !notices.isEmpty { deliver(notices) }
