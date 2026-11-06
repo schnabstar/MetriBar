@@ -1,3 +1,4 @@
+#if os(macOS)
 import SwiftUI
 
 /// One window with one sidebar, like System Settings: the servers, then the
@@ -22,3 +23,4 @@ struct SettingsView: View {
         .frame(width: 760, height: 520)
     }
 }
+#endif

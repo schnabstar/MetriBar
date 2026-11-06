@@ -34,9 +34,22 @@ struct ThresholdSettingsView: View {
                                 Divider()
                                 Button("Delete", role: .destructive) { model.removeRule(rule.id) }
                             }
+#if os(iOS)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button("Delete", systemImage: "trash", role: .destructive) {
+                                    model.removeRule(rule.id)
+                                }
+                                Button("Duplicate", systemImage: "plus.square.on.square") {
+                                    selection = model.duplicateRule(rule.id)
+                                }
+                                .tint(.blue)
+                            }
+#endif
                     }
                 }
+#if os(macOS)
                 .onDeleteCommand(perform: deleteSelected)
+#endif
                 Text(
                     "Rules only change what MetriBar shows and reports; nothing changes on your servers. A rule that fires changes the status icon like a warning from Glances."
                 )
@@ -62,6 +75,27 @@ struct ThresholdSettingsView: View {
     }
 
     private var bottomBar: some View {
+#if os(iOS)
+        HStack(spacing: 12) {
+            addMenu
+                .labelStyle(.iconOnly)
+                .frame(minWidth: 44, minHeight: 44)
+            Button("Delete", systemImage: "minus", action: deleteSelected)
+                .disabled(selection == nil)
+                .frame(minWidth: 44, minHeight: 44)
+            Spacer()
+            Button("Edit…") {
+                if let rule = model.rules.first(where: { $0.id == selection }) {
+                    sheet = RuleSheet(rule: rule, isNew: false)
+                }
+            }
+            .disabled(selection == nil)
+            .frame(minHeight: 44)
+        }
+        .buttonStyle(.borderless)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+#else
         HStack(spacing: 2) {
             if !model.rules.isEmpty {
                 addMenu
@@ -89,6 +123,7 @@ struct ThresholdSettingsView: View {
         .buttonStyle(.borderless)
         .padding(4)
         .padding(.horizontal, 4)
+#endif
     }
 
     private var addMenu: some View {

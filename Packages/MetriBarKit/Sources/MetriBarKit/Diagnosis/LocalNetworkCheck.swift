@@ -1,11 +1,19 @@
 import Foundation
 import Network
 import Synchronization
+#if os(iOS)
+import UIKit
+#endif
 
 public enum LocalNetworkCheck {
     /// Settings pane where the user grants the permission.
-    public static let settingsURL = URL(
-        string: "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_LocalNetwork")!
+    public static var settingsURL: URL {
+        #if os(macOS)
+        URL(string: "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_LocalNetwork")!
+        #elseif os(iOS)
+        URL(string: UIApplication.openSettingsURLString) ?? URL(string: "app-settings:")!
+        #endif
+    }
 
     /// Whether macOS blocks connections from MetriBar to the server because
     /// the local network permission is missing: `true` if blocked, `false`

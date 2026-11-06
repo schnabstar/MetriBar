@@ -8,20 +8,47 @@
 
 /* Begin PBXBuildFile section */
 		0036C620F69F4AAEC9ECA338 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3B8084FC218DEF06FC322E /* MetriBarKit */; };
+		0BBE92D371CB2716D3CEF437 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
 		0C553FFC03F67D604E0093B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
+		0CB53CBB1AA8AF7C3006073A /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA6CDFC766C74718D1AE3572 /* MetriBarKit */; };
+		12583D94FFD2F122BFA96A4F /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DAB04938A89C94505F1B8 /* AppGroup.swift */; };
 		23D9926D4B3CACDAA4BCEDF8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
 		257EE2FB65CB4FAF99BE0F3B /* MetriBarWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		40533ECF3D4B0B0D5E5752F6 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = E3D0061BCA109545582487FA /* MetriBarKit */; };
 		4870423BE1403512CC50F7AF /* background.tiff in Resources */ = {isa = PBXBuildFile; fileRef = D2432E3A6B93D2E9D00AFA81 /* background.tiff */; };
 		4E31D93459FF7CE4C8CCBC99 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */; };
+		5963B251385E3024974186CB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */; };
+		68412253FC64A5E9297ADDE0 /* AppIntents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1EE60027168F507CF5372C /* AppIntents.framework */; };
+		811B220C8735A2F40A4617CF /* ServerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CDC1D9348589E939F2B06 /* ServerEntity.swift */; };
+		87C64AE3D9BA1EFAA4BDB023 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1EFDBF3B40DFB36F539E4 /* Haptics.swift */; };
+		89BDC3BBF793A3E2133E04E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */; };
+		915EC5581E56718FF15C64ED /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */; };
+		9AB59300F5209F4BF9A8DDF1 /* background.tiff in Resources */ = {isa = PBXBuildFile; fileRef = D2432E3A6B93D2E9D00AFA81 /* background.tiff */; };
+		9EFEC7BA94C1C0D49B91E6B8 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2824469F65C687945169DF6 /* Provider.swift */; };
+		A74ACF782A75CEDF970CEB76 /* MetriBarWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A10E4F8F9887BBCACBC3C /* MetriBarWidgets.swift */; };
 		AA3C4610B18EB22B126B83B6 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD942B09C549DC6133AFAAF /* MetriBarKit */; };
+		AF6D494D371D3EBF9E0D455A /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
+		BBC75974791C451C645AC909 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD22F455EBC04939D7BD854 /* SwiftUI.framework */; };
+		BC12EFE56C119CFB76E0B1D9 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E068BB424E2CE2C9E71671 /* Clipboard.swift */; };
+		C4E70C520A2ECA3EFC2E9853 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
+		CBD24194389FB54A6585D045 /* MetriBarWidgets-iOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 25DEA9D8FF4D0CFCC0831930 /* MetriBarWidgets-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CF00226325AFAADF9653C2C0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD22F455EBC04939D7BD854 /* SwiftUI.framework */; };
+		D49D119002B24AA7BCBCEB38 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1EFDBF3B40DFB36F539E4 /* Haptics.swift */; };
 		DFF856D878BB0A216E107420 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
+		E91BDA920E87857C8230D516 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E068BB424E2CE2C9E71671 /* Clipboard.swift */; };
 		EEC6F4D166D9CF425E02F93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */; };
 		F452B8EB2C3989D4E8E8AEB6 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
 		F6967DF178011E2DE633E08C /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A6EE3D5E6D534491D61C74A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F42DFC0B67062DEEAE4F1919 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDF550768B5E83125C4FAB25;
+			remoteInfo = "MetriBarWidgets-iOS";
+		};
 		E0AF446442E7DC7F9F49DF68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F42DFC0B67062DEEAE4F1919 /* Project object */;
@@ -43,20 +70,40 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BCE9486FFDA4FC3AC443903A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CBD24194389FB54A6585D045 /* MetriBarWidgets-iOS.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		25DEA9D8FF4D0CFCC0831930 /* MetriBarWidgets-iOS.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = "MetriBarWidgets-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		2F276BB75589BE620D378C10 /* WidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViews.swift; sourceTree = "<group>"; };
+		317DAB04938A89C94505F1B8 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		334469BA52AA8DC98588D473 /* MetriBarKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetriBarKit; path = Packages/MetriBarKit; sourceTree = SOURCE_ROOT; };
+		462A10E4F8F9887BBCACBC3C /* MetriBarWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetriBarWidgets.swift; sourceTree = "<group>"; };
+		4A1EE60027168F507CF5372C /* AppIntents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppIntents.framework; path = System/Library/Frameworks/AppIntents.framework; sourceTree = SDKROOT; };
 		5474C28EB4631EF7405B444A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		84A8E19A0603B7A3BA703E16 /* MetriBar-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "MetriBar-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C9CDC1D9348589E939F2B06 /* ServerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEntity.swift; sourceTree = "<group>"; };
 		9DD22F455EBC04939D7BD854 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A0F1EFDBF3B40DFB36F539E4 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		B2824469F65C687945169DF6 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CB56909A368C86BFDF61D84E /* MetriBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetriBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2432E3A6B93D2E9D00AFA81 /* background.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = background.tiff; sourceTree = "<group>"; };
 		E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MetriBarWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1E068BB424E2CE2C9E71671 /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +116,15 @@
 			path = MetriBar;
 			sourceTree = "<group>";
 		};
+		B3617FD8CAA42D7C5FBA706F /* MetriBariOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = MetriBariOS;
+			sourceTree = "<group>";
+		};
 		FA24E2FBE99819654F00AA79 /* MetriBarWidgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			explicitFileTypes = {
@@ -78,14 +134,42 @@
 			path = MetriBarWidgets;
 			sourceTree = "<group>";
 		};
+		"TEMP_931957A9-E17B-4784-930B-F9132D9A02D7" /* MetriBar */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = MetriBar;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3C6EAAD87CF31C6553AC50FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40533ECF3D4B0B0D5E5752F6 /* MetriBarKit in Frameworks */,
+				915EC5581E56718FF15C64ED /* WidgetKit.framework in Frameworks */,
+				BBC75974791C451C645AC909 /* SwiftUI.framework in Frameworks */,
+				68412253FC64A5E9297ADDE0 /* AppIntents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		74649ADB2BA98FBDC9831B98 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AA3C4610B18EB22B126B83B6 /* MetriBarKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF5AD0703B0BD99FC2D068E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CB53CBB1AA8AF7C3006073A /* MetriBarKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +224,7 @@
 		5414E479D8CFF2423EEB43D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A1EE60027168F507CF5372C /* AppIntents.framework */,
 				9DD22F455EBC04939D7BD854 /* SwiftUI.framework */,
 				2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */,
 			);
@@ -154,12 +239,25 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		70883ED00BB89C7AB5E0F9C9 /* MetriBarWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				317DAB04938A89C94505F1B8 /* AppGroup.swift */,
+				462A10E4F8F9887BBCACBC3C /* MetriBarWidgets.swift */,
+				B2824469F65C687945169DF6 /* Provider.swift */,
+				9C9CDC1D9348589E939F2B06 /* ServerEntity.swift */,
+			);
+			path = MetriBarWidgets;
+			sourceTree = "<group>";
+		};
 		8DD5F3450F99223DBFC080C5 = {
 			isa = PBXGroup;
 			children = (
 				27EB196FA79D519058E4E09E /* MetriBar */,
+				B3617FD8CAA42D7C5FBA706F /* MetriBariOS */,
 				FA24E2FBE99819654F00AA79 /* MetriBarWidgets */,
 				1B447E321AF25CD0A008CC45 /* Config */,
+				70883ED00BB89C7AB5E0F9C9 /* MetriBarWidgets */,
 				5D67C99146DC3EE761ED7C78 /* Packages */,
 				3E77A103DD576354990C5F87 /* Resources */,
 				F0F03F6B7772D5B98E883E43 /* Shared */,
@@ -168,9 +266,19 @@
 			);
 			sourceTree = "<group>";
 		};
+		958F8CBAEFA53ACE283A6C92 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				F1E068BB424E2CE2C9E71671 /* Clipboard.swift */,
+				A0F1EFDBF3B40DFB36F539E4 /* Haptics.swift */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
 		F0F03F6B7772D5B98E883E43 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				958F8CBAEFA53ACE283A6C92 /* Platform */,
 				1E0FDABBC941999D8CA67A2C /* Widgets */,
 			);
 			path = Shared;
@@ -179,7 +287,9 @@
 		FDC89C817D7A9A3069AB35BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				84A8E19A0603B7A3BA703E16 /* MetriBar-iOS.app */,
 				CB56909A368C86BFDF61D84E /* MetriBar.app */,
+				25DEA9D8FF4D0CFCC0831930 /* MetriBarWidgets-iOS.appex */,
 				E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */,
 			);
 			name = Products;
@@ -188,6 +298,32 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8027DAEC71AAA9F116802F63 /* MetriBar-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE667A42F28FC0C5D27C5361 /* Build configuration list for PBXNativeTarget "MetriBar-iOS" */;
+			buildPhases = (
+				97F7D8C277DFFD2898156717 /* Sources */,
+				6979E535D4232BBC63E350B7 /* Resources */,
+				DF5AD0703B0BD99FC2D068E5 /* Frameworks */,
+				BCE9486FFDA4FC3AC443903A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1029BB0E211A1B3F3FE90F1C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				"TEMP_931957A9-E17B-4784-930B-F9132D9A02D7" /* MetriBar */,
+				B3617FD8CAA42D7C5FBA706F /* MetriBariOS */,
+			);
+			name = "MetriBar-iOS";
+			packageProductDependencies = (
+				DA6CDFC766C74718D1AE3572 /* MetriBarKit */,
+			);
+			productName = "MetriBar-iOS";
+			productReference = 84A8E19A0603B7A3BA703E16 /* MetriBar-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B33CD967F289A5B3CFB6C4ED /* MetriBarWidgets */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B37EF67FF4504981F894CD7 /* Build configuration list for PBXNativeTarget "MetriBarWidgets" */;
@@ -236,6 +372,26 @@
 			productReference = CB56909A368C86BFDF61D84E /* MetriBar.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CDF550768B5E83125C4FAB25 /* MetriBarWidgets-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 314A8A95211F83D552FBC0A4 /* Build configuration list for PBXNativeTarget "MetriBarWidgets-iOS" */;
+			buildPhases = (
+				EE68BA470B527B9B7366123A /* Sources */,
+				EF42E8BE4E7ADD343D743008 /* Resources */,
+				3C6EAAD87CF31C6553AC50FC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MetriBarWidgets-iOS";
+			packageProductDependencies = (
+				E3D0061BCA109545582487FA /* MetriBarKit */,
+			);
+			productName = "MetriBarWidgets-iOS";
+			productReference = 25DEA9D8FF4D0CFCC0831930 /* MetriBarWidgets-iOS.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -245,11 +401,19 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					8027DAEC71AAA9F116802F63 = {
+						DevelopmentTeam = MTV73SM3Y8;
+						ProvisioningStyle = Automatic;
+					};
 					B33CD967F289A5B3CFB6C4ED = {
 						DevelopmentTeam = MTV73SM3Y8;
 						ProvisioningStyle = Automatic;
 					};
 					C9BBD456E20F600A5ADC5F21 = {
+						DevelopmentTeam = MTV73SM3Y8;
+						ProvisioningStyle = Automatic;
+					};
+					CDF550768B5E83125C4FAB25 = {
 						DevelopmentTeam = MTV73SM3Y8;
 						ProvisioningStyle = Automatic;
 					};
@@ -274,7 +438,9 @@
 			projectRoot = "";
 			targets = (
 				C9BBD456E20F600A5ADC5F21 /* MetriBar */,
+				8027DAEC71AAA9F116802F63 /* MetriBar-iOS */,
 				B33CD967F289A5B3CFB6C4ED /* MetriBarWidgets */,
+				CDF550768B5E83125C4FAB25 /* MetriBarWidgets-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -285,6 +451,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				23D9926D4B3CACDAA4BCEDF8 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6979E535D4232BBC63E350B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BDC3BBF793A3E2133E04E2 /* Assets.xcassets in Resources */,
+				5963B251385E3024974186CB /* InfoPlist.xcstrings in Resources */,
+				C4E70C520A2ECA3EFC2E9853 /* Localizable.xcstrings in Resources */,
+				9AB59300F5209F4BF9A8DDF1 /* background.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +476,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF42E8BE4E7ADD343D743008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BBE92D371CB2716D3CEF437 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -306,7 +491,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E91BDA920E87857C8230D516 /* Clipboard.swift in Sources */,
+				87C64AE3D9BA1EFAA4BDB023 /* Haptics.swift in Sources */,
 				F452B8EB2C3989D4E8E8AEB6 /* WidgetViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F7D8C277DFFD2898156717 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC12EFE56C119CFB76E0B1D9 /* Clipboard.swift in Sources */,
+				D49D119002B24AA7BCBCEB38 /* Haptics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,9 +514,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE68BA470B527B9B7366123A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12583D94FFD2F122BFA96A4F /* AppGroup.swift in Sources */,
+				A74ACF782A75CEDF970CEB76 /* MetriBarWidgets.swift in Sources */,
+				9EFEC7BA94C1C0D49B91E6B8 /* Provider.swift in Sources */,
+				811B220C8735A2F40A4617CF /* ServerEntity.swift in Sources */,
+				AF6D494D371D3EBF9E0D455A /* WidgetViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1029BB0E211A1B3F3FE90F1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDF550768B5E83125C4FAB25 /* MetriBarWidgets-iOS */;
+			targetProxy = A6EE3D5E6D534491D61C74A9 /* PBXContainerItemProxy */;
+		};
 		B7B9C0436825AB39BD20F91E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B33CD967F289A5B3CFB6C4ED /* MetriBarWidgets */;
@@ -329,6 +542,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		196B3B3F61A74DA19B945CEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "Config/MetriBarWidgets-iOS.entitlements";
+				INFOPLIST_FILE = "Config/WidgetsInfo-iOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID).Widgets";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		38A241781DE5F1D824256D6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -384,6 +613,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.12.0;
@@ -391,13 +621,32 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
+		};
+		3DA59595C6FA309D69EEC276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Config/MetriBar-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Config/iOSInfo.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID)";
+				SDKROOT = iphoneos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
 		};
 		591E886796E6326719BA439B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -448,13 +697,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 0.12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -534,9 +783,54 @@
 			};
 			name = Debug;
 		};
+		F7DF9028BE11AB22A11F3871 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "Config/MetriBarWidgets-iOS.entitlements";
+				INFOPLIST_FILE = "Config/WidgetsInfo-iOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID).Widgets";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FACFC900DA67850E700EADDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Config/MetriBar-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Config/iOSInfo.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID)";
+				SDKROOT = iphoneos;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		314A8A95211F83D552FBC0A4 /* Build configuration list for PBXNativeTarget "MetriBarWidgets-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				196B3B3F61A74DA19B945CEC /* Debug */,
+				F7DF9028BE11AB22A11F3871 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		6B37EF67FF4504981F894CD7 /* Build configuration list for PBXNativeTarget "MetriBarWidgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -564,6 +858,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		EE667A42F28FC0C5D27C5361 /* Build configuration list for PBXNativeTarget "MetriBar-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FACFC900DA67850E700EADDC /* Debug */,
+				3DA59595C6FA309D69EEC276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -579,6 +882,14 @@
 			productName = MetriBarKit;
 		};
 		9CD942B09C549DC6133AFAAF /* MetriBarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetriBarKit;
+		};
+		DA6CDFC766C74718D1AE3572 /* MetriBarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetriBarKit;
+		};
+		E3D0061BCA109545582487FA /* MetriBarKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MetriBarKit;
 		};

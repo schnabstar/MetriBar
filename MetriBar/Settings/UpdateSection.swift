@@ -1,3 +1,4 @@
+#if os(macOS)
 import MetriBarKit
 import SwiftUI
 
@@ -83,3 +84,4 @@ extension UpdateError {
         }
     }
 }
+#endif

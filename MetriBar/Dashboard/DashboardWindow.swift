@@ -1,3 +1,5 @@
+#if os(macOS)
+import AppKit
 import MetriBarKit
 import SwiftUI
 
@@ -205,3 +207,4 @@ enum DockPresence {
         NSApplication.shared.setActivationPolicy(.accessory)
     }
 }
+#endif

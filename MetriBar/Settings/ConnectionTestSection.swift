@@ -73,7 +73,11 @@ struct ConnectionTestSection: View {
                 .font(.callout)
                 .fixedSize(horizontal: false, vertical: true)
             if problem == .localNetworkDenied {
+                #if os(iOS)
+                Button("Open App Settings") { openURL(LocalNetworkCheck.settingsURL) }
+                #else
                 Button("Open Privacy Settings") { openURL(LocalNetworkCheck.settingsURL) }
+                #endif
             }
         }
     }

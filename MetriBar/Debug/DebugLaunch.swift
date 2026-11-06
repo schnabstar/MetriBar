@@ -1,4 +1,4 @@
-#if DEBUG
+#if os(macOS) && DEBUG
     import MetriBarKit
     import SwiftUI
 

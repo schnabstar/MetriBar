@@ -1,3 +1,4 @@
+#if os(macOS)
 import MetriBarKit
 import SwiftUI
 
@@ -147,3 +148,4 @@ private struct ServerRow: View {
         .padding(.vertical, 2)
     }
 }
+#endif

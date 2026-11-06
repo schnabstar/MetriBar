@@ -13,44 +13,60 @@ struct StorageView: View {
         if monitor.snapshot.fileSystems == nil {
             FeedPlaceholder(monitor: monitor, feed: .storage)
         } else {
+            #if os(macOS)
             VSplitView {
-                Table(fileSystems.sorted(using: fileSystemOrder), sortOrder: $fileSystemOrder) {
-                    TableColumn("Mount Point", value: \.mount)
-                    TableColumn("Device", value: \.device)
-                    TableColumn("Type", value: \.type).width(min: 50, ideal: 60)
-                    TableColumn("Used", value: \.used) { Text(Format.bytes($0.used)) }
-                        .width(min: 70, ideal: 80)
-                        .alignment(.numeric)
-                    TableColumn("Size", value: \.size) { Text(Format.bytes($0.size)) }
-                        .width(min: 70, ideal: 80)
-                        .alignment(.numeric)
-                    TableColumn("Usage", value: \.percent) { PercentCell(percent: $0.percent, level: $0.level) }
-                        .width(min: 120, ideal: 160)
-                }
-                .frame(minHeight: 120, idealHeight: 260)
-                Table(disks.sorted(using: diskOrder), sortOrder: $diskOrder) {
-                    TableColumn("Disk", value: \.name)
-                    TableColumn("Read", value: \.readBytes) { Text(Format.bytesPerSecond($0.readBytes)) }
-                        .alignment(.numeric)
-                    TableColumn("Write", value: \.writeBytes) { Text(Format.bytesPerSecond($0.writeBytes)) }
-                        .alignment(.numeric)
-                    TableColumn("Read IOPS", value: \.readCount) {
-                        Text(Format.number($0.readCount, fractionDigits: 1))
-                    }
-                    .alignment(.numeric)
-                    TableColumn("Write IOPS", value: \.writeCount) {
-                        Text(Format.number($0.writeCount, fractionDigits: 1))
-                    }
-                    .alignment(.numeric)
-                    TableColumn("Latency", value: \.latency) {
-                        Text("\(Format.number($0.latency, fractionDigits: 1)) ms")
-                    }
-                    .alignment(.numeric)
-                }
-                .frame(minHeight: 100)
+                fileSystemTable
+                    .frame(minHeight: 120, idealHeight: 260)
+                diskTable
+                    .frame(minHeight: 100)
             }
             .monospacedDigit()
             .scrollEdgeEffectStyle(.hard, for: .top)
+            #else
+            VStack(spacing: 16) {
+                fileSystemTable
+                diskTable
+            }
+            .monospacedDigit()
+            #endif
+        }
+    }
+
+    private var fileSystemTable: some View {
+        Table(fileSystems.sorted(using: fileSystemOrder), sortOrder: $fileSystemOrder) {
+            TableColumn("Mount Point", value: \.mount)
+            TableColumn("Device", value: \.device)
+            TableColumn("Type", value: \.type).width(min: 50, ideal: 60)
+            TableColumn("Used", value: \.used) { Text(Format.bytes($0.used)) }
+                .width(min: 70, ideal: 80)
+                .alignment(.numeric)
+            TableColumn("Size", value: \.size) { Text(Format.bytes($0.size)) }
+                .width(min: 70, ideal: 80)
+                .alignment(.numeric)
+            TableColumn("Usage", value: \.percent) { PercentCell(percent: $0.percent, level: $0.level) }
+                .width(min: 120, ideal: 160)
+        }
+    }
+
+    private var diskTable: some View {
+        Table(disks.sorted(using: diskOrder), sortOrder: $diskOrder) {
+            TableColumn("Disk", value: \.name)
+            TableColumn("Read", value: \.readBytes) { Text(Format.bytesPerSecond($0.readBytes)) }
+                .alignment(.numeric)
+            TableColumn("Write", value: \.writeBytes) { Text(Format.bytesPerSecond($0.writeBytes)) }
+                .alignment(.numeric)
+            TableColumn("Read IOPS", value: \.readCount) {
+                Text(Format.number($0.readCount, fractionDigits: 1))
+            }
+            .alignment(.numeric)
+            TableColumn("Write IOPS", value: \.writeCount) {
+                Text(Format.number($0.writeCount, fractionDigits: 1))
+            }
+            .alignment(.numeric)
+            TableColumn("Latency", value: \.latency) {
+                Text("\(Format.number($0.latency, fractionDigits: 1)) ms")
+            }
+            .alignment(.numeric)
         }
     }
 

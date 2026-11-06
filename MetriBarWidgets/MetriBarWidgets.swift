@@ -23,7 +23,11 @@ struct ServerStatusWidget: Widget {
         }
         .configurationDisplayName("Server")
         .description("CPU, memory, disk and temperature of one server.")
+#if os(iOS)
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular, .accessoryInline])
+#else
         .supportedFamilies([.systemSmall, .systemMedium])
+#endif
     }
 }
 

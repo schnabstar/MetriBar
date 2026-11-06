@@ -9,6 +9,7 @@ options:
   bundleIdPrefix: it.schnabel
   deploymentTarget:
     macOS: "26.0"
+    iOS: "26.0"
   developmentLanguage: en
   createIntermediateGroups: true
 settings:
@@ -24,6 +25,23 @@ settings:
 packages:
   MetriBarKit:
     path: Packages/MetriBarKit
+schemes:
+  MetriBar:
+    build:
+      targets:
+        MetriBar: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+  MetriBar-iOS:
+    build:
+      targets:
+        MetriBar-iOS: all
+    run:
+      config: Debug
+    archive:
+      config: Release
 targets:
   MetriBar:
     type: application
@@ -41,6 +59,7 @@ targets:
       # builds. A regular group, because Xcode does not allow one synchronized
       # folder in two targets; adding a file here needs `xcodegen generate`.
       - path: Shared/Widgets
+      - path: Shared/Platform
     dependencies:
       - package: MetriBarKit
       - target: MetriBarWidgets
@@ -104,6 +123,99 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID).Widgets
         CODE_SIGN_ENTITLEMENTS: $(METRIBAR_WIDGET_ENTITLEMENTS)
         ENABLE_HARDENED_RUNTIME: YES
+        APPLICATION_EXTENSION_API_ONLY: YES
+        SKIP_INSTALL: YES
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks"
+  MetriBar-iOS:
+    type: application
+    platform: iOS
+    configFiles:
+      Debug: Config/Shared.xcconfig
+      Release: Config/Shared.xcconfig
+    sources:
+      - path: MetriBariOS
+        type: syncedFolder
+      - path: Resources
+      - path: Shared/Platform
+      - path: MetriBar
+        type: syncedFolder
+        excludes:
+          - MetriBarApp.swift
+          - MenuBar/MenuBarImage.swift
+          - MenuBar/MenuBarLabel.swift
+          - MenuBar/MenuBarMetric+Text.swift
+          - MenuBar/OnboardingView.swift
+          - MenuBar/PopoverView.swift
+          - MenuBar/ServerSummary.swift
+          - MenuBar/UpdateBanner.swift
+          - Debug/SnapshotRenderer.swift
+    dependencies:
+      - package: MetriBarKit
+      - target: MetriBarWidgets-iOS
+        embed: true
+    info:
+      path: Config/iOSInfo.plist
+      properties:
+        CFBundleDisplayName: MetriBar
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSLocalNetworkUsageDescription: MetriBar connects to the Glances servers you configure on your local network.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+        CFBundleURLTypes:
+          - CFBundleURLName: $(METRIBAR_BUNDLE_ID)
+            CFBundleURLSchemes: [metribar]
+        MetriBarAppGroup: $(METRIBAR_APP_GROUP)
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID)
+        CODE_SIGN_ENTITLEMENTS: Config/MetriBar-iOS.entitlements
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+  MetriBarWidgets-iOS:
+    type: app-extension
+    platform: iOS
+    configFiles:
+      Debug: Config/Shared.xcconfig
+      Release: Config/Shared.xcconfig
+    sources:
+      - path: MetriBarWidgets/AppGroup.swift
+      - path: MetriBarWidgets/MetriBarWidgets.swift
+      - path: MetriBarWidgets/Provider.swift
+      - path: MetriBarWidgets/ServerEntity.swift
+      - path: Shared/Widgets/WidgetViews.swift
+      - path: Resources/Localizable.xcstrings
+    dependencies:
+      - package: MetriBarKit
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+      - sdk: AppIntents.framework
+    info:
+      path: Config/WidgetsInfo-iOS.plist
+      properties:
+        CFBundleDisplayName: MetriBar
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        MetriBarAppGroup: $(METRIBAR_APP_GROUP)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID).Widgets
+        CODE_SIGN_ENTITLEMENTS: Config/MetriBarWidgets-iOS.entitlements
+        SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         APPLICATION_EXTENSION_API_ONLY: YES
         SKIP_INSTALL: YES
         LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks"

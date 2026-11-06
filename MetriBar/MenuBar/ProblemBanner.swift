@@ -1,4 +1,3 @@
-import AppKit
 import MetriBarKit
 import SwiftUI
 
@@ -78,8 +77,7 @@ struct ProblemBanner: View {
     private func copyDetails() {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         let report = DiagnosticReport.make(for: monitor, includeHost: false, appVersion: version)
-        NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(report, forType: .string)
+        Clipboard.copy(report)
         copied = true
     }
 }

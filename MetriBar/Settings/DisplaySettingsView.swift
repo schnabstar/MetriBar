@@ -1,3 +1,4 @@
+#if os(macOS)
 import MetriBarKit
 import SwiftUI
 
@@ -87,3 +88,4 @@ struct DisplaySettingsView: View {
             })
     }
 }
+#endif

@@ -22,52 +22,68 @@ struct AlertsView: View {
                         ? String(localized: "Glances is still collecting its first values.")
                         : String(localized: "No value has crossed a Glances threshold recently.")))
         } else {
+            #if os(macOS)
             VSplitView {
-                Table(incidents.sorted(using: incidentOrder), sortOrder: $incidentOrder) {
-                    TableColumn("Incident", value: \.subject) { row in
-                        Label {
-                            Text(row.subject)
-                                .fontWeight(row.ongoing ? .semibold : .regular)
-                        } icon: {
-                            Image(systemName: row.ongoing ? "exclamationmark.circle.fill" : "checkmark.circle")
-                                .foregroundStyle(row.ongoing ? row.level.color : .secondary)
-                        }
-                    }
-                    TableColumn("Level", value: \.level) { LevelLabel(level: $0.level) }
-                        .width(min: 80, ideal: 100)
-                    TableColumn("Start", value: \.begin) { Text(Format.time($0.beginDate)) }
-                        .width(min: 70, ideal: 90)
-                    TableColumn("End", value: \.end) { row in
-                        Text(row.ongoing ? String(localized: "ongoing") : Format.time(row.endDate))
-                            .foregroundStyle(row.ongoing ? .secondary : .primary)
-                    }
-                    .width(min: 70, ideal: 90)
-                    TableColumn("Top Processes", value: \.top)
-                }
-                .overlay {
-                    if incidents.isEmpty {
-                        Text("No incidents.").foregroundStyle(.secondary)
-                    }
-                }
-                .frame(minHeight: 100, idealHeight: 180)
-                Table(events.sorted(using: eventOrder), sortOrder: $eventOrder) {
-                    TableColumn("Time", value: \.date) { Text(Format.time($0.eventDate)) }
-                        .width(min: 70, ideal: 90)
-                    TableColumn("Event", value: \.subject)
-                    TableColumn("Level", value: \.level) { LevelLabel(level: $0.level) }
-                        .width(min: 80, ideal: 100)
-                    TableColumn("Previous Level", value: \.previousLevel) {
-                        Text(AlertText.level($0.previousLevel)).foregroundStyle(.secondary)
-                    }
-                    .width(min: 80, ideal: 100)
-                    TableColumn("Value", value: \.value) { Text(Format.number($0.value, fractionDigits: 1)) }
-                        .width(min: 50, ideal: 70)
-                        .alignment(.numeric)
-                }
-                .frame(minHeight: 100)
+                incidentTable
+                    .frame(minHeight: 100, idealHeight: 180)
+                eventTable
+                    .frame(minHeight: 100)
             }
             .monospacedDigit()
             .scrollEdgeEffectStyle(.hard, for: .top)
+            #else
+            VStack(spacing: 16) {
+                incidentTable
+                eventTable
+            }
+            .monospacedDigit()
+            #endif
+        }
+    }
+
+    private var incidentTable: some View {
+        Table(incidents.sorted(using: incidentOrder), sortOrder: $incidentOrder) {
+            TableColumn("Incident", value: \.subject) { row in
+                Label {
+                    Text(row.subject)
+                        .fontWeight(row.ongoing ? .semibold : .regular)
+                } icon: {
+                    Image(systemName: row.ongoing ? "exclamationmark.circle.fill" : "checkmark.circle")
+                        .foregroundStyle(row.ongoing ? row.level.color : .secondary)
+                }
+            }
+            TableColumn("Level", value: \.level) { LevelLabel(level: $0.level) }
+                .width(min: 80, ideal: 100)
+            TableColumn("Start", value: \.begin) { Text(Format.time($0.beginDate)) }
+                .width(min: 70, ideal: 90)
+            TableColumn("End", value: \.end) { row in
+                Text(row.ongoing ? String(localized: "ongoing") : Format.time(row.endDate))
+                    .foregroundStyle(row.ongoing ? .secondary : .primary)
+            }
+            .width(min: 70, ideal: 90)
+            TableColumn("Top Processes", value: \.top)
+        }
+        .overlay {
+            if incidents.isEmpty {
+                Text("No incidents.").foregroundStyle(.secondary)
+            }
+        }
+    }
+
+    private var eventTable: some View {
+        Table(events.sorted(using: eventOrder), sortOrder: $eventOrder) {
+            TableColumn("Time", value: \.date) { Text(Format.time($0.eventDate)) }
+                .width(min: 70, ideal: 90)
+            TableColumn("Event", value: \.subject)
+            TableColumn("Level", value: \.level) { LevelLabel(level: $0.level) }
+                .width(min: 80, ideal: 100)
+            TableColumn("Previous Level", value: \.previousLevel) {
+                Text(AlertText.level($0.previousLevel)).foregroundStyle(.secondary)
+            }
+            .width(min: 80, ideal: 100)
+            TableColumn("Value", value: \.value) { Text(Format.number($0.value, fractionDigits: 1)) }
+                .width(min: 50, ideal: 70)
+                .alignment(.numeric)
         }
     }
 

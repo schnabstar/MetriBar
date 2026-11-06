@@ -1,3 +1,4 @@
+#if os(macOS)
 import AppKit
 import MetriBarKit
 import SwiftUI
@@ -66,3 +67,4 @@ enum AboutPanel {
         return text
     }
 }
+#endif

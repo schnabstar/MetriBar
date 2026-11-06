@@ -149,6 +149,24 @@ struct ServerStatusView: View {
     var body: some View {
         if let server = entry.server {
             let stale = server.isStale(now: entry.date)
+#if os(iOS)
+            if isAccessoryFamily {
+                accessoryView(for: server, stale: stale)
+                    .widgetURL(DeepLink.server(server.id).url)
+            } else {
+                regularView(for: server, stale: stale)
+                    .widgetURL(DeepLink.server(server.id).url)
+            }
+#else
+            regularView(for: server, stale: stale)
+                .widgetURL(DeepLink.server(server.id).url)
+#endif
+        } else {
+            NoDataView()
+        }
+    }
+
+    private func regularView(for server: WidgetSnapshot.Server, stale: Bool) -> some View {
             VStack(alignment: .leading, spacing: 6) {
                 Header(server: server, stale: stale && server.health != .offline)
                 Spacer(minLength: 0)
@@ -161,11 +179,51 @@ struct ServerStatusView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
-            .widgetURL(DeepLink.server(server.id).url)
-        } else {
-            NoDataView()
+    }
+
+#if os(iOS)
+    private var isAccessoryFamily: Bool {
+        switch family {
+        case .accessoryCircular, .accessoryRectangular, .accessoryInline: true
+        default: false
         }
     }
+
+    @ViewBuilder
+    private func accessoryView(for server: WidgetSnapshot.Server, stale: Bool) -> some View {
+        switch family {
+        case .accessoryCircular:
+            Gauge(value: min(max((server.cpu ?? 0) / 100, 0), 1)) {
+                Image(systemName: server.health.symbolName)
+            } currentValueLabel: {
+                Text(percent(server.cpu))
+            }
+            .gaugeStyle(.accessoryCircular)
+            .tint(level(server.cpu))
+            .opacity(stale && server.health != .offline ? 0.55 : 1)
+        case .accessoryRectangular:
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(spacing: 4) {
+                    Image(systemName: server.health.symbolName)
+                        .foregroundStyle(server.health.color)
+                    Text(server.name).lineLimit(1)
+                    Spacer(minLength: 0)
+                }
+                if server.health == .offline {
+                    Text("Cannot be reached").foregroundStyle(.secondary)
+                } else {
+                    Text("CPU \(percent(server.cpu))   RAM \(percent(server.memory))")
+                        .monospacedDigit()
+                        .opacity(stale ? 0.55 : 1)
+                }
+            }
+        case .accessoryInline:
+            Label("\(server.name) · CPU \(percent(server.cpu))", systemImage: server.health.symbolName)
+        default:
+            regularView(for: server, stale: stale)
+        }
+    }
+#endif
 
     private func values(of server: WidgetSnapshot.Server) -> some View {
         HStack(alignment: .top, spacing: family == .systemSmall ? 8 : 14) {

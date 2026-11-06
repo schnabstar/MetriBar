@@ -49,11 +49,11 @@ struct CertificateSection: View {
         }
         LabeledContent("Status") {
             if info.isTrustedBySystem {
-                Label("Trusted by macOS", systemImage: "checkmark.seal.fill").foregroundStyle(.green)
+                Label(trustedBySystemText, systemImage: "checkmark.seal.fill").foregroundStyle(.green)
             } else if info.fingerprint == pinned {
                 Label("Trusted by you", systemImage: "pin.fill").foregroundStyle(.green)
             } else {
-                Label("Not trusted by macOS", systemImage: "exclamationmark.triangle.fill").foregroundStyle(.orange)
+                Label(notTrustedBySystemText, systemImage: "exclamationmark.triangle.fill").foregroundStyle(.orange)
             }
         }
         fingerprintText(info.fingerprint)
@@ -70,6 +70,22 @@ struct CertificateSection: View {
                 .textSelection(.enabled)
                 .fixedSize(horizontal: false, vertical: true)
         }
+    }
+
+    private var trustedBySystemText: String {
+        #if os(iOS)
+        String(localized: "Trusted by iOS")
+        #else
+        String(localized: "Trusted by macOS")
+        #endif
+    }
+
+    private var notTrustedBySystemText: String {
+        #if os(iOS)
+        String(localized: "Not trusted by iOS")
+        #else
+        String(localized: "Not trusted by macOS")
+        #endif
     }
 
     private func check() {

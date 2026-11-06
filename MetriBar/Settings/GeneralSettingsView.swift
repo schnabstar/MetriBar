@@ -1,3 +1,4 @@
+#if os(macOS)
 import MetriBarKit
 import ServiceManagement
 import SwiftUI
@@ -79,3 +80,4 @@ struct GeneralSettingsView: View {
         )
     }
 }
+#endif

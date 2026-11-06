@@ -1,3 +1,4 @@
+#if os(macOS)
 import AppKit
 
 /// Receives `metribar:` addresses, which the widgets open. SwiftUI's
@@ -13,3 +14,4 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 }
+#endif

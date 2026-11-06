@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/schnabstar/MetriBar/actions/workflows/ci.yml/badge.svg)](https://github.com/schnabstar/MetriBar/actions/workflows/ci.yml)
 
-**Glances 5 in your macOS menu bar.**
+**Glances 5 in your Mac menu bar, on iPhone and iPad.**
 
-MetriBar is a native macOS menu bar app with a dashboard window for servers running [Glances](https://github.com/nicolargo/glances) 5. See the status of your Raspberry Pi, NAS or Docker host at a glance, and open a native dashboard for the details.
+MetriBar is a native macOS menu bar app and includes a dedicated iPhone and iPad app target for servers running [Glances](https://github.com/nicolargo/glances) 5. See the status of your Raspberry Pi, NAS or Docker host at a glance, and open a native dashboard for the details.
 
 No agent to install, no cloud, no account, no telemetry. An optional update check is off until you turn it on.
 
@@ -25,9 +25,10 @@ No agent to install, no cloud, no account, no telemetry. An optional update chec
   - Processes with search, sorting and an inspector; command lines only on request
   - Containers with CPU and memory limits, network, I/O, uptime and ports
   - Glances alerts and incidents
+- **iPhone and iPad app** (iOS 26): iPhone tabs with compact process, storage, container and alert views; iPad split view with sortable tables, keyboard shortcuts and trailing inspectors.
 - **Your own thresholds:** rules such as "CPU above 90 % for 5 minutes" or "a disk above 85 %" for one server or all, for CPU, memory, swap, load, disks, temperatures and network throughput, with a hold time and a hysteresis. A rule that fires changes the status icon like a warning from Glances and is reported by notifications. Rules only change what MetriBar shows; nothing changes on your servers.
-- **Notifications** (off by default): a macOS notification when a value reaches warning or critical, a container becomes unhealthy, or a server cannot be reached, with a hold time against short spikes, quiet hours and a switch per server. They are created on your Mac; nothing is sent anywhere.
-- **Widgets and a control** (macOS 26): a small or medium widget for one server (CPU, memory, disk, temperature), a medium or large one for all servers, and a control for the Control Center and the menu bar that shows the state of your servers and opens the dashboard. Add them from the widget gallery; MetriBar has to be running to keep them current.
+- **Notifications** (off by default): a macOS or iOS notification when a value reaches warning or critical, a container becomes unhealthy, or a server cannot be reached, with a hold time against short spikes, quiet hours and a switch per server. They are created on your device; nothing is sent anywhere.
+- **Widgets and a control** (iOS 26 and macOS 26): Home Screen widgets for one server or all servers, Lock Screen widgets for a server, and a control for Control Center. On Mac the control is also available in the menu bar. Add them from the widget gallery; MetriBar has to be running to keep them current.
 - **Multiple servers**, each polled independently. Only the data that is visible is fetched.
 - **Secure by default:** passwords in the Keychain, TLS validation with optional pinning of self-signed certificates, warnings for passwords over plain HTTP, strictly read-only access.
 - **Helpful diagnostics:** a step-by-step connection test, detection of a missing local network permission, and copyable diagnostic details without secrets.
@@ -40,6 +41,7 @@ The screenshots show the built-in demo data, not a real server.
 ## Requirements
 
 - macOS 26 or later, on Apple silicon or Intel (the app is universal)
+- iOS 26 or later for the iPhone and iPad app
 - A server running **Glances 5** as a web server (`glances -s`). See [Setting up Glances 5](Docs/glances-setup.md).
 
 ## Installation
@@ -68,14 +70,17 @@ You can also [build MetriBar from source](#building-from-source).
 
 ## Building from source
 
-Requirements: Xcode 26 or later on macOS 26 or later.
+Requirements: Xcode 27 or later, XcodeGen 2.44 or later, and macOS 26 or later.
 
 ```sh
 git clone https://github.com/schnabstar/MetriBar.git
 cd MetriBar
+xcodegen generate                  # project.yml is the source of truth
 swift test --package-path Packages/MetriBarKit   # core library tests
 open MetriBar.xcodeproj
 ```
+
+Build the macOS app with the **MetriBar** scheme or the iPhone/iPad app with **MetriBar-iOS**. The iOS scheme also builds and embeds its WidgetKit extension. Both app targets need a valid signing identity and the App Group configured in `Config/Shared.xcconfig` for widgets and shared credentials to work.
 
 The project signs with the maintainer's team by default. To build and run it yourself, copy `Config/Local.xcconfig.example` to `Config/Local.xcconfig` (ignored by git) and enter your own team ID and bundle identifier.
 
