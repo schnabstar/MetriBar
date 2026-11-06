@@ -2,16 +2,16 @@ import Foundation
 import Network
 import Synchronization
 #if os(iOS)
-import UIKit
+    import UIKit
 #endif
 
 public enum LocalNetworkCheck {
     /// Settings pane where the user grants the permission.
     public static var settingsURL: URL {
         #if os(macOS)
-        URL(string: "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_LocalNetwork")!
+            URL(string: "x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_LocalNetwork")!
         #elseif os(iOS)
-        URL(string: UIApplication.openSettingsURLString) ?? URL(string: "app-settings:")!
+            URL(string: UIApplication.openSettingsURLString) ?? URL(string: "app-settings:")!
         #endif
     }
 
