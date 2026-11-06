@@ -18,3 +18,17 @@ dist/
 
 # Personal signing overrides (see Config/Local.xcconfig.example)
 Config/Local.xcconfig
+
+# Local tool configuration and notes
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+GEMINI.md
+.codex/
+.cursor/
+.cursorrules
+.windsurf/
+.aider*
+.gemini/
+.github/copilot-instructions.md
