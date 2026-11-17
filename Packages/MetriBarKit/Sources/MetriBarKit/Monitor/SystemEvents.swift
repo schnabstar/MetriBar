@@ -1,10 +1,11 @@
-#if os(macOS)
-import AppKit
-#elseif os(iOS)
-import UIKit
-#endif
 import Network
 import Synchronization
+
+#if os(macOS)
+    import AppKit
+#elseif os(iOS)
+    import UIKit
+#endif
 
 public enum SystemEvent: Sendable, Equatable {
     case willSleep
@@ -25,17 +26,17 @@ public final class SystemEventObserver {
     public func start(_ handler: @escaping @MainActor (SystemEvent) -> Void) {
         stop()
         #if os(macOS)
-        let center = NSWorkspace.shared.notificationCenter
-        let observed: [(Notification.Name, SystemEvent)] = [
-            (NSWorkspace.willSleepNotification, .willSleep),
-            (NSWorkspace.didWakeNotification, .didWake),
-        ]
+            let center = NSWorkspace.shared.notificationCenter
+            let observed: [(Notification.Name, SystemEvent)] = [
+                (NSWorkspace.willSleepNotification, .willSleep),
+                (NSWorkspace.didWakeNotification, .didWake),
+            ]
         #elseif os(iOS)
-        let center = NotificationCenter.default
-        let observed: [(Notification.Name, SystemEvent)] = [
-            (UIApplication.didEnterBackgroundNotification, .willSleep),
-            (UIApplication.willEnterForegroundNotification, .didWake),
-        ]
+            let center = NotificationCenter.default
+            let observed: [(Notification.Name, SystemEvent)] = [
+                (UIApplication.didEnterBackgroundNotification, .willSleep),
+                (UIApplication.willEnterForegroundNotification, .didWake),
+            ]
         #endif
         for (name, event) in observed {
             let token = center.addObserver(forName: name, object: nil, queue: .main) { _ in
@@ -62,9 +63,9 @@ public final class SystemEventObserver {
 
     public func stop() {
         #if os(macOS)
-        let center = NSWorkspace.shared.notificationCenter
+            let center = NSWorkspace.shared.notificationCenter
         #elseif os(iOS)
-        let center = NotificationCenter.default
+            let center = NotificationCenter.default
         #endif
         for token in tokens {
             center.removeObserver(token)

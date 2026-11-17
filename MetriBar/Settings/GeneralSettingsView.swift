@@ -1,83 +1,83 @@
 #if os(macOS)
-import MetriBarKit
-import ServiceManagement
-import SwiftUI
+    import MetriBarKit
+    import ServiceManagement
+    import SwiftUI
 
-struct GeneralSettingsView: View {
-    @Environment(AppModel.self) private var model
-    @State private var loginItemStatus = LoginItem.status
-    @State private var loginItemError: String?
+    struct GeneralSettingsView: View {
+        @Environment(AppModel.self) private var model
+        @State private var loginItemStatus = LoginItem.status
+        @State private var loginItemError: String?
 
-    var body: some View {
-        Form {
-            Section {
-                Picker("In the background", selection: baseBinding) {
-                    ForEach(Preferences.baseIntervalChoices, id: \.self) { seconds in
-                        Text("Every \(seconds) seconds").tag(seconds)
+        var body: some View {
+            Form {
+                Section {
+                    Picker("In the background", selection: baseBinding) {
+                        ForEach(Preferences.baseIntervalChoices, id: \.self) { seconds in
+                            Text("Every \(seconds) seconds").tag(seconds)
+                        }
+                    }
+                    Picker("While the menu or dashboard is open", selection: liveBinding) {
+                        ForEach(Preferences.liveIntervalChoices, id: \.self) { seconds in
+                            Text(
+                                seconds == 1
+                                    ? String(localized: "Every second") : String(localized: "Every \(seconds) seconds")
+                            )
+                            .tag(seconds)
+                        }
+                    }
+                } header: {
+                    Text("Refresh")
+                } footer: {
+                    Text(
+                        "MetriBar asks the servers you add. It collects no data and sends nothing to anyone else, except the update check if you turn it on below."
+                    )
+                }
+
+                Section {
+                    Toggle("Open MetriBar at login", isOn: loginBinding)
+                    if loginItemStatus == .requiresApproval {
+                        LabeledContent {
+                            Button("Open System Settings…") { SMAppService.openSystemSettingsLoginItems() }
+                        } label: {
+                            Text("Allow MetriBar in System Settings › General › Login Items.")
+                        }
+                    }
+                    if let loginItemError {
+                        Text(loginItemError).font(.caption).foregroundStyle(.red)
                     }
                 }
-                Picker("While the menu or dashboard is open", selection: liveBinding) {
-                    ForEach(Preferences.liveIntervalChoices, id: \.self) { seconds in
-                        Text(
-                            seconds == 1
-                                ? String(localized: "Every second") : String(localized: "Every \(seconds) seconds")
-                        )
-                        .tag(seconds)
-                    }
-                }
-            } header: {
-                Text("Refresh")
-            } footer: {
-                Text(
-                    "MetriBar asks the servers you add. It collects no data and sends nothing to anyone else, except the update check if you turn it on below."
-                )
+
+                UpdateSection()
             }
-
-            Section {
-                Toggle("Open MetriBar at login", isOn: loginBinding)
-                if loginItemStatus == .requiresApproval {
-                    LabeledContent {
-                        Button("Open System Settings…") { SMAppService.openSystemSettingsLoginItems() }
-                    } label: {
-                        Text("Allow MetriBar in System Settings › General › Login Items.")
-                    }
-                }
-                if let loginItemError {
-                    Text(loginItemError).font(.caption).foregroundStyle(.red)
-                }
-            }
-
-            UpdateSection()
+            .formStyle(.grouped)
+            .onAppear { loginItemStatus = LoginItem.status }
         }
-        .formStyle(.grouped)
-        .onAppear { loginItemStatus = LoginItem.status }
-    }
 
-    private var baseBinding: Binding<Int> {
-        Binding(
-            get: { model.preferences.baseIntervalSeconds },
-            set: { value in model.update { $0.baseIntervalSeconds = value } })
-    }
+        private var baseBinding: Binding<Int> {
+            Binding(
+                get: { model.preferences.baseIntervalSeconds },
+                set: { value in model.update { $0.baseIntervalSeconds = value } })
+        }
 
-    private var liveBinding: Binding<Int> {
-        Binding(
-            get: { model.preferences.liveIntervalSeconds },
-            set: { value in model.update { $0.liveIntervalSeconds = value } })
-    }
+        private var liveBinding: Binding<Int> {
+            Binding(
+                get: { model.preferences.liveIntervalSeconds },
+                set: { value in model.update { $0.liveIntervalSeconds = value } })
+        }
 
-    private var loginBinding: Binding<Bool> {
-        Binding(
-            get: { loginItemStatus == .enabled || loginItemStatus == .requiresApproval },
-            set: { enabled in
-                do {
-                    try LoginItem.setEnabled(enabled)
-                    loginItemError = nil
-                } catch {
-                    loginItemError = error.localizedDescription
+        private var loginBinding: Binding<Bool> {
+            Binding(
+                get: { loginItemStatus == .enabled || loginItemStatus == .requiresApproval },
+                set: { enabled in
+                    do {
+                        try LoginItem.setEnabled(enabled)
+                        loginItemError = nil
+                    } catch {
+                        loginItemError = error.localizedDescription
+                    }
+                    loginItemStatus = LoginItem.status
                 }
-                loginItemStatus = LoginItem.status
-            }
-        )
+            )
+        }
     }
-}
 #endif

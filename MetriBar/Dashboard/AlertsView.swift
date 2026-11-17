@@ -23,20 +23,20 @@ struct AlertsView: View {
                         : String(localized: "No value has crossed a Glances threshold recently.")))
         } else {
             #if os(macOS)
-            VSplitView {
-                incidentTable
-                    .frame(minHeight: 100, idealHeight: 180)
-                eventTable
-                    .frame(minHeight: 100)
-            }
-            .monospacedDigit()
-            .scrollEdgeEffectStyle(.hard, for: .top)
+                VSplitView {
+                    incidentTable
+                        .frame(minHeight: 100, idealHeight: 180)
+                    eventTable
+                        .frame(minHeight: 100)
+                }
+                .monospacedDigit()
+                .scrollEdgeEffectStyle(.hard, for: .top)
             #else
-            VStack(spacing: 16) {
-                incidentTable
-                eventTable
-            }
-            .monospacedDigit()
+                VStack(spacing: 16) {
+                    incidentTable
+                    eventTable
+                }
+                .monospacedDigit()
             #endif
         }
     }
