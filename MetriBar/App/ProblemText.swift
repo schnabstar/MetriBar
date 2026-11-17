@@ -39,28 +39,31 @@ extension ConnectionProblem {
             )
         case .timedOut:
             #if os(iOS)
-            String(
-                localized: "The server did not answer in time. Check that it is running and reachable from this device.")
+                String(
+                    localized:
+                        "The server did not answer in time. Check that it is running and reachable from this device.")
             #else
-            String(
-                localized: "The server did not answer in time. Check that it is running and reachable from this Mac.")
+                String(
+                    localized:
+                        "The server did not answer in time. Check that it is running and reachable from this Mac.")
             #endif
         case .localNetworkDenied:
             #if os(iOS)
-            String(
-                localized:
-                    "MetriBar cannot connect to devices on your local network. Allow Local Network access for MetriBar in Settings.")
+                String(
+                    localized:
+                        "MetriBar cannot connect to devices on your local network. Allow Local Network access for MetriBar in Settings."
+                )
             #else
-            String(
-                localized:
-                    "macOS does not allow MetriBar to connect to devices on your local network. Turn on MetriBar in System Settings › Privacy & Security › Local Network."
-            )
+                String(
+                    localized:
+                        "macOS does not allow MetriBar to connect to devices on your local network. Turn on MetriBar in System Settings › Privacy & Security › Local Network."
+                )
             #endif
         case .offline:
             #if os(iOS)
-            String(localized: "This device is not connected to a network.")
+                String(localized: "This device is not connected to a network.")
             #else
-            String(localized: "This Mac is not connected to a network.")
+                String(localized: "This Mac is not connected to a network.")
             #endif
         case .tlsHandshakeFailed:
             String(
@@ -79,9 +82,9 @@ extension ConnectionProblem {
             )
         case .insecureConnectionBlocked:
             #if os(iOS)
-            String(localized: "The system blocked the unencrypted connection. Use HTTPS if the server supports it.")
+                String(localized: "The system blocked the unencrypted connection. Use HTTPS if the server supports it.")
             #else
-            String(localized: "macOS blocked the unencrypted connection. Use HTTPS if the server supports it.")
+                String(localized: "macOS blocked the unencrypted connection. Use HTTPS if the server supports it.")
             #endif
         case .hostRejected:
             String(

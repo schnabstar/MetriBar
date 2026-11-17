@@ -74,17 +74,17 @@ struct CertificateSection: View {
 
     private var trustedBySystemText: String {
         #if os(iOS)
-        String(localized: "Trusted by iOS")
+            String(localized: "Trusted by iOS")
         #else
-        String(localized: "Trusted by macOS")
+            String(localized: "Trusted by macOS")
         #endif
     }
 
     private var notTrustedBySystemText: String {
         #if os(iOS)
-        String(localized: "Not trusted by iOS")
+            String(localized: "Not trusted by iOS")
         #else
-        String(localized: "Not trusted by macOS")
+            String(localized: "Not trusted by macOS")
         #endif
     }
 

@@ -14,20 +14,20 @@ struct StorageView: View {
             FeedPlaceholder(monitor: monitor, feed: .storage)
         } else {
             #if os(macOS)
-            VSplitView {
-                fileSystemTable
-                    .frame(minHeight: 120, idealHeight: 260)
-                diskTable
-                    .frame(minHeight: 100)
-            }
-            .monospacedDigit()
-            .scrollEdgeEffectStyle(.hard, for: .top)
+                VSplitView {
+                    fileSystemTable
+                        .frame(minHeight: 120, idealHeight: 260)
+                    diskTable
+                        .frame(minHeight: 100)
+                }
+                .monospacedDigit()
+                .scrollEdgeEffectStyle(.hard, for: .top)
             #else
-            VStack(spacing: 16) {
-                fileSystemTable
-                diskTable
-            }
-            .monospacedDigit()
+                VStack(spacing: 16) {
+                    fileSystemTable
+                    diskTable
+                }
+                .monospacedDigit()
             #endif
         }
     }

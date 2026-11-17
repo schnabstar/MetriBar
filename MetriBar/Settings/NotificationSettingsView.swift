@@ -2,7 +2,7 @@ import MetriBarKit
 import SwiftUI
 
 #if os(iOS)
-import UIKit
+    import UIKit
 #endif
 
 /// Notifications about problems on the servers: off until turned on.
@@ -12,9 +12,10 @@ struct NotificationSettingsView: View {
 
     private static var settingsURL: URL {
         #if os(macOS)
-        URL(string: "x-apple.systempreferences:com.apple.Notifications-Settings.extension")!
+            URL(string: "x-apple.systempreferences:com.apple.Notifications-Settings.extension")!
         #elseif os(iOS)
-        URL(string: UIApplication.openNotificationSettingsURLString) ?? URL(string: UIApplication.openSettingsURLString)!
+            URL(string: UIApplication.openNotificationSettingsURLString) ?? URL(
+                string: UIApplication.openSettingsURLString)!
         #endif
     }
 
@@ -26,16 +27,17 @@ struct NotificationSettingsView: View {
                 if settings.isEnabled, model.notifier.authorization == .denied {
                     LabeledContent {
                         #if os(macOS)
-                        Button("Open System Settings…") { openURL(Self.settingsURL) }
+                            Button("Open System Settings…") { openURL(Self.settingsURL) }
                         #elseif os(iOS)
-                        Button("Open Settings…") { openURL(Self.settingsURL) }
+                            Button("Open Settings…") { openURL(Self.settingsURL) }
                         #endif
                     } label: {
                         #if os(macOS)
-                        Label(
-                            "Notifications are turned off for MetriBar in System Settings.", systemImage: "bell.slash")
+                            Label(
+                                "Notifications are turned off for MetriBar in System Settings.",
+                                systemImage: "bell.slash")
                         #elseif os(iOS)
-                        Label("Notifications are turned off for MetriBar in Settings.", systemImage: "bell.slash")
+                            Label("Notifications are turned off for MetriBar in Settings.", systemImage: "bell.slash")
                         #endif
                     }
                 }
@@ -43,13 +45,13 @@ struct NotificationSettingsView: View {
                     .disabled(model.notifier.authorization == .denied)
             } footer: {
                 #if os(macOS)
-                Text(
-                    "MetriBar creates notifications on this Mac from what your servers report. Nothing is sent anywhere. You can turn off single servers in their settings."
-                )
+                    Text(
+                        "MetriBar creates notifications on this Mac from what your servers report. Nothing is sent anywhere. You can turn off single servers in their settings."
+                    )
                 #elseif os(iOS)
-                Text(
-                    "MetriBar creates local notifications on this device from what your servers report. Nothing is sent anywhere. You can turn off single servers in their settings."
-                )
+                    Text(
+                        "MetriBar creates local notifications on this device from what your servers report. Nothing is sent anywhere. You can turn off single servers in their settings."
+                    )
                 #endif
             }
 
