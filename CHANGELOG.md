@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 - The iPhone and iPad app now builds and runs in the simulator: it uses the App Group `group.<bundle id>` on iOS and no longer compiles Mac-only files.
+- The iPad app now shows the Storage, Network, Processes, Containers and Alerts sections; their tables no longer collapse to zero height inside a scroll view.
 
 ## [0.12.0] - 2026-11-03
 
