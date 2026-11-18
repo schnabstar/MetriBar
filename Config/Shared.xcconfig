@@ -17,4 +17,9 @@ METRIBAR_ENTITLEMENTS = Config/MetriBar.entitlements
 METRIBAR_WIDGET_ENTITLEMENTS = Config/MetriBarWidgets.entitlements
 METRIBAR_APP_GROUP = $(TeamIdentifierPrefix)$(METRIBAR_BUNDLE_ID)
 
+// iOS and iPadOS require the identifier to start with "group." and the group
+// to be registered with the Apple Developer account (automatic signing does
+// that). The iOS targets use this value as their METRIBAR_APP_GROUP.
+METRIBAR_IOS_APP_GROUP = group.$(METRIBAR_BUNDLE_ID)
+
 #include? "Local.xcconfig"

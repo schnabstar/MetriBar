@@ -2,6 +2,11 @@
 
 A running log of technical decisions and of what we learned from real Glances 5 servers. Newest entries first.
 
+## 2026-11-18 – iPhone and iPad build
+
+- **iOS needs its own App Group identifier.** The Mac value (`$(TeamIdentifierPrefix)$(METRIBAR_BUNDLE_ID)`) is rejected on iOS ("Application Group identifiers should start with 'group.'"), and the wildcard profile has no App Groups capability. `METRIBAR_IOS_APP_GROUP = group.$(METRIBAR_BUNDLE_ID)` in `Config/Shared.xcconfig` is applied to `MetriBar-iOS` and `MetriBarWidgets-iOS` as `METRIBAR_APP_GROUP` in `project.yml`; the Mac targets are unchanged. Automatic signing registers the group with the developer account on the first signed build.
+- **The iOS target compiles `MetriBar/` as a regular group.** XcodeGen drops the `excludes` of a synchronized folder that two targets use, so the iOS app tried to compile the Mac-only files (`import AppKit` failed). Adding a file to `MetriBar/` therefore needs `xcodegen generate` for the iOS target (the Mac target still picks it up on its own).
+
 ## 2026-11-03 – Widgets and a control
 
 Desktop widgets (small and medium for one server, medium and large for all) and a control for the Control Center and menu bar. The open spike (can a sandboxed `LSUIElement` agent with an App Group and a widget extension be signed with Developer ID and work?) came out positive, so the step went ahead.

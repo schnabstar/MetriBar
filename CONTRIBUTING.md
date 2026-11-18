@@ -26,7 +26,7 @@ open MetriBar.xcodeproj
 ```
 
 - `Config/Local.xcconfig` is ignored by git. It overrides the maintainer's team, the bundle identifier and, if your account cannot create a provisioning profile, switches your builds to the file-based keychain and the widget extension to a build without the App Group (see the comments in the example file).
-- `MetriBar.xcodeproj` is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen). Source folders are synchronized, so adding or removing Swift files needs no regeneration, with one exception: `Shared/Widgets` (the widget views, compiled into the app and the widget extension) is a regular group, because Xcode does not allow one synchronized folder in two targets; run `xcodegen generate` after adding a file there. Run `xcodegen generate` only after changing targets or build settings, and commit both `project.yml` and the generated project.
+- `MetriBar.xcodeproj` is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen). Source folders are synchronized, so adding or removing Swift files needs no regeneration, with two exceptions: `MetriBar` is a regular group in the iOS target (XcodeGen ignores its excludes for a synchronized folder that two targets use), and `Shared/Widgets` (the widget views, compiled into the app and the widget extension) is a regular group, because Xcode does not allow one synchronized folder in two targets; run `xcodegen generate` after adding a file to either folder. Run `xcodegen generate` only after changing targets or build settings, and commit both `project.yml` and the generated project.
 
 ## Project layout
 

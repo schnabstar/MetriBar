@@ -137,8 +137,11 @@ targets:
         type: syncedFolder
       - path: Resources
       - path: Shared/Platform
+      # A regular group: the excludes are not written for a synchronized
+      # folder that a second target also uses, so the iOS build would compile
+      # the Mac-only files. Adding a file to MetriBar needs `xcodegen generate`
+      # for this target.
       - path: MetriBar
-        type: syncedFolder
         excludes:
           - MetriBarApp.swift
           - MenuBar/MenuBarImage.swift
@@ -180,6 +183,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID)
         CODE_SIGN_ENTITLEMENTS: Config/MetriBar-iOS.entitlements
+        METRIBAR_APP_GROUP: $(METRIBAR_IOS_APP_GROUP)
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
@@ -215,6 +219,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: $(METRIBAR_BUNDLE_ID).Widgets
         CODE_SIGN_ENTITLEMENTS: Config/MetriBarWidgets-iOS.entitlements
+        METRIBAR_APP_GROUP: $(METRIBAR_IOS_APP_GROUP)
         SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
         APPLICATION_EXTENSION_API_ONLY: YES
         SKIP_INSTALL: YES
