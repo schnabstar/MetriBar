@@ -8,33 +8,73 @@
 
 /* Begin PBXBuildFile section */
 		0036C620F69F4AAEC9ECA338 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C3B8084FC218DEF06FC322E /* MetriBarKit */; };
+		03F80EA3247B8829C4A869F8 /* ConnectionTestSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28E3AB4AB110A78305D491 /* ConnectionTestSection.swift */; };
 		0BBE92D371CB2716D3CEF437 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
 		0C553FFC03F67D604E0093B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
 		0CB53CBB1AA8AF7C3006073A /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA6CDFC766C74718D1AE3572 /* MetriBarKit */; };
+		117AD2D510D2D3973F577F70 /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022ABCDD5F24195DFB6DB8F4 /* WidgetBridge.swift */; };
 		12583D94FFD2F122BFA96A4F /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317DAB04938A89C94505F1B8 /* AppGroup.swift */; };
 		23D9926D4B3CACDAA4BCEDF8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
 		257EE2FB65CB4FAF99BE0F3B /* MetriBarWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2B1D1BD25CF63C706CDF856E /* StatusStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F9F57FBE08058306F80086 /* StatusStyle.swift */; };
+		2D1D9ED8EBC219F203A7F259 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758531BAFDB2AF5C5330EE4 /* HistoryView.swift */; };
+		36CF249A649D74995EF6081A /* ThresholdSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F855639ED0EF8D5AF8AF5 /* ThresholdSettingsView.swift */; };
+		3B5F93F4089A794774B7C1B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FFB273BEA170B7405AE802 /* SettingsView.swift */; };
+		3F7D06FEF33E8EF011A745FD /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FED84FC759BD7BB97D59517 /* AppModel.swift */; };
+		400AD7E5BC2567E4502B518E /* ProblemText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23733757E56BBA03656E008F /* ProblemText.swift */; };
 		40533ECF3D4B0B0D5E5752F6 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = E3D0061BCA109545582487FA /* MetriBarKit */; };
+		472E3B95786379EA18DB597A /* UpdateSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8E01E0EF407B700342EC24 /* UpdateSection.swift */; };
 		4870423BE1403512CC50F7AF /* background.tiff in Resources */ = {isa = PBXBuildFile; fileRef = D2432E3A6B93D2E9D00AFA81 /* background.tiff */; };
+		4B15F9BC5CA3C07486430604 /* LoginItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC18802E26FE60C62E97A92D /* LoginItem.swift */; };
+		4D3FF274D4EBFEF370D17753 /* Gauges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AEC0CE8CD0169A69A8248F /* Gauges.swift */; };
 		4E31D93459FF7CE4C8CCBC99 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */; };
+		57BC9824600098AB25E7276E /* ProcessesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A5E3B2CDF5AC6148454908 /* ProcessesView.swift */; };
 		5963B251385E3024974186CB /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */; };
+		5FCAA7C3310B281764ECE363 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7ECFF5A398D183BAFD7F07 /* OverviewView.swift */; };
+		634CC1F0F18A284654F1E747 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866220A97E6E83AF36F64B47 /* Formatting.swift */; };
 		68412253FC64A5E9297ADDE0 /* AppIntents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1EE60027168F507CF5372C /* AppIntents.framework */; };
+		6A48D4AA5E53BACA38EDD4CF /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6927868B69F64FC283A4B07 /* NotificationSettingsView.swift */; };
+		7466C1DE747891B0E891C7CC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B29F8D816F608692EE1D1CD /* NotificationService.swift */; };
+		7BD5585613CC7BFDE013140A /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED466C18DB66F776796FC5 /* MenuRow.swift */; };
+		7D40E7C702F8C86528334942 /* DisplaySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ADB8D808CBBB1A1C08E4F7 /* DisplaySettingsView.swift */; };
+		7F8EB7D2ED86235ADAFBF6D7 /* SettingsSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA970F718808C05C4911B77 /* SettingsSidebar.swift */; };
 		811B220C8735A2F40A4617CF /* ServerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9CDC1D9348589E939F2B06 /* ServerEntity.swift */; };
+		867618D26A95638D7C4FD1CB /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34053D3D5D275480DFDE4225 /* AlertsView.swift */; };
 		87C64AE3D9BA1EFAA4BDB023 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1EFDBF3B40DFB36F539E4 /* Haptics.swift */; };
 		89BDC3BBF793A3E2133E04E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */; };
+		8A4C0730C459E53F1BF6314F /* UpdateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE98F027AF97AFEA2D28E85 /* UpdateAlert.swift */; };
+		8F311114550354247BC1B38D /* RuleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB054985F84035F434004962 /* RuleEditorView.swift */; };
+		90E37211D44A0EC82594C522 /* ContainersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475972B0301FF248B2F6993 /* ContainersView.swift */; };
 		915EC5581E56718FF15C64ED /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */; };
+		918862DED7E311E871930558 /* DashboardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59CE9A44193FFDC5C155577 /* DashboardSection.swift */; };
+		97536F7016F3FFA4D828B0F4 /* RuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29805E6D36D97EE10C2B5CC8 /* RuleText.swift */; };
+		978F999F862A58B3FC0133A3 /* ProblemBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF28D09DF480EA60E7265106 /* ProblemBanner.swift */; };
 		9AB59300F5209F4BF9A8DDF1 /* background.tiff in Resources */ = {isa = PBXBuildFile; fileRef = D2432E3A6B93D2E9D00AFA81 /* background.tiff */; };
+		9B50421501DF96A15599C46B /* CertificateSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A947E412A363315D1BB7DA /* CertificateSection.swift */; };
+		9D2F3DCA72E762586CC6CE94 /* ServerEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60E23E0855FDB67FC226BE /* ServerEditorView.swift */; };
+		9E1607B241DAEFE5050F251A /* SensorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85BBFEB17A1D10D315C86BF /* SensorsView.swift */; };
+		9EBEC73F2F730EB689A941E8 /* AppKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E562CB05072102F233276AC /* AppKeychain.swift */; };
 		9EFEC7BA94C1C0D49B91E6B8 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2824469F65C687945169DF6 /* Provider.swift */; };
 		A74ACF782A75CEDF970CEB76 /* MetriBarWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A10E4F8F9887BBCACBC3C /* MetriBarWidgets.swift */; };
+		A750388728CFF2832B695E55 /* AppCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936952D5017B1899D4012E4 /* AppCommands.swift */; };
 		AA3C4610B18EB22B126B83B6 /* MetriBarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9CD942B09C549DC6133AFAAF /* MetriBarKit */; };
+		AEA42D142F84A2BC337B118E /* StorageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DACE8FA5C0BD1BBE89A113A /* StorageView.swift */; };
 		AF6D494D371D3EBF9E0D455A /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
+		B48776A3FA2F13DD7473B925 /* NoticeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C2074E981104E221F2E9C9 /* NoticeText.swift */; };
+		B60D1F241ECE869388F8AA70 /* DashboardComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495D2DAD16FCB29EB027F9D /* DashboardComponents.swift */; };
 		BBC75974791C451C645AC909 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD22F455EBC04939D7BD854 /* SwiftUI.framework */; };
 		BC12EFE56C119CFB76E0B1D9 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E068BB424E2CE2C9E71671 /* Clipboard.swift */; };
+		C20188E1BAEAA36CFC1B1434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A37BCD55ABB6B03DC0479F /* AppDelegate.swift */; };
 		C4E70C520A2ECA3EFC2E9853 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5474C28EB4631EF7405B444A /* Localizable.xcstrings */; };
+		C68DC49EB55EAD2C37DEBE0C /* DebugLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B444C3A03DA23AD9567B5C1 /* DebugLaunch.swift */; };
 		CBD24194389FB54A6585D045 /* MetriBarWidgets-iOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 25DEA9D8FF4D0CFCC0831930 /* MetriBarWidgets-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CF00226325AFAADF9653C2C0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD22F455EBC04939D7BD854 /* SwiftUI.framework */; };
+		D0320B8B1060341F20DBD0D3 /* UpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966D0D45FE0276CA99F061D0 /* UpdateModel.swift */; };
 		D49D119002B24AA7BCBCEB38 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F1EFDBF3B40DFB36F539E4 /* Haptics.swift */; };
 		DFF856D878BB0A216E107420 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
+		E0BD5AA30895DAD750BFAA7B /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411E45C7203B627329EAB380 /* GeneralSettingsView.swift */; };
+		E3ED6F76A3432CCEEEE61239 /* NetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41FAB74DE7900C14527129C /* NetworkView.swift */; };
+		E67E8DB706FA14025CCDA2CB /* DashboardWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA736CCB905FE6EC034CA44 /* DashboardWindow.swift */; };
 		E91BDA920E87857C8230D516 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E068BB424E2CE2C9E71671 /* Clipboard.swift */; };
 		EEC6F4D166D9CF425E02F93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */; };
 		F452B8EB2C3989D4E8E8AEB6 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F276BB75589BE620D378C10 /* WidgetViews.swift */; };
@@ -84,26 +124,66 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		022ABCDD5F24195DFB6DB8F4 /* WidgetBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBridge.swift; sourceTree = "<group>"; };
+		06FFB273BEA170B7405AE802 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0B29F8D816F608692EE1D1CD /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		0DACE8FA5C0BD1BBE89A113A /* StorageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageView.swift; sourceTree = "<group>"; };
 		159C748D5B8A0A6B6E0AA5C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		21A5E3B2CDF5AC6148454908 /* ProcessesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesView.swift; sourceTree = "<group>"; };
+		21ADB8D808CBBB1A1C08E4F7 /* DisplaySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySettingsView.swift; sourceTree = "<group>"; };
+		23733757E56BBA03656E008F /* ProblemText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemText.swift; sourceTree = "<group>"; };
 		25DEA9D8FF4D0CFCC0831930 /* MetriBarWidgets-iOS.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = "MetriBarWidgets-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29805E6D36D97EE10C2B5CC8 /* RuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleText.swift; sourceTree = "<group>"; };
 		2A53DD3C801EDC3AC3858B94 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2A7ECFF5A398D183BAFD7F07 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		2D1DE5628D5B187601C30EF6 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		2F276BB75589BE620D378C10 /* WidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViews.swift; sourceTree = "<group>"; };
 		317DAB04938A89C94505F1B8 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		334469BA52AA8DC98588D473 /* MetriBarKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetriBarKit; path = Packages/MetriBarKit; sourceTree = SOURCE_ROOT; };
+		34053D3D5D275480DFDE4225 /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		411E45C7203B627329EAB380 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		462A10E4F8F9887BBCACBC3C /* MetriBarWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetriBarWidgets.swift; sourceTree = "<group>"; };
+		49ED466C18DB66F776796FC5 /* MenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = "<group>"; };
 		4A1EE60027168F507CF5372C /* AppIntents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppIntents.framework; path = System/Library/Frameworks/AppIntents.framework; sourceTree = SDKROOT; };
+		4E562CB05072102F233276AC /* AppKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeychain.swift; sourceTree = "<group>"; };
+		4FED84FC759BD7BB97D59517 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		5474C28EB4631EF7405B444A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		56AEC0CE8CD0169A69A8248F /* Gauges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gauges.swift; sourceTree = "<group>"; };
+		5B444C3A03DA23AD9567B5C1 /* DebugLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLaunch.swift; sourceTree = "<group>"; };
 		5F0A0AFEE69B3D32F7722899 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		68F9F57FBE08058306F80086 /* StatusStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusStyle.swift; sourceTree = "<group>"; };
+		6A4F855639ED0EF8D5AF8AF5 /* ThresholdSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdSettingsView.swift; sourceTree = "<group>"; };
+		8495D2DAD16FCB29EB027F9D /* DashboardComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardComponents.swift; sourceTree = "<group>"; };
 		84A8E19A0603B7A3BA703E16 /* MetriBar-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "MetriBar-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		866220A97E6E83AF36F64B47 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		9475972B0301FF248B2F6993 /* ContainersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersView.swift; sourceTree = "<group>"; };
+		95A947E412A363315D1BB7DA /* CertificateSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateSection.swift; sourceTree = "<group>"; };
+		966D0D45FE0276CA99F061D0 /* UpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateModel.swift; sourceTree = "<group>"; };
 		9C9CDC1D9348589E939F2B06 /* ServerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEntity.swift; sourceTree = "<group>"; };
+		9D60E23E0855FDB67FC226BE /* ServerEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerEditorView.swift; sourceTree = "<group>"; };
 		9DD22F455EBC04939D7BD854 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		A0F1EFDBF3B40DFB36F539E4 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		A41FAB74DE7900C14527129C /* NetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkView.swift; sourceTree = "<group>"; };
+		AAA736CCB905FE6EC034CA44 /* DashboardWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWindow.swift; sourceTree = "<group>"; };
+		ABE98F027AF97AFEA2D28E85 /* UpdateAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAlert.swift; sourceTree = "<group>"; };
 		B2824469F65C687945169DF6 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		BF28D09DF480EA60E7265106 /* ProblemBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemBanner.swift; sourceTree = "<group>"; };
+		BF8E01E0EF407B700342EC24 /* UpdateSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSection.swift; sourceTree = "<group>"; };
+		C6927868B69F64FC283A4B07 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		C85BBFEB17A1D10D315C86BF /* SensorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsView.swift; sourceTree = "<group>"; };
+		C936952D5017B1899D4012E4 /* AppCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommands.swift; sourceTree = "<group>"; };
+		CB054985F84035F434004962 /* RuleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleEditorView.swift; sourceTree = "<group>"; };
 		CB56909A368C86BFDF61D84E /* MetriBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetriBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC18802E26FE60C62E97A92D /* LoginItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItem.swift; sourceTree = "<group>"; };
+		CEA970F718808C05C4911B77 /* SettingsSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSidebar.swift; sourceTree = "<group>"; };
 		D2432E3A6B93D2E9D00AFA81 /* background.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = background.tiff; sourceTree = "<group>"; };
+		D758531BAFDB2AF5C5330EE4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		D7A37BCD55ABB6B03DC0479F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E46035CAE800208853C6AC2D /* MetriBarWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MetriBarWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E59CE9A44193FFDC5C155577 /* DashboardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardSection.swift; sourceTree = "<group>"; };
+		EB28E3AB4AB110A78305D491 /* ConnectionTestSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTestSection.swift; sourceTree = "<group>"; };
 		F1E068BB424E2CE2C9E71671 /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
+		F6C2074E981104E221F2E9C9 /* NoticeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -132,15 +212,6 @@
 			explicitFolders = (
 			);
 			path = MetriBarWidgets;
-			sourceTree = "<group>";
-		};
-		"TEMP_931957A9-E17B-4784-930B-F9132D9A02D7" /* MetriBar */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = MetriBar;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -186,6 +257,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		117F2624C3665BF6B870047F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				56AEC0CE8CD0169A69A8248F /* Gauges.swift */,
+				49ED466C18DB66F776796FC5 /* MenuRow.swift */,
+				68F9F57FBE08058306F80086 /* StatusStyle.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		1B447E321AF25CD0A008CC45 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +302,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		44548B313F550E1765F5535B /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				022ABCDD5F24195DFB6DB8F4 /* WidgetBridge.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		4DB63B0CF2EFF3FC98BD3BB2 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				5B444C3A03DA23AD9567B5C1 /* DebugLaunch.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		5414E479D8CFF2423EEB43D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +336,65 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		5F8DFDB6A95CF5A95A1EA7E7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				95A947E412A363315D1BB7DA /* CertificateSection.swift */,
+				EB28E3AB4AB110A78305D491 /* ConnectionTestSection.swift */,
+				21ADB8D808CBBB1A1C08E4F7 /* DisplaySettingsView.swift */,
+				411E45C7203B627329EAB380 /* GeneralSettingsView.swift */,
+				C6927868B69F64FC283A4B07 /* NotificationSettingsView.swift */,
+				9D60E23E0855FDB67FC226BE /* ServerEditorView.swift */,
+				CEA970F718808C05C4911B77 /* SettingsSidebar.swift */,
+				06FFB273BEA170B7405AE802 /* SettingsView.swift */,
+				BF8E01E0EF407B700342EC24 /* UpdateSection.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		646B7BAE6A8CE018DE7AA0D2 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				F6C2074E981104E221F2E9C9 /* NoticeText.swift */,
+				0B29F8D816F608692EE1D1CD /* NotificationService.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		6523568FF580E5B15EFEC4A0 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				34053D3D5D275480DFDE4225 /* AlertsView.swift */,
+				9475972B0301FF248B2F6993 /* ContainersView.swift */,
+				8495D2DAD16FCB29EB027F9D /* DashboardComponents.swift */,
+				E59CE9A44193FFDC5C155577 /* DashboardSection.swift */,
+				AAA736CCB905FE6EC034CA44 /* DashboardWindow.swift */,
+				D758531BAFDB2AF5C5330EE4 /* HistoryView.swift */,
+				A41FAB74DE7900C14527129C /* NetworkView.swift */,
+				2A7ECFF5A398D183BAFD7F07 /* OverviewView.swift */,
+				21A5E3B2CDF5AC6148454908 /* ProcessesView.swift */,
+				C85BBFEB17A1D10D315C86BF /* SensorsView.swift */,
+				0DACE8FA5C0BD1BBE89A113A /* StorageView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		698C747D870B456DCB65B082 /* MetriBar */ = {
+			isa = PBXGroup;
+			children = (
+				836DF54A9384C6015DCA6CD5 /* App */,
+				6523568FF580E5B15EFEC4A0 /* Dashboard */,
+				4DB63B0CF2EFF3FC98BD3BB2 /* Debug */,
+				F509AE59124EC816BC50615F /* MenuBar */,
+				646B7BAE6A8CE018DE7AA0D2 /* Notifications */,
+				5F8DFDB6A95CF5A95A1EA7E7 /* Settings */,
+				117F2624C3665BF6B870047F /* Shared */,
+				A0FDD680B06FA7A7051ED80C /* Thresholds */,
+				44548B313F550E1765F5535B /* Widgets */,
+			);
+			path = MetriBar;
+			sourceTree = "<group>";
+		};
 		70883ED00BB89C7AB5E0F9C9 /* MetriBarWidgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +406,22 @@
 			path = MetriBarWidgets;
 			sourceTree = "<group>";
 		};
+		836DF54A9384C6015DCA6CD5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C936952D5017B1899D4012E4 /* AppCommands.swift */,
+				D7A37BCD55ABB6B03DC0479F /* AppDelegate.swift */,
+				4E562CB05072102F233276AC /* AppKeychain.swift */,
+				4FED84FC759BD7BB97D59517 /* AppModel.swift */,
+				866220A97E6E83AF36F64B47 /* Formatting.swift */,
+				CC18802E26FE60C62E97A92D /* LoginItem.swift */,
+				23733757E56BBA03656E008F /* ProblemText.swift */,
+				ABE98F027AF97AFEA2D28E85 /* UpdateAlert.swift */,
+				966D0D45FE0276CA99F061D0 /* UpdateModel.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		8DD5F3450F99223DBFC080C5 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +429,7 @@
 				B3617FD8CAA42D7C5FBA706F /* MetriBariOS */,
 				FA24E2FBE99819654F00AA79 /* MetriBarWidgets */,
 				1B447E321AF25CD0A008CC45 /* Config */,
+				698C747D870B456DCB65B082 /* MetriBar */,
 				70883ED00BB89C7AB5E0F9C9 /* MetriBarWidgets */,
 				5D67C99146DC3EE761ED7C78 /* Packages */,
 				3E77A103DD576354990C5F87 /* Resources */,
@@ -275,6 +448,16 @@
 			path = Platform;
 			sourceTree = "<group>";
 		};
+		A0FDD680B06FA7A7051ED80C /* Thresholds */ = {
+			isa = PBXGroup;
+			children = (
+				CB054985F84035F434004962 /* RuleEditorView.swift */,
+				29805E6D36D97EE10C2B5CC8 /* RuleText.swift */,
+				6A4F855639ED0EF8D5AF8AF5 /* ThresholdSettingsView.swift */,
+			);
+			path = Thresholds;
+			sourceTree = "<group>";
+		};
 		F0F03F6B7772D5B98E883E43 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +465,14 @@
 				1E0FDABBC941999D8CA67A2C /* Widgets */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		F509AE59124EC816BC50615F /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				BF28D09DF480EA60E7265106 /* ProblemBanner.swift */,
+			);
+			path = MenuBar;
 			sourceTree = "<group>";
 		};
 		FDC89C817D7A9A3069AB35BD /* Products */ = {
@@ -313,7 +504,6 @@
 				1029BB0E211A1B3F3FE90F1C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				"TEMP_931957A9-E17B-4784-930B-F9132D9A02D7" /* MetriBar */,
 				B3617FD8CAA42D7C5FBA706F /* MetriBariOS */,
 			);
 			name = "MetriBar-iOS";
@@ -501,8 +691,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867618D26A95638D7C4FD1CB /* AlertsView.swift in Sources */,
+				A750388728CFF2832B695E55 /* AppCommands.swift in Sources */,
+				C20188E1BAEAA36CFC1B1434 /* AppDelegate.swift in Sources */,
+				9EBEC73F2F730EB689A941E8 /* AppKeychain.swift in Sources */,
+				3F7D06FEF33E8EF011A745FD /* AppModel.swift in Sources */,
+				9B50421501DF96A15599C46B /* CertificateSection.swift in Sources */,
 				BC12EFE56C119CFB76E0B1D9 /* Clipboard.swift in Sources */,
+				03F80EA3247B8829C4A869F8 /* ConnectionTestSection.swift in Sources */,
+				90E37211D44A0EC82594C522 /* ContainersView.swift in Sources */,
+				B60D1F241ECE869388F8AA70 /* DashboardComponents.swift in Sources */,
+				918862DED7E311E871930558 /* DashboardSection.swift in Sources */,
+				E67E8DB706FA14025CCDA2CB /* DashboardWindow.swift in Sources */,
+				C68DC49EB55EAD2C37DEBE0C /* DebugLaunch.swift in Sources */,
+				7D40E7C702F8C86528334942 /* DisplaySettingsView.swift in Sources */,
+				634CC1F0F18A284654F1E747 /* Formatting.swift in Sources */,
+				4D3FF274D4EBFEF370D17753 /* Gauges.swift in Sources */,
+				E0BD5AA30895DAD750BFAA7B /* GeneralSettingsView.swift in Sources */,
 				D49D119002B24AA7BCBCEB38 /* Haptics.swift in Sources */,
+				2D1D9ED8EBC219F203A7F259 /* HistoryView.swift in Sources */,
+				4B15F9BC5CA3C07486430604 /* LoginItem.swift in Sources */,
+				7BD5585613CC7BFDE013140A /* MenuRow.swift in Sources */,
+				E3ED6F76A3432CCEEEE61239 /* NetworkView.swift in Sources */,
+				B48776A3FA2F13DD7473B925 /* NoticeText.swift in Sources */,
+				7466C1DE747891B0E891C7CC /* NotificationService.swift in Sources */,
+				6A48D4AA5E53BACA38EDD4CF /* NotificationSettingsView.swift in Sources */,
+				5FCAA7C3310B281764ECE363 /* OverviewView.swift in Sources */,
+				978F999F862A58B3FC0133A3 /* ProblemBanner.swift in Sources */,
+				400AD7E5BC2567E4502B518E /* ProblemText.swift in Sources */,
+				57BC9824600098AB25E7276E /* ProcessesView.swift in Sources */,
+				8F311114550354247BC1B38D /* RuleEditorView.swift in Sources */,
+				97536F7016F3FFA4D828B0F4 /* RuleText.swift in Sources */,
+				9E1607B241DAEFE5050F251A /* SensorsView.swift in Sources */,
+				9D2F3DCA72E762586CC6CE94 /* ServerEditorView.swift in Sources */,
+				7F8EB7D2ED86235ADAFBF6D7 /* SettingsSidebar.swift in Sources */,
+				3B5F93F4089A794774B7C1B3 /* SettingsView.swift in Sources */,
+				2B1D1BD25CF63C706CDF856E /* StatusStyle.swift in Sources */,
+				AEA42D142F84A2BC337B118E /* StorageView.swift in Sources */,
+				36CF249A649D74995EF6081A /* ThresholdSettingsView.swift in Sources */,
+				8A4C0730C459E53F1BF6314F /* UpdateAlert.swift in Sources */,
+				D0320B8B1060341F20DBD0D3 /* UpdateModel.swift in Sources */,
+				472E3B95786379EA18DB597A /* UpdateSection.swift in Sources */,
+				117AD2D510D2D3973F577F70 /* WidgetBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +780,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Config/MetriBarWidgets-iOS.entitlements";
 				INFOPLIST_FILE = "Config/WidgetsInfo-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				METRIBAR_APP_GROUP = "$(METRIBAR_IOS_APP_GROUP)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID).Widgets";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -641,6 +872,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				METRIBAR_APP_GROUP = "$(METRIBAR_IOS_APP_GROUP)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID)";
 				SDKROOT = iphoneos;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -791,6 +1023,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Config/MetriBarWidgets-iOS.entitlements";
 				INFOPLIST_FILE = "Config/WidgetsInfo-iOS.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				METRIBAR_APP_GROUP = "$(METRIBAR_IOS_APP_GROUP)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID).Widgets";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -812,6 +1045,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				METRIBAR_APP_GROUP = "$(METRIBAR_IOS_APP_GROUP)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(METRIBAR_BUNDLE_ID)";
 				SDKROOT = iphoneos;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;

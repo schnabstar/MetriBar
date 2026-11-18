@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- The iPhone and iPad app now builds and runs in the simulator: it uses the App Group `group.<bundle id>` on iOS and no longer compiles Mac-only files.
+
 ## [0.12.0] - 2026-11-03
 
 Requires a server running Glances 5 and macOS 26 or later.

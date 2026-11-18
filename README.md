@@ -80,7 +80,7 @@ swift test --package-path Packages/MetriBarKit   # core library tests
 open MetriBar.xcodeproj
 ```
 
-Build the macOS app with the **MetriBar** scheme or the iPhone/iPad app with **MetriBar-iOS**. The iOS scheme also builds and embeds its WidgetKit extension. Both app targets need a valid signing identity and the App Group configured in `Config/Shared.xcconfig` for widgets and shared credentials to work.
+Build the macOS app with the **MetriBar** scheme or the iPhone/iPad app with **MetriBar-iOS**. The iOS scheme also builds and embeds its WidgetKit extension. Both app targets need a valid signing identity and the App Group configured in `Config/Shared.xcconfig` for widgets and shared credentials to work. On iOS the App Group is `group.<bundle id>` (`METRIBAR_IOS_APP_GROUP`); automatic signing registers it with your developer account on the first build.
 
 The project signs with the maintainer's team by default. To build and run it yourself, copy `Config/Local.xcconfig.example` to `Config/Local.xcconfig` (ignored by git) and enter your own team ID and bundle identifier.
 
