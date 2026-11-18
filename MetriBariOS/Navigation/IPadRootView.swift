@@ -119,47 +119,42 @@ struct IPadRootView: View {
 
     @ViewBuilder
     private func detailView(monitor: ServerMonitor) -> some View {
-        ZStack {
-            Color(uiColor: .systemGroupedBackground)
-                .ignoresSafeArea()
-
-            ScrollView {
-                VStack(spacing: 16) {
-                    if let problem = connectionProblem(for: monitor) {
-                        ProblemBanner(problem: problem, monitor: monitor, onShowSettings: {
-                            showsSettings = true
-                        })
-                        .padding(.horizontal)
+        VStack(spacing: 0) {
+            if let problem = connectionProblem(for: monitor) {
+                ProblemBanner(
+                    problem: problem, monitor: monitor,
+                    onShowSettings: {
+                        showsSettings = true
                     }
+                )
+                .padding([.horizontal, .top])
+                .padding(.bottom, 8)
+            }
 
-                    switch model.dashboardSection {
-                    case .overview:
-                        OverviewContent(monitor: monitor)
-                            .padding()
-                    case .history:
-                        HistoryContent(monitor: monitor)
-                            .padding()
-                    case .storage:
-                        StorageView(monitor: monitor)
-                            .padding()
-                    case .network:
-                        NetworkView(monitor: monitor)
-                            .padding()
-                    case .sensors:
-                        SensorsView(monitor: monitor)
-                    case .processes:
-                        ProcessesView(monitor: monitor)
-                    case .containers:
-                        IPadContainersView(monitor: monitor)
-                    case .alerts:
-                        AlertsView(monitor: monitor)
-                    }
-                }
-                .padding(.vertical)
+            // Tables and SensorsView scroll on their own; a Table collapses to zero height inside a ScrollView.
+            switch model.dashboardSection {
+            case .overview:
+                ScrollView { OverviewContent(monitor: monitor).padding() }
+            case .history:
+                ScrollView { HistoryContent(monitor: monitor).padding() }
+            case .sensors:
+                SensorsView(monitor: monitor)
+            case .storage:
+                StorageView(monitor: monitor).padding()
+            case .network:
+                NetworkView(monitor: monitor).padding()
+            case .processes:
+                ProcessesView(monitor: monitor)
+            case .containers:
+                IPadContainersView(monitor: monitor)
+            case .alerts:
+                AlertsView(monitor: monitor).padding()
             }
-            .refreshable {
-                monitor.refresh()
-            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(uiColor: .systemGroupedBackground).ignoresSafeArea())
+        .refreshable {
+            monitor.refresh()
         }
         .navigationTitle("\(monitor.displayName) – \(model.dashboardSection.title)")
         .navigationBarTitleDisplayMode(.inline)
